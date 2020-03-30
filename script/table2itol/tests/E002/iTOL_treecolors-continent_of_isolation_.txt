@@ -1,0 +1,86 @@
+TREE_COLORS
+SEPARATOR TAB
+COLOR	#a6cee3
+DATASET_LABEL	continent of isolation 
+LEGEND_COLORS	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#FFFFFF
+LEGEND_LABELS	Africa	Asia	Europe	North America	Oceania	NA
+LEGEND_SHAPES	1	1	1	1	1	1
+LEGEND_TITLE	continent of isolation 
+DATA
+T10	range	#a6cee3	Africa
+T11	range	#1f78b4	Asia
+T12	range	#a6cee3	Africa
+T13	range	#b2df8a	Europe
+T14	range	#1f78b4	Asia
+T15	range	#b2df8a	Europe
+T16	range	#b2df8a	Europe
+T17	range	#b2df8a	Europe
+T18	range	#1f78b4	Asia
+T19	range	#a6cee3	Africa
+T20	range	#1f78b4	Asia
+T21	range	#33a02c	North America
+T22	range	#1f78b4	Asia
+T23	range	#a6cee3	Africa
+T24	range	#a6cee3	Africa
+T25	range	#33a02c	North America
+T26	range	#b2df8a	Europe
+T27	range	#b2df8a	Europe
+T28	range	#b2df8a	Europe
+T29	range	#1f78b4	Asia
+T30	range	#b2df8a	Europe
+T31	range	#b2df8a	Europe
+T32	range	#a6cee3	Africa
+T33	range	#a6cee3	Africa
+T34	range	#33a02c	North America
+T36	range	#a6cee3	Africa
+T37	range	#b2df8a	Europe
+T38	range	#1f78b4	Asia
+T39	range	#a6cee3	Africa
+T4	range	#1f78b4	Asia
+T40	range	#b2df8a	Europe
+T41	range	#b2df8a	Europe
+T42	range	#b2df8a	Europe
+T43	range	#b2df8a	Europe
+T44	range	#33a02c	North America
+T45	range	#a6cee3	Africa
+T46	range	#b2df8a	Europe
+T47	range	#1f78b4	Asia
+T48	range	#1f78b4	Asia
+T49	range	#b2df8a	Europe
+T5	range	#a6cee3	Africa
+T50	range	#a6cee3	Africa
+T51	range	#b2df8a	Europe
+T52	range	#1f78b4	Asia
+T53	range	#1f78b4	Asia
+T54	range	#b2df8a	Europe
+T55	range	#1f78b4	Asia
+T56	range	#a6cee3	Africa
+T57	range	#a6cee3	Africa
+T58	range	#1f78b4	Asia
+T59	range	#1f78b4	Asia
+T6	range	#1f78b4	Asia
+T60	range	#1f78b4	Asia
+T61	range	#33a02c	North America
+T62	range	#33a02c	North America
+T63	range	#1f78b4	Asia
+T64	range	#b2df8a	Europe
+T65	range	#1f78b4	Asia
+T66	range	#b2df8a	Europe
+T67	range	#fb9a99	Oceania
+T68	range	#1f78b4	Asia
+T69	range	#b2df8a	Europe
+T7	range	#b2df8a	Europe
+T70	range	#1f78b4	Asia
+T71	range	#fb9a99	Oceania
+T72	range	#1f78b4	Asia
+T73	range	#b2df8a	Europe
+T74	range	#33a02c	North America
+T75	range	#1f78b4	Asia
+T76	range	#1f78b4	Asia
+T77	range	#b2df8a	Europe
+T78	range	#FFFFFF	NA
+T79	range	#FFFFFF	NA
+T8	range	#1f78b4	Asia
+T80	range	#33a02c	North America
+T81	range	#a6cee3	Africa
+T9	range	#a6cee3	Africa

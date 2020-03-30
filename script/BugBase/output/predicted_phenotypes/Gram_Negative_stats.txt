@@ -1,0 +1,37 @@
+
+
+Gram_Negative
+Number of samples in each treatment group:
+
+       Stool   Sub_plaque Supra_plaque 
+          25           25           25 
+
+Proportion with phenotype (mean):
+       Stool   Sub_plaque Supra_plaque 
+   0.6697077    0.5809736    0.5297193 
+
+Proportion with phenotype (median):
+       Stool   Sub_plaque Supra_plaque 
+   0.7063075    0.5836627    0.5482427 
+
+Standard deviation:
+       Stool   Sub_plaque Supra_plaque 
+   0.1970543    0.1323724    0.1758859 
+
+Pairwise Mann-Whitney-Wilcoxon Tests were performed.
+Pairwise p-values are:
+       Stool_vs_Sub_plaque      Stool_vs_Supra_plaque 
+                  0.112125                   0.021106 
+Sub_plaque_vs_Supra_plaque 
+                  0.288660 
+
+FDR-corrected pairwise p-values are:
+       Stool_vs_Sub_plaque      Stool_vs_Supra_plaque 
+                0.16818797                 0.06331931 
+Sub_plaque_vs_Supra_plaque 
+                0.28866006 
+
+Kruskal-Wallis Test was performed.
+
+Group p-value is:
+0.04946112 

@@ -1,0 +1,89 @@
+DATASET_COLORSTRIP
+SEPARATOR TAB
+BORDER_WIDTH	0.5
+COLOR	#bebada
+DATASET_LABEL	continent of isolation 
+LEGEND_COLORS	#fb9a99	#33a02c	#b2df8a	#1f78b4	#a6cee3	#FFFFFF
+LEGEND_LABELS	Africa	Asia	Europe	North America	Oceania	NA
+LEGEND_SHAPES	1	1	1	1	1	1
+LEGEND_TITLE	continent of isolation 
+MARGIN	5
+STRIP_WIDTH	25
+DATA
+T10	#fb9a99	Africa
+T11	#33a02c	Asia
+T12	#fb9a99	Africa
+T13	#b2df8a	Europe
+T14	#33a02c	Asia
+T15	#b2df8a	Europe
+T16	#b2df8a	Europe
+T17	#b2df8a	Europe
+T18	#33a02c	Asia
+T19	#fb9a99	Africa
+T20	#33a02c	Asia
+T21	#1f78b4	North America
+T22	#33a02c	Asia
+T23	#fb9a99	Africa
+T24	#fb9a99	Africa
+T25	#1f78b4	North America
+T26	#b2df8a	Europe
+T27	#b2df8a	Europe
+T28	#b2df8a	Europe
+T29	#33a02c	Asia
+T30	#b2df8a	Europe
+T31	#b2df8a	Europe
+T32	#fb9a99	Africa
+T33	#fb9a99	Africa
+T34	#1f78b4	North America
+T36	#fb9a99	Africa
+T37	#b2df8a	Europe
+T38	#33a02c	Asia
+T39	#fb9a99	Africa
+T4	#33a02c	Asia
+T40	#b2df8a	Europe
+T41	#b2df8a	Europe
+T42	#b2df8a	Europe
+T43	#b2df8a	Europe
+T44	#1f78b4	North America
+T45	#fb9a99	Africa
+T46	#b2df8a	Europe
+T47	#33a02c	Asia
+T48	#33a02c	Asia
+T49	#b2df8a	Europe
+T5	#fb9a99	Africa
+T50	#fb9a99	Africa
+T51	#b2df8a	Europe
+T52	#33a02c	Asia
+T53	#33a02c	Asia
+T54	#b2df8a	Europe
+T55	#33a02c	Asia
+T56	#fb9a99	Africa
+T57	#fb9a99	Africa
+T58	#33a02c	Asia
+T59	#33a02c	Asia
+T6	#33a02c	Asia
+T60	#33a02c	Asia
+T61	#1f78b4	North America
+T62	#1f78b4	North America
+T63	#33a02c	Asia
+T64	#b2df8a	Europe
+T65	#33a02c	Asia
+T66	#b2df8a	Europe
+T67	#a6cee3	Oceania
+T68	#33a02c	Asia
+T69	#b2df8a	Europe
+T7	#b2df8a	Europe
+T70	#33a02c	Asia
+T71	#a6cee3	Oceania
+T72	#33a02c	Asia
+T73	#b2df8a	Europe
+T74	#1f78b4	North America
+T75	#33a02c	Asia
+T76	#33a02c	Asia
+T77	#b2df8a	Europe
+T78	#FFFFFF	NA
+T79	#FFFFFF	NA
+T8	#33a02c	Asia
+T80	#1f78b4	North America
+T81	#fb9a99	Africa
+T9	#fb9a99	Africa

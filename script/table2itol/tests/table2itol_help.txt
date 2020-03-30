@@ -1,0 +1,90 @@
+Usage: table2itol.R [options] file1 file2 ...
+
+  table2itol.R: converting spreadsheet files to iTOL input, version 2.5.1
+
+Options:
+	-a, --abort
+		Abort if a requested column cannot be found instead of just skipping the data set [default: FALSE]
+
+	-b NAME, --background=NAME
+		Column to define the background colours of the tip labels; empty means no background colours [default: ]
+
+	-c NAME, --conversion=NAME
+		Convert integer columns to factors ('factor') or numbers with decimal points ('double') or just not 0/1 to logical vectors ('keep') [default: none]
+
+	-C FILE, --colour-file=FILE
+		File in YAML format defining alternative colour vectors for domain output [default: ]
+
+	-d, --double-to-bars
+		Create bar charts, not gradients, from numbers with decimal points ('double') [default: FALSE]
+
+	-D DIR, --directory=DIR
+		Place output files in this directory ('.' means working directory, empty means input file directory) [default: .]
+
+	-e NAME, --emblems=NAME
+		Column to define symbol assignments; ignored if empty [default: ]
+
+	-f NUMBER, --favour=NUMBER
+		Numeric factor for favouring colours over symbols (higher => more colours relative to symbols) [default: 1]
+
+	-G FILE, --gradient-file=FILE
+		File in YAML format defining alternative colours for gradient and binary output [default: ]
+
+	-h, --help
+		Show this help message, then exit [default: FALSE]
+
+	-i NAME, --identifier=NAME
+		Mandatory identifier column; after modification as defined by --template this column must yield the tip labels of the tree [default: ID]
+
+	-j NAME, --identifier2=NAME
+		Optional 2nd identifier column, causing output of branchsymbols; together with -i this identifies a node [default: ]
+
+	-l NAME, --label=NAME
+		Column to define the tip labels displayed in the picture in place of the tip labels found in the tree [default: Label]
+
+	-m INTEGER, --max-size=INTEGER
+		Exceeding this threshold causes fewer colours and more symbols to be selected (see also --favour); also determines size of branch symbols [default: 20]
+
+	-n TEXT, --na-strings=TEXT
+		Sentinels for missing input values; several can be provided, separated by the value of --separator [default: 	(null)	NA]
+
+	-o NUMBER, --opacity=NUMBER
+		Numeric factor for the transparency of the colours (0 => transparent, 1 => fully opaque) [default: 1]
+
+	-p INTEGER, --precision=INTEGER
+		Number of decimal points used in the gradient legends [default: 1]
+
+	-r TEXT/NUMBER, --restrict=TEXT/NUMBER
+		How to select from numeric values that yield branch symbols [default: ]
+
+	-s CHARACTER, --separator=CHARACTER
+		Input column separator for CSV-like files [default: 	]
+
+	-t PATTERN, --template=PATTERN
+		Template for sprintf function to convert ID column when deviating from tip labels [default: %s]
+
+	-w NUMBER, --width=NUMBER
+		Border with used for domains, colour strips etc. [default: 0.5]
+
+
+FREQUENTLY NEEDED OPTIONS:
+
+-i	Unless name of tip identifier column happens to match default.
+-l	Unless name of final tip label column happens to match default.
+-s	Unless separator character happens to match default.
+
+USE OF DATA TYPES:
+
+character, integer, logical -> factor -> iTOL domains
+integer -> double -> iTOL gradient | iTOL branch symbols
+integer[, double] -> iTOL simplebar
+logical -> iTOL binary | iTOL collapsing instructions
+
+EXAMPLES:
+
+# Set identifier, label and label background column; also prepend
+# 'T' to ID column 'Genome_ID' (which must contain integers):
+'table2itol.R -i Genome_ID -l Strain -b Phylum -t T%i annotation.tsv'
+
+For more examples see the test folder and the FAQ.
+

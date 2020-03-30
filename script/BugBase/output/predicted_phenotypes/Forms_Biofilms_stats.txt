@@ -1,0 +1,37 @@
+
+
+Forms_Biofilms
+Number of samples in each treatment group:
+
+       Stool   Sub_plaque Supra_plaque 
+          25           25           25 
+
+Proportion with phenotype (mean):
+       Stool   Sub_plaque Supra_plaque 
+0.0003820683 0.3693149233 0.4687806317 
+
+Proportion with phenotype (median):
+       Stool   Sub_plaque Supra_plaque 
+   0.0000000    0.3299044    0.4737276 
+
+Standard deviation:
+       Stool   Sub_plaque Supra_plaque 
+0.0009899901 0.1512920929 0.1438549318 
+
+Pairwise Mann-Whitney-Wilcoxon Tests were performed.
+Pairwise p-values are:
+       Stool_vs_Sub_plaque      Stool_vs_Supra_plaque 
+                5.6591e-10                 5.6591e-10 
+Sub_plaque_vs_Supra_plaque 
+                3.5308e-02 
+
+FDR-corrected pairwise p-values are:
+       Stool_vs_Sub_plaque      Stool_vs_Supra_plaque 
+              8.488659e-10               8.488659e-10 
+Sub_plaque_vs_Supra_plaque 
+              3.530835e-02 
+
+Kruskal-Wallis Test was performed.
+
+Group p-value is:
+5.002573e-12 
