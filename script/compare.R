@@ -3,6 +3,7 @@
 # Copyright 2016-2020 Yong-Xin Liu <metagenome@126.com>
 
 # If used this script, please cited:
+# Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. A practical guide to amplicon and metagenomic analysis of microbiome data. Protein Cell 41, 1-16, doi:10.1007/s13238-020-00724-8 (2020).
 # Jingying Zhang, Yong-Xin Liu, et. al. NRT1.1B is associated with root microbiota composition and nitrogen use in field-grown rice. Nature Biotechnology 37, 676-684, doi:10.1038/s41587-019-0104-4 (2019).
 
 # 手动运行脚本请，需要设置工作目录，使用 Ctrl+Shift+H 或 Session - Set Work Directory - Choose Directory / To Source File Location 设置工作目录
@@ -69,10 +70,10 @@ if (TRUE){
                 help="Output directory; name according to input [default %default]")
   )
   opts = parse_args(OptionParser(option_list=option_list))
-  suppressWarnings(dir.create(opts$output))
 }
 # 设置输出文件缺省值，如果为空，则为输入+pcoa.pdf
 if(opts$output==""){opts$output=opts$input}
+suppressWarnings(dir.create(dirname(opts$output), showWarnings = F))
 
 
 #----1.3. 加载包 Load packages#----
@@ -85,7 +86,7 @@ suppressWarnings(suppressMessages(library(amplicon)))
 #----2.1 实验设计 Metadata#----
 metadata = read.table(opts$design, header=T, row.names=1, sep="\t", comment.char="", stringsAsFactors = F)
 
-#----2.1 距离矩阵Distance matrix#----
+#----2.1 特征表 Feature table#----
 otutab = read.table(opts$input, header=T, row.names=1, sep="\t", comment.char="")
 
 

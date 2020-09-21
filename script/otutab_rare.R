@@ -3,8 +3,12 @@
 # Copyright 2016-2020 Yong-Xin Liu <metagenome@126.com>
 
 # If used this script, please cited:
-#   Jingying Zhang, Yong-Xin Liu, Na Zhang, Bin Hu, Tao Jin, Haoran Xu, Yuan Qin, Pengxu Yan, Xiaoning Zhang, Xiaoxuan Guo, Jing Hui, Shouyun Cao, Xin Wang, Chao Wang, Hui Wang, Baoyuan Qu, Guangyi Fan, Lixing Yuan, Ruben Garrido-Oter, Chengcai Chu & Yang Bai. NRT1.1B is associated with root microbiota composition and nitrogen use in field-grown rice. Nature Biotechnology 37, 676-684, doi:10.1038/s41587-019-0104-4 (2019).
-
+# Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. 
+# A practical guide to amplicon and metagenomic analysis of microbiome data. 
+# Protein Cell 41, 1-16, doi:10.1007/s13238-020-00724-8 (2020).
+# Jingying Zhang, Yong-Xin Liu, Na Zhang, Bin Hu, Tao Jin, Haoran Xu, Yuan Qin, Pengxu Yan, Xiaoning Zhang, Xiaoxuan Guo, Jing Hui, Shouyun Cao, Xin Wang, Chao Wang, Hui Wang, Baoyuan Qu, Guangyi Fan, Lixing Yuan, Ruben Garrido-Oter, Chengcai Chu & Yang Bai.
+# NRT1.1B is associated with root microbiota composition and nitrogen use in field-grown rice. 
+# Nature Biotechnology 37, 676-684, doi:10.1038/s41587-019-0104-4 (2019).
 
 # 1. 分析前准备：帮助、参数、依赖包和读取文件
 
@@ -64,7 +68,7 @@ print(paste("The input feature table is ", opts$input,  sep = ""))
 # print(paste("Normalized filename: ", opts$normalize,  sep = ""))
 # print(paste("Output alpha diversity: ", opts$output, sep = ""))
 
-suppressWarnings(dir.create("alpha/"))
+# suppressWarnings(dir.create("alpha/"))
 
 # 1.3 安装CRAN来源常用包
 # 依赖包列表：参数解析、数据变换、绘图和开发包安装、安装依赖、ggplot主题
@@ -82,7 +86,6 @@ for(p in package_list){
 
 # 默认的quote会跳过2/3的数据行减少，产生NA，改为空
 species = read.table(opts$input, header=T, sep="\t", quote = "", row.names=1, comment.char="") 
-# colSums(taxonomy)
 
 # 2. 计算过程
 
@@ -102,6 +105,15 @@ set.seed(opts$seed)
 otu = vegan::rrarefy(t(species), opts$depth)
 # print(paste0("All sample rarefaction as following"))
 # rowSums(otu)
+# 筛选大于抽样数量的样本
+idx = rowSums(otu) >= opts$depth
+# 保存丢弃的样本列表
+print(paste0("The discard samples: ",rownames(otu[!idx,])))
+suppressWarnings(write.table(rownames(otu[!idx,]), file=paste(opts$normalize,".discard",sep=""), append = F, quote = F, sep="\t", eol = "\n", na = "NA", dec = ".", row.names = F, col.names = F))
+
+# 筛选大于抽样数量的样本的特征表
+otu = otu[idx,]
+
 
 ## 2.3 Alpha diversity
 # vegan::estimateR计算obs, chao1和ACE指数
@@ -131,3 +143,4 @@ suppressWarnings(write.table(alpha_div, file=paste(opts$output,sep=""), append =
 
 print(paste("Name of rarefaction file ", opts$normalize,  sep = ""))
 print(paste("Output alpha diversity filename ", opts$output, sep = ""))
+print(paste("The discard samples file ",  opts$normalize, ".discard", sep = ""))

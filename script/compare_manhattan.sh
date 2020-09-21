@@ -24,14 +24,14 @@ cat <<EOF >&2
 Usage:
 -------------------------------------------------------------------------------
 Filename:    compare_manhattan.sh
-Revision:    1.7
-Date:        2019/12/23
+Revision:    1.8
+Date:        2020/5/24
 Author:      Yong-Xin Liu
 Email:       yxliu@genetics.ac.cn
 Website:     http://bailab.genetics.ac.cn/
 Description: This script is used to perform draw manhattan plot
 -------------------------------------------------------------------------------
-Copyright:   2017 (c) Yong-Xin Liu
+Copyright:   2016-2020 (c) Yong-Xin Liu
 License:     GPL
 -------------------------------------------------------------------------------
 Version 1.0 2018/5/22
@@ -40,6 +40,8 @@ Version 1.1 2018/6/14
 注释门改为门+变形菌纲着色，X轴添加标签
 Version 1.7 2019/12/23
 输入文件为差异比较结果和物种注释
+Version 1.8 2020/5/24
+输出文件可自定义
 
 # 输入文件两个
 # 1. OTU差异比较结果
@@ -58,7 +60,7 @@ Proteobacteria	65.2	49.4	60.7	61.6	72.9	67.9	55.8	47.1	50.8	56	58.4	55.8	50.2	59
 Actinobacteria	25.4	40.4	27.9	28.2	17.2	23.8	28.2	34.7	32.7	27.3	30	28.9	34.8	29.4	31.6	33.7	33.5	30.9	26.5
 
 # Output file
-1. Manhattan plot: SampleAvsSampleB.manhattan.pdf
+1. Manhattan plot: 必须定义输出文件，推荐SampleAvsSampleB.manhattan.pdf，可选png
 
 OPTIONS:
 	-v figure height, default 59 mm
@@ -70,7 +72,18 @@ OPTIONS:
 	-h/? show help of script
 
 Example:
-	compare_manhattan.sh -i DA_OTU -o DA_OTU.pdf
+    # i差异比较结果,t物种注释,p图例,w宽,v高,s字号,l图例最大值
+    bash ${db}/script/compare_manhattan.sh -i result/compare/${compare}.txt \
+       -t result/taxonomy.txt \
+       -p result/tax/sum_p.txt \
+       -w 183 -v 59 -s 7 -l 10 \
+       -o result/compare/${compare}.manhattan.p.pdf
+    # 上图只有6个门，切换为纲c和-L Class展示细节
+    bash ${db}/script/compare_manhattan.sh -i result/compare/${compare}.txt \
+       -t result/taxonomy.txt \
+       -p result/tax/sum_c.txt \
+       -w 130 -v 59 -s 7 -l 10 -L Class \
+       -o result/compare/${compare}.manhattan.c.pdf
 EOF
 }
 
@@ -202,7 +215,7 @@ p = ggplot(x, aes(x=num, y=neglogp, color=tax, size=log2CPM, shape=level)) +
   theme(axis.text.x=element_text(angle=45, hjust=1, vjust=1)) # + ylim(0,${ymax})
   # ylim保持多组y轴范围一致，一般在最终出版时才使用
 p
-ggsave(file=paste("${input}.manhattan.pdf", sep=""), p, width = ${width}, height = ${height}, useDingbats=F, units = "mm")
+ggsave(file=paste("${output}", sep=""), p, width = ${width}, height = ${height}, useDingbats=F, units = "mm")
 # ggsave(file=paste("${input}_manhattan.png", sep=""), p, width = ${width}, height = ${height})
 
 END

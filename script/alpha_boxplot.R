@@ -3,6 +3,7 @@
 # Copyright 2016-2020 Yong-Xin Liu <metagenome@126.com>
 
 # If used this script, please cited:
+# Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. A practical guide to amplicon and metagenomic analysis of microbiome data. Protein Cell 41, 1-16, doi:10.1007/s13238-020-00724-8 (2020).
 # Jingying Zhang, Yong-Xin Liu, et. al. NRT1.1B is associated with root microbiota composition and nitrogen use in field-grown rice. Nature Biotechnology 37, 676-684, doi:10.1038/s41587-019-0104-4 (2019).
 
 # 手动运行脚本请，需要设置工作目录，使用 Ctrl+Shift+H 或 Session - Set Work Directory - Choose Directory / To Source File Location 设置工作目录
@@ -61,8 +62,8 @@ if (TRUE){
                 help="Figure heigth in mm [default %default]")
   )
   opts = parse_args(OptionParser(option_list=option_list))
-  suppressWarnings(dir.create(opts$output))
 }
+suppressWarnings(dir.create(dirname(opts$output), showWarnings = F))
 
 
 # 2. 依赖关系检查、安装和加载

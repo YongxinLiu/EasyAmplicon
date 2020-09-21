@@ -93,7 +93,8 @@ library(RColorBrewer)
 library(gridExtra)
 library(ggplot2)
 library(beeswarm)
-library(biom)
+#library(biom)
+library(biomformat)
 library(robCompositions)
 
 # #See if these packages exist on comp, if not, install.
