@@ -1,0 +1,138 @@
+#!/usr/bin/env python
+
+# https://github.com/drewkett/memusg
+
+import sys
+import os
+import signal
+from time import sleep, time
+from subprocess import *
+from argparse import ArgumentParser, REMAINDER
+import math
+
+parser = ArgumentParser()
+parser.add_argument('-o',
+                    '--output-to-file',
+                    help="Output usage to file",
+                    default="")
+parser.add_argument('-t',
+                    '--time',
+                    help="Output run time of subprocess as well",
+                    default=False,
+                    action='store_true')
+parser.add_argument(
+    '-p',
+    '--poll-interval',
+    help="Polling interval in seconds to check for current memory usage",
+    type=float,
+    default=0.1)
+parser.add_argument(
+    '-w',
+    '--write-interval',
+    help="Interval in seconds to write current peak usage to stdout while process is running (Disable using 0)",
+    type=float,
+    default=0)
+parser.add_argument(
+    '-H',
+    '--no-humanize',
+    help="No humanization of the value of time (second) and memory (KB) usage",
+    default=False,
+    action='store_true')
+parser.add_argument('-s',
+                    '--shell',
+                    help="execute through shell, useful for multiple cmmands and commands with pipes",
+                    default=False,
+                    action='store_true')
+parser.add_argument('args', nargs=REMAINDER)
+args = parser.parse_args()
+
+
+def get_rssize(sid):
+    """Get total resident set memory of processes in session id"""
+    proc = Popen(['ps', '-o', 'rssize=', '--sid', str(sid)], stdout=PIPE)
+    stdout, _ = proc.communicate()
+    return sum(int(line.strip()) for line in stdout.split() if line.strip())
+
+
+def human_time(t):
+    if t < 60:
+        return "{:.3f}s".format(t)
+    elif t < 60 * 60:
+        minutes = (t % 3600) // 60
+        seconds = (t % 60)
+        return "{:.0f}m:{:02.0f}s".format(minutes, seconds)
+    elif t < 24 * 60 * 60:
+        hours = (t % (24 * 60 * 60)) // 3600
+        minutes = (t % 3600) // 60
+        seconds = (t % 60)
+        return "{:.0f}h:{:02.0f}m:{:02.0f}s".format(hours, minutes, seconds)
+    else:
+        days = t // (24 * 60 * 60)
+        hours = (t % (24 * 60 * 60)) // 3600
+        minutes = (t % 3600) // 60
+        seconds = (t % 60)
+        return "{}days {:.0f}h:{:02.0f}m:{:02.0f}s".format(days, hours, minutes, seconds)
+
+
+def human_size(size):
+    """Convert integer representing bytes to human readable string"""
+    size_name = ("KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
+    if size:
+        i = int(math.floor(math.log(size, 1024)))
+        p = math.pow(1024, i)
+        s = round(size / p, 2)
+        return '%s %s' % (s, size_name[i])
+    else:
+        return '0B'
+
+
+if args.output_to_file:
+    stdout = open(args.output_to_file, "w")
+else:
+    stdout = sys.stderr
+
+if args.time:
+    start_time = time()
+
+if sys.version_info >= (3, 0):
+    p = Popen(tuple(args.args), start_new_session=True, shell=args.shell)
+else:
+    p = Popen(tuple(args.args), preexec_fn=os.setsid, shell=args.shell)
+
+# Catch interrupt signal and send to subprocesses
+signal.signal(signal.SIGINT, lambda signum, frame: os.killpg(p.pid, signum))
+
+if args.write_interval:
+    n_interval = int(args.write_interval / args.poll_interval)
+    last_peak = 0
+
+peak = 0
+n = 0
+while p.poll() is None:
+    peak = max(peak, get_rssize(os.getsid(p.pid)))
+    n += 1
+    # Check every {write_interval} seconds if current peak memory usage is
+    # greater than previously output peak memory usage
+    if args.write_interval and (n % n_interval) == 0:
+        if peak > last_peak:
+            sys.stdout.write("peak rss: {}\n".format(
+                human_size(peak) if not args.no_humanize else peak))
+            last_peak = peak
+    sleep(args.poll_interval)
+
+stdout.write("\n")
+if args.time:
+    elapsed_time = time() - start_time
+    stdout.write("elapsed time: {}\n".format(human_time(
+        elapsed_time) if not args.no_humanize else "{:.3f}".format(elapsed_time)))
+stdout.write("peak rss: {}\n".format(
+    human_size(peak) if not args.no_humanize else peak))
+stdout.write("\n")
+
+# Return subprocess return code except when returncode is negative, which
+# indicates the subprocess was killed by a signal. Don't know how to get
+# returncode in that case
+if p.returncode < 0:
+    sys.exit(255)
+else:
+    sys.exit(p.returncode)

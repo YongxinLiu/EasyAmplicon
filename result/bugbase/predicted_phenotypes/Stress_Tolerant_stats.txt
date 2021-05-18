@@ -1,0 +1,33 @@
+
+
+Stress_Tolerant
+Number of samples in each treatment group:
+
+KO OE WT 
+ 6  6  6 
+
+Proportion with phenotype (mean):
+       KO        OE        WT 
+0.5061228 0.4287537 0.4896244 
+
+Proportion with phenotype (median):
+       KO        OE        WT 
+0.5181380 0.4287734 0.4781109 
+
+Standard deviation:
+        KO         OE         WT 
+0.07255572 0.04431769 0.03458664 
+
+Pairwise Mann-Whitney-Wilcoxon Tests were performed.
+Pairwise p-values are:
+KO_vs_OE KO_vs_WT OE_vs_WT 
+0.093074 0.699134 0.025974 
+
+FDR-corrected pairwise p-values are:
+  KO_vs_OE   KO_vs_WT   OE_vs_WT 
+0.13961039 0.69913420 0.07792208 
+
+Kruskal-Wallis Test was performed.
+
+Group p-value is:
+0.06364809 

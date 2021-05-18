@@ -5,7 +5,8 @@ set -e
 
 # 默认参数 Default parameter
 input=result/compare/A-B.txt
-design=result/metadata.tsv
+design=result/metadata.txt
+# (可选) 增加物种注释文件
 taxonomy=result/taxonomy.txt
 group=Group
 output=""
@@ -23,10 +24,10 @@ usage()
 {
 cat <<EOF >&2
 Usage:
-  -------------------------------------------------------------------------------
-  Filename:    compare_heatmap.sh
-Version:     1.7
-Date:        2019/12/23
+-------------------------------------------------------------------------------
+Filename:    compare_heatmap.sh
+Version:     1.11
+Date:        2021/4/12
 Author:      Yong-Xin Liu
 Email:       metagenome@126.com
 Website:     https://blog.csdn.net/woodcorpse
@@ -36,13 +37,15 @@ Notes:
   Copyright:   2016-2020 (c) Yong-Xin Liu
 License:     GPL
 If used this script, please cited:
-  Jingying Zhang, Yong-Xin Liu, et. al. NRT1.1B is associated with root microbiota composition and nitrogen use in field-grown rice. Nature Biotechnology 37, 676-684, doi:10.1038/s41587-019-0104-4 (2019).
+  Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo, Yang Bai. (2021). A practical guide to amplicon and metagenomic analysis of microbiome data. Protein Cell 12 doi: 10.1007/s13238-020-00724-8
 -------------------------------------------------------------------------------
   Version 1.0 2018/4/9
 Draw heatmap plot by compare result, must have logFC, logCPM and level
 # All input and output should be in default directory, or give relative or absolute path by -i/-d
   Version 1.7 2019/12/23
 Modified to plotting in EasyAmplicon 1.7 in windows
+  Version 1.11 2021/4/12
+Support metagenome NCBI taxonomy
 
 # Input files: result/metadata, result/compare/A-B.txt
 
@@ -128,10 +131,10 @@ mkdir -p script
 # 开始写R统计绘图脚本
 cat <<END >script/compare_heatmap.R
 #!/usr/bin/env Rscript
-# Copyright 2016-2020 Yong-Xin Liu <metagenome@126.com>
+# Copyright 2016-2021 Yong-Xin Liu <metagenome@126.com>
 
 # If used this script, please cited:
-#   Jingying Zhang, Yong-Xin Liu, et. al. NRT1.1B is associated with root microbiota composition and nitrogen use in field-grown rice. Nature Biotechnology 37, 676-684, doi:10.1038/s41587-019-0104-4 (2019).
+# Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo, Yang Bai. (2021). A practical guide to amplicon and metagenomic analysis of microbiome data. Protein Cell 12 doi: 10.1007/s13238-020-00724-8
 
 # 手动运行脚本请，需要设置工作目录，使用 Ctrl+Shift+H 或 Session - Set Work Directory - Choose Directory / To Source File Location 设置工作目录
 

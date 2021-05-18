@@ -1,0 +1,148 @@
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales	5.10602077601	KO	4.21704480287	0.00718562688146
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Pseudomonadales	4.20813135396	OE	3.82974849047	0.0111415265195
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Oxalobacteraceae.g__Pseudoduganella	4.41947336152			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Boseaceae	3.72502395947			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Streptosporangiales.f__Thermomonosporaceae.g__Unassigned	4.87440593851	WT	4.06567415906	0.0338449691584
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Sphingomonadales.f__Erythrobacteraceae	3.32183847982			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Propionibacteriales.f__Kribbellaceae.g__Kribbella	4.01928843939			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Phyllobacteriaceae	3.88601183086			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Pseudonocardiales	4.9940998841			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Caulobacterales.f__Unassigned	3.29867827706			-
+k__Bacteria.p__Bacteroidetes.c__Cytophagia	3.39558455012	OE	3.24039291564	0.0084146774892
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Comamonadaceae.g__Unassigned	5.04588515573	KO	4.2623326695	0.00199647077636
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Nevskiales	3.53631154822			-
+k__Bacteria.p__Firmicutes.c__Bacilli.o__Bacillales.f__Paenibacillaceae1	3.58337916922			-
+k__Bacteria.p__Firmicutes.c__Bacilli.o__Bacillales.f__Bacillaceae1	4.3013921849	OE	3.88034208754	0.00189411068152
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Nevskiales.f__Nevskiaceae.g__Unassigned	3.53631154822			-
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Unassigned.f__Unassigned.g__Unassigned	4.3422884225			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhodospirillales.f__Reyranellaceae	3.31027411682			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Pseudonocardiales.f__Pseudonocardiaceae.g__Amycolatopsis	4.38573501157			-
+k__Bacteria.p__Unassigned	4.84090696245	OE	4.38396813322	0.00211670480491
+k__Bacteria.p__Unassigned.c__Unassigned.o__Unassigned.f__Unassigned	4.84090696245	OE	4.38396813322	0.00211670480491
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Micromonosporales.f__Micromonosporaceae.g__Unassigned	3.99519755949			-
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Xanthomonadales.f__Xanthomonadaceae.g__Unassigned	3.36219637912			-
+k__Bacteria.p__Bacteroidetes.c__Flavobacteriia.o__Flavobacteriales.f__Flavobacteriaceae	4.70591690383			-
+k__Bacteria.p__Bacteroidetes.c__Chitinophagia	3.55602203587	OE	3.40646055686	0.00362506506839
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhodospirillales.f__Rhodospirillaceae	3.80864048586	OE	3.43579412284	0.00432023947409
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Oxalobacteraceae.g__Unassigned	3.93481777064	KO	3.65666205494	0.00126521321717
+k__Bacteria.p__Chloroflexi.c__Chloroflexia.o__Herpetosiphonales	4.08719415916			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Pseudonocardiales.f__Pseudonocardiaceae	4.9940998841			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Streptomycetales	4.74568762546			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Micrococcales.f__Microbacteriaceae.g__Agromyces	3.92550427974			-
+k__Bacteria.p__Proteobacteria.c__Unassigned.o__Unassigned.f__Unassigned.g__Unassigned	4.59835892195			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhodospirillales	3.92836457998	OE	3.4334327292	0.0109477657674
+k__Bacteria.p__Unassigned.c__Unassigned	4.84090696245	OE	4.38396813322	0.00211670480491
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Phyllobacteriaceae.g__Unassigned	3.70116634087			-
+k__Bacteria.p__Proteobacteria.c__Unassigned.o__Unassigned	4.59835892195			-
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Xanthomonadales.f__Xanthomonadaceae.g__Xanthomonas	3.68567674659			-
+k__Bacteria.p__Unassigned.c__Unassigned.o__Unassigned.f__Unassigned.g__Unassigned	4.84090696245	OE	4.38396813322	0.00211670480491
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Unassigned	4.234507338			-
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Comamonadaceae.g__Aquabacterium	3.30085140636			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Hyphomicrobiaceae	3.3277521882	KO	3.37750395247	0.046959040678
+k__Bacteria.p__Actinobacteria	5.52597460942			-
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Xanthomonadales	4.17134446706			-
+k__Bacteria.p__Bacteroidetes.c__Flavobacteriia.o__Flavobacteriales.f__Flavobacteriaceae.g__Flavobacterium	4.70591690383			-
+k__Bacteria.p__Proteobacteria.c__Unassigned.o__Unassigned.f__Unassigned	4.59835892195			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Streptosporangiales	4.95508909255	WT	4.0960717952	0.0445514262445
+k__Bacteria.p__Bacteroidetes.c__Chitinophagia.o__Chitinophagales	3.55602203587	OE	3.40646055686	0.00362506506839
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Boseaceae.g__Bosea	3.72502395947			-
+k__Bacteria.p__Proteobacteria	5.81600688421	KO	4.78752160265	0.0380442300303
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales	5.6128585861	KO	4.75234800466	0.015824453739
+k__Bacteria.p__Proteobacteria.c__Unassigned	4.59835892195			-
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Comamonadaceae.g__Variovorax	4.06668622974			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Sphingomonadales.f__Sphingomonadaceae.g__Sphingomonas	4.10885176403	KO	3.60552033438	0.0175810146451
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Unassigned.f__Unassigned.g__Unassigned	4.30392906515	WT	3.59677336975	0.0132781237752
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Bradyrhizobiaceae	4.47925838518			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Phyllobacteriaceae.g__Mesorhizobium	3.42588679858			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Propionibacteriales	4.41421641791			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Micromonosporales.f__Micromonosporaceae	4.70335383909			-
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Comamonadaceae.g__Rhizobacter	4.92072716935			-
+k__Bacteria.p__Bacteroidetes.c__Cytophagia.o__Cytophagales.f__Fulvivirgaceae	3.39558455012	OE	3.24039291564	0.0084146774892
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Nitrosomonadales	3.28794093894			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Hyphomicrobiaceae.g__Hyphomicrobium	3.3277521882	KO	3.37750395247	0.046959040678
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Micromonosporales	4.70335383909			-
+k__Bacteria.p__Bacteroidetes.c__Cytophagia.o__Cytophagales.f__Fulvivirgaceae.g__Chryseolinea	3.39558455012	OE	3.24039291564	0.0084146774892
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Rhizobiaceae.g__Pararhizobium	4.3985210282	KO	3.75036242667	0.0199948467375
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Propionibacteriales.f__Kribbellaceae	4.01928843939			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Bradyrhizobiaceae.g__Bradyrhizobium	4.45597863706			-
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria	5.61444178345	KO	4.75389418384	0.015824453739
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Devosiaceae.g__Devosia	4.22973390357	KO	3.61368805052	0.0163895537902
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Pseudonocardiales.f__Pseudonocardiaceae.g__Pseudonocardia	3.41171382941			-
+k__Bacteria	6.0			-
+k__Bacteria.p__Firmicutes.c__Bacilli.o__Bacillales	4.3139024272	OE	3.89008545203	0.00417128071785
+k__Bacteria.p__Bacteroidetes.c__Flavobacteriia	4.70591690383			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Caulobacterales.f__Unassigned.g__Unassigned	3.29867827706			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Propionibacteriales.f__Nocardioidaceae.g__Aeromicrobium	3.46721174871	KO	3.54700849529	0.00968257984213
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Streptomycetales.f__Streptomycetaceae.g__Streptomyces	4.74568762546			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Micromonosporales.f__Micromonosporaceae.g__Catellatospora	3.27348840201			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Micromonosporales.f__Micromonosporaceae.g__Actinoplanes	4.58816107774			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Pseudonocardiales.f__Pseudonocardiaceae.g__Kibdelosporangium	4.10373711731			-
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Oxalobacteraceae.g__Janthinobacterium	4.0345156726	KO	3.67681655787	0.00233795296872
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhodospirillales.f__Reyranellaceae.g__Reyranella	3.31027411682			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Streptosporangiales.f__Streptosporangiaceae	3.38657740754			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Micrococcales	3.92550427974			-
+k__Bacteria.p__Chloroflexi.c__Chloroflexia	4.08719415916			-
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Nitrosomonadales.f__Methylophilaceae	3.28794093894			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Unassigned.g__Unassigned	4.234507338			-
+k__Bacteria.p__Proteobacteria.c__Deltaproteobacteria	3.87752500827	KO	3.31138169125	0.00613609181645
+k__Bacteria.p__Firmicutes	4.3139024272	OE	3.89008545203	0.00417128071785
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Comamonadaceae.g__Hydrogenophaga	3.48690356046			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Sphingomonadales	4.35886741642	KO	3.65642632006	0.0304634379504
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Unassigned	4.3422884225			-
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Xanthomonadales.f__Xanthomonadaceae.g__Pseudoxanthomonas	3.6381589976			-
+k__Bacteria.p__Bacteroidetes.c__Flavobacteriia.o__Flavobacteriales	4.70591690383			-
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Pseudomonadales.f__Pseudomonadaceae.g__Pseudomonas	4.20813135396	OE	3.82974849047	0.0111415265195
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Comamonadaceae.g__Aquincola	4.93832949859	KO	4.31427594508	0.00968257984213
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Streptomycetales.f__Streptomycetaceae	4.74568762546			-
+k__Bacteria.p__Firmicutes.c__Bacilli.o__Bacillales.f__Bacillaceae1.g__Bacillus	4.3013921849	OE	3.88034208754	0.00189411068152
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Pseudonocardiales.f__Pseudonocardiaceae.g__Lentzea	4.6475787627			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Rhizobiaceae.g__Unassigned	4.2956330222			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Streptosporangiales.f__Thermomonosporaceae	4.94724298022	WT	4.10092727076	0.0380442300303
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Comamonadaceae	5.51979977084	KO	4.65209453735	0.015824453739
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Sphingomonadales.f__Sphingomonadaceae.g__Unassigned	3.8977574576			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Streptosporangiales.f__Thermomonosporaceae.g__Actinocorallia	4.13590131712			-
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Oxalobacteraceae.g__Massilia	3.9598630495			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Caulobacterales.f__Caulobacteraceae	3.98152840587	KO	3.49916498586	0.0084146774892
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Devosiaceae	4.22973390357	KO	3.61368805052	0.0163895537902
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Sphingomonadales.f__Erythrobacteraceae.g__Unassigned	3.32183847982			-
+k__Bacteria.p__Proteobacteria.c__Deltaproteobacteria.o__Unassigned.f__Unassigned.g__Unassigned	3.87752500827	KO	3.31138169125	0.00613609181645
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Pseudonocardiales.f__Pseudonocardiaceae.g__Actinocrispum	4.33583457328			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Unassigned	4.30392906515	WT	3.59677336975	0.0132781237752
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Oxalobacteraceae	4.89813291272			-
+k__Bacteria.p__Firmicutes.c__Bacilli	4.3139024272	OE	3.89008545203	0.00417128071785
+k__Bacteria.p__Bacteroidetes	4.75503880222			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Caulobacterales.f__Caulobacteraceae.g__Phenylobacterium	3.98152840587	KO	3.49916498586	0.0084146774892
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Comamonadaceae.g__Piscinibacter	4.47145757646			-
+k__Bacteria.p__Chloroflexi.c__Chloroflexia.o__Herpetosiphonales.f__Herpetosiphonaceae	4.08719415916			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Unassigned.f__Unassigned	4.30392906515	WT	3.59677336975	0.0132781237752
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Comamonadaceae.g__Ideonella	4.22742292589			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Propionibacteriales.f__Nocardioidaceae.g__Nocardioides	4.19670648643			-
+k__Bacteria.p__Unassigned.c__Unassigned.o__Unassigned	4.84090696245	OE	4.38396813322	0.00211670480491
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Propionibacteriales.f__Nocardioidaceae	4.27094695037			-
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria	4.74456496732	OE	3.9714953338	0.0120215713366
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Xanthomonadales.f__Xanthomonadaceae	4.17134446706			-
+k__Bacteria.p__Bacteroidetes.c__Cytophagia.o__Cytophagales	3.39558455012	OE	3.24039291564	0.0084146774892
+k__Bacteria.p__Proteobacteria.c__Deltaproteobacteria.o__Unassigned	3.87752500827	KO	3.31138169125	0.00613609181645
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Comamonadaceae.g__Polaromonas	3.49514554672			-
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Pseudomonadales.f__Pseudomonadaceae	4.20813135396	OE	3.82974849047	0.0111415265195
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Micrococcales.f__Microbacteriaceae	3.92550427974			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria.o__Streptosporangiales.f__Streptosporangiaceae.g__Nonomuraea	3.38657740754			-
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Burkholderiales.f__Oxalobacteraceae.g__Noviherbaspirillum	4.45108676552			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhodospirillales.f__Rhodospirillaceae.g__Dongia	3.80864048586	OE	3.43579412284	0.00432023947409
+k__Bacteria.p__Proteobacteria.c__Betaproteobacteria.o__Nitrosomonadales.f__Methylophilaceae.g__Unassigned	3.28794093894			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Sphingomonadales.f__Sphingomonadaceae	4.31703593512	KO	3.63107754754	0.0394028106608
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Rhizobiaceae	4.6954862881			-
+k__Bacteria.p__Actinobacteria.c__Actinobacteria	5.52597460942			-
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria	5.21936094051	KO	4.33851027732	0.008316833511
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Caulobacterales	4.03521003611	KO	3.41614382852	0.0191928709369
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Rhizobiaceae.g__Ensifer	3.7636932453	KO	3.4621032062	0.0387175618114
+k__Bacteria.p__Bacteroidetes.c__Chitinophagia.o__Chitinophagales.f__Chitinophagaceae	3.55602203587	OE	3.40646055686	0.00362506506839
+k__Bacteria.p__Proteobacteria.c__Alphaproteobacteria.o__Rhizobiales.f__Bradyrhizobiaceae.g__Pseudorhodoplanes	3.38909310932			-
+k__Bacteria.p__Chloroflexi	4.08719415916			-
+k__Bacteria.p__Chloroflexi.c__Chloroflexia.o__Herpetosiphonales.f__Herpetosiphonaceae.g__Herpetosiphon	4.08719415916			-
+k__Bacteria.p__Bacteroidetes.c__Chitinophagia.o__Chitinophagales.f__Chitinophagaceae.g__Niastella	3.55602203587	OE	3.40646055686	0.00362506506839
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Nevskiales.f__Nevskiaceae	3.53631154822			-
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Unassigned.f__Unassigned	4.3422884225			-
+k__Bacteria.p__Firmicutes.c__Bacilli.o__Bacillales.f__Paenibacillaceae1.g__Paenibacillus	3.58337916922			-
+k__Bacteria.p__Proteobacteria.c__Deltaproteobacteria.o__Unassigned.f__Unassigned	3.87752500827	KO	3.31138169125	0.00613609181645
+k__Bacteria.p__Proteobacteria.c__Gammaproteobacteria.o__Xanthomonadales.f__Xanthomonadaceae.g__Lysobacter	3.91413262789			-

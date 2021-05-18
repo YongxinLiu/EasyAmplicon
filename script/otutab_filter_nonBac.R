@@ -60,7 +60,7 @@ if (TRUE){
 
 # 读取OTU表和sintax物种注释
 otutab = read.table(opts$input, header=T, row.names=1, sep="\t", comment.char="")
-sintax = read.table(opts$taxonomy, header=F, row.names=1, sep="\t", comment.char="")
+sintax = read.table(opts$taxonomy, header=F, row.names=1, sep="\t", comment.char="",fill=T)
 
 print(paste0("Input feature table is ", opts$input))
 print(paste0("Input sintax taxonomy table is ", opts$taxonomy))

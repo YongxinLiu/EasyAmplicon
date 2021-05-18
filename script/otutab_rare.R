@@ -1,14 +1,11 @@
 #!/usr/bin/env Rscript
 
-# Copyright 2016-2020 Yong-Xin Liu <metagenome@126.com>
+# Copyright 2016-2021 Yong-Xin Liu <yxliu@genetics.ac.cn / metagenome@126.com>
 
 # If used this script, please cited:
-# Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. 
-# A practical guide to amplicon and metagenomic analysis of microbiome data. 
-# Protein Cell 41, 1-16, doi:10.1007/s13238-020-00724-8 (2020).
-# Jingying Zhang, Yong-Xin Liu, Na Zhang, Bin Hu, Tao Jin, Haoran Xu, Yuan Qin, Pengxu Yan, Xiaoning Zhang, Xiaoxuan Guo, Jing Hui, Shouyun Cao, Xin Wang, Chao Wang, Hui Wang, Baoyuan Qu, Guangyi Fan, Lixing Yuan, Ruben Garrido-Oter, Chengcai Chu & Yang Bai.
-# NRT1.1B is associated with root microbiota composition and nitrogen use in field-grown rice. 
-# Nature Biotechnology 37, 676-684, doi:10.1038/s41587-019-0104-4 (2019).
+# Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. (2021). A practical guide to amplicon and metagenomic analysis of microbiome data. Protein & Cell 12, doi: https://doi.org/10.1007/s13238-020-00724-8
+# 2021/4/12 1.1 Debug: Error in vegan::rrarefy(t(species), opts$depth) : function is meaningful only for integers (counts)；原因，输入数据不是整数；解决，输出数据取整
+
 
 # 1. 分析前准备：帮助、参数、依赖包和读取文件
 
@@ -86,6 +83,8 @@ for(p in package_list){
 
 # 默认的quote会跳过2/3的数据行减少，产生NA，改为空
 species = read.table(opts$input, header=T, sep="\t", quote = "", row.names=1, comment.char="") 
+# 取整 
+species = round(species, digits = 0)
 
 # 2. 计算过程
 

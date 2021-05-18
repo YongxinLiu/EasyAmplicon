@@ -1,6 +1,23 @@
-# EasyAmplicon
+# EasyAmplicon (易扩增子)
 
-**An easy using, open-resource, reproducible, and community-based pipeline for amplicon data analysis in microbiome**
+**An easy using, open-resource, reproducible, and community-based pipeline for amplicon data analysis in microbiome** (简单易学易用、开源、可重复且社区支持的扩增子数据分析流程)
+
+Version (版本)：EasyAmplicon v1.11
+
+Update (更新时间)：2021/5/18
+
+## Pipeline Manual and file description (流程使用和文件介绍)
+
+Using RStudio open the pipeline.sh
+
+Files description:
+
+- Readme.md # Introduction and install
+- pipeline.sh # Command-line analysis for Windows and Linux
+- pipeline_mac.sh # Command-line analysis for MacOS
+- result/ # Example data
+- result/Diversity-tutorial.Rmd # Interactive analysis in R and output reproducible report in HTML format
+
 
 ## What can we do?
 
@@ -21,16 +38,6 @@
 
 ## Install
 
-
-## Pipeline Manual
-
-Using RStudio open the pipeline.sh.
-
-Files description:
-
-- Readme.md # Introduction and install
-- pipeline.sh # Command-line analysis
-- tutorial.Rmd # Interactive analysis in R and output reproducible report in HTML format
 
 ## FAQ
 

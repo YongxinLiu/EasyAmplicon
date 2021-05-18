@@ -1,0 +1,93 @@
+DATASET_COLORSTRIP
+SEPARATOR TAB
+BORDER_WIDTH	0.5
+COLOR	#bebada
+DATASET_LABEL	Species
+LEGEND_COLORS	#1b9e77
+LEGEND_LABELS	Unassigned
+LEGEND_SHAPES	1
+LEGEND_TITLE	Species
+MARGIN	5
+STRIP_WIDTH	25
+DATA
+ASV_1647	#1b9e77	Unassigned
+ASV_2	#1b9e77	Unassigned
+ASV_3	#1b9e77	Unassigned
+ASV_4	#1b9e77	Unassigned
+ASV_5	#1b9e77	Unassigned
+ASV_8	#1b9e77	Unassigned
+ASV_6	#1b9e77	Unassigned
+ASV_7	#1b9e77	Unassigned
+ASV_18	#1b9e77	Unassigned
+ASV_9	#1b9e77	Unassigned
+ASV_10	#1b9e77	Unassigned
+ASV_11	#1b9e77	Unassigned
+ASV_14	#1b9e77	Unassigned
+ASV_12	#1b9e77	Unassigned
+ASV_15	#1b9e77	Unassigned
+ASV_13	#1b9e77	Unassigned
+ASV_16	#1b9e77	Unassigned
+ASV_17	#1b9e77	Unassigned
+ASV_28	#1b9e77	Unassigned
+ASV_20	#1b9e77	Unassigned
+ASV_30	#1b9e77	Unassigned
+ASV_23	#1b9e77	Unassigned
+ASV_21	#1b9e77	Unassigned
+ASV_1276	#1b9e77	Unassigned
+ASV_29	#1b9e77	Unassigned
+ASV_22	#1b9e77	Unassigned
+ASV_113	#1b9e77	Unassigned
+ASV_26	#1b9e77	Unassigned
+ASV_24	#1b9e77	Unassigned
+ASV_31	#1b9e77	Unassigned
+ASV_27	#1b9e77	Unassigned
+ASV_34	#1b9e77	Unassigned
+ASV_33	#1b9e77	Unassigned
+ASV_35	#1b9e77	Unassigned
+ASV_36	#1b9e77	Unassigned
+ASV_41	#1b9e77	Unassigned
+ASV_37	#1b9e77	Unassigned
+ASV_173	#1b9e77	Unassigned
+ASV_38	#1b9e77	Unassigned
+ASV_40	#1b9e77	Unassigned
+ASV_39	#1b9e77	Unassigned
+ASV_70	#1b9e77	Unassigned
+ASV_42	#1b9e77	Unassigned
+ASV_47	#1b9e77	Unassigned
+ASV_68	#1b9e77	Unassigned
+ASV_45	#1b9e77	Unassigned
+ASV_44	#1b9e77	Unassigned
+ASV_52	#1b9e77	Unassigned
+ASV_54	#1b9e77	Unassigned
+ASV_46	#1b9e77	Unassigned
+ASV_43	#1b9e77	Unassigned
+ASV_48	#1b9e77	Unassigned
+ASV_51	#1b9e77	Unassigned
+ASV_50	#1b9e77	Unassigned
+ASV_53	#1b9e77	Unassigned
+ASV_49	#1b9e77	Unassigned
+ASV_55	#1b9e77	Unassigned
+ASV_58	#1b9e77	Unassigned
+ASV_62	#1b9e77	Unassigned
+ASV_67	#1b9e77	Unassigned
+ASV_56	#1b9e77	Unassigned
+ASV_63	#1b9e77	Unassigned
+ASV_61	#1b9e77	Unassigned
+ASV_59	#1b9e77	Unassigned
+ASV_60	#1b9e77	Unassigned
+ASV_76	#1b9e77	Unassigned
+ASV_66	#1b9e77	Unassigned
+ASV_73	#1b9e77	Unassigned
+ASV_456	#1b9e77	Unassigned
+ASV_69	#1b9e77	Unassigned
+ASV_82	#1b9e77	Unassigned
+ASV_72	#1b9e77	Unassigned
+ASV_93	#1b9e77	Unassigned
+ASV_71	#1b9e77	Unassigned
+ASV_74	#1b9e77	Unassigned
+ASV_77	#1b9e77	Unassigned
+ASV_75	#1b9e77	Unassigned
+ASV_83	#1b9e77	Unassigned
+ASV_84	#1b9e77	Unassigned
+ASV_81	#1b9e77	Unassigned
+ASV_78	#1b9e77	Unassigned

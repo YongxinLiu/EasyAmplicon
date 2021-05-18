@@ -1,0 +1,93 @@
+DATASET_COLORSTRIP
+SEPARATOR TAB
+BORDER_WIDTH	0.5
+COLOR	#bebada
+DATASET_LABEL	Phylum
+LEGEND_COLORS	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#e31a1c
+LEGEND_LABELS	Actinobacteria	Bacteroidetes	Chloroflexi	Firmicutes	Proteobacteria	Unassigned
+LEGEND_SHAPES	1	1	1	1	1	1
+LEGEND_TITLE	Phylum
+MARGIN	5
+STRIP_WIDTH	25
+DATA
+ASV_1647	#a6cee3	Actinobacteria
+ASV_2	#fb9a99	Proteobacteria
+ASV_3	#fb9a99	Proteobacteria
+ASV_4	#fb9a99	Proteobacteria
+ASV_5	#e31a1c	Unassigned
+ASV_8	#a6cee3	Actinobacteria
+ASV_6	#fb9a99	Proteobacteria
+ASV_7	#1f78b4	Bacteroidetes
+ASV_18	#a6cee3	Actinobacteria
+ASV_9	#a6cee3	Actinobacteria
+ASV_10	#fb9a99	Proteobacteria
+ASV_11	#fb9a99	Proteobacteria
+ASV_14	#fb9a99	Proteobacteria
+ASV_12	#fb9a99	Proteobacteria
+ASV_15	#fb9a99	Proteobacteria
+ASV_13	#1f78b4	Bacteroidetes
+ASV_16	#a6cee3	Actinobacteria
+ASV_17	#fb9a99	Proteobacteria
+ASV_28	#a6cee3	Actinobacteria
+ASV_20	#a6cee3	Actinobacteria
+ASV_30	#fb9a99	Proteobacteria
+ASV_23	#a6cee3	Actinobacteria
+ASV_21	#a6cee3	Actinobacteria
+ASV_1276	#fb9a99	Proteobacteria
+ASV_29	#a6cee3	Actinobacteria
+ASV_22	#fb9a99	Proteobacteria
+ASV_113	#a6cee3	Actinobacteria
+ASV_26	#a6cee3	Actinobacteria
+ASV_24	#a6cee3	Actinobacteria
+ASV_31	#fb9a99	Proteobacteria
+ASV_27	#fb9a99	Proteobacteria
+ASV_34	#fb9a99	Proteobacteria
+ASV_33	#fb9a99	Proteobacteria
+ASV_35	#a6cee3	Actinobacteria
+ASV_36	#fb9a99	Proteobacteria
+ASV_41	#fb9a99	Proteobacteria
+ASV_37	#fb9a99	Proteobacteria
+ASV_173	#fb9a99	Proteobacteria
+ASV_38	#fb9a99	Proteobacteria
+ASV_40	#33a02c	Firmicutes
+ASV_39	#a6cee3	Actinobacteria
+ASV_70	#fb9a99	Proteobacteria
+ASV_42	#fb9a99	Proteobacteria
+ASV_47	#fb9a99	Proteobacteria
+ASV_68	#fb9a99	Proteobacteria
+ASV_45	#fb9a99	Proteobacteria
+ASV_44	#a6cee3	Actinobacteria
+ASV_52	#a6cee3	Actinobacteria
+ASV_54	#fb9a99	Proteobacteria
+ASV_46	#fb9a99	Proteobacteria
+ASV_43	#b2df8a	Chloroflexi
+ASV_48	#fb9a99	Proteobacteria
+ASV_51	#a6cee3	Actinobacteria
+ASV_50	#a6cee3	Actinobacteria
+ASV_53	#fb9a99	Proteobacteria
+ASV_49	#1f78b4	Bacteroidetes
+ASV_55	#e31a1c	Unassigned
+ASV_58	#fb9a99	Proteobacteria
+ASV_62	#a6cee3	Actinobacteria
+ASV_67	#fb9a99	Proteobacteria
+ASV_56	#fb9a99	Proteobacteria
+ASV_63	#fb9a99	Proteobacteria
+ASV_61	#fb9a99	Proteobacteria
+ASV_59	#fb9a99	Proteobacteria
+ASV_60	#fb9a99	Proteobacteria
+ASV_76	#fb9a99	Proteobacteria
+ASV_66	#fb9a99	Proteobacteria
+ASV_73	#fb9a99	Proteobacteria
+ASV_456	#a6cee3	Actinobacteria
+ASV_69	#fb9a99	Proteobacteria
+ASV_82	#fb9a99	Proteobacteria
+ASV_72	#fb9a99	Proteobacteria
+ASV_93	#fb9a99	Proteobacteria
+ASV_71	#fb9a99	Proteobacteria
+ASV_74	#fb9a99	Proteobacteria
+ASV_77	#fb9a99	Proteobacteria
+ASV_75	#a6cee3	Actinobacteria
+ASV_83	#fb9a99	Proteobacteria
+ASV_84	#fb9a99	Proteobacteria
+ASV_81	#fb9a99	Proteobacteria
+ASV_78	#fb9a99	Proteobacteria

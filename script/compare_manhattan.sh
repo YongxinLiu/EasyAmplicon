@@ -152,13 +152,13 @@ main_theme = theme(panel.background=element_blank(), panel.grid=element_blank(),
 	text=element_text(family="sans", size=${text_size}))
 
 # 实验差异比较结果
-x = read.table("${input}", header=T, row.names= 1, sep="\t", stringsAsFactors = F)
+x = read.table("${input}", header=T, row.names= 1, sep="\t", stringsAsFactors = F, quote = "")
 # 只提取前14列
 x = x[,1:7]
 x = na.omit(x)
 
 # 添加物种注释
-taxonomy = read.table("${taxonomy}", sep = "\t", row.names=1, header=T, stringsAsFactors = F)
+taxonomy = read.table("${taxonomy}", sep = "\t", row.names=1, header=T, stringsAsFactors = F, quote = "")
 taxonomy = taxonomy[rownames(x),]
 x = cbind(x, taxonomy)
 
@@ -171,7 +171,7 @@ x\$otu = factor(x\$otu, levels=x\$otu)   # set x order
 x\$num = 1:dim(x)[1]
 
 # 读取高丰度门，用于着色
-per= read.delim("${phylum}", sep = "\t", row.names=1, header=T)
+per= read.delim("${phylum}", sep = "\t", row.names=1, header=T, quote = "")
 mean = rowMeans(per)
 per = as.data.frame(mean[order(mean, decreasing = T)])
 top_tax=head(rownames(per), n=${legend})

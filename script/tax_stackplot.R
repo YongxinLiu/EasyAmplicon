@@ -1,9 +1,9 @@
 #!/usr/bin/env Rscript
 
-# Copyright 2016-2020 Yong-Xin Liu <metagenome@126.com>
+# Copyright 2016-2021 Yong-Xin Liu <yxliu@genetics.ac.cn / metagenome@126.com>
 
 # If used this script, please cited:
-# Jingying Zhang, Yong-Xin Liu, et. al. NRT1.1B is associated with root microbiota composition and nitrogen use in field-grown rice. Nature Biotechnology 37, 676-684, doi:10.1038/s41587-019-0104-4 (2019).
+# Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. (2021). A practical guide to amplicon and metagenomic analysis of microbiome data. Protein & Cell 12, doi: https://doi.org/10.1007/s13238-020-00724-8
 
 # 手动运行脚本请，需要设置工作目录，使用 Ctrl+Shift+H 或 Session - Set Work Directory - Choose Directory / To Source File Location 设置工作目录
 
@@ -45,11 +45,11 @@ if (!suppressWarnings(suppressMessages(require("optparse", character.only = TRUE
 # 解析参数-h显示帮助信息
 if (TRUE){
   option_list = list(
-    make_option(c("-i", "--input"), type="character", default="result/tax/sum_p.txt",
+    make_option(c("-i", "--input"), type="character", default="result/kraken2/bracken.S.txt",
                 help="Taxonomy composition [default %default]"),
     make_option(c("-l", "--legend"), type="numeric", default=8,
                 help="Legend number [default %default]"),
-    make_option(c("-d", "--design"), type="character", default="result/metadata.tsv",
+    make_option(c("-d", "--design"), type="character", default="result/metadata.txt",
                 help="Design file or metadata [default %default]"),
     make_option(c("-n", "--group"), type="character", default="Group",
                 help="Group name [default %default]"),
@@ -78,7 +78,7 @@ suppressWarnings(suppressMessages(library(amplicon)))
 metadata = read.table(opts$design, header=T, row.names=1, sep="\t", comment.char="", stringsAsFactors = F)
 
 #----2.2 物种组成矩阵Taxonomy matrix#----
-taxonomy = read.table(opts$input, header=T, row.names=1, sep="\t", comment.char="")
+taxonomy = read.table(opts$input, header=T, row.names=1, sep="\t", comment.char="", quote = "")
 
 
 
