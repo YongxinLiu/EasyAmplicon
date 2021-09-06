@@ -2,9 +2,9 @@
 
 **An easy using, open-resource, reproducible, and community-based pipeline for amplicon data analysis in microbiome** (简单易学易用、开源、可重复且社区支持的扩增子数据分析流程)
 
-Version (版本)：EasyAmplicon v1.11
+Version (版本)：EasyAmplicon v1.13
 
-Update (更新时间)：2021/5/18
+Update (更新时间)：2021/9/6
 
 ## Pipeline Manual and file description (流程使用和文件介绍)
 
@@ -18,8 +18,7 @@ Files description:
 - result/ # Example data
 - result/Diversity-tutorial.Rmd # Interactive analysis in R and output reproducible report in HTML format
 
-
-## What can we do?
+## What can we do? (结果展示)
 
 - Analysis and visualization of microbiome data, especially for 16S rDNA amplicon;
 - From raw data into feature tables;
@@ -34,10 +33,11 @@ Files description:
 
 ![image](http://210.75.224.110/Note/R/amplicon/fig2.png)
 
-**Figure 2. Examples of visualizations. **
+**Figure 2. Examples of visualizations.**
 
-## Install
+## Install (安装)
 
+## Quick start (运行)
 
-## FAQ
+## FAQ (常见问题)
 
