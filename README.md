@@ -37,6 +37,15 @@ Files description:
 
 ## Install (安装)
 
+### Install EasyAmplicon
+
+The Chinese version in README_cn.md
+
+
+
+### Install Dependency
+
+
 ## Quick start (运行)
 
 ## FAQ (常见问题)
