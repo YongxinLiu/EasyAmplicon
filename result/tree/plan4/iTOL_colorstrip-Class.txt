@@ -10,11 +10,9 @@ LEGEND_TITLE	Class
 MARGIN	5
 STRIP_WIDTH	25
 DATA
-ASV_1647	#e41a1c	Actinobacteria
 ASV_2	#984ea3	Betaproteobacteria
 ASV_3	#984ea3	Betaproteobacteria
 ASV_4	#984ea3	Betaproteobacteria
-ASV_5	#999999	Unassigned
 ASV_8	#e41a1c	Actinobacteria
 ASV_6	#984ea3	Betaproteobacteria
 ASV_7	#a65628	Flavobacteriia
@@ -50,15 +48,15 @@ ASV_37	#999999	Unassigned
 ASV_173	#984ea3	Betaproteobacteria
 ASV_38	#984ea3	Betaproteobacteria
 ASV_40	#4daf4a	Bacilli
+ASV_42	#984ea3	Betaproteobacteria
 ASV_39	#e41a1c	Actinobacteria
 ASV_70	#377eb8	Alphaproteobacteria
-ASV_42	#984ea3	Betaproteobacteria
 ASV_47	#984ea3	Betaproteobacteria
 ASV_68	#377eb8	Alphaproteobacteria
 ASV_45	#984ea3	Betaproteobacteria
 ASV_44	#e41a1c	Actinobacteria
-ASV_52	#e41a1c	Actinobacteria
 ASV_54	#984ea3	Betaproteobacteria
+ASV_52	#e41a1c	Actinobacteria
 ASV_46	#377eb8	Alphaproteobacteria
 ASV_43	#ff7f00	Chloroflexia
 ASV_48	#f781bf	Gammaproteobacteria
@@ -66,7 +64,7 @@ ASV_51	#e41a1c	Actinobacteria
 ASV_50	#e41a1c	Actinobacteria
 ASV_53	#984ea3	Betaproteobacteria
 ASV_49	#a65628	Flavobacteriia
-ASV_55	#999999	Unassigned
+ASV_55	#377eb8	Alphaproteobacteria
 ASV_58	#377eb8	Alphaproteobacteria
 ASV_62	#e41a1c	Actinobacteria
 ASV_67	#377eb8	Alphaproteobacteria
@@ -76,7 +74,7 @@ ASV_61	#377eb8	Alphaproteobacteria
 ASV_59	#984ea3	Betaproteobacteria
 ASV_60	#984ea3	Betaproteobacteria
 ASV_76	#f781bf	Gammaproteobacteria
-ASV_66	#ffff33	Deltaproteobacteria
+ASV_66	#999999	Unassigned
 ASV_73	#984ea3	Betaproteobacteria
 ASV_456	#e41a1c	Actinobacteria
 ASV_69	#377eb8	Alphaproteobacteria
@@ -87,7 +85,14 @@ ASV_71	#f781bf	Gammaproteobacteria
 ASV_74	#377eb8	Alphaproteobacteria
 ASV_77	#f781bf	Gammaproteobacteria
 ASV_75	#e41a1c	Actinobacteria
-ASV_83	#999999	Unassigned
-ASV_84	#999999	Unassigned
+ASV_83	#ffff33	Deltaproteobacteria
+ASV_84	#ffff33	Deltaproteobacteria
 ASV_81	#f781bf	Gammaproteobacteria
+ASV_79	#984ea3	Betaproteobacteria
 ASV_78	#984ea3	Betaproteobacteria
+ASV_80	#ff7f00	Chloroflexia
+ASV_88	#377eb8	Alphaproteobacteria
+ASV_86	#e41a1c	Actinobacteria
+ASV_89	#f781bf	Gammaproteobacteria
+ASV_92	#4daf4a	Bacilli
+ASV_855	#e41a1c	Actinobacteria

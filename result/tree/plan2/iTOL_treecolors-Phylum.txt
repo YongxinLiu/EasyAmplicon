@@ -2,16 +2,14 @@ TREE_COLORS
 SEPARATOR TAB
 COLOR	#a6cee3
 DATASET_LABEL	Phylum
-LEGEND_COLORS	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#e31a1c
-LEGEND_LABELS	Actinobacteria	Bacteroidetes	Chloroflexi	Firmicutes	Proteobacteria	Unassigned
-LEGEND_SHAPES	1	1	1	1	1	1
+LEGEND_COLORS	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99
+LEGEND_LABELS	Actinobacteria	Bacteroidetes	Chloroflexi	Firmicutes	Proteobacteria
+LEGEND_SHAPES	1	1	1	1	1
 LEGEND_TITLE	Phylum
 DATA
-ASV_1647	range	#a6cee3	Actinobacteria
 ASV_2	range	#fb9a99	Proteobacteria
 ASV_3	range	#fb9a99	Proteobacteria
 ASV_4	range	#fb9a99	Proteobacteria
-ASV_5	range	#e31a1c	Unassigned
 ASV_8	range	#a6cee3	Actinobacteria
 ASV_6	range	#fb9a99	Proteobacteria
 ASV_7	range	#1f78b4	Bacteroidetes
@@ -47,15 +45,15 @@ ASV_37	range	#fb9a99	Proteobacteria
 ASV_173	range	#fb9a99	Proteobacteria
 ASV_38	range	#fb9a99	Proteobacteria
 ASV_40	range	#33a02c	Firmicutes
+ASV_42	range	#fb9a99	Proteobacteria
 ASV_39	range	#a6cee3	Actinobacteria
 ASV_70	range	#fb9a99	Proteobacteria
-ASV_42	range	#fb9a99	Proteobacteria
 ASV_47	range	#fb9a99	Proteobacteria
 ASV_68	range	#fb9a99	Proteobacteria
 ASV_45	range	#fb9a99	Proteobacteria
 ASV_44	range	#a6cee3	Actinobacteria
-ASV_52	range	#a6cee3	Actinobacteria
 ASV_54	range	#fb9a99	Proteobacteria
+ASV_52	range	#a6cee3	Actinobacteria
 ASV_46	range	#fb9a99	Proteobacteria
 ASV_43	range	#b2df8a	Chloroflexi
 ASV_48	range	#fb9a99	Proteobacteria
@@ -63,7 +61,7 @@ ASV_51	range	#a6cee3	Actinobacteria
 ASV_50	range	#a6cee3	Actinobacteria
 ASV_53	range	#fb9a99	Proteobacteria
 ASV_49	range	#1f78b4	Bacteroidetes
-ASV_55	range	#e31a1c	Unassigned
+ASV_55	range	#fb9a99	Proteobacteria
 ASV_58	range	#fb9a99	Proteobacteria
 ASV_62	range	#a6cee3	Actinobacteria
 ASV_67	range	#fb9a99	Proteobacteria
@@ -87,4 +85,11 @@ ASV_75	range	#a6cee3	Actinobacteria
 ASV_83	range	#fb9a99	Proteobacteria
 ASV_84	range	#fb9a99	Proteobacteria
 ASV_81	range	#fb9a99	Proteobacteria
+ASV_79	range	#fb9a99	Proteobacteria
 ASV_78	range	#fb9a99	Proteobacteria
+ASV_80	range	#b2df8a	Chloroflexi
+ASV_88	range	#fb9a99	Proteobacteria
+ASV_86	range	#a6cee3	Actinobacteria
+ASV_89	range	#fb9a99	Proteobacteria
+ASV_92	range	#33a02c	Firmicutes
+ASV_855	range	#a6cee3	Actinobacteria

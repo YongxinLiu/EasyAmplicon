@@ -1,10 +1,12 @@
-# EasyAmplicon (易扩增子)
+# EasyAmplicon
 
-**An easy using, open-resource, reproducible, and community-based pipeline for amplicon data analysis in microbiome** (简单易学易用、开源、可重复且社区支持的扩增子数据分析流程)
+中文版见：README_cn.md
 
-Version (版本)：EasyAmplicon v1.13
+**An easy using, open-resource, reproducible, and community-based pipeline for amplicon data analysis in microbiome**
 
-Update (更新时间)：2021/9/6
+Version：EasyAmplicon v1.13
+
+Update：2021/9/6
 
 ## Pipeline Manual and file description (流程使用和文件介绍)
 

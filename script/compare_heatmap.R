@@ -1,118 +1,111 @@
 #!/usr/bin/env Rscript
-
 # Copyright 2016-2020 Yong-Xin Liu <metagenome@126.com>
 
 # If used this script, please cited:
-# Jingying Zhang, Yong-Xin Liu, et. al. NRT1.1B is associated with root microbiota composition and nitrogen use in field-grown rice. Nature Biotechnology 37, 676-684, doi:10.1038/s41587-019-0104-4 (2019).
+#   Jingying Zhang, Yong-Xin Liu, et. al. NRT1.1B is associated with root microbiota composition and nitrogen use in field-grown rice. Nature Biotechnology 37, 676-684, doi:10.1038/s41587-019-0104-4 (2019).
 
 # 手动运行脚本请，需要设置工作目录，使用 Ctrl+Shift+H 或 Session - Set Work Directory - Choose Directory / To Source File Location 设置工作目录
 
-#----1. 参数 Parameters#----
-
-#----1.1 功能描述 Function description#----
-
-# 程序功能：差异比较火山图绘制
-# Functions: Volcano plot
-
-options(warn = -1) # Turn off warning
 
 
-## 设置输入输出文件和参数
+#----1.1 程序功能描述和主要步骤#----
 
-# 修改下面`default=`后面的文件和参数。
-#
-# 输入文件为特征表(A-B.txt)+分组信息(metadata.tsv)
-#
-# 输入文件"-i", "--input"，otutab.txt; 特征表
-#
-# 实验设计"-d", "--design"，默认`metadata.tsv`，可手动修改文件位置；
-#
-# 分组列名"-n", "--group"，默认将metadata.tsv中的Group列作为分组信息，可修改为任意列名；
-#
-# 分组列名"-c", "--compare_pair"，默认将比较metadata.tsv中的Group列的前两个值，建议手动设定；
-#
-# 分组列名"-t", "--threhold"，丰度筛选阈值，默认千分之1
-#
-# 图片宽"-w", "--width"，默认89 mm，根据图像布局可适当增大或缩小
-#
-# 图片高"-e", "--height"，默认59 mm，根据图像布局可适当增大或缩小
+# 程序功能：差异比较热图展示
+# Functions: pheatmap for different compare
+# Main steps:
+# - Reads data matrix and design
+# - Prepare annotation for rows and columns
+# - Save heatmap in input folder
+
+# 清空工作环境 Clean enviroment object
+rm(list=ls())
 
 
-#----1.2 参数缺少值 Default values#----
-# 设置清华源加速下载
+#----1.2 安装CRAN来源常用包#----
 site="https://mirrors.tuna.tsinghua.edu.cn/CRAN"
-# 判断命令行解析是否安装，安装并加载
-if (!suppressWarnings(suppressMessages(require("optparse", character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)))) {
-  install.packages(p, repos=site)
-  require("optparse",character.only=T)
+# 依赖包列表：参数解析、数据变换、绘图和开发包安装、安装依赖、ggplot主题
+package_list = c("ggplot2","pheatmap","dplyr")
+# 判断R包加载是否成功来决定是否安装后再加载
+for(p in package_list){
+  if(!suppressWarnings(suppressMessages(require(p, character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)))){
+    install.packages(p, repos=site)
+    suppressWarnings(suppressMessages(library(p, character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)))
+  }
 }
-# 解析参数-h显示帮助信息
-if (TRUE){
-  option_list = list(
-    make_option(c("-i", "--input"), type="character", default="result/compare/KO-WT.txt",
-                help="Feature table [default %default]"),
-    make_option(c("-t", "--threshold"), type="numeric", default=0.1,
-                help="Threshold of relative abundance 0.1% [default %default]"),
-    make_option(c("-d", "--design"), type="character", default="result/metadata.tsv",
-                help="Design file or metadata [default %default]"),
-    make_option(c("-n", "--group"), type="character", default="Group",
-                help="Group name [default %default]"),
-    make_option(c("-c", "--compare"), type="character", default="KO-WT",
-                help="Groups comparison [default %default]"),
-    make_option(c("-m", "--method"), type="character", default="wilcox",
-                help="Compare method, alternative edgeR or t.test [default %default]"),
-    make_option(c("-p", "--pvalue"), type="numeric", default=0.05,
-                help="Threshold of P-value [default %default]"),
-    make_option(c("-f", "--fdr"), type="numeric", default=0.1,
-                help="Threshold of FDR [default %default]"),
-    make_option(c("-o", "--output"), type="character", default="",
-                help="Output directory; name according to input [default %default]"),
-    make_option(c("-w", "--width"), type="numeric", default=89,
-                help="Figure width [default %default]"),
-    make_option(c("-e", "--height"), type="numeric", default=59,
-                help="Figure heidth [default %default]")
-    )
-  opts = parse_args(OptionParser(option_list=option_list))
-  suppressWarnings(dir.create(opts$output))
+
+
+
+#----2. 读取输入文件#----
+
+# 读取比较列表
+input = read.table("result/compare/KO-WT.txt", header=T, row.names=1, sep="\t", comment.char="", stringsAsFactors=F)
+# 筛选显著差异部分
+input = subset(input, level %in% c("Enriched","Depleted"))
+
+design = read.table("result/metadata.txt", header=T, row.names=1, sep="\t", comment.char="")
+# 统一改实验列为group
+design$group = design$Group
+
+norm = input[,-(1:7)]
+
+if (dim(norm)[1]>1){
+
+  idx = rownames(design) %in% colnames(norm)
+  design = design[idx,]
+
+  anno_row = data.frame(Level = input$level, row.names = rownames(input))
+  anno_col = data.frame(Group = design$group, row.names = rownames(design))
+
+
+  ## 注释文件存在时，添加物种注释，不聚类分组
+  if (file.exists("result/taxonomy.txt")){
+    taxonomy = read.table("result/taxonomy.txt", sep = "\t", row.names=1, header=T)
+    # per = read.delim("result/taxonomy.txt", sep = "\t", row.names=1, header=T)
+    # mean = rowMeans(per)
+    # per = as.data.frame(mean[order(mean, decreasing = T)])
+    # top_tax=head(rownames(per), n=10)
+    #
+    # x = input
+    #
+    # # 将低丰度的门变为Low Abundance
+    # x$tax = x$Phylum# factor(x$Phylum, levels=c(as.vector(unique(x$Phylum)),"Low Abundance"))
+    # # 将门中 proteobacteria 替换为纲
+    # x[x$tax %in% "Proteobacteria",]$tax =  x[x$tax %in% "Proteobacteria",]$Class # no level can get value
+    #
+    # # 判断是否有需要替换为低丰度的类，没有报错的解决
+    # if (length(x[!(x$tax %in% top_tax),]$tax > 0)){
+    #   x[!(x$tax %in% top_tax),]$tax = "Low Abundance" # no level can get value
+    # }
+    #
+    # # 颜色还是不能保证一致，因为不同组门数量不同？？
+    # x$tax = factor(x$tax, levels=sort(c(top_tax,"Low Abundance")))
+    input$Phylum = taxonomy[rownames(input),"Phylum"]
+    anno_row = data.frame(Level = input$level, Taxonomy = input$Phylum, row.names = rownames(input))
+  }
+
+  pheatmap(norm,
+           scale = "row",
+           cutree_rows=2,cutree_cols = 2,
+           cluster_cols = TRUE,
+           annotation_col = anno_col,
+           annotation_row = anno_row,
+           filename = paste("result/compare/KO-WT", ".heatmap.pdf", sep=""),
+           width=8, height=5,
+           annotation_names_row= T,annotation_names_col=T,
+           show_rownames=T,show_colnames=T,
+           fontsize=7,display_numbers=F)
+
+  # pheatmap(norm,
+  #          scale = "row",
+  #          cutree_rows=2,cutree_cols = 2,
+  #          cluster_cols = TRUE,
+  #          annotation_col = anno_col,
+  #          annotation_row = anno_row,
+  #          filename = paste("result/compare/KO-WT", ".heatmap.png", sep=""),
+  #          width=8, height=5,
+  #          annotation_names_row= T,annotation_names_col=T,
+  #          show_rownames=T,show_colnames=T,
+  #          fontsize=7,display_numbers=F)
+  # # 提示工作完成
+  # print(paste("Output in result/compare/KO-WT", "_heatmap.pdf finished.", sep = ""))
 }
-# 设置输出文件缺省值，如果为空，则为输入+pcoa.pdf
-if(opts$output == ""){
-  opts$output = paste0(opts$input, ".volcano.pdf")}
-
-
-#----1.3. 加载包 Load packages#----
-
-suppressWarnings(suppressMessages(library(amplicon)))
-
-
-#----2. 读取文件 Read files#----
-
-#----2.1 读取差异比较结果#----
-diff = read.table(opts$input, header=T, row.names=1, sep="\t", comment.char="")
-diffN = as.data.frame(table(diff$level))
-
-#----3. 统计绘图#----
-
-main_theme = theme(panel.background = element_blank(),
-                   panel.grid = element_blank(),
-                   axis.line.x = element_line(size = .5, colour = "black"),
-                   axis.line.y = element_line(size = .5, colour = "black"),
-                   axis.ticks = element_line(size = .5, color = "black"),
-                   axis.text = element_text(size = 7, color = "black"),
-                   legend.position = "right",
-                   legend.background = element_blank(),
-                   legend.key = element_blank(),
-                   legend.text = element_text(size = 7),
-                   text = element_text(family = "sans", size = 7))
-
-p = ggplot(diff, aes(x=log2FC, y=log2CPM, color=level)) +
-  geom_point() + xlim(-4, 4) + theme_classic()+
-  scale_colour_manual(values=c("green","red","grey")) +
-  labs(x="log2(fold change)", y="log2(count per million)",
-       title=gsub(".txt","",basename(opts$input)))+
-  annotate("text",x=-3,y=15,label=table(diff$level)[1])+
-  annotate("text",x=3,y=15,label=table(diff$level)[2]) +
-  main_theme
-p
-ggsave(opts$output, p, width = opts$width, height = opts$height, units = "mm")
-

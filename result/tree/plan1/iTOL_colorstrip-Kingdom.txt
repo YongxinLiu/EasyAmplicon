@@ -10,11 +10,9 @@ LEGEND_TITLE	Kingdom
 MARGIN	5
 STRIP_WIDTH	25
 DATA
-ASV_1647	#1b9e77	Bacteria
 ASV_2	#1b9e77	Bacteria
 ASV_3	#1b9e77	Bacteria
 ASV_4	#1b9e77	Bacteria
-ASV_5	#1b9e77	Bacteria
 ASV_8	#1b9e77	Bacteria
 ASV_6	#1b9e77	Bacteria
 ASV_7	#1b9e77	Bacteria
@@ -50,15 +48,15 @@ ASV_37	#1b9e77	Bacteria
 ASV_173	#1b9e77	Bacteria
 ASV_38	#1b9e77	Bacteria
 ASV_40	#1b9e77	Bacteria
+ASV_42	#1b9e77	Bacteria
 ASV_39	#1b9e77	Bacteria
 ASV_70	#1b9e77	Bacteria
-ASV_42	#1b9e77	Bacteria
 ASV_47	#1b9e77	Bacteria
 ASV_68	#1b9e77	Bacteria
 ASV_45	#1b9e77	Bacteria
 ASV_44	#1b9e77	Bacteria
-ASV_52	#1b9e77	Bacteria
 ASV_54	#1b9e77	Bacteria
+ASV_52	#1b9e77	Bacteria
 ASV_46	#1b9e77	Bacteria
 ASV_43	#1b9e77	Bacteria
 ASV_48	#1b9e77	Bacteria
@@ -90,4 +88,11 @@ ASV_75	#1b9e77	Bacteria
 ASV_83	#1b9e77	Bacteria
 ASV_84	#1b9e77	Bacteria
 ASV_81	#1b9e77	Bacteria
+ASV_79	#1b9e77	Bacteria
 ASV_78	#1b9e77	Bacteria
+ASV_80	#1b9e77	Bacteria
+ASV_88	#1b9e77	Bacteria
+ASV_86	#1b9e77	Bacteria
+ASV_89	#1b9e77	Bacteria
+ASV_92	#1b9e77	Bacteria
+ASV_855	#1b9e77	Bacteria

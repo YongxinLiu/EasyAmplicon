@@ -1,168 +1,178 @@
 [TOC]
 
-    # 名称 Name: 易扩增子(EasyAmplicon)
-    # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)，周欣(Xin Zhou)等
-    # 版本 Version: v1.10
-    # 更新 Update: 2020-12-04
+# 易扩增子EasyAmplicon
 
-    # 设置流程EasyAmplicon(ea)和工作目录(work directory, wd)，添加环境变量并进入wd
-    # **每次打开Rstudio必须运行下面4行**
-    ea=/d/home/github/EasyAmplicon
-    wd=/c/test
-    PATH=$PATH:${ea}/win
+    # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)等
+    # 版本 Version: v1.13
+    # 更新 Update: 2021-10-15
+    # 系统要求 System requirement: Windows 10 / Mac OS 10.12+ / Ubuntu 16.04+
+    # 引文 Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. (2021). 
+    # A practical guide to amplicon and metagenomic analysis of microbiome data. Protein & Cell 12, 315-330
+    # doi: https://doi.org/10.1007/s13238-020-00724-8
+
+    # 设置工作(work directory, wd)和软件/数据库(database, db)目录
+    # 添加环境变量，并进入工作目录 Add environmental variables and enter work directory
+    # **每次打开Rstudio必须运行下面4行 Run it**
+    wd=/c/EasyAmplicon
+    db=/c/EasyMicrobiome
+    PATH=$PATH:${db}/win
     cd ${wd}
 
 
-# 22、扩增子分析流程 Analysis pipeline for 16S amplicon 
+## 1. 起始文件 start files
 
-    # 系统要求 System requirement: Windows 10 / Mac OS 10.12+ / Ubuntu 18.04+
-    # 依赖软件和数据 Sofware and database dependencies: 复制public目录到C盘
-    # gitforwidnows 2.28.0 http://gitforwindows.org/(Windows only)
-    # R 4.0.2 https://www.r-project.org/
-    # Rstudio 1.3.1056 https://www.rstudio.com/products/rstudio/download/#download
-    # vsearch v2.15.0 https://github.com/torognes/vsearch/releases
-    # usearch v10.0.240 https://www.drive5.com/usearch/download.html
+    #1. 分析流程pipeline.sh
+    #2. 样本元信息metadata.txt，保存于result目录
+    #3. 测序数据Fastq文件保存于seq目录，通常以`.fq.gz`结尾，每个样品一对文件
+    #4. 创建临时文件存储目录，分析结束可删除
+    mkdir -p temp
 
-    # 运行前准备
-    # 1. 将EasyAmplicon目录下发 /复制到指定位置，如Widnows的C盘(C:/) 或 Mac/Linux服务器家目录(~/)
-    # 2. 按EasyAmplicon中Readme.md中说明安装依赖软件和数据库
-    # 3. 准备流程脚本pipeline.sh、样本元数据metadata.txt和测序数据seq/*.fq.gz
- 
-## 1. 准备输入数据(测试数据是流程正对照)
+### 1.1. 元数据/实验设计 metadata
 
-    #1. 分析流程pipeline.sh，每个项目复制一份，可修改实现分析过程全记录(可重复分析)
-    #2. 样本元数据/实验设计metadata.txt
-    wget -c http://210.75.224.110/github/EasyAmplicon/data/metadata.txt
-    head -n2 metadata.txt
-    #3. 原始测序数据保存于seq目录，通常以`.fq.gz`结尾，每个样品一对文件
-    # 下载测试数据，按元数据中GSA的CRA(批次)和CRR(样品)编号从公共数据库下载
-    # 示例下载单个文件并改名
+    # 准备样本元数据result/metadata.txt
+    # 元数据至少3列，首列为样本ID(SampleID)，结尾列为描述(Description)
+    # cat查看文件，-A显示符号，head显示文件头，-n3控制范围前3行
+    cat -A result/metadata_raw.txt | head -n3
+    # csvtk统计表行(样本数，不含表头)列数，-t设置列分隔为制表符
+    csvtk -t stat result/metadata_raw.txt
+    # windows用户如果结尾有^M，运行sed命令去除，再用cat -A检查结果
+    sed 's/\r//' result/metadata_raw.txt > result/metadata.txt
+    cat -A result/metadata.txt | head -n3
+
+### 1.2. 测序数据 sequencing data
+
+    # # (可选)下载测序数据，按GSA的CRA(批次)和CRR(样品)编号下载数据
+    # # 示例下载单个文件并改名
+    # mkdir -p seq
     # wget -c ftp://download.big.ac.cn/gsa/CRA002352/CRR117575/CRR117575_f1.fq.gz -O seq/KO1_1.fq.gz
-    # 按实验设计编号批量下载并改名，速度单位10M/s，家500K/s
-    mkdir -p seq
-    awk '{system("wget -c ftp://download.big.ac.cn/gsa/"$5"/"$6"/"$6"_f1.fq.gz -O seq/"$1"_1.fq.gz")}' \
-        <(tail -n+2 metadata.txt)
-    awk '{system("wget -c ftp://download.big.ac.cn/gsa/"$5"/"$6"/"$6"_r2.fq.gz -O seq/"$1"_2.fq.gz")}' \
-        <(tail -n+2 metadata.txt)
-    ls -sh seq
-    #4. 创建临时和结果目录，临时目录分析结束可删除
-    mkdir -p temp result
-
-### 1.1. metadata.txt 实验设计文件
-
-    #cat查看前3行，-A显示符号
-    cat -A metadata.txt | head -n3
-    #windows用户如果结尾有^M，运行sed命令去除，并cat -A检查结果
-    # sed -i 's/\r/\n/' metadata.txt
-    # cat -A metadata.txt | head -n3
-
-### 1.2. seq/*.fq.gz 原始测序数据
+    # # 按实验设计编号批量下载并改名
+    # awk '{system("wget -c ftp://download.big.ac.cn/gsa/"$5"/"$6"/"$6"_f1.fq.gz -O seq/"$1"_1.fq.gz")}' \
+    #     <(tail -n+2 result/metadata.txt)
+    # awk '{system("wget -c ftp://download.big.ac.cn/gsa/"$5"/"$6"/"$6"_r2.fq.gz -O seq/"$1"_2.fq.gz")}' \
+    #     <(tail -n+2 result/metadata.txt)
 
     # 公司返回的测序结果，通常为一个样品一对fq/fastq.gz格式压缩文件
     # 文件名与样品名务必对应：不一致时手工修改，批量改名见"常见问题6"
-    # 测序数据是.gz的压缩文件，可以使用zcat/zless查看，连用head查看几行
-    # zless/less按页查看，空格翻页、q退出；head查看前10行，-n指定行
-    zcat seq/KO1_1.fq.gz|head -n4
-    # gz压缩文件可以使用gunzip解压作为USEARCH输入，vsearch可直接读取gz文件作为输入
+    # 如果测序数据是.gz的压缩文件，有时需要使用gunzip解压后使用，vsearch通常可直接读取压缩文件
     # gunzip seq/*.gz
+    # zless按页查看压缩文件，空格翻页、q退出；head默认查看前10行，-n指定行
     ls -sh seq/
+    zless seq/KO1_1.fq.gz|head -n4 
     # 每行太长，指定查看每行的1-60个字符
-    # cut -c 1-60 seq/KO1_1.fq | head -n4
+    zless seq/KO1_1.fq | head | cut -c 1-60
+    # (可选)统计测序数据，依赖seqkit程序
+    seqkit stat seq/KO1_1.fq.gz
+    # 批量统计测序数据并汇总表
+    seqkit stat seq/*.fq.gz > result/seqkit.txt
+    head result/seqkit.txt
 
-### 1.3. pipeline.sh 流程依赖数据库
+### 1.3. 流程和数据库 pipeline & database
 
-    # 数据库第一次使用需要解压，解压过可跳过此段
+    # 数据库第一次使用必须解压，以后可跳过此段
 
-    # usearchs可用16S/18S/ITS数据库：RDP, SILVA和UNITE，本地文件位置 ${ea}/usearch/
-    # usearch数据库database下载页: http://www.drive5.com/sintax
-    # 解压rdp用于物种注释和silva用于去嵌合体，*代表任意字符，选择以fa.gz结尾的文件
-    # time gunzip ${ea}/usearch/*.fa.gz  # 51s
-    # 解压缩数据库
-    gunzip ${ea}/usearch/rdp_16s_v16_sp.fa.gz
-    # 查看注释数据库的格式
-    head -n2 ${ea}/usearch/rdp_16s_v16_sp.fa
-
+    # usearchs可用16S/18S/ITS数据库：RDP, SILVA和UNITE，本地文件位置 ${db}/usearch/
+    # usearch数据库database下载页: http://www.drive5.com/sintax ，如RDP v16、Silva、unite数据库
+    # 易生信整理了最新的RDP v18、ezbiocloud 2018、unite2021数据库
+    # 解压缩并写入新文件，不删除原压缩包
+    gunzip -c ${db}/usearch/rdp_16s_v18_sp.fa.gz > ${db}/usearch/rdp_16s_v18_sp.fa
+    seqkit stat ${db}/usearch/rdp_16s_v18_sp.fa.gz
     # QIIME greengene 13_8有参数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
-    gunzip ${ea}/gg/97_otus.fasta.gz
-    # 不用时压缩结省空间
-    # gzip ${ea}/gg/97_otus.fasta
+    gunzip -c ${db}/gg/97_otus.fasta.gz > ${db}/gg/97_otus.fasta
+    seqkit stat ${db}/gg/97_otus.fasta
 
 
-## 2. 合并双端序列并按样品重命名 Merge paired reads and label samples
+## 2. 序列合并和重命名 reads merge and rename
 
-    # 以WT1单样品合并为例
-    vsearch --fastq_mergepairs seq/WT1_1.fq.gz \
-      --reverse seq/WT1_2.fq.gz \
-      --fastqout temp/WT1.merged.fq \
-      --relabel WT1.
 
-    #依照实验设计批处理并合并。
-    #tail -n+2去表头，cut -f 1取第一列，即获得样本列表。5万对序列的18个样本合并耗时约2分钟。
-    #Windows下复制命令Ctrl+C在Linux下终止，为防止异常中断，结尾添加&使命令转后台。
-    for i in `tail -n+2 metadata.txt | cut -f 1`;do
-      vsearch --fastq_mergepairs seq/${i}_1.fq.gz --reverse seq/${i}_2.fq.gz \
-      --fastqout temp/${i}.merged.fq --relabel ${i}.
-    done &
+### 2.1 合并双端序列并按样品重命名 Merge pair-end reads and rename
 
-    # 己经合并样本直接改名，接入分析流程；替换上面vsearch --fastq_mergepairs命令为
+    #测试.以WT1单样品合并为例
+    #time统计计算时间，real是物理时间，user是计算时间，sys是硬件等待时间
+    # time vsearch --fastq_mergepairs seq/WT1_1.fq.gz \
+    #   --reverse seq/WT1_2.fq.gz \
+    #   --fastqout temp/WT1.merged.fq \
+    #   --relabel WT1.
+    # head temp/WT1.merged.fq
+
+    #依照实验设计批处理并合并
+    #tail -n+2去表头，cut -f1取第一列，获得样本列表；18个样本x1.5万对序列合并8s
+    #Win下复制Ctrl+C为Linux下中止，为防止异常中断，结尾添加&转后台，无显示后按回车继续
+    #方法1.for循环顺序处理
+    # time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
+    #   vsearch --fastq_mergepairs seq/${i}_1.fq.gz --reverse seq/${i}_2.fq.gz \
+    #   --fastqout temp/${i}.merged.fq --relabel ${i}.
+    # done &
+
+    #方法2.rush并行处理，任务数jobs(j),2可加速1倍4s；建议设置2-4
+    time tail -n+2 result/metadata.txt | cut -f 1 | \
+     rush -j 3 "vsearch --fastq_mergepairs seq/{}_1.fq.gz --reverse seq/{}_2.fq.gz \
+      --fastqout temp/{}.merged.fq --relabel {}."
+      
+### 2.2 (可选)单端文件改名 Single-end reads rename
+
+    # # 单个序列改名示例
+    # i=WT1
+    # gunzip -c seq/${i}_1.fq.gz > seq/${i}.fq
     # usearch -fastx_relabel seq/${i}.fq -fastqout temp/${i}.merged.fq -prefix ${i}.
-    # 另一种方法参考“常见问题2”
+    # 
+    # # 批量改名，需要有单端fastq文件，且解压(usearch不支持压缩格式)
+    # gunzip seq/*.gz
+    # time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
+    #   usearch -fastx_relabel seq/${i}.fq -fastqout temp/${i}.merged.fq -prefix ${i}.
+    # done &
+    # # vsearch大数据方法参考“常见问题2”
+
+### 2.3 改名后序列整合 integrate renamed reads
 
     #合并所有样品至同一文件
     cat temp/*.merged.fq > temp/all.fq
-    #查看文件大小634M，软件不同版本结果略有差异
+    #查看文件大小223M，软件不同版本结果略有差异
     ls -lsh temp/all.fq
-    #查看序列名.之前是否为样本名，样本名绝不允许有.
+    #查看序列名，“.”之前是否为样本名，样本名绝不允许有.
     head -n 6 temp/all.fq|cut -c1-60
 
 
-## 3. 引物切除和质量控制 Cut primers and quality filter
+## 3. 切除引物与质控 Cut primers and quality filter
 
-    # 采用等长的方式切除引物，引物外侧如果有标签，标签的长度需要计算在内。
-    # 如本例的结果为左端标签10 bp + 正向引物V5 19 bp共为29 bp，反向引物V7 18 bp。
+    # 左端10bp标签+19bp上游引物V5共为29，右端V7为18bp下游引物
     # Cut barcode 10bp + V5 19bp in left and V7 18bp in right
-    # 注意：务必清楚实验设计中引物和标签长度，如果引物已经去除，可在下方参数处填0表示无需去除。76万条序列37s
-    vsearch --fastx_filter temp/all.fq \
+    # 务必清楚实验设计和引物长度，引物已经去除可填0，27万条序列14s
+    time vsearch --fastx_filter temp/all.fq \
       --fastq_stripleft 29 --fastq_stripright 18 \
       --fastq_maxee_rate 0.01 \
       --fastaout temp/filtered.fa
-
     # 查看文件了解fa文件格式
     head temp/filtered.fa
 
 
-## 4. 序列去冗余并挑选代表序列(OTU/ASV) Dereplicate and cluster/denoise
+## 4. 去冗余挑选OTU/ASV Dereplicate and cluster/denoise
 
-### 4.1 序列去冗余 Dereplication
+### 4.1 序列去冗余 Dereplicate
 
-    # 去冗余数据量起码降低1个数量级，减小下游分析工作量，也更适合基于丰度鉴定真实特征序列，如可操作分类单元(OTUs)或扩增序列变化(ASVs)。
-    # 参数--miniuniqusize设置使用序列的最小出现次数，默认为8，此处设置为10，推荐最小为总数据量的百万分之一，可实现去除低丰度噪音并增加计算速度。
-    # -sizeout输出丰度, --relabel添加序列前缀。
+    # 并添加miniuniqusize最小为8或1/1M，去除低丰度噪音并增加计算速度
+    # -sizeout输出丰度, --relabel必须加序列前缀更规范, 1s
     vsearch --derep_fulllength temp/filtered.fa \
-      --output temp/uniques.fa \
-      --relabel Uni --minuniquesize 10 --sizeout
-    #高丰度非冗余序列非常小(<2Mb),名称后有size和频率
+      --minuniquesize 8 --sizeout --relabel Uni_ \
+      --output temp/uniques.fa 
+    #高丰度非冗余序列非常小(此处852KB)，名称后有size和频率
     ls -lsh temp/uniques.fa
     head -n 2 temp/uniques.fa
 
-### 4.2 聚类OTU/去噪ASV Cluster OTUs / denoise ASV
-
-    # OTU和ASV统称为特征(Feature)，它们的区别是：
-    # OTU通常按97%聚类后挑选最高丰度或中心的代表性序列；
-    # ASV是基于序列进行去噪(排除或校正错误序列，并挑选丰度较高的可信序列)作为代表性序列
+### 4.2 聚类OTU/去噪ASV Cluster or denoise
 
     #有两种方法：推荐unoise3去噪获得单碱基精度ASV，传统的97%聚类OTU (属水平精度)供备选
     #usearch两种特征挑选方法均自带de novo去嵌合体
+    #-minsize二次过滤，控制OTU/ASV数量至3-5千，方便下游统计分析
 
     #方法1. 97%聚类OTU，适合大数据/ASV规律不明显/reviewer要求
-    #结果耗时6s, 产生878 OTUs, 去除320 chimeras
-    # usearch -cluster_otus temp/uniques.fa \
-    #  -otus temp/otus.fa \
-    #  -relabel OTU_
+    #结果耗时1s, 产生508 OTUs, 去除126 chimeras
+    usearch -cluster_otus temp/uniques.fa -minsize 10 \
+     -otus temp/otus.fa \
+     -relabel OTU_
 
     #方法2. ASV去噪 Denoise: predict biological sequences and filter chimeras
-    #59s, 2920 good, 227 chimeras
-    usearch -unoise3 temp/uniques.fa \
+    #6s, 1530 good, 41 chimeras, 序列百万条可能需要几天/几周
+    usearch -unoise3 temp/uniques.fa -minsize 10 \
       -zotus temp/zotus.fa
     #修改序列名：Zotu为改为ASV方便识别
     sed 's/Zotu/ASV_/g' temp/zotus.fa > temp/otus.fa
@@ -170,66 +180,84 @@
 
     #方法3. 数据过大无法使用usearch时，备选vsearch方法见"常见问题3"
 
-### 4.3 基于参考去嵌合 Reference-based chimera detect
+### 4.3 基于参考去嵌合
+
+    # Reference-based chimera detect
 
     # 不推荐，容易引起假阴性，因为参考数据库无丰度信息，
-    # 而de novo去嵌合时要求亲本丰度为嵌合体16倍以上防止假阴性
+    # 而de novo时要求亲本丰度为嵌合体16倍以上防止假阴性
     # 因为已知序列不会被去除，数据库选择越大越合理，假阴性率最低
     mkdir -p result/raw
 
-    # 方法1. vsearch+rdp去嵌合(快但容易假阴性)，或
-    # silva去嵌合(silva_16s_v123.fa)，推荐(慢，耗时15m ~ 3h，但更好)
+    # 方法1. vsearch+rdp去嵌合(快但容易假阴性)
+    # 可自行下载silva并解压(替换rdp_16s_v18_sp.fa为silva_16s_v123.fa)，极慢但理论上更好
     vsearch --uchime_ref temp/otus.fa \
-      -db ${ea}/usearch/rdp_16s_v16_sp.fa \
+      -db ${db}/usearch/rdp_16s_v18_sp.fa \
       --nonchimeras result/raw/otus.fa
-    # RDP: 51s, 250 (8.6%) chimeras; SILVA：10m, 255 (8.7%) chimeras
+    # RDP: 7s, 143 (9.3%) chimeras; SILVA：9m, 151 (8.4%) chimeras
     # Win vsearch结果添加了windows换行符^M需删除，mac不要执行此命令
     sed -i 's/\r//g' result/raw/otus.fa
 
     # 方法2. 不去嵌合
-    cp -f temp/otus.fa result/raw/otus.fa
+    # cp -f temp/otus.fa result/raw/otus.fa
 
 
-## 5. 特征表生成和筛选 Feature table create & filter
+## 5. 特征表构建和筛选 Feature table create and filter
 
-### 5.1 生成特征表 Creat Feature table
+    # OTU和ASV统称为特征(Feature)，它们的区别是：
+    # OTU通常按97%聚类后挑选最高丰度或中心的代表性序列；
+    # ASV是基于序列进行去噪(排除或校正错误序列，并挑选丰度较高的可信序列)作为代表性序列
 
-    # 方法1. usearch生成特征表，小样本(<30)快；但大样本受限且多线程效率低，84.1%, 4核1m
-    # usearch -otutab temp/filtered.fa -otus result/raw/otus.fa \
-    #   -otutabout result/raw/otutab.txt -threads 4
+### 5.1 生成特征表
+
+    # 方法1. usearch生成特征表，小样本(<30)快；但大样本受限且多线程效率低，83.2%, 4核17s
+    # time usearch -otutab temp/filtered.fa \
+    #   -otus result/raw/otus.fa \
+    #   -threads 4 \
+    #   -otutabout result/raw/otutab.txt
 
     # 方法2. vsearch生成特征表
-    vsearch --usearch_global temp/filtered.fa --db result/raw/otus.fa \
-    	--otutabout result/raw/otutab.txt --id 0.97 --threads 4
-    #660953 of 761432 (86.80%)可比对，耗时8m
-    # windows用户删除换行符^M
+    # id(1)：100%相似度比对49.45%序列，1m50s
+    # id(0.97)：97%相似度比对83.66%序列，1m10s(更高数据使用率，更快)
+    time vsearch --usearch_global temp/filtered.fa \
+      --db result/raw/otus.fa \
+      --id 0.97 --threads 4 \
+    	--otutabout result/raw/otutab.txt 
+    #224236 of 268019 (83.66%)可比对
+    # vsearch结果windows用户删除换行符^M校正为标准Linux格式
     sed -i 's/\r//' result/raw/otutab.txt
-    head -n3 result/raw/otutab.txt |cat -A
+    head -n6 result/raw/otutab.txt | cut -f 1-6 |cat -A
+    # csvtk统计表行列
+    csvtk -t stat result/raw/otutab.txt
 
 
-### 5.2 物种注释-去除质体和非细菌/古菌并统计比例(可选) Remove plastid and non-Bacteria
+### 5.2 去除质体和非细菌 Remove plastid and non-Bacteria
 
-    # RDP物种注释(rdp_16s_v16_sp)数据库小，分类速度极快，但缺少完整真核来源数据，耗时15s;
-    # SILVA数据库(silva_16s_v123.fa)更好注释真核、质体序列，3h
-    # --sintax_cutoff设置分类的可信度阈值，常用0.6/0.8，越大注释比例越低。
-    vsearch --sintax result/raw/otus.fa --db ${ea}/usearch/rdp_16s_v16_sp.fa \
-      --tabbedout result/raw/otus.sintax --sintax_cutoff 0.6
+    # 物种注释-去除质体和非细菌/古菌并统计比例(可选)
+    # RDP物种注释(rdp_16s_v18_sp)更快，但缺少完整真核来源数据,可能不完整，耗时15s;
+    # SILVA数据库(silva_16s_v123.fa)更好注释真核、质体序列，极慢耗时3h起
+    # 置信阈值通常0.6/0.8，vserch最低0.1/usearch可选0输出最相似物种注释用于观察潜在分类
+    vsearch --sintax result/raw/otus.fa \
+      --db ${db}/usearch/rdp_16s_v18_sp.fa \
+      --sintax_cutoff 0.1 \
+      --tabbedout result/raw/otus.sintax 
+    head result/raw/otus.sintax | cat -A
 
     # 原始特征表行数
     wc -l result/raw/otutab.txt
-    # 为去除16S rDNA测序中的非特异性扩增和按需分配污染，
-    #细菌和古菌(原核生物)、以及去除叶绿体和线粒体并统计比例，输出筛选并按丰度排序的OTU表。
-    #输入为特征表(result/raw/otutab.txt)和物种注释(result/raw/otus.sintax)，
-    #输出筛选并排序的特征表(result/otutab.txt)、统计污染比例文件(result/raw/otutab_nonBac.txt)和过滤细节(otus.sintax.discard)。
-    #注：真菌ITS数据，请改用otutab_filter_nonFungi.R脚本，只筛选注释为真菌的序列。
-    # 查看脚本帮助，请运行Rscript ${ea}/script/otutab_filter_nonBac.R -h
-    Rscript ${ea}/script/otutab_filter_nonBac.R \
+    #R脚本选择细菌古菌(真核)、去除叶绿体、线粒体并统计比例；输出筛选并排序的OTU表
+    #输入为OTU表result/raw/otutab.txt和物种注释result/raw/otus.sintax
+    #输出筛选并排序的特征表result/otutab.txt和
+    #统计污染比例文件result/raw/otutab_nonBac.txt和过滤细节otus.sintax.discard
+    #真菌ITS数据，请改用otutab_filter_nonFungi.R脚本，只筛选真菌
+    # Rscript ${db}/script/otutab_filter_nonBac.R -h # 显示参数说明
+    Rscript ${db}/script/otutab_filter_nonBac.R \
       --input result/raw/otutab.txt \
       --taxonomy result/raw/otus.sintax \
       --output result/otutab.txt\
       --stat result/raw/otutab_nonBac.stat \
       --discard result/raw/otus.sintax.discard
-    # 筛选后特征表行数，2921-2904，删除17个ASV
+    # 筛选后特征表行数
     wc -l result/otutab.txt
 
     #过滤特征表对应序列
@@ -240,10 +268,6 @@
     awk 'NR==FNR{a[$1]=$0}NR>FNR{print a[$1]}'\
         result/raw/otus.sintax result/otutab.id \
         > result/otus.sintax
-    #补齐末尾列
-    sed -i 's/\t$/\td:Unassigned/' result/otus.sintax
-    # head -n2 result/otus.sintax
-
 
     # 方法2. 觉得筛选不合理可以不筛选
     # cp result/raw/otu* result/
@@ -254,13 +278,15 @@
     cat result/otutab.stat
     #注意最小值、分位数，或查看result/raw/otutab_nonBac.stat中样本详细数据量，用于重采样
 
-### 5.3 等量抽样标准化 normlize by subsample
+### 5.3 等量抽样标准化
+
+    # Normlize by subsample
 
     #使用vegan包进行等量重抽样，输入reads count格式Feature表result/otutab.txt
     #可指定输入文件、抽样量和随机数，输出抽平表result/otutab_rare.txt和多样性alpha/vegan.txt
     mkdir -p result/alpha
-    Rscript ${ea}/script/otutab_rare.R --input result/otutab.txt \
-      --depth 32086 --seed 1 \
+    Rscript ${db}/script/otutab_rare.R --input result/otutab.txt \
+      --depth 10000 --seed 1 \
       --normalize result/otutab_rare.txt \
       --output result/alpha/vegan.txt
     usearch -otutab_stats result/otutab_rare.txt \
@@ -268,56 +294,69 @@
     cat result/otutab_rare.stat
 
 
-## 6. Alpha多样性 Alpha diversity
+## 6. α多样性 alpha diversity
 
-### 6.1. 计算多样性指数 Calculate alpha diversity index
-    #Calculate all alpha diversity index(Chao1有错误勿用)
+### 6.1. 计算α多样性 calculate alpha diversity
+
+    # 使用USEARCH计算14种alpha多样性指数(Chao1有错勿用)
     #details in http://www.drive5.com/usearch/manual/alpha_metrics.html
     usearch -alpha_div result/otutab_rare.txt \
       -output result/alpha/alpha.txt
 
-### 6.2. 计算稀释过程的丰富度变化 Rarefaction
-    #稀释曲线：取1%-100%的序列中OTUs数量，20s
-    #Rarefaction from 1%, 2% .. 100% in richness (observed OTUs)-method fast / with_replacement / without_replacement https://drive5.com/usearch/manual/cmd_otutab_subsample.html
+### 6.2. 计算稀释丰富度 calculate rarefaction richness
+
+    #稀释曲线：取1%-100%的序列中OTUs数量，每次无放回抽样
+    #Rarefaction from 1%, 2% .. 100% in richness (observed OTUs)-method without_replacement https://drive5.com/usearch/manual/cmd_otutab_subsample.html
     usearch -alpha_div_rare result/otutab_rare.txt \
       -output result/alpha/alpha_rare.txt \
       -method without_replacement
+    #预览结果
+    head -n2 result/alpha/alpha_rare.txt
+    #样本测序量低出现非数值"-"的处理，详见常见问题8
+    sed -i "s/-/\t0.0/g" result/alpha/alpha_rare.txt
 
-### 6.3. 筛选各组高丰度菌用于比较
+### 6.3. 筛选高丰度菌 Filter by abundance
 
     #计算各特征的均值，有组再求分组均值，需根据实验设计metadata.txt修改组列名
     #输入文件为feautre表result/otutab.txt，实验设计metadata.txt
     #输出为特征表按组的均值-一个实验可能有多种分组方式
-    Rscript ${ea}/script/otu_mean.R --input result/otutab.txt \
-      --design metadata.txt \
+    #-h显示脚本帮助(参数说明)
+    Rscript ${db}/script/otu_mean.R -h
+    #scale是否标准化，zoom标准化总和，all输出全部样本均值，type计算类型mean或sum
+    Rscript ${db}/script/otu_mean.R --input result/otutab.txt \
+      --metadata result/metadata.txt \
       --group Group --thre 0 \
+      --scale TRUE --zoom 100 --all TRUE --type mean \
       --output result/otutab_mean.txt
+    # 结果为全部和各组均值
     head -n3 result/otutab_mean.txt
 
-    #如以平均丰度频率高于千一(0.1%)为筛选标准，可选千五或万五，得到每个组的OTU组合
+    #如以平均丰度>0.1%筛选，可选0.5或0.05，得到每个组的OTU组合
     awk 'BEGIN{OFS=FS="\t"}{if(FNR==1) {for(i=2;i<=NF;i++) a[i]=$i;} \
         else {for(i=2;i<=NF;i++) if($i>0.1) print $1, a[i];}}' \
         result/otutab_mean.txt > result/alpha/otu_group_exist.txt
     head result/alpha/otu_group_exist.txt
-    # 结果可以直接在http://www.ehbio.com/ImageGP绘制Venn、upSetView和Sanky
-    # 可在http://ehbio.com/test/venn/中绘图并显示各组共有和特有元素
+    wc -l result/alpha/otu_group_exist.txt
+    # 试一试：不同丰度下各组有多少OTU/ASV
+    # 可在http://ehbio.com/test/venn/中绘图并显示各组共有和特有维恩或网络图
+    # 也可在http://www.ehbio.com/ImageGP绘制Venn、upSetView和Sanky
 
-## 7. Beta多样性 Beta diversity
+## 7. β多样性 Beta diversity
 
     #结果有多个文件，需要目录
     mkdir -p result/beta/
-    #基于OTU构建进化树 Make OTU tree, 30s
+    #基于OTU构建进化树 Make OTU tree, 4s
     usearch -cluster_agg result/otus.fa -treeout result/otus.tree
-    #生成5种距离矩阵：bray_curtis, euclidean, jaccard, manhatten, unifrac, 3s
+    #生成5种距离矩阵：bray_curtis, euclidean, jaccard, manhatten, unifrac
     usearch -beta_div result/otutab_rare.txt -tree result/otus.tree \
-      -filename_prefix result/beta/ # 1s
+      -filename_prefix result/beta/
 
 
-## 8. 物种注释及分类汇总 Taxonomy summary
+## 8. 物种注释分类汇总
 
     #OTU对应物种注释2列格式：去除sintax中置信值，只保留物种注释，替换:为_，删除引号
     cut -f 1,4 result/otus.sintax \
-      |sed 's/\td/\tk/;s/:/__/g;s/,/;/g;s/"//g;s/\/Chloroplast//' \
+      |sed 's/\td/\tk/;s/:/__/g;s/,/;/g;s/"//g' \
       > result/taxonomy2.txt
     head -n3 result/taxonomy2.txt
 
@@ -341,29 +380,29 @@
     done
     sed -i 's/(//g;s/)//g;s/\"//g;s/\#//g;s/\/Chloroplast//g' result/tax/sum_*.txt
     # 列出所有文件
-    ls -sh result/tax/sum_*.txt
+    wc -l result/tax/sum_*.txt
     head -n3 result/tax/sum_g.txt
 
 
-## 9. 有参比对——功能预测，如Greengene，可用于picurst, bugbase分析
+## 9. 有参定量特征表
 
+    # 比对Greengenes97% OTUs比对，用于PICRUSt/Bugbase功能预测
     mkdir -p result/gg/
-    #与GG所有97% OTUs比对，用于功能预测
 
     #方法1. usearch比对更快，但文件超限报错选方法2
-    usearch -otutab temp/filtered.fa -otus ${ea}/gg/97_otus.fasta \
-    	-otutabout result/gg/otutab.txt -threads 12
-    #79.9%, 4核时8m；12核5m
+    # 默认10核以下使用1核，10核以上使用10核
+    usearch -otutab temp/filtered.fa -otus ${db}/gg/97_otus.fasta \
+    	-otutabout result/gg/otutab.txt -threads 4
+    # 比对率80.0%, 1核11m，4核3m，10核2m，内存使用743Mb
     head -n3 result/gg/otutab.txt
 
-    # #方法2. vsearch比对，更准更慢，但并行更强
-    # vsearch --usearch_global temp/filtered.fa --db ${ea}/gg/97_otus.fasta \
+    # #方法2. vsearch比对，更准更慢，但并行24-96线程更强
+    # vsearch --usearch_global temp/filtered.fa --db ${db}/gg/97_otus.fasta \
     #   --otutabout result/gg/otutab.txt --id 0.97 --threads 12
-    #80.9%, 12cores 20m, 1core 1h, 594Mb
+    # 比对率81.04%, 1核30m, 12核7m
 
     #统计
-    usearch -otutab_stats result/gg/otutab.txt  \
-      -output result/gg/otutab.stat
+    usearch -otutab_stats result/gg/otutab.txt -output result/gg/otutab.stat
     cat result/gg/otutab.stat
 
 
@@ -371,65 +410,61 @@
 
     #删除中间大文件
     rm -rf temp/*.fq
-    
-    #短期不用数据库压缩节省空间
-    gzip ${ea}/usearch/rdp_16s_v16_sp.fa
-    gzip ${ea}/gg/97_otus.fasta
 
-    # 原始序列统计md5值，用于数据提交
+    # 分双端统计md5值，用于数据提交
     cd seq
     md5sum *_1.fq.gz > md5sum1.txt
     md5sum *_2.fq.gz > md5sum2.txt
-    paste md5sum1.txt md5sum2.txt | awk '{print $2"\t"$1"\t"$4"\t"$3}' | \
-      sed 's/*//g' > ../result/md5sum.txt
+    paste md5sum1.txt md5sum2.txt | awk '{print $2"\t"$1"\t"$4"\t"$3}' | sed 's/*//g' > ../result/md5sum.txt
     rm md5sum*
     cd ..
     cat result/md5sum.txt
+    
 
-
-
-# 23、R语言多样性和物种分析
-
+# R语言多样性和物种组成分析
 
 ## 1. Alpha多样性
 
 ### 1.1 Alpha多样性箱线图
+
     # 查看帮助
-    Rscript ${ea}/script/alpha_boxplot.R -h
+    Rscript ${db}/script/alpha_boxplot.R -h
     # 完整参数，多样性指数可选richness chao1 ACE shannon simpson invsimpson
-    Rscript ${ea}/script/alpha_boxplot.R --alpha_index richness \
-      --input result/alpha/vegan.txt --design metadata.txt \
+    Rscript ${db}/script/alpha_boxplot.R --alpha_index richness \
+      --input result/alpha/vegan.txt --design result/metadata.txt \
       --group Group --output result/alpha/ \
       --width 89 --height 59
     # 使用循环绘制6种常用指数
     for i in `head -n1 result/alpha/vegan.txt|cut -f 2-`;do
-      Rscript ${ea}/script/alpha_boxplot.R --alpha_index ${i} \
-        --input result/alpha/vegan.txt --design metadata.txt \
+      Rscript ${db}/script/alpha_boxplot.R --alpha_index ${i} \
+        --input result/alpha/vegan.txt --design result/metadata.txt \
         --group Group --output result/alpha/ \
         --width 89 --height 59
     done
 
     # Alpha多样性柱状图+标准差
-    Rscript ${ea}/script/alpha_barplot.R --alpha_index richness \
-      --input result/alpha/vegan.txt --design metadata.txt \
+    Rscript ${db}/script/alpha_barplot.R --alpha_index richness \
+      --input result/alpha/vegan.txt --design result/metadata.txt \
       --group Group --output result/alpha/ \
       --width 89 --height 59
 
 ### 1.2 稀释曲线
-    Rscript ${ea}/script/alpha_rare_curve.R \
-      --input result/alpha/alpha_rare.txt --design metadata.txt \
+
+    Rscript ${db}/script/alpha_rare_curve.R \
+      --input result/alpha/alpha_rare.txt --design result/metadata.txt \
       --group Group --output result/alpha/ \
-      --width 89 --height 59
+      --width 120 --height 59
 
 ### 1.3 多样性维恩图
+
     # 三组比较:-f输入文件,-a/b/c/d/g分组名,-w/u为宽高英寸,-p输出文件名后缀
-    bash ${ea}/script/sp_vennDiagram.sh \
+    bash ${db}/script/sp_vennDiagram.sh \
       -f result/alpha/otu_group_exist.txt \
       -a WT -b KO -c OE \
       -w 3 -u 3 \
       -p WT_KO_OE
     # 四组比较，图和代码见输入文件目录，运行目录为当前项目根目录
-    bash ${ea}/script/sp_vennDiagram.sh \
+    bash ${db}/script/sp_vennDiagram.sh \
       -f result/alpha/otu_group_exist.txt \
       -a WT -b KO -c OE -d All \
       -w 3 -u 3 \
@@ -438,153 +473,212 @@
 ## 2. Beta多样性
 
 ### 2.1 距离矩阵热图pheatmap
+
     # 以bray_curtis为例，-f输入文件,-h是否聚类TRUE/FALSE,-u/v为宽高英寸
-    bash ${ea}/script/sp_pheatmap.sh \
+    bash ${db}/script/sp_pheatmap.sh \
       -f result/beta/bray_curtis.txt \
-      -H 'TRUE' -u 5 -v 5
+      -H 'TRUE' -u 6 -v 5
     # 添加分组注释，如2，4列的基因型和地点
-    cut -f 1-2 metadata.txt > temp/group.txt
+    cut -f 1-2 result/metadata.txt > temp/group.txt
     # -P添加行注释文件，-Q添加列注释
-    bash ${ea}/script/sp_pheatmap.sh \
+    bash ${db}/script/sp_pheatmap.sh \
       -f result/beta/bray_curtis.txt \
-      -H 'TRUE' -u 8.9 -v 5.6 \
+      -H 'TRUE' -u 6.9 -v 5.6 \
       -P temp/group.txt -Q temp/group.txt
     # 距离矩阵与相关类似，可尝试corrplot或ggcorrplot绘制更多样式
     # - [绘图相关系数矩阵corrplot](http://mp.weixin.qq.com/s/H4_2_vb2w_njxPziDzV4HQ)
     # - [相关矩阵可视化ggcorrplot](http://mp.weixin.qq.com/s/AEfPqWO3S0mRnDZ_Ws9fnw)
 
 ### 2.2 主坐标分析PCoA
+
     # 输入文件，选择分组，输出文件，图片尺寸mm，统计见beta_pcoa_stat.txt
-    Rscript ${ea}/script/beta_pcoa.R \
-      --input result/beta/bray_curtis.txt --design metadata.txt \
-      --group Group --output result/beta/bray_curtis.pcoa.pdf \
-      --width 89 --height 59
+    Rscript ${db}/script/beta_pcoa.R \
+      --input result/beta/bray_curtis.txt --design result/metadata.txt \
+      --group Group --label FALSE --width 89 --height 59 \
+      --output result/beta/bray_curtis.pcoa.pdf
+    # 添加样本标签 --label TRUE
+    Rscript ${db}/script/beta_pcoa.R \
+      --input result/beta/bray_curtis.txt --design result/metadata.txt \
+      --group Group --label TRUE --width 89 --height 59 \
+      --output result/beta/bray_curtis.pcoa.label.pdf
+      
 
 ### 2.3 限制性主坐标分析CPCoA
-    Rscript ${ea}/script/beta_cpcoa.R \
-      --input result/beta/bray_curtis.txt --design metadata.txt \
+
+    Rscript ${db}/script/beta_cpcoa.R \
+      --input result/beta/bray_curtis.txt --design result/metadata.txt \
       --group Group --output result/beta/bray_curtis.cpcoa.pdf \
       --width 89 --height 59
-
+    # 添加样本标签 --label TRUE
+    Rscript ${db}/script/beta_cpcoa.R \
+      --input result/beta/bray_curtis.txt --design result/metadata.txt \
+      --group Group --label TRUE --width 89 --height 59 \
+      --output result/beta/bray_curtis.cpcoa.label.pdf
+      
 ## 3. 物种组成Taxonomy
 
 ### 3.1 堆叠柱状图Stackplot
+
     # 以门(p)水平为例，结果包括output.sample/group.pdf两个文件
-    Rscript ${ea}/script/tax_stackplot.R \
-      --input result/tax/sum_p.txt --design metadata.txt \
-      --group Group --output result/tax/sum_p.stackplot \
-      --legend 5 --width 89 --height 59
+    Rscript ${db}/script/tax_stackplot.R \
+      --input result/tax/sum_p.txt --design result/metadata.txt \
+      --group Group --color ggplot --legend 7 --width 89 --height 59 \
+      --output result/tax/sum_p.stackplot
+    # 修改颜色--color ggplot, manual1(22), Paired(12) or Set3(12)
+    Rscript ${db}/script/tax_stackplot.R \
+      --input result/tax/sum_p.txt --design result/metadata.txt \
+      --group Group --color Paired --legend 12 --width 181 --height 119 \
+      --output result/tax/sum_p.stackplotPaired
+      
     # 批量绘制输入包括p/c/o/f/g共5级
     for i in p c o f g; do
-    Rscript ${ea}/script/tax_stackplot.R \
-      --input result/tax/sum_${i}.txt --design metadata.txt \
+    Rscript ${db}/script/tax_stackplot.R \
+      --input result/tax/sum_${i}.txt --design result/metadata.txt \
       --group Group --output result/tax/sum_${i}.stackplot \
       --legend 8 --width 89 --height 59; done
 
-### 3.2 弦图(圈图)circlize
+### 3.2 弦/圈图circlize
+
     # 以纲(class,c)为例，绘制前5组
     i=c
-    Rscript ${ea}/script/tax_circlize.R \
-      --input result/tax/sum_${i}.txt --design metadata.txt \
+    Rscript ${db}/script/tax_circlize.R \
+      --input result/tax/sum_${i}.txt --design result/metadata.txt \
       --group Group --legend 5
     # 结果位于当前目录circlize.pdf(随机颜色)，circlize_legend.pdf(指定颜色+图例)
     # 移动并改名与分类级一致
     mv circlize.pdf result/tax/sum_${i}.circlize.pdf
     mv circlize_legend.pdf result/tax/sum_${i}.circlize_legend.pdf
 
-### 3.3 树图treemap/maptree
-    # 多层级包含物种关系，输入特征表和物种注释，输出树图，指定包含特征数量和图片宽高
-    Rscript ${ea}/script/tax_maptree.R \
+### 3.3 树图treemap(参考)
+
+    # 多层级包含物种关系，输入特征表和物种注释，输出树图
+    # 指定包含特征数量和图片宽高，100个ASV耗时12s
+    time Rscript ${db}/script/tax_maptree.R \
       --input result/otutab.txt --taxonomy result/taxonomy.txt \
       --output result/tax/tax_maptree.pdf \
-      --topN 200 --width 183 --height 118
+      --topN 100 --width 183 --height 118
 
 
 # 24、差异比较
 
-## 24-1. R语言差异分析
+## 1. R语言差异分析
 
-### 1.1 差异比较Difference comparison
+### 1.1 差异比较
+
     mkdir -p result/compare/
     # 输入特征表、元数据；指定分组列名、比较组和丰度
     # 选择方法wilcox/t.test/edgeR、pvalue和fdr和输出目录
     compare="KO-WT"
-    Rscript ${ea}/script/compare.R \
-      --input result/otutab.txt --design metadata.txt \
+    Rscript ${db}/script/compare.R \
+      --input result/otutab.txt --design result/metadata.txt \
       --group Group --compare ${compare} --threshold 0.1 \
       --method edgeR --pvalue 0.05 --fdr 0.2 \
       --output result/compare/
+    # 常见错误：Error in file(file, ifelse(append, "a", "w")) : 无法打开链结 Calls: write.table -> file
+    # 解决方法：输出目录不存在，创建目录即可
 
 ### 1.2 火山图
+
     # 输入compare.R的结果，输出火山图带数据标签，可指定图片大小
-    Rscript ${ea}/script/compare_volcano.R \
+    Rscript ${db}/script/compare_volcano.R \
       --input result/compare/${compare}.txt \
-      --output result/compare/${compare}.txt.volcano.pdf \
+      --output result/compare/${compare}.volcano.pdf \
       --width 89 --height 59
 
 ### 1.3 热图
+
     # 输入compare.R的结果，筛选列数，指定元数据和分组、物种注释，图大小英寸和字号
-    bash ${ea}/script/compare_heatmap.sh -i result/compare/${compare}.txt -l 7 \
-       -d metadata.txt -A Group \
+    bash ${db}/script/compare_heatmap.sh -i result/compare/${compare}.txt -l 7 \
+       -d result/metadata.txt -A Group \
        -t result/taxonomy.txt \
        -w 8 -h 5 -s 7 \
-       -o result/compare/${compare}.txt
+       -o result/compare/${compare}
 
 ### 1.4 曼哈顿图
+
     # i差异比较结果,t物种注释,p图例,w宽,v高,s字号,l图例最大值
-    bash ${ea}/script/compare_manhattan.sh -i result/compare/${compare}.txt \
+    # 图例显示不图，可增加高度v为119+即可，后期用AI拼图为KO-WT.heatmap.emf
+    bash ${db}/script/compare_manhattan.sh -i result/compare/${compare}.txt \
        -t result/taxonomy.txt \
        -p result/tax/sum_p.txt \
        -w 183 -v 59 -s 7 -l 10 \
        -o result/compare/${compare}.manhattan.p.pdf
     # 上图只有6个门，切换为纲c和-L Class展示细节
-    bash ${ea}/script/compare_manhattan.sh -i result/compare/${compare}.txt \
+    bash ${db}/script/compare_manhattan.sh -i result/compare/${compare}.txt \
        -t result/taxonomy.txt \
        -p result/tax/sum_c.txt \
-       -w 130 -v 59 -s 7 -l 10 -L Class \
+       -w 183 -v 59 -s 7 -l 10 -L Class \
        -o result/compare/${compare}.manhattan.c.pdf
+    # 显示完整图例，再用AI拼图
+    bash ${db}/script/compare_manhattan.sh -i result/compare/${compare}.txt \
+       -t result/taxonomy.txt \
+       -p result/tax/sum_c.txt \
+       -w 183 -v 149 -s 7 -l 10 -L Class \
+       -o result/compare/${compare}.manhattan.c.legend.pdf
 
-## 24-2. STAMP输入文件准备
+### 1.5 单个特征的绘制
+
+    # 筛选显示差异ASV，按KO组丰度降序列，取ID展示前10
+    awk '$4<0.05' result/compare/KO-WT.txt|sort -k7,7nr|cut -f1|head
+    # 差异OTU细节展示
+    Rscript ${db}/script/alpha_boxplot.R --alpha_index ASV_5 \
+      --input result/otutab.txt --design result/metadata.txt \
+      --transpose TRUE --scale TRUE \
+      --width 89 --height 59 \
+      --group Group --output result/compare/feature_ 
+    # ID不存在会报错： Error in data.frame(..., check.names = FALSE) : 参数值意味着不同的行数: 0, 18  Calls: alpha_boxplot -> cbind -> cbind -> data.frame
+    
+    # 指定某列排序：按属丰度均值All降序
+    csvtk -t sort -k All:nr result/tax/sum_g.txt|head
+    # 差属细节展示
+    Rscript ${db}/script/alpha_boxplot.R --alpha_index Lysobacter \
+      --input result/tax/sum_g.txt --design result/metadata.txt \
+      --transpose TRUE \
+      --width 89 --height 59 \
+      --group Group --output result/compare/feature_
+
+## 2. STAMP输入文件准备
 
 ### 2.1 命令行生成输入文件
-    Rscript ${ea}/script/format2stamp.R -h
+
+    Rscript ${db}/script/format2stamp.R -h
     mkdir -p result/stamp
-    Rscript ${ea}/script/format2stamp.R --input result/otutab.txt \
-      --taxonomy result/taxonomy.txt --threshold 0.1 \
+    Rscript ${db}/script/format2stamp.R --input result/otutab.txt \
+      --taxonomy result/taxonomy.txt --threshold 0.01 \
       --output result/stamp/tax
 
 ### 2.2 Rmd生成输入文件
+
     #1. 24compare/stamp目录中准备otutab.txt和taxonomy.txt文件；
     #2. Rstudio打开format2stamp.Rmd，设置参数；
     #3. 点击Knit在当前目录生成stamp输入文件和可重复计算网页。
 
 
-## 24-3. LEfSe输入文件准备
+## 3. LEfSe输入文件准备
 
-### 3.1. 命令行生成文件
-
+    ### 3.1. 命令行生成文件
     # 可选命令行生成输入文件
-    Rscript ${ea}/script/format2lefse.R -h
+    Rscript ${db}/script/format2lefse.R -h
     mkdir -p result/lefse
-    Rscript ${ea}/script/format2lefse.R --input result/otutab.txt \
-      --taxonomy result/taxonomy.txt --design metadata.txt \
+    # threshold控制丰度筛选以控制作图中的枝数量
+    Rscript ${db}/script/format2lefse.R --input result/otutab.txt \
+      --taxonomy result/taxonomy.txt --design result/metadata.txt \
       --group Group --threshold 0.1 \
       --output result/lefse/LEfSe
 
-### 3.2 Rmd生成输入文件
+    ### 3.2 Rmd生成输入文件(可选)
     #1. 24Compare/LEfSe目录中准备otutab.txt, metadata.txt, taxonomy.txt三个文件；
     #2. Rstudio打开format2lefse.Rmd并Knit生成输入文件和可重复计算网页；
 
-### 3.3 LEfSe分析
+    ### 3.3 LEfSe分析
     #方法1. 打开LEfSe.txt并在线提交 http://www.ehbio.com/ImageGP/index.php/Home/Index/LEFSe.html
     #方法2. LEfSe本地分析(限Linux服务器、选学)，参考代码见附录
     #方法3. LEfSe官网在线使用
 
 
-
 # 25、QIIME 2分析流程
-    # 代码详见 25QIIME2/pipeline_qiime2.sh
 
+    # 代码详见 25QIIME2/pipeline_qiime2.sh
 
 
 # 31、功能预测
@@ -592,87 +686,77 @@
 
 ## 1. PICRUSt功能预测
 
+    # PICRUSt 1.0
     # 方法1. 使用 http://www.ehbio.com/ImageGP 在线分析 gg/otutab.txt
-    # 方法2. Linux服务器用户可参考附录2
+    # 方法2. Linux服务器用户可参考附录2. PICRUSt功能预测
     # 然后结果使用STAMP/R进行差异比较
 
-    # (可选)PICRUSt2(Linux/Windows下Linux子系统，要求>16GB内存)
-    # 安装
-    conda create -n picrust2 -c bioconda -c conda-forge picrust2=2.3.0_b
-    # 加载环境
-    conda activate picrust2
-    # 进入工作目录
-    wd=/mnt/c/amplicon/result/
-    cd ${wd}
-    # 运行流程
-    picrust2_pipeline.py -s otus.fa -i otutab.txt \
-      -o picrust2 -p 8
-    # 添加EC/KO/Pathway注释
-    add_descriptions.py -i EC_metagenome_out/pred_metagenome_unstrat.tsv.gz -m EC \
-      -o EC_metagenome_out/pred_metagenome_unstrat_descrip.tsv.gz
-    add_descriptions.py -i KO_metagenome_out/pred_metagenome_unstrat.tsv.gz -m KO \
-      -o KO_metagenome_out/pred_metagenome_unstrat_descrip.tsv.gz 
-    add_descriptions.py -i pathways_out/path_abun_unstrat.tsv.gz -m METACYC \
-      -o pathways_out/path_abun_unstrat_descrip.tsv.gz  
+    # PICRUSt 2.0
+    # 软件安装，附录6. PICRUSt环境导出和导入
+    # 使用，附录7. PICRUSt2功能预测
 
 ## 2. 元素循环FAPROTAX
 
     ## 方法1. 在线分析，推荐使用 http://www.ehbio.com/ImageGP 在线分析
-    ## 方法2. Linux下分析、选学，详见附录3
+    ## 方法2. Linux下分析、如QIIME 2环境下，详见附录3
 
 ## 3. Bugbase细菌表型预测
 
-
-### 1. Bugbase命令行分析
-    bugbase=${ea}/script/BugBase
+    ### 1. Bugbase命令行分析
+    bugbase=C:/EasyMicrobiome/script/BugBase
     rm -rf result/bugbase/
     # 脚本已经优化适合R4.0，biom包更新为biomformat
     Rscript ${bugbase}/bin/run.bugbase.r -L ${bugbase} \
-      -i result/gg/otutab.txt -m metadata.txt -c Group -o result/bugbase/
+      -i result/gg/otutab.txt -m result/metadata.txt -c Group -o result/bugbase/
 
-### 2. 其它可用分析
+    ### 2. 其它可用分析
     # 使用 http://www.ehbio.com/ImageGP
     # 官网，https://bugbase.cs.umn.edu/ ，有报错，不推荐
     # Bugbase细菌表型预测Linux，详见附录4. Bugbase细菌表型预测
 
 
 
-# 33、MachineLearning机器学习
+# 32、MachineLearning机器学习
 
     # RandomForest包使用的R代码见33MachineLearning目录中的RF_classification和RF_regression
     ## Silme2随机森林/Adaboost使用代码见33MachineLearning目录中的slime2，或附录5
 
+# 33、Microeco包数据可视化
 
-# 34. Evolution进化树
+    # 代码：33Microeco/Practice.Rmd
+
+# 34、Evolution进化树
 
     cd ${wd}
     mkdir -p result/tree
     cd ${wd}/result/tree
 
-## 1. 筛选高丰度、指定ASV序列
+## 1. 筛选高丰度/指定的特征
 
-    #方法1. 按丰度筛选：筛选树高丰度OTU，一般选0.001或0.005，且OTU数量在30-150个范围内
-    #统计OTU表中OTU数量，如总计2631个
+    #方法1. 按丰度筛选特征，一般选0.001或0.005，且OTU数量在30-150个范围内
+    #统计特征表中ASV数量，如总计1609个
     tail -n+2 ../otutab_rare.txt | wc -l
     #按相对丰度0.2%筛选高丰度OTU
     usearch -otutab_trim ../otutab_rare.txt \
         -min_otu_freq 0.002 \
         -output otutab.txt
-    #统计筛选OTU表特征数量，总计80个
+    #统计筛选OTU表特征数量，总计~81个
     tail -n+2 otutab.txt | wc -l
-    #提取ID用于提取序列
-    cut -f 1 otutab.txt | sed '1 s/#OTU ID/OTUID/' > otutab_high.id
 
     #方法2. 按数量筛选
-    #按丰度排序，默认由大到小
-    usearch -otutab_sortotus ../otutab_rare.txt  \
-        -output otutab_sort.txt
-    #提取高丰度中指定Top数量的OTU ID，如Top100,
-    sed '1 s/#OTU ID/OTUID/' otutab_sort.txt \
-        | head -n101 > otutab.txt
+    # #按丰度排序，默认由大到小
+    # usearch -otutab_sortotus ../otutab_rare.txt  \
+    #     -output otutab_sort.txt
+    # #提取高丰度中指定Top数量的OTU ID，如Top100,
+    # sed '1 s/#OTU ID/OTUID/' otutab_sort.txt \
+    #     | head -n101 > otutab.txt
+
+    #修改特征ID列名
+    sed -i '1 s/#OTU ID/OTUID/' otutab.txt
+    #提取ID用于提取序列
     cut -f 1 otutab.txt > otutab_high.id
 
-    #筛选高丰度菌/指定差异菌对应OTU序列
+    # 筛选高丰度菌/指定差异菌对应OTU序列
     usearch -fastx_getseqs ../otus.fa -labels otutab_high.id \
         -fastaout otus.fa
     head -n 2 otus.fa
@@ -697,7 +781,7 @@
 
     # 起始文件为 result/tree目录中 otus.fa(序列)、annotation.txt(物种和相对丰度)文件
     # Muscle软件进行序列对齐，3s
-	  muscle -in otus.fa -out otus_aligned.fas
+    muscle -in otus.fa -out otus_aligned.fas
 
     ### 方法1. 利用IQ-TREE快速构建ML进化树，2m
     mkdir -p iqtree
@@ -709,7 +793,7 @@
     # 注意FastTree软件输入文件为fasta格式的文件，而不是通常用的Phylip格式。输出文件是Newick格式。
     # 该方法适合于大数据，例如几百个OTUs的系统发育树！
     # Ubuntu上安装fasttree可以使用`apt install fasttree`
-    # fasttree -gtr -nt otus_aligned.fa > otus.nwk
+    # fasttree -gtr -nt otus_aligned.fas > otus.nwk
 
 
 ## 3. 进化树美化
@@ -720,25 +804,43 @@
     # annotation.txt OTU对应物种注释和丰度，
     # -a 找不到输入列将终止运行（默认不执行）-c 将整数列转换为factor或具有小数点的数字，-t 偏离提示标签时转换ID列，-w 颜色带，区域宽度等， -D输出目录，-i OTU列名，-l OTU显示名称如种/属/科名，
     # cd ${wd}/result/tree
-    Rscript ${ea}/script/table2itol.R -a -c double -D plan1 -i OTUID -l Genus -t %s -w 0.5 annotation.txt
+    Rscript ${db}/script/table2itol.R -a -c double -D plan1 -i OTUID -l Genus -t %s -w 0.5 annotation.txt
     # 生成注释文件中每列为单独一个文件
 
     ## 方案2. 生成丰度柱形图注释文件
-    Rscript ${ea}/script/table2itol.R -a -d -c none -D plan2 -b Phylum -i OTUID -l Genus -t %s -w 0.5 annotation.txt
+    Rscript ${db}/script/table2itol.R -a -d -c none -D plan2 -b Phylum -i OTUID -l Genus -t %s -w 0.5 annotation.txt
 
     ## 方案3. 生成热图注释文件
-    Rscript ${ea}/script/table2itol.R -c keep -D plan3 -i OTUID -t %s otutab.txt
+    Rscript ${db}/script/table2itol.R -c keep -D plan3 -i OTUID -t %s otutab.txt
 
     ## 方案4. 将整数转化成因子生成注释文件
-    Rscript ${ea}/script/table2itol.R -a -c factor -D plan4 -i OTUID -l Genus -t %s -w 0 annotation.txt
+    Rscript ${db}/script/table2itol.R -a -c factor -D plan4 -i OTUID -l Genus -t %s -w 0 annotation.txt
+
+    # 树iqtree/otus.contree在 http://itol.embl.de/ 上展示，拖拽不同Plan中的文件添加树注释
 
     # 返回工作目录
     cd ${wd}
 
+# 35、答疑
+
+
+# 附加视频
+
+    # 目录 Supp，网课有对应视频(可能编号不同，找关键字)
+
+
+## S1. 网络分析R/CytoGephi
+
+    # 目录 Supp/S1NetWork
+
+## S2. 溯源和马尔可夫链
+
+    # 目录 Supp/S2SourcetrackerFeastMarkov
+
 
 # 附录：Linux服务器下分析(选学)
 
-    #注：Windows下可能无法运行以下代码，推荐在Linux下conda安装相关程序
+    #注：Windows下可能无法运行以下代码，推荐在Linux，或Windows下Linux子系统下conda安装相关程序
 
 ## 1. LEfSe分析
 
@@ -770,37 +872,50 @@
 
     #推荐使用 http://www.ehbio.com/ImageGP 在线分析
     #有Linux服务器用户可参考以下代码搭建本地流程
-    cd ~/amplicon/result
-    mkdir -p picrust
-
-    # 安装picurst
-
+    # 依赖数据库较大(243M)，需要自行下载
+    db=~/db/
+    mkdir -p ${db}/picrust/ cd ${db}/picrust/
+    wget -c http://210.75.224.110/db/picrust/16S_13_5_precalculated.tab.gz
+    wget -c http://210.75.224.110/db/picrust/ko_13_5_precalculated.tab.gz
+    # 方法1. conda直接安装picrust
+    n=picrust
+    conda create -n ${n} ${n} -c bioconda -y
+    # 方法2. 下载软件环境meta并解压，参考picrust2安装
+    
+    wd=/mnt/c/amplicon
+    cd $wd/result/gg
+    # 启动环境
+    conda activate picrust
     #上传gg/otutab.txt至当前目录
     #转换为OTU表通用格式，方便下游分析和统计
     biom convert -i otutab.txt \
         -o otutab.biom \
         --table-type="OTU table" --to-json
-    #校正拷贝数
+
+    # 设置数据库目录，如 /mnt/d/db
+    db=~/db
+    #校正拷贝数，30s, 102M
     normalize_by_copy_number.py -i otutab.biom \
         -o otutab_norm.biom \
-        -c /db/picrust/16S_13_5_precalculated.tab.gz
-    #预测宏基因组KO表，biom方便下游归类，txt方便查看分析
+        -c ${db}/picrust/16S_13_5_precalculated.tab.gz
+    #预测宏基因组KO表，3m,1.5G，biom方便下游归类，txt方便查看分析
     predict_metagenomes.py -i otutab_norm.biom \
         -o ko.biom \
-        -c /db/picrust/ko_13_5_precalculated.tab.gz
-    predict_metagenomes.py -f -i otutab_rare.biom \
+        -c ${db}/picrust/ko_13_5_precalculated.tab.gz
+    predict_metagenomes.py -f -i otutab_norm.biom \
         -o ko.txt \
-        -c /db/picrust/ko_13_5_precalculated.tab.gz
+        -c ${db}/picrust/ko_13_5_precalculated.tab.gz
 
     #按功能级别分类汇总, -c输出KEGG_Pathways，分1-3级
-    sed  -i '/#Constru/d;s/#OTU //' ko.txt
-    num=`tail -n1 ko.txt|wc -w`
+    sed  -i '/# Constru/d;s/#OTU //' ko.txt
+    num=`head -n1 ko.txt|wc -w`
+    paste <(cut -f $num ko.txt) <(cut -f 1-$[num-1] ko.txt) > ko.spf
     for i in 1 2 3;do
-      categorize_by_function.py -f -i ko.biom -c KEGG_Pathways -l ${i} -o ko${i}.txt
-      sed  -i '/#Constru/d;s/#OTU //' ko${i}.txt
-      paste <(cut -f $num ko${i}.txt) <(cut -f 1-$[num-1] ko${i}.txt) > ko${i}.spf
+      categorize_by_function.py -f -i ko.biom -c KEGG_Pathways -l ${i} -o pathway${i}.txt
+      sed  -i '/# Const/d;s/#OTU //' pathway${i}.txt
+      paste <(cut -f $num pathway${i}.txt) <(cut -f 1-$[num-1] pathway${i}.txt) > pathway${i}.spf
     done
-    wc -l ko*.spf
+    wc -l *.spf
 
 
 ## 3. FAPROTAXS元素循环
@@ -809,28 +924,23 @@
     wd=/mnt/c/amplicon/result/
     cd ${wd}
     # 设置脚本目录
-    script=/mnt/c/public/script/
+    sd=/mnt/d/db/script/
 
-### 1. 软件安装
-
-    # 注：软件已经下载至public/script目录，在qiime2环境下运行可满足依赖关系
-    #(可选)下载软件1.2.3版， May 1, 2020更新数据库
-    #wget -c https://pages.uoregon.edu/slouca/LoucaLab/archive/FAPROTAX/SECTION_Download/MODULE_Downloads/CLASS_Latest%20release/UNIT_FAPROTAX_1.2.3/FAPROTAX_1.2.3.zip
+    ### 1. 软件安装
+    # 注：软件已经下载至 db/script目录，在qiime2环境下运行可满足依赖关系
+    #(可选)下载软件1.2.4版， May 1, 2020更新数据库
+    #wget -c https://pages.uoregon.edu/slouca/LoucaLab/archive/FAPROTAX/SECTION_Download/MODULE_Downloads/CLASS_Latest%20release/UNIT_FAPROTAX_1.2.4/FAPROTAX_1.2.4.zip
     #解压
-    #unzip FAPROTAX_1.2.3.zip
+    #unzip FAPROTAX_1.2.4.zip
     #(可选)依赖关系，可使用conda安装依赖包
     #conda install numpy
     #conda install biom
-
-    #新建一个python3环境，或进入python3环境，如qiime2
-    conda activate qiime2-2020.6
+    #新建一个python3环境并配置依赖关系，或进入qiime2 python3环境
+    conda activate qiime2-2021.2
     #测试是否可运行，弹出帮助即正常工作
-    python ${script}/FAPROTAX_1.2.3/collapse_table.py
+    python $sd/FAPROTAX_1.2.4/collapse_table.py
 
-
-### 2. 制作输入OTU表
-
-    conda activate qiime2-2020.6
+    ### 2. 制作输入OTU表
     #txt转换为biom json格式
     biom convert -i otutab_rare.txt -o otutab_rare.biom --table-type="OTU table" --to-json
     #添加物种注释
@@ -839,31 +949,28 @@
       --observation-header OTUID,taxonomy
     #指定输入文件、物种注释、输出文件、注释列名、属性列名
 
-### 3. FAPROTAX功能预测
-
+    ### 3. FAPROTAX功能预测
     #python运行collapse_table.py脚本、输入带有物种注释OTU表tax.biom、
     #-g指定数据库位置，物种注释列名，输出过程信息，强制覆盖结果，结果文件和细节
     #下载faprotax.txt，配合实验设计可进行统计分析
     #faprotax_report.txt查看每个类别中具体来源哪些OTUs
-    python ${script}/FAPROTAX_1.2.3/collapse_table.py -i otutab_rare_tax.biom \
-      -g ${script}/FAPROTAX_1.2.3/FAPROTAX.txt \
+    python ${sd}/FAPROTAX_1.2.4/collapse_table.py -i otutab_rare_tax.biom \
+      -g ${sd}/FAPROTAX_1.2.4/FAPROTAX.txt \
       --collapse_by_metadata 'taxonomy' -v --force \
       -o faprotax.txt -r faprotax_report.txt
 
-### 4. 制作OTU对应功能注释有无矩阵
-
+    ### 4. 制作OTU对应功能注释有无矩阵
     # 对ASV(OTU)注释行，及前一行标题进行筛选
     grep 'ASV_' -B 1 faprotax_report.txt | grep -v -P '^--$' > faprotax_report.clean
     # faprotax_report_sum.pl脚本将数据整理为表格，位于public/scrit中
-    perl ${script}/faprotax_report_sum.pl -i faprotax_report.clean -o faprotax_report
+    perl ${sd}/faprotax_report_sum.pl -i faprotax_report.clean -o faprotax_report
     # 查看功能有无矩阵，-S不换行
     less -S faprotax_report.mat
 
 
 ## 4. Bugbase细菌表型预测
 
-### 1. 软件安装(仅一次)
-
+    ### 1. 软件安装(仅一次)
     #有两种方法可选，推荐第一种，可选第二种，仅需运行一次
 
     #方法1. git下载，需要有git
@@ -885,8 +992,7 @@
     run.bugbase.r -i doc/data/HMP_s15.txt -m doc/data/HMP_map.txt -c HMPBODYSUBSITE -o output
 
 
-### 2. 准备输入文件
-
+    ### 2. 准备输入文件
     cd ~/amplicon/result
     #输入文件：基于greengene OTU表的biom格式(本地分析支持txt格式无需转换)和mapping file(metadata.txt首行添加#)
     #上传实验设计+刚才生成的otutab_gg.txt
@@ -895,8 +1001,7 @@
     sed '1 s/^/#/' metadata.txt > MappingFile.txt
     #下载otutab_gg.biom 和 MappingFile.txt用于在线分析
 
-### 3. 本地分析
-
+    ### 3. 本地分析
     export BUGBASE_PATH=`pwd`
     export PATH=$PATH:`pwd`/bin
     run.bugbase.r -i otutab_gg.txt -m MappingFile.txt -c Group -o phenotype/
@@ -904,161 +1009,318 @@
 ## 5. Silme2随机森林/Adaboost
 
     #下载安装
-    cd ~/software/
-    wget https://github.com/swo/slime2/archive/master.zip
-    mv master.zip slime2.zip
-    unzip slime2.zip
-    mv slime2-master/ slime2
-    cp slime2/slime2.py ~/bin/
-    chmod +x ~/bin/slime2.py
-
+    # cd ~/software/
+    # wget https://github.com/swo/slime2/archive/master.zip
+    # mv master.zip slime2.zip
+    # unzip slime2.zip
+    # mv slime2-master/ slime2
+    # cp slime2/slime2.py ~/bin/
+    # chmod +x ~/bin/slime2.py
     #安装依赖包
-    sudo pip3 install --upgrade pip
-    sudo pip3 install pandas
-    sudo pip3 install sklearn
+    # sudo pip3 install --upgrade pip
+    # sudo pip3 install pandas
+    # sudo pip3 install sklearn
 
-    # 使用实战
-    cd 33MachineLearning/slime2
+    # 使用实战(使用QIIME 2的Python3环境，以在Windows中为例)
+    conda activate qiime2-2021.2
+    cd /mnt/c/amplicon/33MachineLearning/slime2
     #使用adaboost计算10000次(16.7s)，推荐千万次
     ./slime2.py otutab.txt design.txt --normalize --tag ab_e4 ab -n 10000
     #使用RandomForest计算10000次(14.5s)，推荐百万次，支持多线程
     ./slime2.py otutab.txt design.txt --normalize --tag rf_e4 rf -n 10000
-    cd ../../
 
+## 6. PICRUSt2环境导出和导入
 
+    
+    # 方法1. 直接安装
+    n=picrust2
+    conda create -n ${n} -c bioconda -c conda-forge ${n}=2.3.0_b
+    # 加载环境
+    conda activate ${n}
 
+    # 方法2. 导出安装环境
+    cd ~/db/conda/
+    # 设置环境名
+    n=picrust2
+    conda activate ${n}
+    # 打包环境为压缩包
+    conda pack -n ${n} -o ${n}.tar.gz
+    # 导出软件安装列表
+    conda env export > ${n}.yml
+    # 添加权限，方便下载和别人使用
+    chmod 755 ${n}.*
+    
+    # 方法3. 导入安装环境，如qiime2 humann2 meta(包括picurst)
+    n=picrust2
+    # 复制安装包，或下载我的环境打包
+    wget -c http://210.75.224.110/db/conda/${n}.tar.gz
+    # 指定安装目录并解压
+    condapath=~/miniconda2
+    mkdir -p ${condapath}/envs/${n}
+    tar -xvzf ${n}.tar.gz -C ${condapath}/envs/${n}
+    # 激活环境并初始化
+    source ${condapath}/envs/${n}/bin/activate
+    conda unpack
 
+### 7. PICRUSt2功能预测
+
+    # (可选)PICRUSt2(Linux/Windows下Linux子系统，要求>16GB内存)
+    # 安装
+    conda create -n picrust2 -c bioconda -c conda-forge picrust2=2.3.0_b
+    # 如果此方法不成功，可使用附录6的方式直接下载安装包并解压即可使用
+    
+    # 加载环境
+    conda activate picrust2
+    # 进入工作目录，服务器要修改工作目录
+    wd=/mnt/c/amplicon/result/picrust2
+    mkdir -p ${wd} && cd ${wd}
+    # 运行流程，内存15.7GB，耗时12m
+    picrust2_pipeline.py -s ../otus.fa -i ../otutab.txt -o ./ -p 8
+    # 添加EC/KO/Pathway注释
+    add_descriptions.py -i pathways_out/path_abun_unstrat.tsv.gz -m METACYC \
+      -o pathways_out/path_abun_unstrat_descrip.tsv.gz
+    add_descriptions.py -i EC_metagenome_out/pred_metagenome_unstrat.tsv.gz -m EC \
+      -o EC_metagenome_out/pred_metagenome_unstrat_descrip.tsv.gz
+    add_descriptions.py -i KO_metagenome_out/pred_metagenome_unstrat.tsv.gz -m KO \
+      -o KO_metagenome_out/pred_metagenome_unstrat_descrip.tsv.gz 
+    # KEGG按层级合并
+    zcat KO_metagenome_out/pred_metagenome_unstrat.tsv.gz > KEGG.KO.txt
+    python3 ${db}/script/summarizeAbundance.py \
+      -i KEGG.KO.txt \
+	    -m ${db}/kegg/KO1-4.txt \
+	    -c 2,3,4 -s ',+,+,' -n raw \
+	    -o KEGG
+    # 统计各层级特征数量
+    wc -l KEGG*
+    
 # 常见问题
 
 ## 1. 文件phred质量错误——Fastq质量值64转33
 
-    #查看64位格式文件，质量值多为小写字母
-    head -n4 FAQ/Q64Q33/test_64.fq
-    #转换质量值64编码格式为33
-    vsearch --fastq_convert FAQ/Q64Q33/test_64.fq \
-        --fastqout FAQ/test.fq \
-        --fastq_ascii 64 --fastq_asciiout 33
-    #查看转换后33编码格式，质量值多为大写字母
-    head -n4 FAQ/test.fq
+使用head查看fastq文件，phred64质量值多为小写字母，需要使用vsearch的--fastq_convert命令转换为通用的phred33格式。
 
-## 2. 序列双端已经合并——单端序列重命名/添加样本名
+    cd /c/amplicon/FAQ/01Q64Q33
+    # 预览phred64格式，注意看第4行质量值多为小写字母
+    head -n4 test_64.fq
+    # 转换质量值64编码格式为33
+    vsearch --fastq_convert test_64.fq \
+        --fastq_ascii 64 --fastq_asciiout 33 \
+        --fastqout test.fq 
+    # 查看转换后33编码格式，质量值多为大写字母
+    head -n4 test.fq
 
-    #查看文件序列名
-    head -n1 FAQ/test.fq
-    #序列按样本命名，并输出到新文件夹
-    mkdir -p FAQ/relabel
-    vsearch --fastq_convert FAQ/test.fq \
-        --fastqout FAQ/relabel/WT1.fq --relabel WT1.
-    #查看转换后33编码格式，质量值多为大写字母
-    head -n1 FAQ/relabel/WT1.fq
+如果是Ion torrent测序结果，由于是非主流测序平台，需要公司转换帮助转换为标准的Phred33格式文件才可以使用。
 
-## 3. 数据过大无法使用usearch聚类或去噪-vsearch
+## 2. 序列双端已经合并——单端序列添加样本名
 
-    #备选vsearch生成OTU，但无自动de novo去嵌合功能
-    #仅限usearch免费版受限时(可通过提高minuniquesize参数减少数据量)使用，不推荐
-    #重命名、相似97%，不屏蔽，输入和输出count
-    vsearch --cluster_size temp/uniques.fa  \
-     --centroids temp/otus.fa \
-     --relabel OTU_ --id 0.97 --qmask none --sizein --sizeout
-    #5s Clusters: 1062
-    #vsearch还需连用--uchime3_denovo
+扩增子分析要求序列名为样品名+序列编号，双端序列在合并同时可直接添加样本名。单端序列，或双端合并的序列需单独添加。这里使用vsearch的--fastq_convert命令中的--relabel参加添加样本名
+
+    cd /c/amplicon/FAQ/02relabel
+    # 查看文件序列名
+    head -n1 test.fq
+    # 序列按样本重命名
+    vsearch --fastq_convert test.fq \
+        --relabel WT1. \
+        --fastqout WT1.fq
+    # 查看重命名结果
+    head -n1 WT1.fq
+
+## 3. 数据过大无法使用usearch聚类或去噪,替换vsearch
+
+仅限usearch免费版受限时，可通过提高minuniquesize参数减少非冗余数据量。OTU/ASV过万下游分析等待时间过长，确保OTU/ASV数据小于5000，一般不会受限，而且也有利于下游开展快速分析。
+
+备选vsearch聚类生成OTU，但无自动de novo去嵌合功能。输入2155条序列，聚类后输出661。
+
+    cd /c/amplicon/FAQ/03feature
+    # 重命名relabel、按相似id=97%聚类，不屏蔽qmask
+    # 记录输入sizein和输出频率sizeout
+    vsearch --cluster_size uniques.fa  \
+     --relabel OTU_ --id 0.97 \
+     --qmask none --sizein --sizeout \
+     --centroids otus_raw.fa 
 
 
-## 4. Reads count整数值如何标准化为相对丰度
+再de novo去嵌合。55个嵌合，606个非嵌合。把OTU_1都去除了，没有Usearch内置去嵌合的方法合理。
 
-    #求取各个OTU在对应样品的丰度频率
-    usearch -otutab_counts2freqs result/otutab_rare.txt \
-        -output result/otutab_rare_freq.txt
+    # 自身比对去嵌合
+    vsearch --uchime_denovo otus_raw.fa \
+        --nonchimeras otus.fa
+    # 删除序列频率
+    sed -i 's/;.*//' otus.fa
 
-## 5. 运行R提示write.table Permission denied
+## 4. 读长计数(Read counts)标准化为相对丰度
 
-    #例如报错信息示例如下：
+    cd /c/amplicon/FAQ/04norm
+    # 求取各个OTU在样品中的丰度频率(标准化为总和1)
+    usearch -otutab_counts2freqs otutab.txt \
+        -output otutab_freq.txt
+
+## 5. 运行R提示Permission denied
+ 
+例如write.table保存表时，报错信息示例如下：意思是写入文件无权限，一般为目标文件正在被打开，请关闭相关文件后重试
+
     Error in file(file, ifelse(append, "a", "w")) :
     Calls: write.table -> file
     : Warning message:
     In file(file, ifelse(append, "a", "w")) :
       'result/raw/otutab_nonBac.txt': Permission denied
-    #翻译为写入文件无权限，一般为目标文件正在被打开，请关闭重试
 
 ## 6. 文件批量命名
 
-    # 注意修改路径
-    cd /c/project/seq
-    ls > ../filelist.txt
+如我们有文件A1和A2，编写一个样本名对应目标名的表格metadata.txt，检查样本名是否唯一，使用awk进行批量改名
+
+    cd /c/amplicon/FAQ/06rename
+    # (可选)快速生成文件列表，用于编辑metadata.txt，如A1.fq修改为WT1.fastq，以此类推，参考metadata.bak.txt
+    ls *.fq > metadata.txt
     # 编辑列表，第二名为最终命名，确定名称唯一
-    # 检查手动命名是否唯一
-    cut -f 2 ../filelist.txt |wc -l
-    cut -f 2 ../filelist.txt | sort | uniq |wc -l
+    # 转换行尾换行符
+    sed -i 's/\r//' metadata.txt
+    # 检查手动命名列2是否唯一
+    cut -f 2 metadata.txt|wc -l
+    cut -f 2 metadata.txt|sort|uniq|wc -l
     # 如果两次结果一致，则命名非冗余
-    awk '{system("mv "$1" "$2)}' ../filelist.txt
+    # 可选移动mv，复制cp，硬链ln，或软链ln -s
+    # 此处使用复制cp
+    awk '{system("cp "$1" "$2)}' metadata.txt
 
 ## 7. Rstudio中Terminal找不到Linux命令
 
     # 需要把 C:\Program Files\Git\usr\bin 目录添加到系统环境变量
+    # 文件资源管理器——此电脑——属性——高级系统设置——环境变量——系统变量——Path——编辑——新建——填写“C:\Program Files\Git\usr\bin”——确定——确定——确定
     # 注意win10系统是一个目录一行；win7中多个目录用分号分隔，注意向后添加目录
 
+## 8. usearch -alpha_div_rare结果前两行出现“-”
 
-## 8. 测试均值丢失组
-    cd /c/amplicon/FAQ/merge
-    #按组求均值，需根据实验设计metadata.txt修改组列名
-    #输入文件为feautre表result/otutab.txt，实验设计metadata.txt
-    #输出为特征表按组的均值-一个实验可能有多种分组方式
-    Rscript /c/amplicon/22Pipeline/script/otu_mean.R
+问题：抽样0时补“-”，且缺失制表符
 
-    #如以平均丰度频率高于0.05%为筛选标准，得到每个组的OTU组合
-    awk 'BEGIN{OFS=FS="\t"}{if(FNR==1) {for(i=2;i<=NF;i++) a[i]=$i;} \
-        else {for(i=2;i<=NF;i++) if($i>0.05) print $1, a[i];}}' \
-        result/otutab_mean_Genotype.txt > alpha/otu_group_exist.txt
-    # 结果可以直接在http://www.ehbio.com/ImageGP绘制Venn、upSetView和Sanky
+处理：替换“-”为"制作符\t+0"即可恢复
 
-## 9. usearch/vsearch 生成OTU表时无法匹配
-    #是原始序列方向错误，将序列需要取反向互补
-    vsearch --fastx_revcomp ../FAQ/filtered_test.fa \
-      --fastaout ../FAQ/filtered_test_RC.fa
-    # 再分析
-    usearch -otutab ../FAQ/filtered_test_RC.fa -otus db/gg/97_otus.fasta \
-    	-otutabout gg/otutab.txt -threads 6
+    cd /c/amplicon/FAQ/08rare
+    sed "s/-/\t0.0/g" alpha_rare_wrong.txt\
+        > alpha_rare.txt
 
-## 10. 检查文件windows换行符和删除
+## 9. 物种注释otus.sintax方向全为“-”，需要序列取反向互补
 
-    head -n3 metadata.txt|cat -A
-    sed -i 's/\r//' metadata.txt
-    head -n3 metadata.txt|cat -A
+是原始序列方向错误，将filtered.fa序列需要取反向互补。再从头开始分析
 
+    cd /c/amplicon/FAQ/09revcom
+    vsearch --fastx_revcomp filtered_RC.fa \
+      --fastaout filtered.fa
 
-## 11. UNITE数据库分析报错问题
+## 10. windows换行符查看和删除
 
-    # Unprintable ASCII character no 195 on or right before line 236492
-    cd /c/amplicon/FAQ/ITS_unite
-    # 分类级存在空缺，sed补全
-    sed -i 's/,;/,Unnamed;/;s/:,/:Unnamed,/g' ${ea}/usearch/utax_reference_dataset_all_04.02.2020.fasta
-    # vsearch有问题，改为usearch，结尾添加--strand plus即可
+Windows换行符为换行($)+^M，等于Linux换行+mac换行。分析数据中以linux格式为通用标准，因此windows中如excel编写并存为文本文件(制表符分隔)(*.txt)的表格，行尾有不可见的^M符号，导致分析出错。可使用cat -A命令查看此符号，可用sed删除。
+
+    cd /c/amplicon/FAQ/10^M
+    # 查看行尾是否有^M
+  	cat -A metadata.txt
+  	# 删除^M，并写入新文件
+  	sed 's/\r//' metadata.txt > metadata.mod.txt
+  	# 检查是否成功
+  	cat -A metadata.mod.txt
+  	
+  	# 直接原文件删除
+  	sed -i 's/\r//' metadata.txt
+
+## 11. UNITE数据库分析报错
+
+USEARCH使用UNITE下载的utax数据库，提示各种错误
+
+    cd /c/amplicon/FAQ/11unite
+    # 解压Unite的useach使用物种注释库
+    gunzip -c utax_reference_dataset_all_04.02.2020.fasta.gz > unite.fa
+    # 对ITS序列进行注释，默认阈值0.8
     usearch --sintax  otus.fa \
-      --db ${ea}/usearch/utax_reference_dataset_all_04.02.2020.fasta \
-      --tabbedout otus.sintax --sintax_cutoff 0.6 --strand plus
+      --db unite.fa \
+      --tabbedout otus.sintax --strand plus
+       --sintax_cutoff 0.6
 
+报错信息如下：
+
+    ---Fatal error---
+    Missing x: in name >JN874928|SH1144646.08FU;tax=d:Metazoa,p:Cnidaria,c:Hydrozoa,o:Trachylina,f:,g:Craspedacusta,s:Craspedacusta_sowerbii_SH1144646.08FU;
+
+或
+
+    “Unprintable ASCII character no 195 on or right before line 236492”
+    
+分析原因为分类级存在空缺。可用sed补全即可解决
+    
+    # 分类级存在空缺，sed补全
+    sed -i 's/,;/,Unnamed;/;s/:,/:Unnamed,/g' unite.fa
+    # 再运行前面usearch --sintax命令
+
+注：vsearch有问题，推荐用usearch，结尾添加--strand plus才能成功运行
+
+## 12. Windows的Linux子系统本地安装qiime2
+
+    # 安装Windows子系统，https://mp.weixin.qq.com/s/0PfA0bqdvrEbo62zPVq4kQ
+    # 下载、安装和启动conda
+    wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86_64.sh -b -f
+    ~/miniconda3/condabin/conda init
+    # 关闭终端重新打开
+
+    # 新建文件夹存放qiime2环境
+    mkdir -p ~/miniconda3/envs/qiime2-2021.2
+    # 安装包存放于C盘(/mnt/c/public/linux/qiime2-2021.2.tar.gz)，找不到可根据自己的情况进行修改位置，绝对路径格式为/mnt/其他盘
+    tar -xzf /mnt/c/public/linux/qiime2-2021.2.tar.gz -C ~/miniconda3/envs/qiime2-2021.2
+    # 激活环境
+    conda activate qiime2-2021.2
+
+    # 附软件在线安装和打包代码
+    # 在线安装
+    wget -c http://210.75.224.110/github/QIIME2ChineseManual/2021.2/qiime2-2021.2-py36-linux-conda.yml
+    conda env create -n qiime2-2021.2 --file qiime2-2021.2-py36-linux-conda.yml
+    # 打包已经安装的子系统QIIME2 2021.2
+    # 安装pack命令
+    conda install -c conda-forge conda-pack
+    # 打包Ubuntu 20.04中的qiime2-2021.2
+    cd /mnt/c/public/linux
+    conda pack -n qiime2-2021.2 -o qiime2-2021.2.tar.gz
+
+## 13. RDP 16-18注释结果比较
+
+    # 统计序列中门的数量，从60降为39
+    grep '>' ${db}/usearch/rdp_16s_v16_sp.fa|cut -f2 -d ';'|cut -f1-2 -d ','|sort|uniq|wc -l
+    grep '>' ${db}/usearch/rdp_16s_v18.fa|cut -f2 -d ';'|cut -f1-2 -d ','|sort|uniq|wc -l
+    # 统计序列中属的数量，从2517增长为3061
+    grep '>' ${db}/usearch/rdp_16s_v16_sp.fa|cut -f2 -d ';'|cut -f1-6 -d ','|sort|uniq|wc -l
+    grep '>' ${db}/usearch/rdp_16s_v18.fa|cut -f2 -d ';'|cut -f1-6 -d ','|sort|uniq|wc -l
+
+    cd /c/amplicon/FAQ/13rdp16_18
+    # 门由15个降为13个
+    tail -n+2 rdp16_sintax.txt|cut -f3|sort|uniq -c|wc -l
+    tail -n+2 rdp18_sintax.txt|cut -f3|sort|uniq -c|wc -l
+    # 属由176个降为144个
+    tail -n+2 rdp16_sintax.txt|cut -f7|sort|uniq -c|wc -l
+    tail -n+2 rdp18_sintax.txt|cut -f7|sort|uniq -c|wc -l  
 
 # 版本更新记录
 
-> v1.01 2018/03/10 建立以USEARCH为核心的扩增子分析流程，并采用RStudio 1.1新增Terimal结合GitForWindows为使用环境
+- 2021/4/3 EasyAmplicon 1.11:
+    - R包amplicon升级为 1.11.0，解决metadata两列报错的问题。
+    - 调整课程顺序，每天上午9点-12点2节，下午1点半-6点3节。
+    - 提供附加课程Supp目录。
+- 2021/7/23 EasyAmplicon 1.12:
+    - R运行环境升级为4.1.0，配套有4.1.zip的全套包
+    - R包amplicon升级为 1.12.0，alpha_boxplot去掉Y轴的index
+    - alpha_boxplot.R增加标准化、转置等参数，可用于绘制任何特征箱线图
+    - beta_pcoa/cpcoa.R增加控制椭圆、标签显示等参数
+    - tax_stackplot.R增加多种配色方案
+    - picurst流程更新，并提供打包的conda下载
+    - picurst2新增KO合并为KEGG通路1-3级代码，并提供打包的conda下载
+    - 随机森林：提供分类级筛选、随机数筛选、可视化代码
+- 2021/10/15 EasyAmplicon 1.13:
+    - R运行环境升级为4.1.1，配套有4.1.zip的最新全套包
+    - 元数据方差分解PERMANOVA：在Diversity-tutorial.Rmd中Beta多样性分析中新增adonis计算变量对群落的解析率和显著性分析
+    - 树图treemap升级后无颜色，改为代码供参考，并在Diversity_tutrial.Rmd中删除此部分
+    - alpha_boxplot输出无默认目录，可指定文件名头，添加无ID报错注释
+    
+使用此脚本，请引用下文：
 
-> v1.02 2018/09/14 添加VSEARCH解决USEARCH免费版文件大小限制问题，新增Windows下R包移植方法
+If used this script, please cited:
 
-> v1.03 2019/01/11 绘图代码整理为函数，建立 amplicon包 https://github.com/microbiota/amplicon
+**Yong-Xin Liu**, Yuan Qin, **Tong Chen**, et. al. A practical guide to amplicon and metagenomic analysis of microbiome data. **Protein Cell**, 2021(12) 5:315-330, doi: [10.1007/s13238-020-00724-8](https://doi.org/10.1007/s13238-020-00724-8)
 
-> v1.04 2019/04/12 新增beta_cpcoa_dis函数，支持基于距离矩阵计算限制性PCoA
-
-> v1.05 2019/07/19 更新format2lefse函数，修改默认分组Genotype为Group，支持设置输出文件名
-
-> v1.06 2019/10/25 全面测试流程代码和R包，优化稳定性；陈同测试Mac系统下兼容性
-
-> v1.07 2020/01/03 更新格式转换函数format2stamp/lefse/lefse2
-
-> v1.08 2020/05/29 发表综述可供本流程引用Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. (2020). A practical guide to amplicon and metagenomic analysis of microbiome data. Protein & Cell 11, doi: https://doi.org/10.1007/s13238-020-00724-8，优化amplicon包中的多个统计绘图函数alpha_barplot/MicroTest
-
-> v1.09 2020/08/14 优化amplicon包中的多个统计绘图函数alpha_boxplot/alpha_rare_all/alpha_sample_rare/alpha_rare_curve/BetaDiv/pairMicroTest/beta_pcoa/beta_cpcoa/beta_rda-cca/tax_circlize/tax_maptree/tax_stackplot
-
-> v1.10 2020/12/04 Github公共发布1.10版，并发表中文使用手册于Bio-Protocol中Microbiome eBook，优化amplicon中多个函数beta_pcoa_stat/tax_stack_cluster/tax_wordcloud
-
-
-
+Copyright 2016-2021 Yong-Xin Liu <metagenome@126.com>

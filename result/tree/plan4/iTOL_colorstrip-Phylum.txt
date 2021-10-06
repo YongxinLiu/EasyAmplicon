@@ -3,18 +3,16 @@ SEPARATOR TAB
 BORDER_WIDTH	0
 COLOR	#bebada
 DATASET_LABEL	Phylum
-LEGEND_COLORS	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#e31a1c
-LEGEND_LABELS	Actinobacteria	Bacteroidetes	Chloroflexi	Firmicutes	Proteobacteria	Unassigned
-LEGEND_SHAPES	1	1	1	1	1	1
+LEGEND_COLORS	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99
+LEGEND_LABELS	Actinobacteria	Bacteroidetes	Chloroflexi	Firmicutes	Proteobacteria
+LEGEND_SHAPES	1	1	1	1	1
 LEGEND_TITLE	Phylum
 MARGIN	5
 STRIP_WIDTH	25
 DATA
-ASV_1647	#a6cee3	Actinobacteria
 ASV_2	#fb9a99	Proteobacteria
 ASV_3	#fb9a99	Proteobacteria
 ASV_4	#fb9a99	Proteobacteria
-ASV_5	#e31a1c	Unassigned
 ASV_8	#a6cee3	Actinobacteria
 ASV_6	#fb9a99	Proteobacteria
 ASV_7	#1f78b4	Bacteroidetes
@@ -50,15 +48,15 @@ ASV_37	#fb9a99	Proteobacteria
 ASV_173	#fb9a99	Proteobacteria
 ASV_38	#fb9a99	Proteobacteria
 ASV_40	#33a02c	Firmicutes
+ASV_42	#fb9a99	Proteobacteria
 ASV_39	#a6cee3	Actinobacteria
 ASV_70	#fb9a99	Proteobacteria
-ASV_42	#fb9a99	Proteobacteria
 ASV_47	#fb9a99	Proteobacteria
 ASV_68	#fb9a99	Proteobacteria
 ASV_45	#fb9a99	Proteobacteria
 ASV_44	#a6cee3	Actinobacteria
-ASV_52	#a6cee3	Actinobacteria
 ASV_54	#fb9a99	Proteobacteria
+ASV_52	#a6cee3	Actinobacteria
 ASV_46	#fb9a99	Proteobacteria
 ASV_43	#b2df8a	Chloroflexi
 ASV_48	#fb9a99	Proteobacteria
@@ -66,7 +64,7 @@ ASV_51	#a6cee3	Actinobacteria
 ASV_50	#a6cee3	Actinobacteria
 ASV_53	#fb9a99	Proteobacteria
 ASV_49	#1f78b4	Bacteroidetes
-ASV_55	#e31a1c	Unassigned
+ASV_55	#fb9a99	Proteobacteria
 ASV_58	#fb9a99	Proteobacteria
 ASV_62	#a6cee3	Actinobacteria
 ASV_67	#fb9a99	Proteobacteria
@@ -90,4 +88,11 @@ ASV_75	#a6cee3	Actinobacteria
 ASV_83	#fb9a99	Proteobacteria
 ASV_84	#fb9a99	Proteobacteria
 ASV_81	#fb9a99	Proteobacteria
+ASV_79	#fb9a99	Proteobacteria
 ASV_78	#fb9a99	Proteobacteria
+ASV_80	#b2df8a	Chloroflexi
+ASV_88	#fb9a99	Proteobacteria
+ASV_86	#a6cee3	Actinobacteria
+ASV_89	#fb9a99	Proteobacteria
+ASV_92	#33a02c	Firmicutes
+ASV_855	#a6cee3	Actinobacteria

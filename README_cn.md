@@ -1,6 +1,6 @@
 # EasyAmplicon (易扩增子)
 
-英文版见：README.md
+English Version in README.md
 
 **An easy using, open-resource, reproducible, and community-based pipeline for amplicon data analysis in microbiome** (简单易学易用、开源、可重复且社区支持的扩增子数据分析流程)
 
@@ -46,10 +46,10 @@ Files description:
 - R语言环境R 4.x.x，支持R代码运行，下载适合自己系统的最新版并安装：https://www.r-project.org/ 
 - R语言开发环境RStudio 1.x.xxxx，用于执行流程，下载适合自己系统的最新版并安装 ：https://www.rstudio.com/products/rstudio/download/#download
 - (可选，仅Windows用户)Git Bash命令行环境的Git for Windows 2.xx.x，支持在Windows系统中运行Shell语言，下载并安装最新版：http://gitforwindows.org/
-- 易扩增子流程EasyAmplicon v1.13，包括分析流程代码、测序数据和示例结果(分析的正对照)，可用 git clone https://github.com/YongxinLiu/EasyAmplicon 下载项目，或网页中下载打包的最新版并解压。已经整合的重点软件如下：
+- 易扩增子流程EasyAmplicon v1.13，包括分析流程代码、测序数据和示例结果(分析的正对照)，可用 git clone https://github.com/YongxinLiu/EasyAmplicon 下载项目，或网页中下载打包的最新版并解压。
+- 易微生物组EasyMicribome v1.13，提供易扩增子流程依赖的常用软件、脚本和数据库，可用 git clone https://github.com/YongxinLiu/EasyMicrobiome 下载项目，或网页中下载打包的最新版并解压，如Windows用户建议下载到C盘根目录。已经整合的重点软件如下：
     - usearch v10.0.240 https://www.drive5.com/usearch/download.html
     - vsearch v2.15.2 https://github.com/torognes/vsearch/releases
-- 易微生物组EasyMicribome v1.13，提供易扩增子流程依赖的常用软件、脚本和数据库，可用 git clone https://github.com/YongxinLiu/EasyMicrobiome 下载项目，或网页中下载打包的最新版并解压，如Windows用户建议下载到C盘根目录
 
 ### (可选)扩展软件和数据库
 
