@@ -2,7 +2,7 @@
 
 # EasyAmplicon (易扩增子)
 
-The Chinese version in README_cn.md
+The Chinese version in (中文版见) README_cn.md
 
 **An easy using, open-resource, reproducible, and community-based pipeline for amplicon data analysis in microbiome**
 
@@ -20,7 +20,7 @@ Files description:
 - pipeline.sh # Command-line analysis for Windows and Linux
 - pipeline_mac.sh # Command-line analysis for MacOS
 - result/ # Example data
-- result/Diversity-tutorial.Rmd # Interactive analysis in R and output reproducible report in HTML format
+- result/Diversity.Rmd # Interactive analysis in R and output reproducible report in HTML format
 
 ## What can we do? (结果展示)
 
@@ -28,7 +28,7 @@ Files description:
 - From raw data into feature tables;
 - Support 20+ analysis methods and publish-ready visualization;
 - Finish your project at your laptop in 3 hours;
-- Chinese manual and video supported.
+- Chinese/English manual and video supported.
 
 ![image](http://210.75.224.110/Note/R/amplicon/fig1.png)
 
@@ -46,7 +46,7 @@ Files description:
 Please install the dependency software according with you system (Win/Mac/Linux).
 
 - R 4.x.x for run R scripts https://www.r-project.org/
-- RStudio 1.x.xxxx is a integrated development environment for R https://www.rstudio.com/products/rstudio/download/#download
+- RStudio 2021.xx.x is a integrated development environment for R https://www.rstudio.com/products/rstudio/download/#download
 - STAMP v2.1.3 http://kiwi.cs.dal.ca/Software/STAMP 
 - Git for Windows 2.xx.x (Windows only) http://gitforwindows.org/
 
@@ -54,7 +54,7 @@ As the windows users (87.5%) as example, you can quickly batch download above [R
 
 - R packages quick install
 
-The statistics and visualization may require > 500 R packages. Installation is time-consuming and may also rely on other compilation tools. You can download all needed R packages in [zip for windows](http://210.75.224.110/R/4.1.zip), then unzip and take the `4.1` folder in C:\Users\[$UserName]\Documents\R\win-library\.
+The statistics and visualization may require > 500 R packages. Installation is time-consuming and may also rely on other compilation tools. You can download all needed R packages in [zip for windows](http://210.75.224.110/R/4.1.zip) or [Mac](http://210.75.224.110/db/R/4.1_mac.zip), then unzip and take the `4.1` folder in C:\Users\[$UserName]\Documents\R\win-library\.
 
 ### Install EasyAmplicon (安装易扩增子)
 
