@@ -3,8 +3,8 @@
 # 易扩增子EasyAmplicon
 
     # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)等
-    # 版本 Version: v1.13
-    # 更新 Update: 2021-10-15
+    # 版本 Version: v1.14
+    # 更新 Update: 2022-1-7
     # 系统要求 System requirement: Windows 10 / Mac OS 10.12+ / Ubuntu 16.04+
     # 引文 Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. (2021). 
     # A practical guide to amplicon and metagenomic analysis of microbiome data. Protein & Cell 12, 315-330
@@ -13,8 +13,8 @@
     # 设置工作(work directory, wd)和软件/数据库(database, db)目录
     # 添加环境变量，并进入工作目录 Add environmental variables and enter work directory
     # **每次打开Rstudio必须运行下面4行 Run it**
-    wd=/c/EasyAmplicon
-    db=/c/EasyMicrobiome
+    wd=/d/BaiduNetdiskWorkspace/github/EasyAmplicon
+    db=/d/BaiduNetdiskWorkspace/github/EasyMicrobiome
     PATH=$PATH:${db}/win
     cd ${wd}
 
@@ -242,6 +242,7 @@
       --sintax_cutoff 0.1 \
       --tabbedout result/raw/otus.sintax 
     head result/raw/otus.sintax | cat -A
+    sed -i 's/\r//' result/raw/otus.sintax
 
     # 原始特征表行数
     wc -l result/raw/otutab.txt
@@ -621,7 +622,7 @@
     # 筛选显示差异ASV，按KO组丰度降序列，取ID展示前10
     awk '$4<0.05' result/compare/KO-WT.txt|sort -k7,7nr|cut -f1|head
     # 差异OTU细节展示
-    Rscript ${db}/script/alpha_boxplot.R --alpha_index ASV_5 \
+    Rscript ${db}/script/alpha_boxplot.R --alpha_index ASV_2 \
       --input result/otutab.txt --design result/metadata.txt \
       --transpose TRUE --scale TRUE \
       --width 89 --height 59 \
@@ -663,7 +664,7 @@
     # threshold控制丰度筛选以控制作图中的枝数量
     Rscript ${db}/script/format2lefse.R --input result/otutab.txt \
       --taxonomy result/taxonomy.txt --design result/metadata.txt \
-      --group Group --threshold 0.1 \
+      --group Group --threshold 0.4 \
       --output result/lefse/LEfSe
 
     ### 3.2 Rmd生成输入文件(可选)
@@ -784,6 +785,7 @@
     muscle -in otus.fa -out otus_aligned.fas
 
     ### 方法1. 利用IQ-TREE快速构建ML进化树，2m
+    rm -rf iqtree
     mkdir -p iqtree
     iqtree -s otus_aligned.fas \
         -bb 1000 -redo -alrt 1000 -nt AUTO \
@@ -1316,11 +1318,15 @@ USEARCH使用UNITE下载的utax数据库，提示各种错误
     - 元数据方差分解PERMANOVA：在Diversity-tutorial.Rmd中Beta多样性分析中新增adonis计算变量对群落的解析率和显著性分析
     - 树图treemap升级后无颜色，改为代码供参考，并在Diversity_tutrial.Rmd中删除此部分
     - alpha_boxplot输出无默认目录，可指定文件名头，添加无ID报错注释
-    
+- 2022/1/7 EasyAmplicon 1.14:
+    - R运行环境升级为4.1.2，配套有4.1.zip的最新全套包
+    - RStudio更新为2021.09.1
+
+
 使用此脚本，请引用下文：
 
 If used this script, please cited:
 
 **Yong-Xin Liu**, Yuan Qin, **Tong Chen**, et. al. A practical guide to amplicon and metagenomic analysis of microbiome data. **Protein Cell**, 2021(12) 5:315-330, doi: [10.1007/s13238-020-00724-8](https://doi.org/10.1007/s13238-020-00724-8)
 
-Copyright 2016-2021 Yong-Xin Liu <metagenome@126.com>
+Copyright 2016-2022 Yong-Xin Liu <metagenome@126.com>

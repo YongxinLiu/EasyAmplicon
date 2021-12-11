@@ -23,6 +23,7 @@ seq/OE5_1.fq.gz  FASTQ   DNA     15,000  3,750,000      250      250      250
 seq/OE5_2.fq.gz  FASTQ   DNA     15,000  3,750,000      250      250      250
 seq/OE6_1.fq.gz  FASTQ   DNA     15,000  3,750,000      250      250      250
 seq/OE6_2.fq.gz  FASTQ   DNA     15,000  3,750,000      250      250      250
+seq/WT1.fq.gz    FASTQ   DNA     15,000  3,750,000      250      250      250
 seq/WT1_1.fq.gz  FASTQ   DNA     15,000  3,750,000      250      250      250
 seq/WT1_2.fq.gz  FASTQ   DNA     15,000  3,750,000      250      250      250
 seq/WT2_1.fq.gz  FASTQ   DNA     15,000  3,750,000      250      250      250

@@ -42,6 +42,8 @@
 
 系统要求 System requirement: Windows 10 / Mac OS 10.12+ / Ubuntu 20.04+
 
+安装视频教程：http://210.75.224.110/method/EasyAmplicon/210824R1/EasyAmpliconInstall.wmv
+
 ### 依赖软件环境(Install Dependency)
 
 请安装与你操作系统一致的软件
@@ -56,7 +58,7 @@
 
 - (可选，推荐)R包的快速安装
 
-在R语言的统计和可视化中会使用超过500个R包，安装不仅费时费力，而且经常出错或依赖其他编绎工具。为方便大家使用，我们提供了编绎好的R包合集下载，如 [Windows版](http://210.75.224.110/R/4.1.zip)、[Mac版](http://210.75.224.110/db/R/4.1_mac.zip)。你可以下载解压后，将 `4.1` 目录移动至 `C:\Users\[$UserName]\Documents\R\win-library\`中即完成安装。
+在R语言的统计和可视化中会使用超过500个R包，安装不仅费时费力，而且经常出错或依赖其他编绎工具。为方便大家使用，我们提供了编绎好的R包合集下载，如 [Windows版](http://210.75.224.110/db/R/4.1.zip)、[Mac版](http://210.75.224.110/db/R/4.1_mac.zip)。你可以下载解压后，将 `4.1` 目录移动至 `C:\Users\[$UserName]\Documents\R\win-library\`中即完成安装。
 
 ### 安装易扩增子 (Install EasyAmplicon)
 
@@ -85,6 +87,8 @@
     下载适合USEARCH的最新版注释数据库。官方数据库存在格式问题，详细常见pipeline.sh中附录常用问题
 
 ## 快速运行(Quick Start)
+
+使用视频教程：http://210.75.224.110/method/EasyAmplicon/210824R1/EasyAmpliconPipeline.wmv
 
 1.  准确输入数据：典型的扩增子测序起始文件包括测序数据和元数据两类。
 

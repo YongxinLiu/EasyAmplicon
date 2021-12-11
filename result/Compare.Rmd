@@ -330,4 +330,4 @@ If used this script, please cited:
 
 **Yong-Xin Liu**, Yuan Qin, **Tong Chen**, et. al. A practical guide to amplicon and metagenomic analysis of microbiome data. **Protein Cell**, 2021(12) 5:315-330, doi: [10.1007/s13238-020-00724-8](https://doi.org/10.1007/s13238-020-00724-8)
 
-Copyright 2016-2021 Yong-Xin Liu <metagenome@126.com>
+Copyright 2016-2022 Yong-Xin Liu <metagenome@126.com>

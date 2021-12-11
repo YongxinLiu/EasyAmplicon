@@ -1,9 +1,8 @@
 ASV_1428			
 ASV_5	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(0.70),c:Cyanobacteria(0.70),f:Family(0.69)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
 ASV_131	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family(1.00)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
-ASV_137	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family(1.00)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
+ASV_137	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family(0.99)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
 ASV_597	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family(1.00)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
-ASV_978	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(0.79),c:Cyanobacteria(0.79),f:Family(0.79)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
+ASV_978	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(0.77),c:Cyanobacteria(0.77),f:Family(0.75)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
 ASV_979	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(0.97),c:Cyanobacteria(0.97),f:Family(0.97)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
 ASV_1147	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family(1.00)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
-ASV_1514	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(0.05),c:Cyanobacteria(0.05),f:Family(0.05)	+	d:Bacteria
