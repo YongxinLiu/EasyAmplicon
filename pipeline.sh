@@ -554,7 +554,7 @@
 
     # 多层级包含物种关系，输入特征表和物种注释，输出树图
     # 指定包含特征数量和图片宽高，100个ASV耗时12s
-    time Rscript ${db}/script/tax_maptree.R \
+    Rscript ${db}/script/tax_maptree.R \
       --input result/otutab.txt --taxonomy result/taxonomy.txt \
       --output result/tax/tax_maptree.pdf \
       --topN 100 --width 183 --height 118
@@ -640,20 +640,26 @@
 
 ## 2. STAMP输入文件准备
 
-### 2.1 命令行生成输入文件
+### 2.1 生成输入文件
 
     Rscript ${db}/script/format2stamp.R -h
     mkdir -p result/stamp
     Rscript ${db}/script/format2stamp.R --input result/otutab.txt \
       --taxonomy result/taxonomy.txt --threshold 0.01 \
       --output result/stamp/tax
+    # 可选Rmd文档见result/format2stamp.Rmd
 
-### 2.2 Rmd生成输入文件
+### 2.2 绘制扩展柱状图和表
 
-    #1. 24compare/stamp目录中准备otutab.txt和taxonomy.txt文件；
-    #2. Rstudio打开format2stamp.Rmd，设置参数；
-    #3. 点击Knit在当前目录生成stamp输入文件和可重复计算网页。
-
+    compare="KO-WT"
+    # 替换ASV(result/otutab.txt)为属(result/tax/sum_g.txt)
+    Rscript ${db}/script/compare_stamp.R \
+      --input result/stamp/tax_5Family.txt --metadata result/metadata.txt \
+      --group Group --compare ${compare} --threshold 0.1 \
+      --method "t.test" --pvalue 0.05 --fdr "none" \
+      --width 189 --height 159 \
+      --output result/stamp/${compare}
+    # 可选Rmd文档见result/CompareStamp.Rmd
 
 ## 3. LEfSe输入文件准备
 
@@ -692,6 +698,29 @@
     # 方法2. Linux服务器用户可参考附录2. PICRUSt功能预测
     # 然后结果使用STAMP/R进行差异比较
 
+    l=pathway2
+    cut -f 2- result/picrust/${l}.spf > result/picrust/${l}.mat.txt
+    csvtk -t cut -f 2,1 result/picrust/${l}.spf | sed 's/;/\t/' | sed '1 s/ID/Pathway\tCategory/' > result/picrust/${l}.anno.txt
+    compare="KO-WT"
+    Rscript ${db}/script/compare.R \
+      --input result/picrust/${l}.mat.txt --design result/metadata.txt \
+      --group Group --compare ${compare} --threshold 0 \
+      --method wilcox --pvalue 0.05 --fdr 0.2 \
+      --output result/picrust/
+    # 可对结果${compare}.txt筛选
+    # 绘制A/B组的柱状图，按高分类级着色和分面
+    Rscript ${db}/script/compare_hierarchy_facet.R \
+      --input result/picrust/${compare}.txt \
+      --data MeanB \
+      --annotation result/picrust/${l}.anno.txt \
+      --output result/picrust/${compare}.MeanB.bar.pdf
+    # 绘制A/B两组显著差异柱状图，按高分类级分面
+    Rscript ${db}/script/compare_hierarchy_facet2.R \
+      --input result/picrust/${compare}.txt \
+      --pvalue 0.05 --fdr 0.1 \
+      --annotation result/picrust/${l}.anno.txt \
+      --output result/picrust/${compare}.bar.pdf
+      
     # PICRUSt 2.0
     # 软件安装，附录6. PICRUSt环境导出和导入
     # 使用，附录7. PICRUSt2功能预测
@@ -1321,7 +1350,9 @@ USEARCH使用UNITE下载的utax数据库，提示各种错误
 - 2022/1/7 EasyAmplicon 1.14:
     - R运行环境升级为4.1.2，配套有4.1.zip的最新全套包
     - RStudio更新为2021.09.1
-
+    - 文涛重写amplicon包中tax_maptree函数，不依赖其他包，解决无法着色问题
+    - EasyMicrobiome中添加compare_stamp.R脚本，直接差异比较绘制STAMP扩展柱状图；代码详见result/CompareStamp.Rmd
+    - EasyMicrobiome中添加compare_hierarchy_facet.R和compare_hierarchy_facet2.R，展示KEGG的1，2级总览和差异
 
 使用此脚本，请引用下文：
 

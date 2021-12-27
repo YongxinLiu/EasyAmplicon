@@ -11,7 +11,7 @@
 
 <meta name="author" content="刘永鑫(Yong-Xin Liu)" />
 
-<meta name="date" content="2021-10-06" />
+<meta name="date" content="2021-12-25" />
 
 <title>计数值(count)特征表差异比较及可视化-火山图、曼哈顿图和热图</title>
 
@@ -350,7 +350,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">计数值(count)特征表差异比较及可视化-火山图、曼哈顿图和热图</h1>
 <h4 class="author">刘永鑫(Yong-Xin Liu)</h4>
-<h4 class="date">2021-10-06</h4>
+<h4 class="date">2021-12-25</h4>
 
 </div>
 
@@ -362,17 +362,17 @@ div.tocify {
 <h1>0. 参数说明</h1>
 <p>修改下面<code>default=</code>后面的文件和参数。</p>
 <p>输入文件为原始OTU表(otutab.txt)+物种注释(taxonomy.txt)+分组信息(metadata.txt)</p>
-<p>输入文件“-i”, “–input”，OTU table in counts; 原始OTU表counts值；</p>
-<p>实验设计“-d”, “–design”，默认<code>metadata.txt</code>，可手动修改文件位置；</p>
-<p>物种注释“-t”, “–taxonomy”，Taxonomy file; 物种注释</p>
-<p>分组列名“-n”, “–group”，默认将metadata.txt中的group列作为分组信息，可修改为任意列名；</p>
-<p>输入文件前缀“-o”, “–output”，默认为空时，输出为当前目录前缀为KO-WT_all/sig.txt统计表格，A-B_volcano/manhattan/heatmap.pdf组比较图片。</p>
-<p>物种图例顺序“-T”, “–top10tax”，Top 10 phylum; 自定义门图例</p>
-<p>比较组“-c”, “–compare”，Groups comparison; 组间比较，默认为KO-WT</p>
-<p>Pvalue阈值“-p”, “–pvalue”，Threshold of P-value, 显著性阈值</p>
-<p>假阳性率阈值“-f”, “–fdr”，Threshold of FDR, 假阳性率阈值</p>
-<p>图片宽“-w”, “–width”，默认8英寸，根据图像布局可适当增大或缩小</p>
-<p>图片高“-e”, “–height”，默认5英寸，根据图像布局可适当增大或缩小</p>
+<p>输入文件”-i”, “–input”，OTU table in counts; 原始OTU表counts值；</p>
+<p>实验设计”-d”, “–design”，默认<code>metadata.txt</code>，可手动修改文件位置；</p>
+<p>物种注释”-t”, “–taxonomy”，Taxonomy file; 物种注释</p>
+<p>分组列名”-n”, “–group”，默认将metadata.txt中的group列作为分组信息，可修改为任意列名；</p>
+<p>输入文件前缀”-o”, “–output”，默认为空时，输出为当前目录前缀为KO-WT_all/sig.txt统计表格，A-B_volcano/manhattan/heatmap.pdf组比较图片。</p>
+<p>物种图例顺序”-T”, “–top10tax”，Top 10 phylum; 自定义门图例</p>
+<p>比较组”-c”, “–compare”，Groups comparison; 组间比较，默认为KO-WT</p>
+<p>Pvalue阈值”-p”, “–pvalue”，Threshold of P-value, 显著性阈值</p>
+<p>假阳性率阈值”-f”, “–fdr”，Threshold of FDR, 假阳性率阈值</p>
+<p>图片宽”-w”, “–width”，默认8英寸，根据图像布局可适当增大或缩小</p>
+<p>图片高”-e”, “–height”，默认5英寸，根据图像布局可适当增大或缩小</p>
 </div>
 <div id="解析命令行" class="section level1">
 <h1>1. 解析命令行</h1>
@@ -665,7 +665,7 @@ div.tocify {
 <p>使用此脚本，请引用下文：</p>
 <p>If used this script, please cited:</p>
 <p><strong>Yong-Xin Liu</strong>, Yuan Qin, <strong>Tong Chen</strong>, et. al. A practical guide to amplicon and metagenomic analysis of microbiome data. <strong>Protein Cell</strong>, 2021(12) 5:315-330, doi: <a href="https://doi.org/10.1007/s13238-020-00724-8">10.1007/s13238-020-00724-8</a></p>
-<p>Copyright 2016-2021 Yong-Xin Liu <a href="mailto:metagenome@126.com" class="email">metagenome@126.com</a></p>
+<p>Copyright 2016-2022 Yong-Xin Liu <a href="mailto:metagenome@126.com" class="email">metagenome@126.com</a></p>
 </div>
 
 

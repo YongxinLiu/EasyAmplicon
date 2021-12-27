@@ -1,0 +1,42 @@
+L2	Abundance	L1
+Amino Acid Metabolism	10.85226441	Metabolism
+Biosynthesis of Other Secondary Metabolites	0.801473685	Metabolism
+Cancers	0.200218503	Human Diseases
+Carbohydrate Metabolism	9.825700857	Metabolism
+Cardiovascular Diseases	0.041676219	Human Diseases
+Cell Communication	4.10266E-06	Cellular Processes
+Cell Growth and Death	0.668258507	Cellular Processes
+Cell Motility	3.096523213	Cellular Processes
+Cellular Processes and Signaling	3.677857914	Unclassified
+Circulatory System	0.060426072	Organismal Systems
+Digestive System	0.034029538	Organismal Systems
+Endocrine System	0.429947803	Organismal Systems
+Energy Metabolism	5.258382179	Metabolism
+Environmental Adaptation	0.122299017	Organismal Systems
+Enzyme Families	1.611986904	Metabolism
+Excretory System	0.036944139	Organismal Systems
+"Folding, Sorting and Degradation"	1.870783913	Genetic Information Processing
+Genetic Information Processing	2.156849956	Unclassified
+Glycan Biosynthesis and Metabolism	1.514849861	Metabolism
+Immune System	0.03512324	Organismal Systems
+Immune System Diseases	0.03064279	Human Diseases
+Infectious Diseases	0.436744548	Human Diseases
+Lipid Metabolism	4.065468628	Metabolism
+Membrane Transport	14.44885951	Environmental Information Processing
+Metabolic Diseases	0.06854832	Human Diseases
+Metabolism	2.674580389	Unclassified
+Metabolism of Cofactors and Vitamins	3.881796165	Metabolism
+Metabolism of Other Amino Acids	2.240721722	Metabolism
+Metabolism of Terpenoids and Polyketides	2.289844274	Metabolism
+Nervous System	0.088760089	Organismal Systems
+Neurodegenerative Diseases	0.473060296	Human Diseases
+Nucleotide Metabolism	2.88274028	Metabolism
+Poorly Characterized	4.979860933	Unclassified
+Replication and Repair	5.732190185	Genetic Information Processing
+Sensory System	1.36755E-06	Organismal Systems
+Signal Transduction	2.234900385	Environmental Information Processing
+Signaling Molecules and Interaction	0.154447485	Environmental Information Processing
+Transcription	2.218062373	Genetic Information Processing
+Translation	3.399197178	Genetic Information Processing
+Transport and Catabolism	0.372610694	Cellular Processes
+Xenobiotics Biodegradation and Metabolism	5.031362346	Metabolism

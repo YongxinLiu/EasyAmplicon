@@ -1,0 +1,42 @@
+Pathway	Category	KEGG_Pathways
+Amino Acid Metabolism	Metabolism	 Amino Acid Metabolism
+Biosynthesis of Other Secondary Metabolites	Metabolism	 Biosynthesis of Other Secondary Metabolites
+Cancers	Human Diseases	 Cancers
+Carbohydrate Metabolism	Metabolism	 Carbohydrate Metabolism
+Cardiovascular Diseases	Human Diseases	 Cardiovascular Diseases
+Cell Communication	Cellular Processes	 Cell Communication
+Cell Growth and Death	Cellular Processes	 Cell Growth and Death
+Cell Motility	Cellular Processes	 Cell Motility
+Cellular Processes and Signaling	Unclassified	 Cellular Processes and Signaling
+Circulatory System	Organismal Systems	 Circulatory System
+Digestive System	Organismal Systems	 Digestive System
+Endocrine System	Organismal Systems	 Endocrine System
+Energy Metabolism	Metabolism	 Energy Metabolism
+Environmental Adaptation	Organismal Systems	 Environmental Adaptation
+Enzyme Families	Metabolism	 Enzyme Families
+Excretory System	Organismal Systems	 Excretory System
+Folding, Sorting and Degradation	Genetic Information Processing	 Folding, Sorting and Degradation
+Genetic Information Processing	Unclassified	 Genetic Information Processing
+Glycan Biosynthesis and Metabolism	Metabolism	 Glycan Biosynthesis and Metabolism
+Immune System	Organismal Systems	 Immune System
+Immune System Diseases	Human Diseases	 Immune System Diseases
+Infectious Diseases	Human Diseases	 Infectious Diseases
+Lipid Metabolism	Metabolism	 Lipid Metabolism
+Membrane Transport	Environmental Information Processing	 Membrane Transport
+Metabolic Diseases	Human Diseases	 Metabolic Diseases
+Metabolism	Unclassified	 Metabolism
+Metabolism of Cofactors and Vitamins	Metabolism	 Metabolism of Cofactors and Vitamins
+Metabolism of Other Amino Acids	Metabolism	 Metabolism of Other Amino Acids
+Metabolism of Terpenoids and Polyketides	Metabolism	 Metabolism of Terpenoids and Polyketides
+Nervous System	Organismal Systems	 Nervous System
+Neurodegenerative Diseases	Human Diseases	 Neurodegenerative Diseases
+Nucleotide Metabolism	Metabolism	 Nucleotide Metabolism
+Poorly Characterized	Unclassified	 Poorly Characterized
+Replication and Repair	Genetic Information Processing	 Replication and Repair
+Sensory System	Organismal Systems	 Sensory System
+Signal Transduction	Environmental Information Processing	 Signal Transduction
+Signaling Molecules and Interaction	Environmental Information Processing	 Signaling Molecules and Interaction
+Transcription	Genetic Information Processing	 Transcription
+Translation	Genetic Information Processing	 Translation
+Transport and Catabolism	Cellular Processes	 Transport and Catabolism
+Xenobiotics Biodegradation and Metabolism	Metabolism	 Xenobiotics Biodegradation and Metabolism
