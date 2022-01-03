@@ -1,0 +1,171 @@
+---
+title: "MarkovChain"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    theme: cerulean
+    highlight: haddock
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+    code_fold: show
+---
+
+脚本与相关数据整合自 Daniel et al. 2015 “Temporal and spatial variation of the human microbiota during pregnancy”。网址：http://statweb.stanford.edu/~susan/papers/PNASRR.html
+
+
+## 检测并安装依赖的包
+
+```{r check-packages}
+local({r = getOption("repos")  
+r["CRAN"] = "http://mirrors.tuna.tsinghua.edu.cn/CRAN/"   
+r["BioC_mirror"] = "https://mirrors.tuna.tsinghua.edu.cn/bioconductor"
+options(repos=r)}) 
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+a = rownames(installed.packages())
+install_package = c("phyloseq", "cluster", "igraph", "markovchain")
+for (i in install_package) {
+  if (!i %in% a)
+    BiocManager::install(i, update = F)
+}
+```
+
+
+## 导入包
+
+```{r import-packages}
+suppressPackageStartupMessages(library("phyloseq"))
+suppressPackageStartupMessages(library("cluster"))
+suppressPackageStartupMessages(library("igraph"))
+suppressPackageStartupMessages(library("markovchain"))
+```
+
+
+## 定义转换周期函数
+
+```{r function definition}
+#  设置状态转换的时间间隔
+#  例：设置状态转换的时间间隔为4~10天，则转换周期小于4天或大于10天的样本被忽略掉
+samdat.prune_prev = function(samdat) {
+  GAP_MIN = 4   ##设置转换周期的最下间隔
+  GAP_MAX = 10  ##设置转换周期的最大间隔
+  data_markov = data.frame(samdat)   ##读取数据
+  subjects = unique(data_markov$SubjectID)
+  csub = split(data_markov, data_markov$SubjectID)   ##提取个体
+  for(sub in subjects) {
+    cc = csub[[sub]]
+    cc = cc[order(cc$Time),]   ##按时间点排序
+    cc$PrevID = c(NA, cc$SampleID[-nrow(cc)])   ##提取每个样本前一个时间点ID
+    del = cc$Time - c(-999, cc$Time[-nrow(cc)])   ##提取样本间的时间间隔
+    keep = del>=GAP_MIN & del<=GAP_MAX  ##删除设置周期间隔以外的样本
+    if(sum(keep) == 0) {
+      csub[[sub]] = NULL
+    } else {
+      cc = cc[keep,]
+      csub[[sub]] = cc
+    }
+  }
+  return(do.call(rbind, csub))   ##返回符合要求的排序的样本
+}
+```
+
+
+## 使用最大似然法估计转换率
+
+```{r estimate transition rates}
+#  计算概率转移矩阵
+data_markov = read.table("data_markov.txt",header = T,sep = '\t',row.names = 1)  ##数据读取
+data_markov$SubjectID = as.character(data_markov$SubjectID)  
+data_markov$CST = as.factor(data_markov$CST)   
+CSTs = levels(data_markov$CST)  
+nstates = nlevels(data_markov$CST)
+#  将样本划分为指定间隔周期
+data_markov_prev = samdat.prune_prev(data_markov)  ##调用转换周期函数
+rownames(data_markov_prev) = data_markov_prev$SampleID
+#  估计转换率
+data_markov_prev$PrevCST = data.frame(data_markov)[data_markov_prev$PrevID,"CST"]  ##提取每个样本前一个时间点的状态
+data_markov_prev$CurCST = data_markov_prev$CST  ##提取每个样本当前时间点状态
+ttab = table(data_markov_prev$PrevCST, data_markov_prev$CurCST)   ##计算不同状态间的转换频数
+trans = matrix(ttab, nrow=nstates)  ##计算概率转移矩阵
+trans = trans/rowSums(trans)  ##标准化至1
+CSTtrans = trans
+colnames(CSTtrans) = CSTs
+rownames(CSTtrans) = CSTs  ##定义行名和列名
+```
+
+
+## 绘制马尔科夫链
+
+```{r markov chain plot}
+#  定义马尔科夫链
+mcPreg = new("markovchain", states=CSTs,
+              transitionMatrix = trans, name="PregCST")
+#  建立马尔科夫链
+netMC = markovchain:::.getNet(mcPreg, round = TRUE)
+wts = E(netMC)$weight/100  ##提取状态转移概率
+edgel = get.edgelist(netMC)  ##提取不同状态连接关系
+elcat = paste(edgel[,1], edgel[,2])
+elrev = paste(edgel[,2], edgel[,1])
+edge.curved = sapply(elcat, function(x) x %in% elrev)  ##设置马尔可夫链弯曲状态（状态之间为单向转换则为直边）
+premat = table(data_markov[,c(5,4)])  ##提取早产与足月在不同组中的个体数
+premat = premat/rowSums(premat)   ##计算比例
+#  马尔科夫绘图函数
+plotMC = function(object, ...) {
+  netMC = markovchain:::.getNet(object, round = TRUE)
+  plot.igraph(x = netMC, ...)  
+}
+#  设置早产比例的颜色条
+color.bar <- function(lut, min, max=-min, nticks=11, ticks=seq(min, max, len=nticks), title=NULL) {
+    scale = (length(lut)-1)/(max-min)
+    cur.par <- par(no.readonly=T)
+    par(mar=c(0,4,1,4)+0.1, oma=c(0,0,0,0)+0.1)
+    par(ps = 10, cex = 0.8)
+    par(tcl=-0.2, cex.axis=0.8, cex.lab = 0.8)
+    plot(c(min,max), c(0,10), type='n', bty='n', xaxt='n', xlab='', yaxt='n', ylab='', main=title)
+    axis(1, c(0, 0.5, 1))
+    for (i in 1:(length(lut)-1)) {
+      x = (i-1)/scale + min
+      rect(x,0,x+1/scale,10, col=lut[i], border=NA)
+    }
+}
+pal <- colorRampPalette(c("grey50", "maroon", "magenta2"))(101)
+vert.clrs <- sapply(states(mcPreg), function(x) pal[1+round(100*premat[x,"preterm"])])   ##定义颜色条
+#  定义点的属性 （大小、颜色）
+vert.sz = 4 + 2*sapply(states(mcPreg), 
+                        function(x) nrow(unique(sample_data(data_markov)[sample_data(data_markov)$CST==x,"SubjectID"])))  ##设置点的大小与样本数成比例
+vert.sz = vert.sz * 0.85 
+vert.font.clrs = c("white", "white", "white", "white", "white")  ##设置点标签颜色
+#  定义边的属性 （角度、标签、形状）
+edge.loop.angle = c(-1,0,0,0,0,0,pi,0,0,0,0,pi/2,0,0,0,0,0,0,0,0,0,0,0)  ##设置边弯曲角度
+layout = matrix(c(0.6,0.95, 0.43,1, 0.3,0.66, 0.55,0.3, 0.75,0.65), nrow=5, ncol=2, byrow=T)  ##根据坐标设置点的位置
+edge.arrow.size=0.8  ##设置箭头大小
+edge.arrow.width=1   ##设置箭头宽度
+edge.width = (15*wts + 0.1)*0.6  ##设置边的粗细与转换概率成比例
+edge.labels = as.character(E(netMC)$weight/100)  ##设置边标签
+edge.labels[edge.labels<0.4] = NA  ##仅显示转移概率不小于0.4的边标签
+#  绘制马尔可夫链
+pdf("markovchain.pdf")   ##输出pdf格式的图片
+layout(matrix(c(1,1,2,2), 2, 2, byrow = TRUE), heights=c(1,10))
+color.bar(pal, min=0, max=1, nticks=6, title="Fraction preterm")  ##绘制颜色条
+par(mar=c(0,1,1,1)+0.1)  ##设置图形位置
+plotMC(mcPreg, 
+       edge.arrow.size = edge.arrow.size, edge.arrow.width = edge.arrow.width,
+       edge.label = edge.labels, edge.label.font = 2, edge.label.cex = 0.8, 
+       edge.label.color = "black",  ##设置边标签颜色
+       edge.width = edge.width, edge.curved = edge.curved, 
+       edge.color = "#a3a3a3",  ##设置边颜色
+       layout = layout, edge.loop.angle = edge.loop.angle,
+       vertex.size = (vert.sz), 
+       vertex.color=vert.clrs,    ##设置点的颜色对应早产婴儿数目
+       #vertex.color = "#a9303b",  ##设置点为统一颜色
+       vertex.label.font = 2,  ##设置点标签字体
+       vertex.label.cex = c(2,.5,2,2,1),   ##设置点标签大小
+       vertex.label.color = vert.font.clrs, vertex.frame.color = NA)
+dev.off()
+```
+

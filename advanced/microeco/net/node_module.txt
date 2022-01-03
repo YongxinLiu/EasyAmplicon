@@ -1,0 +1,51 @@
+z	module	p	taxa_roles	Kingdom	Phylum	Class	Order	Family	Genus	Species	degree	betweenness	Abundance
+ASV_2	1.21493228707265	M3	0.660493827160494	Connectors	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Aquincola	s__Unassigned	18	69	5.89243051884172
+ASV_17	0.815502494062462	M3	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Unassigned	s__Unassigned	15	22	1.3022907200075
+ASV_45	1.08178902273592	M3	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Unassigned	s__Unassigned	17	85	0.572178091267425
+ASV_54	0.549215965389005	M3	0.641975308641975	Connectors	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Oxalobacteraceae	g__Pseudoduganella	s__Unassigned	13	240	0.550094024586928
+ASV_102	-0.915359942315008	M3	0.611111111111111	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Aquincola	s__Unassigned	2	0	0.247609232478301
+ASV_131	-0.915359942315008	M3	0	Peripheral nodes	k__Bacteria	p__Unassigned	c__Unassigned	o__Unassigned	f__Unassigned	g__Unassigned	s__Unassigned	2	0	0.199425814266307
+ASV_136	-1.04850320665174	M3	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Unassigned	f__Unassigned	g__Unassigned	s__Unassigned	1	0	0.156596109188979
+ASV_188	-0.78221667797828	M3	0.657777777777778	Connectors	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Oxalobacteraceae	g__Duganella	s__Unassigned	3	0	0.149903967770647
+ASV_5	-1.02092410453754	M2	0	Peripheral nodes	k__Bacteria	p__Unassigned	c__Unassigned	o__Unassigned	f__Unassigned	g__Unassigned	s__Unassigned	2	0	3.07236212515643
+ASV_6	1.44048195571736	M2	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Unassigned	s__Unassigned	18	5	2.516245173293
+ASV_22	0.825130440653632	M2	0.642857142857143	Connectors	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Sphingomonadales	f__Sphingomonadaceae	g__Sphingomonas	s__Unassigned	14	72	0.846555889419055
+ASV_41	0.6712925618877	M2	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Unassigned	s__Unassigned	13	25	0.694644279222909
+ASV_47	0.363616804355838	M2	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Variovorax	s__Unassigned	11	0	0.596939014515255
+ASV_68	1.13280619818549	M2	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Caulobacterales	f__Caulobacteraceae	g__Phenylobacterium	s__Unassigned	16	110	0.574854947834758
+ASV_77	-1.17476198330348	M2	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Xanthomonadales	f__Xanthomonadaceae	g__Lysobacter	s__Unassigned	1	0	0.32590728707279
+ASV_111	-1.17476198330348	M2	0.568047337278107	Peripheral nodes	k__Bacteria	p__Bacteroidetes	c__Chitinophagia	o__Chitinophagales	f__Chitinophagaceae	g__Niastella	s__Unassigned	1	0	0.238240234492635
+ASV_124	-0.251734710707888	M2	0.615702479338843	Peripheral nodes	k__Bacteria	p__Actinobacteria	c__Actinobacteria	o__Propionibacteriales	f__Nocardioidaceae	g__Nocardioides	s__Unassigned	7	0	0.201433456691807
+ASV_147	0.363616804355838	M2	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Oxalobacteraceae	g__Unassigned	s__Unassigned	11	30	0.157934537472646
+ASV_154	-1.17476198330348	M2	0	Peripheral nodes	k__Bacteria	p__Actinobacteria	c__Actinobacteria	o__Streptomycetales	f__Streptomycetaceae	g__Streptomyces	s__Unassigned	1	0	0.155926895047146
+ASV_10	1.07159958021951	M1	0.625	Connectors	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Rhizobiales	f__Rhizobiaceae	g__Pararhizobium	s__Unassigned	18	150	1.81223189608443
+ASV_31	-0.833466340170732	M1	0.650519031141868	Connectors	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Rhizobiales	f__Rhizobiaceae	g__Unassigned	s__Unassigned	3	0	0.78565740251223
+ASV_38	1.57961715899024	M1	0.674556213017751	Connectors	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Oxalobacteraceae	g__Janthinobacterium	s__Unassigned	22	15	0.675906283251578
+ASV_67	0.182568817370732	M1	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Rhizobiales	f__Rhizobiaceae	g__Ensifer	s__Unassigned	11	3	0.429635479056943
+ASV_61	0.944595185526829	M1	0.462809917355372	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Rhodospirillales	f__Rhodospirillaceae	g__Dongia	s__Unassigned	17	84	0.400190056816281
+ASV_59	1.07159958021951	M1	0.608996539792388	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Piscinibacter	s__Unassigned	18	47	0.397513200248948
+ASV_66	0.0555644226780488	M1	0.641975308641975	Connectors	k__Bacteria	p__Proteobacteria	c__Deltaproteobacteria	o__Unassigned	f__Unassigned	g__Unassigned	s__Unassigned	10	1	0.382790489128616
+ASV_82	-0.579457550785366	M1	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Unassigned	s__Unassigned	5	0	0.348660567895121
+ASV_72	1.83362594837561	M1	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Oxalobacteraceae	g__Unassigned	s__Unassigned	24	114	0.344645283044121
+ASV_95	-0.0714399720146342	M1	0.54	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Rhizobiales	f__Devosiaceae	g__Devosia	s__Unassigned	9	7	0.257647444605799
+ASV_108	-0.452453156092683	M1	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Oxalobacteraceae	g__Massilia	s__Unassigned	6	0	0.238240234492635
+ASV_736	-0.833466340170732	M1	0.48	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Rhizobiales	f__Phyllobacteriaceae	g__Mesorhizobium	s__Unassigned	3	0	0.231548093074303
+ASV_129	-1.0874751295561	M1	0.635416666666667	Connectors	k__Bacteria	p__Actinobacteria	c__Actinobacteria	o__Unassigned	f__Unassigned	g__Unassigned	s__Unassigned	1	0	0.222848309230471
+ASV_116	-0.960470734863415	M1	0	Peripheral nodes	k__Bacteria	p__Actinobacteria	c__Actinobacteria	o__Propionibacteriales	f__Nocardioidaceae	g__Aeromicrobium	s__Unassigned	2	0	0.208125598110139
+ASV_282	-1.0874751295561	M1	0.375	Peripheral nodes	k__Bacteria	p__Actinobacteria	c__Actinobacteria	o__Micromonosporales	f__Micromonosporaceae	g__Unassigned	s__Unassigned	1	0	0.192064458706141
+ASV_151	-0.833466340170732	M1	0.444444444444444	Peripheral nodes	k__Bacteria	p__Bacteroidetes	c__Cytophagia	o__Cytophagales	f__Fulvivirgaceae	g__Chryseolinea	s__Unassigned	3	0	0.153250038479813
+ASV_26	-1	M5	0	Peripheral nodes	k__Bacteria	p__Actinobacteria	c__Actinobacteria	o__Pseudonocardiales	f__Pseudonocardiaceae	g__Actinocrispum	s__Unassigned	1	0	0.83517924900789
+ASV_109	1	M5	0.444444444444444	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Polaromonas	s__Unassigned	3	82	0.260993515314966
+ASV_415	0	M5	0	Peripheral nodes	k__Bacteria	p__Actinobacteria	c__Actinobacteria	o__Micromonosporales	f__Micromonosporaceae	g__Catellatospora	s__Unassigned	2	42	0.158603751614479
+ASV_33	-1.08821437516502	M4	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Comamonadaceae	g__Ideonella	s__Unassigned	1	0	0.724758915605405
+ASV_36	1.08821437516502	M4	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Oxalobacteraceae	g__Pseudoduganella	s__Unassigned	4	42	0.697990349932075
+ASV_42	0.362738125055006	M4	0.612244897959184	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Oxalobacteraceae	g__Pseudoduganella	s__Unassigned	3	40	0.613000153919253
+ASV_79	1.08821437516502	M4	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Oxalobacteraceae	g__Pseudoduganella	s__Unassigned	4	194	0.30315400625046
+ASV_105	-0.362738125055006	M4	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Betaproteobacteria	o__Burkholderiales	f__Oxalobacteraceae	g__Pseudoduganella	s__Unassigned	2	0	0.234224949641636
+ASV_107	-1.08821437516502	M4	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Rhizobiales	f__Phyllobacteriaceae	g__Unassigned	s__Unassigned	1	0	0.217494596095805
+ASV_40	1.15470053837925	M7	0	Peripheral nodes	k__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae 1	g__Bacillus	s__Unassigned	2	1	0.65984514384758
+ASV_118	-0.577350269189626	M7	0.661157024793388	Connectors	k__Bacteria	p__Proteobacteria	c__Deltaproteobacteria	o__Unassigned	f__Unassigned	g__Unassigned	s__Unassigned	1	0	0.250955303187467
+ASV_156	-0.577350269189626	M7	0	Peripheral nodes	k__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae 1	g__Bacillus	s__Unassigned	1	0	0.155926895047146
+ASV_70	1.15470053837925	M6	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Sphingomonadales	f__Sphingomonadaceae	g__Unassigned	s__Unassigned	2	1	0.615007796344752
+ASV_410	-0.577350269189626	M6	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Rhizobiales	f__Rhizobiaceae	g__Unassigned	s__Unassigned	1	0	0.258985872889466
+ASV_141	-0.577350269189626	M6	0	Peripheral nodes	k__Bacteria	p__Proteobacteria	c__Alphaproteobacteria	o__Rhizobiales	f__Boseaceae	g__Bosea	s__Unassigned	1	0	0.167972749600145

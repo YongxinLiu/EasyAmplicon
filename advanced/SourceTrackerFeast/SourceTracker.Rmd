@@ -1,0 +1,71 @@
+---
+title: "SourceTracker"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    theme: cerulean
+    highlight: haddock
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+    code_fold: show
+---
+
+##  导入数据并进行溯源
+
+```{r input data and source tracking}
+##  读取样本信息表
+metadata = read.table('sourcetracker_metadata.txt',sep='\t',h=T,row.names=1,check=F,comment='')
+## 读取OTU丰度表
+## 第一行与第二行必须以#开头
+otus = read.table('sourcetracker_otu.txt',sep='\t', header=T,row.names=1,check=F,skip=1,comment='')
+otus = t(as.matrix(otus))
+common.sample.ids = intersect(rownames(metadata), rownames(otus))  ##提取otu表与metadata共有id
+otus = otus[common.sample.ids,]
+metadata = metadata[common.sample.ids,]  ##从otu表中提取具有metadata信息的样本
+if(length(common.sample.ids) <= 1) {
+    message = paste(sprintf('Error: there are %d sample ids in common '),
+                    'between the metadata file and data table')
+    stop(message)
+}
+train.ix = which(metadata$SourceSink=='source')  ##提取训练集
+test.ix = which(metadata$SourceSink=='sink')    ##提取测试集
+envs = metadata$Env   ##提取环境信息
+if(is.element('Description',colnames(metadata))) desc = metadata$Description    ##提取样本标签
+##  载入SourceTracker包
+source('SourceTracker.r') 
+##  使用交叉验证计算alpha值 (非常慢!)
+# tune.results = tune.st(otus[train.ix,], envs[train.ix])
+# alpha1 = tune.results$best.alpha1
+# alpha2 = tune.results$best.alpha2
+##  使用以下代码跳过此步骤：
+alpha1 = alpha2 = 0.001
+##  使用训练集训练sourcetracker
+st = sourcetracker(otus[train.ix,], envs[train.ix])
+##  计算各来源比例
+results = predict(st,otus[test.ix,], alpha1=alpha1, alpha2=alpha2)
+```
+
+
+##  画图
+
+```{r plot}
+##  展示溯源结果
+labels = sprintf('%s %s', envs,desc)
+plot(results, labels[test.ix], type='pie')
+
+# 输出pdf格式的文件
+pdf("sourcetracker_pie.pdf")     
+labels = sprintf('%s %s', envs,desc)
+plot(results, labels[test.ix], type='pie')
+dev.off()
+
+##  其他展示形式
+plot(results, labels[test.ix], type='bar')
+plot(results, labels[test.ix], type='dist')
+```
+
+

@@ -1,0 +1,99 @@
+---
+title: "网络属性比较"
+author: "王金锋 易生信"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    theme: cerulean
+    highlight: haddock
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+    code_fold: show
+---
+
+需要将01中cd2+和cd2-两个组分别运行完成后再执行此脚本。
+
+## Venn图展示共有的边
+
+### 输入文件
+
+```{r}
+edge_cdtn_pos = "abundance_cd2+_edge.txt"
+edge_cdtn_neg = "abundance_cd2-_edge.txt"
+```
+
+
+```{r edge}
+suppressPackageStartupMessages(library("VennDiagram"))
+
+#读入边文件
+edge.cdtn1 <- read.table(edge_cdtn_pos, header = T)
+edge.cdtn2 <- read.table(edge_cdtn_neg, header = T)
+
+#计算边的数目
+num1 <- length(edge.cdtn1[,1])   ##cdtn+边的数目
+num2 <- length(edge.cdtn2[,2])   ##cdtn+边的数目
+
+#计算cdtn+与cdtn—边的交集
+e1 <- data.frame(source = c(as.character(edge.cdtn1[,1]),as.character(edge.cdtn1[,2])), target = c(as.character(edge.cdtn1[,2]),as.character(edge.cdtn1[,1])), class = c(as.character(edge.cdtn1[,4]),as.character(edge.cdtn1[,4])))
+e2 <- data.frame(source = c(as.character(edge.cdtn2[,1]),as.character(edge.cdtn2[,2])), target = c(as.character(edge.cdtn2[,2]),as.character(edge.cdtn2[,1])), class = c(as.character(edge.cdtn2[,4]),as.character(edge.cdtn2[,4])))
+g1 <- paste(e1[,1],e1[,2],e1[,3])
+g2 <- paste(e2[,1],e2[,2],e2[,3])
+overEdge <- unique(intersect(as.character(g1), as.character(g2)))
+overNum <- length(overEdge)/2  ##交集边的数目
+
+
+p <- draw.pairwise.venn(num1,num2,overNum, fill = c("#e31a1c","#41ab5d"), c(edge_cdtn_pos,edge_cdtn_neg))
+
+grid.draw(p)
+
+##导出pdf图片
+pdf("venn.pdf",height = 8,width = 15)
+grid.draw(p)
+dev.off()
+```
+
+## 热图展示两个网络图中点的度数比较
+
+### 输入文件
+
+```{r}
+degree_cdtn_pos = "abundance_cd2+_network_degree.txt"
+degree_cdtn_neg = "abundance_cd2-_network_degree.txt"
+```
+
+
+```{r node degree}
+suppressPackageStartupMessages(library("pheatmap"))
+#读入节点连接度数据
+degree.cdtn1 <- read.table(degree_cdtn_pos, header = T)
+degree.cdtn2 <- read.table(degree_cdtn_neg, header = T)
+overGenus <- intersect(as.character(degree.cdtn1[,1]), as.character(degree.cdtn2[,1]))  #取节点交集
+g1 <- degree.cdtn1[degree.cdtn1[,1] %in% overGenus,]
+g1 <- g1[order(g1[,1]),]
+g2 <- degree.cdtn2[degree.cdtn2[,1] %in% overGenus,]
+g2 <- g2[order(g2[,1]),]
+myHeat <- data.frame(cdtn1 = g1[,2], cdtn2 = g2[,2])  ##构造热图数据
+rownames(myHeat) <- g1[,1]
+```
+
+### 绘制热图
+
+```{r plot heatmap}
+h1 = pheatmap(myHeat)
+#自定义颜色
+h2 = pheatmap(myHeat, color = colorRampPalette(colors = c("#4292c6","#fec44f"))(100))
+
+##导出pdf图片
+pdf("heatmap1.pdf",height = 5,width = 5)
+h1
+dev.off()
+
+pdf("heatmap2.pdf",height = 5,width = 5)
+h2
+dev.off()
+```

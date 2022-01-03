@@ -1,0 +1,51 @@
+#SampleID	Description	Env	SourceSink	Study	Details
+Run20100430_H2O-1	PCR water 1	Lab 1	sink	Lab 1	PCR_water_sample_1_2010_04_30_run
+Run20100524_H2O-5	PCR water 5	Lab 2	sink	Lab 2	PCR_water_sample_5_2010_05_24_run
+ESC_3.14	PCR table 1	Lab 3	sink	Lab 3	PCRTable_Lab_B
+MBD10	Counter 1	NICU	sink	NICU	Swab_was_taken_from_NICU_baby_open_bedside_diaper_counter_machine_MB
+NYFP7	Phone NY 5	Office	sink	Office	Swab_sample_from_woman_phone_in_New_York_office_room_7
+F31Fcsp	Gut 13	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+F33Fcsw	Gut 17	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+F34Fcsw	Gut 18	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M11Fcsp	Gut 19	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M11Fcsw	Gut 20	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M12Fcsp	Gut 21	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M12Fcsw	Gut 22	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M13Fcsw	Gut 23	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M14Fcsw	Gut 24	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M21Fcsp	Gut 25	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M21Fcsw	Gut 26	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M22Fcsp	Gut 27	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M22Fcsw	Gut 28	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M23Fcsw	Gut 29	Gut	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M22Tong	Tongue 18	Oral	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M23Tong	Tongue 19	Oral	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M24Tong	Tongue 20	Oral	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M31Tong	Tongue 21	Oral	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M33Tong	Tongue 23	Oral	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M34Tong	Tongue 24	Oral	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M41Tong	Tongue 25	Oral	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M42Tong	Tongue 26	Oral	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M43Tong	Tongue 27	Oral	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M44Tong	Tongue 28	Oral	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M13Plml	L Palm 4	Skin	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M23Plml	L Palm 5	Skin	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M33Plml	L Palm 6	Skin	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M43Plml	L Palm 7	Skin	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M53Plml	L Palm 8	Skin	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+M63Plml	L Palm 9	Skin	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+F12Indr	R index 1	Skin	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+F21Indr	R index 2	Skin	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+F31Indr	R index 3	Skin	source	Bacterial_variation_in_human_body_habitats_across_space_and_time	NA
+HJ2	Andisol 2	Soil	source	88_Soils	NA
+JT1	Aridisol 3	Soil	source	88_Soils	NA
+MD5	Aridisol 4	Soil	source	88_Soils	NA
+SF1	Aridisol 5	Soil	source	88_Soils	NA
+SV1	Aridisol 6	Soil	source	88_Soils	NA
+SV2	Aridisol 7	Soil	source	88_Soils	NA
+BP1	Entisol 1	Soil	source	88_Soils	NA
+SA1	Entisol 2	Soil	source	88_Soils	NA
+SA2	Entisol 3	Soil	source	88_Soils	NA
+SP2	Entisol 4	Soil	source	88_Soils	NA
+BZ1	Gelisol 1	Soil	source	88_Soils	NA
+TL3	Gelisol 2	Soil	source	88_Soils	NA

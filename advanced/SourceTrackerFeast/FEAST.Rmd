@@ -1,0 +1,79 @@
+---
+title: "来源追溯FEAST"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    theme: cerulean
+    highlight: haddock
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+    code_fold: show
+---
+
+软件官方最新教程：https://github.com/cozygene/FEAST
+
+注：官网最新的0.1.0版计算结果有错误，无法输出正确结果和绘图。此版本为2020年12月发布的0.1.0
+
+## 检测并安装依赖的包
+
+```{r check-packages}
+local({r = getOption("repos")  
+r["CRAN"] = "http://mirrors.tuna.tsinghua.edu.cn/CRAN/"   
+r["BioC_mirror"] = "https://mirrors.tuna.tsinghua.edu.cn/bioconductor"
+options(repos=r)}) 
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+a = rownames(installed.packages())
+install_package = c("devtools","Rcpp", "RcppArmadillo", "vegan", "dplyr", "reshape2", "gridExtra", "ggplot2", "ggthemes")
+
+for (i in install_package) {
+  if (!i %in% a)
+    BiocManager::install(i, update = F)
+}
+if (!"FEAST" %in% a){
+  devtools::install_github("cozygene/FEAST")
+}
+```
+
+
+## 导入包
+
+```{r import-packages}
+suppressWarnings(suppressMessages(library("FEAST")))
+```
+
+
+##  导入数据并进行溯源分析
+
+```{r input data and source tracking}
+##  读入样本信息表
+metadata = Load_metadata(metadata_path = "FEAST_metadata.txt")
+##  读入OTU丰度表
+otus = Load_CountMatrix(CountMatrix_path = "FEAST_otu.txt")
+##  设置结果输出路径
+dir_path = getwd()
+##  使用FEAST进行溯源
+FEAST_output = suppressWarnings(suppressMessages(FEAST(C = otus, metadata = metadata, different_sources_flag = 1, 
+                     dir_path = dir_path,outfile="Feast")))
+```
+
+
+##  结果展示
+
+```{r plot}
+# 绘图，默认保存png格式
+(p = PlotSourceContribution(SinkNames = rownames(FEAST_output)[c(5:8)],
+                       SourceNames = colnames(FEAST_output), dir_path = dir_path,
+                       mixing_proportions = FEAST_output, Plot_title = "Feast",Same_sources_flag = 0, N = 4))
+##输出pdf格式的图片
+pdf("Feast1_FEAST.pdf")   
+PlotSourceContribution(SinkNames = rownames(FEAST_output)[c(5:8)],
+                       SourceNames = colnames(FEAST_output), dir_path = dir_path,
+                       mixing_proportions = FEAST_output, Plot_title = "Feast",Same_sources_flag = 0, N = 4)
+dev.off()
+```
