@@ -2,7 +2,7 @@
 
 # EasyAmplicon (易扩增子)
 
-The Chinese version in (中文版见) README_cn.md
+The Chinese version in (中文版见) [README_cn.md](./README_cn.md)
 
 **An easy using, open-resource, reproducible, and community-based pipeline for amplicon data analysis in microbiome**
 
