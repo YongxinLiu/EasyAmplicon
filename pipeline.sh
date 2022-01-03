@@ -1353,7 +1353,7 @@ USEARCH使用UNITE下载的utax数据库，提示各种错误
     - 文涛重写amplicon包中tax_maptree函数，不依赖其他包，解决无法着色问题
     - EasyMicrobiome中添加compare_stamp.R脚本，直接差异比较绘制STAMP扩展柱状图；代码详见result/CompareStamp.Rmd
     - EasyMicrobiome中添加compare_hierarchy_facet.R和compare_hierarchy_facet2.R，展示KEGG的1，2级总览和差异
-    - 更新高级分析目录advanced：包括环境因、马尔可无链、网络模块、网络比较、随机森林分类、随机森林回归、微生态等
+    - 更新高级分析目录advanced：包括环境因子、马尔可无链、网络模块、网络比较、随机森林分类、随机森林回归、微生态等
 
 使用此脚本，请引用下文：
 
