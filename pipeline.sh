@@ -74,8 +74,8 @@
     # usearch数据库database下载页: http://www.drive5.com/sintax ，如RDP v16、Silva、unite数据库
     # 易生信整理了最新的RDP v18、ezbiocloud 2018、unite2021数据库
     # 解压缩并写入新文件，不删除原压缩包
-    gunzip -c ${db}/usearch/rdp_16s_v18_sp.fa.gz > ${db}/usearch/rdp_16s_v18_sp.fa
-    seqkit stat ${db}/usearch/rdp_16s_v18_sp.fa.gz
+    gunzip -c ${db}/usearch/rdp_16s_v18.fa.gz > ${db}/usearch/rdp_16s_v18.fa
+    seqkit stat ${db}/usearch/rdp_16s_v18.fa.gz
     # QIIME greengene 13_8有参数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
     gunzip -c ${db}/gg/97_otus.fasta.gz > ${db}/gg/97_otus.fasta
     seqkit stat ${db}/gg/97_otus.fasta
@@ -190,9 +190,9 @@
     mkdir -p result/raw
 
     # 方法1. vsearch+rdp去嵌合(快但容易假阴性)
-    # 可自行下载silva并解压(替换rdp_16s_v18_sp.fa为silva_16s_v123.fa)，极慢但理论上更好
+    # 可自行下载silva并解压(替换rdp_16s_v18.fa为silva_16s_v123.fa)，极慢但理论上更好
     vsearch --uchime_ref temp/otus.fa \
-      -db ${db}/usearch/rdp_16s_v18_sp.fa \
+      -db ${db}/usearch/rdp_16s_v18.fa \
       --nonchimeras result/raw/otus.fa
     # RDP: 7s, 143 (9.3%) chimeras; SILVA：9m, 151 (8.4%) chimeras
     # Win vsearch结果添加了windows换行符^M需删除，mac不要执行此命令
@@ -234,11 +234,11 @@
 ### 5.2 去除质体和非细菌 Remove plastid and non-Bacteria
 
     # 物种注释-去除质体和非细菌/古菌并统计比例(可选)
-    # RDP物种注释(rdp_16s_v18_sp)更快，但缺少完整真核来源数据,可能不完整，耗时15s;
+    # RDP物种注释(rdp_16s_v18)更快，但缺少完整真核来源数据,可能不完整，耗时15s;
     # SILVA数据库(silva_16s_v123.fa)更好注释真核、质体序列，极慢耗时3h起
     # 置信阈值通常0.6/0.8，vserch最低0.1/usearch可选0输出最相似物种注释用于观察潜在分类
     vsearch --sintax result/raw/otus.fa \
-      --db ${db}/usearch/rdp_16s_v18_sp.fa \
+      --db ${db}/usearch/rdp_16s_v18.fa \
       --sintax_cutoff 0.1 \
       --tabbedout result/raw/otus.sintax 
     head result/raw/otus.sintax | cat -A
@@ -1353,6 +1353,7 @@ USEARCH使用UNITE下载的utax数据库，提示各种错误
     - 文涛重写amplicon包中tax_maptree函数，不依赖其他包，解决无法着色问题
     - EasyMicrobiome中添加compare_stamp.R脚本，直接差异比较绘制STAMP扩展柱状图；代码详见result/CompareStamp.Rmd
     - EasyMicrobiome中添加compare_hierarchy_facet.R和compare_hierarchy_facet2.R，展示KEGG的1，2级总览和差异
+    - 更新高级分析目录advanced：包括环境因、马尔可无链、网络模块、网络比较、随机森林分类、随机森林回归、微生态等
 
 使用此脚本，请引用下文：
 

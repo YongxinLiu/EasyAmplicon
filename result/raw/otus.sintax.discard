@@ -1,8 +1,8 @@
 ASV_1428			
-ASV_5	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(0.70),c:Cyanobacteria(0.70),f:Family(0.69)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
-ASV_131	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family(1.00)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
-ASV_137	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family(0.99)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
-ASV_597	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family(1.00)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
-ASV_978	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(0.77),c:Cyanobacteria(0.77),f:Family(0.75)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
-ASV_979	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(0.97),c:Cyanobacteria(0.97),f:Family(0.97)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
-ASV_1147	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family(1.00)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family
+ASV_5	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Chloroplast(1.00),f:Chloroplast(1.00),g:Streptophyta(1.00)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Chloroplast,f:Chloroplast,g:Streptophyta
+ASV_131	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family_I(0.83),g:GpI(0.36)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family_I,g:GpI
+ASV_137	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family_I(0.67),g:GpI(0.07)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family_I
+ASV_597	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(1.00),f:Family_I(1.00),g:Desikacharya(0.46)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family_I,g:Desikacharya
+ASV_978	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Chloroplast(1.00),f:Chloroplast(1.00),g:Streptophyta(1.00)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Chloroplast,f:Chloroplast,g:Streptophyta
+ASV_979	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(0.98),c:Cyanobacteria(0.92),f:Family_I(0.52),g:Potamolinea(0.04)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family_I
+ASV_1147	d:Bacteria(1.00),p:Cyanobacteria/Chloroplast(1.00),c:Cyanobacteria(0.97),f:Family_XIII(0.14),g:Loriellopsis(0.07)	+	d:Bacteria,p:Cyanobacteria/Chloroplast,c:Cyanobacteria,f:Family_XIII
