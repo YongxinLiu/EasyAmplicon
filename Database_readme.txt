@@ -1,3 +1,47 @@
+Instructions for use:
+
+1. For the first time, please decompress the data files you need to use;
+2. If you need to use it frequently, it is recommended not to compress. Each compression and decompression will waste a lot of time; compression is only to save time during transmission;
+3. Before analysis, please visit the official database of each database to check whether there is an update of the database version;
+
+1. GreenGene database (gg)
+
+FTP address: ftp://greengenes.microbio.me/greengenes_release
+
+The latest version of the QIIME format database download link: 13_8 represents the update in August 2013
+
+ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz # 305 MB, updated on 2013/8/15, the sequence is the same as 13_5, only some species annotations are corrected
+
+After decompression, there are only three files in the 97 directory:
+
+97_otu_taxonomy.txt.gz # Species annotation of 97% cluster representative sequences, 1.2 MB
+97_otus.fasta.gz # 97% cluster representative sequence, 29 MB
+97_otus.tree.gz # Multiple sequence tree file of 97% cluster representative sequences, 929 KB
+
+
+2. USEARCH format database (usearch)
+
+Download page: http://www.drive5.com/sintax
+
+16S
+
+rdp_16s_v18.fa.gz # 20,000 sequences for genus annotation, newly version
+
+rdp_16s_v16_sp.fa.gz # 13,000 sequences for species annotation,
+
+silva_16s_v123.fa.gz # 1.6 million for removing chimeras to prevent false negatives. The more complete the chimera, the better
+
+
+3. UNITE database - ITS data
+
+Download page: https://unite.ut.ee/
+
+utax_reference_dataset_all_04.02.2020.fasta.gz # UNITE version 8.2 fungal sequences and annotations
+
+The USEARCH data is a secondary arrangement and may not be updated in time. You can download the latest and full versions from the UNITE official website.
+
+If there is a problem, please refer to Appendix ## 11. UNITE database analysis error report in Pipeline.sh
+
 使用说明：
 
 1. 第一次使用请先解压缩需要用到的数据文件；

@@ -13,8 +13,8 @@
     # 设置工作(work directory, wd)和软件/数据库(database, db)目录
     # 添加环境变量，并进入工作目录 Add environmental variables and enter work directory
     # **每次打开Rstudio必须运行下面4行 Run it**
-    wd=/d/BaiduNetdiskWorkspace/github/EasyAmplicon
-    db=/d/BaiduNetdiskWorkspace/github/EasyMicrobiome
+    wd=/c/amplicon
+    db=/c/EasyMicrobiome
     PATH=$PATH:${db}/win
     cd ${wd}
 
@@ -65,6 +65,8 @@
     # 批量统计测序数据并汇总表
     seqkit stat seq/*.fq.gz > result/seqkit.txt
     head result/seqkit.txt
+    
+    
 
 ### 1.3. 流程和数据库 pipeline & database
 
@@ -107,6 +109,16 @@
     time tail -n+2 result/metadata.txt | cut -f 1 | \
      rush -j 3 "vsearch --fastq_mergepairs seq/{}_1.fq.gz --reverse seq/{}_2.fq.gz \
       --fastqout temp/{}.merged.fq --relabel {}."
+      
+    #  gunzip seq/*.fq.gz
+    #  time tail -n+2 result/metadata.txt | cut -f 1 | \
+    #    rush -j 1 "vsearch --fastq_mergepairs seq/{}_1.fq --reverse seq/{}_2.fq \
+    #     --fastqout temp/{}.merged.fq --relabel {}."  
+    #     
+    #   time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
+    #      vsearch --fastq_mergepairs seq/${i}_1.fq --reverse seq/${i}_2.fq \
+    #      --fastqout temp/${i}.merged.fq --relabel ${i}.
+    #    done &
       
 ### 2.2 (可选)单端文件改名 Single-end reads rename
 
@@ -152,7 +164,7 @@
     # 并添加miniuniqusize最小为8或1/1M，去除低丰度噪音并增加计算速度
     # -sizeout输出丰度, --relabel必须加序列前缀更规范, 1s
     vsearch --derep_fulllength temp/filtered.fa \
-      --minuniquesize 8 --sizeout --relabel Uni_ \
+      --minuniquesize 10 --sizeout --relabel Uni_ \
       --output temp/uniques.fa 
     #高丰度非冗余序列非常小(此处852KB)，名称后有size和频率
     ls -lsh temp/uniques.fa
@@ -166,9 +178,9 @@
 
     #方法1. 97%聚类OTU，适合大数据/ASV规律不明显/reviewer要求
     #结果耗时1s, 产生508 OTUs, 去除126 chimeras
-    usearch -cluster_otus temp/uniques.fa -minsize 10 \
-     -otus temp/otus.fa \
-     -relabel OTU_
+    # usearch -cluster_otus temp/uniques.fa -minsize 10 \
+    #  -otus temp/otus.fa \
+    #  -relabel OTU_
 
     #方法2. ASV去噪 Denoise: predict biological sequences and filter chimeras
     #6s, 1530 good, 41 chimeras, 序列百万条可能需要几天/几周
@@ -244,7 +256,7 @@
     head result/raw/otus.sintax | cat -A
     sed -i 's/\r//' result/raw/otus.sintax
 
-    # 原始特征表行数
+    # 方法1. 原始特征表行数
     wc -l result/raw/otutab.txt
     #R脚本选择细菌古菌(真核)、去除叶绿体、线粒体并统计比例；输出筛选并排序的OTU表
     #输入为OTU表result/raw/otutab.txt和物种注释result/raw/otus.sintax
@@ -260,7 +272,6 @@
       --discard result/raw/otus.sintax.discard
     # 筛选后特征表行数
     wc -l result/otutab.txt
-
     #过滤特征表对应序列
     cut -f 1 result/otutab.txt | tail -n+2 > result/otutab.id
     usearch -fastx_getseqs result/raw/otus.fa \
@@ -568,7 +579,7 @@
 
     mkdir -p result/compare/
     # 输入特征表、元数据；指定分组列名、比较组和丰度
-    # 选择方法wilcox/t.test/edgeR、pvalue和fdr和输出目录
+    # 选择方法 wilcox/t.test/edgeR、pvalue和fdr和输出目录
     compare="KO-WT"
     Rscript ${db}/script/compare.R \
       --input result/otutab.txt --design result/metadata.txt \
@@ -699,6 +710,9 @@
     # 然后结果使用STAMP/R进行差异比较
 
     l=pathway2
+    sed '/# Const/d;s/OTU //' result/picrust/1641693275.txt.ko.L2.txt > result/picrust/${l}.txt
+    num=`head -n1 result/picrust/${l}.txt|wc -w`
+    paste <(cut -f $num result/picrust/${l}.txt) <(cut -f 1-$[num-1] ${l}.txt) > result/picrust/${l}.spf
     cut -f 2- result/picrust/${l}.spf > result/picrust/${l}.mat.txt
     csvtk -t cut -f 2,1 result/picrust/${l}.spf | sed 's/;/\t/' | sed '1 s/ID/Pathway\tCategory/' > result/picrust/${l}.anno.txt
     compare="KO-WT"
@@ -955,7 +969,7 @@
     wd=/mnt/c/amplicon/result/
     cd ${wd}
     # 设置脚本目录
-    sd=/mnt/d/db/script/
+    sd=/mnt/c/EasyMicrobiome/script/
 
     ### 1. 软件安装
     # 注：软件已经下载至 db/script目录，在qiime2环境下运行可满足依赖关系
@@ -966,8 +980,11 @@
     #(可选)依赖关系，可使用conda安装依赖包
     #conda install numpy
     #conda install biom
+    # 查看conda环境名称和位置
+    # conda env list
     #新建一个python3环境并配置依赖关系，或进入qiime2 python3环境
-    conda activate qiime2-2021.2
+    conda activate qiime2
+    # source /home/silico_biotech/miniconda3/envs/qiime2/bin/activate
     #测试是否可运行，弹出帮助即正常工作
     python $sd/FAPROTAX_1.2.4/collapse_table.py
 

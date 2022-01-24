@@ -75,6 +75,12 @@ Using Windows 10 as example:
 2. File -- Open File -- `EasyAmplicon` folder -- pipeline.sh (windows/linux) or pipeline_mac.sh (mac)
 3. Setup the `work directory`(wd), and `EasyMicrobiome directory`(db), then run each line by click run in top right corner
 
+## Example dataset (示例数据)
+
+- seq/ # raw sequencing in zipped fastq format, backup can download by metadata in GSA https://ngdc.cncb.ac.cn/gsa/
+- result/ # Example data and figures for standard pipeline, such as alpha, beta, tax
+- advanced/ # Example of advanced analysis, included data, scripts and output figures
+
 ## FAQ (常见问题)
 
 Frequenty Asked Questions in pipeline.sh
