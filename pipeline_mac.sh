@@ -3,39 +3,26 @@
 #!/bin/bash
 
     # 作者 Authors: Yong-Xin Liu, Tong Chen, Liang Chen, Xin Zhou
-    # 版本 version: v1.80
-    # 更新 Update: 2020-5-28
+    # 版本 version: v1.15
+    # 更新 Update: 2022-4-8
 
     # 设置软件(software/binary, bin)、数据库(database, db)和工作目录(work directory, wd)
     # 务必根据自己的情况修改以下路径
-    bin=~/amplicon/02Software
-    db=~/amplicon/03Database
+    db=~/EasyMicrobiome
     # Linux服务器用户仅在家目录下有权限，目录如：~/amplicon，名称随意但尽量同样本名一样规范
     wd=~/amplicon
     # 用户切换至工作目录
     cd ${wd}
-    # bin=02Software
-    # db=03Database
-    # wd="."
+ 
 
 # 22、扩增子分析流程 16S Amplicon pipeline (De novo + Reference)
 
     # 系统要求 System: Windows 10 / Linux Ubuntu 18.04 / Mac OS 10.12+
-    # 依赖软件 Sofware，添加 C:\amplicon\02Software\win 至环境变量
-    # https://github.com/torognes/vsearch/releases
-    # vsearch v2.14.1
-    # https://www.drive5.com/usearch/download.html
-    # usearch v10.0.240
-    # R 3.6.x
-    # Rstudio 1.2.5001
-    # gitforwidnows 2.23.0 (Windows only)
-
     # 运行前准备
     # 1. 将整个amplicon目录复制到Windows C盘根目录(C:/) 或 Mac/Linux服务器家目录(~/)
     # 2. 学员按U盘`01PPT/11扩增子软件安装和测试手册.pdf`课件说明安装软件并添加环境变量
     # 3. 本节至少包括测序数据seq/*.fq.gz、样本元数据result/metadata.txt和流程脚本pipeline.sh
     # 3. Rstudio打开pipeline.sh文件，设置默认目录为C:/amplicon 或 Terminal切换至工作目录
-    # Linux服务器用户Chrome访问IP地址:8787登陆Rstudio网页版，选中代码按Ctrl+Shift+C切换注释
 
 
 ## 1. 了解工作目录和起始文件
@@ -246,7 +233,7 @@
     #输入为OTU表result/raw/otutab.txt和物种注释result/raw/otus.sintax
     #输出筛选并排序的特征表result/otutab.txt和统计污染比例文件result/raw/otutab_nonBac.txt
     #真菌ITS数据，请改用otutab_filter_nonFungi.R脚本
-    Rscript ${bin}/script/otutab_filter_nonBac.R
+    Rscript ${db}/script/otutab_filter_nonBac.R
     # 筛选后特征表行数
     wc -l result/otutab.txt
 
@@ -277,8 +264,8 @@
     #使用vegan包进行等量重抽样，输入reads count格式Feature表result/otutab.txt
     #可指定输入文件、抽样量和随机数，输出抽平表result/otutab_rare.txt和多样性alpha/vegan.txt
     mkdir -p result/alpha
-    Rscript ${bin}/script/otutab_rare.R -h
-    Rscript ${bin}/script/otutab_rare.R --input result/otutab.txt \
+    Rscript ${db}/script/otutab_rare.R -h
+    Rscript ${db}/script/otutab_rare.R --input result/otutab.txt \
       --depth 30000 --seed 1 \
       --normalize result/otutab_rare.txt \
       --output result/alpha/vegan.txt
@@ -302,7 +289,7 @@
     #按组求均值，需根据实验设计metadata.txt修改组列名
     #输入文件为feautre表result/otutab.txt，实验设计metadata.txt
     #输出为特征表按组的均值-一个实验可能有多种分组方式
-    Rscript ${bin}/script/otu_mean.R --input result/otutab.txt \
+    Rscript ${db}/script/otu_mean.R --input result/otutab.txt \
       --design result/metadata.txt \
       --group Group \
       --output result/otutab_mean.txt
@@ -414,8 +401,8 @@
     #1. 23LEfSe目录中准备otutab.txt, metadata.txt, taxonomy.txt三个文件；
     #2. Rstudio打开format2lefse.Rmd并Knit生成输入文件和可重复计算网页；
     # 可选命令行生成输入文件
-    Rscript ${bin}/script/format2lefse.R -h
-    Rscript ${bin}/script/format2lefse.R --input result/otutab.txt \
+    Rscript ${db}/script/format2lefse.R -h
+    Rscript ${db}/script/format2lefse.R --input result/otutab.txt \
       --taxonomy result/taxonomy.txt --design result/metadata.txt \
       --group Group --threshold 0.1 \
       --output result/LEfSe.txt
@@ -433,9 +420,9 @@
     #1. 23STAMP目录中准备otutab.txt和taxonomy.txt文件；
     #2. Rstudio打开format2stamp.Rmd并Knit生成输入文件和可重复计算网页；
     # 可选命令行生成输入文件
-    Rscript ${bin}/script/format2stamp.R -h
+    Rscript ${db}/script/format2stamp.R -h
     mkdir -p result/stamp
-    Rscript ${bin}/script/format2stamp.R --input result/otutab.txt \
+    Rscript ${db}/script/format2stamp.R --input result/otutab.txt \
       --taxonomy result/taxonomy.txt --threshold 0.1 \
       --output result/stamp/tax
     #3. 打开LEfSe.txt并在线提交 http://www.ehbio.com/ImageGP/index.php/Home/Index/LEFSe.html
@@ -471,7 +458,7 @@
     tail -n+2 result/tax/sum_p.txt | grep -v 'Unassigned' \
       | cut -f 1 | head -n10 > result/tax/tax_phylum.top
     # 差异比较，指定列名和两组名，用短线连接两组，如A-B
-    Rscript ${bin}/script/compare.R \
+    Rscript ${db}/script/compare.R \
       --input result/otutab.txt --design result/metadata.txt \
       --taxonomy result/taxonomy.txt --topNtax result/tax/tax_phylum.top \
       --group Group --compare KO-WT --output result/compare/ \
@@ -481,9 +468,9 @@
 
 ## 1. Alpha多样性箱线图
     # 查看帮助
-    Rscript ${bin}/script/alpha_boxplot.R -h
+    Rscript ${db}/script/alpha_boxplot.R -h
     # 完整参数
-    Rscript ${bin}/script/alpha_boxplot.R --alpha_index richness \
+    Rscript ${db}/script/alpha_boxplot.R --alpha_index richness \
       --input result/alpha/alpha.txt --design result/metadata.txt \
       --group Group --output result/alpha/ \
       --width 89 --height 59
@@ -528,7 +515,7 @@
 
 
 ## 1. Bugbase在Windows下分析
-    bugbase=${bin}/script/BugBase
+    bugbase=${db}/script/BugBase
     rm -rf result/bugbase/
     Rscript ${bugbase}/bin/run.bugbase.r -L ${bugbase} \
       -i result/gg/otutab.txt -m result/metadata.txt -c Group -o result/bugbase/
@@ -739,17 +726,17 @@
     # annotation.txt OTU对应物种注释和丰度，
     # -a 找不到输入列将终止运行（默认不执行）-c 将整数列转换为factor或具有小数点的数字，-t 偏离提示标签时转换ID列，-w 颜色带，区域宽度等， -D输出目录，-i OTU列名，-l OTU显示名称如种/属/科名，
     # cd ${wd}/result/tree
-    Rscript ${bin}/script/table2itol.R -a -c double -D plan1 -i OTUID -l Genus -t %s -w 0.5 annotation.txt
+    Rscript ${db}/script/table2itol.R -a -c double -D plan1 -i OTUID -l Genus -t %s -w 0.5 annotation.txt
     # 生成注释文件中每列为单独一个文件
 
     ## 方案2. 生成丰度柱形图注释文件
-    Rscript ${bin}/script/table2itol.R -a -d -c none -D plan2 -b Phylum -i OTUID -l Genus -t %s -w 0.5 annotation.txt
+    Rscript ${db}/script/table2itol.R -a -d -c none -D plan2 -b Phylum -i OTUID -l Genus -t %s -w 0.5 annotation.txt
 
     ## 方案3. 生成热图注释文件
-    Rscript ${bin}/script/table2itol.R -c keep -D plan3 -i OTUID -t %s otutab.txt
+    Rscript ${db}/script/table2itol.R -c keep -D plan3 -i OTUID -t %s otutab.txt
 
     ## 方案4. 将整数转化成因子生成注释文件
-    Rscript ${bin}/script/table2itol.R -a -c factor -D plan4 -i OTUID -l Genus -t %s -w 0 annotation.txt
+    Rscript ${db}/script/table2itol.R -a -c factor -D plan4 -i OTUID -l Genus -t %s -w 0 annotation.txt
 
     # 返回工作目录
     cd ${wd}

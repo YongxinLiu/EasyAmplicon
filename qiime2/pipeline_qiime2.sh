@@ -1,12 +1,12 @@
 [TOC]
 
-# QIIME2 2021.11分析流程
+# QIIME2 2022.2分析流程
 
 ## 0. 软件安装(附录1)
 
 	# 仅限在Linux/Mac系统中运行，
 	# Windows用户使用内置子系统(支持右键粘贴)、VirtualBox虚拟机、远程服务器中的Linux环境下安装并运行
-	# 详细教程参阅官网https://docs.qiime2.org/2021.11/，或QIIME2教程专辑 https://mp.weixin.qq.com/s/farGisfX3fVL_5WgXS8lIg
+	# 详细教程参阅官网https://docs.qiime2.org/2022.2/，或QIIME2教程专辑 https://mp.weixin.qq.com/s/farGisfX3fVL_5WgXS8lIg
     # 安装Windows子系统，https://mp.weixin.qq.com/s/0PfA0bqdvrEbo62zPVq4kQ
 
 ## 1. 准备工作
@@ -17,7 +17,7 @@
 	mkdir -p ${wd}
 	cd ${wd}
 	# 激活QIIME2工作环境，旧版conda使用source替换conda运行
-	conda activate qiime2-2021.11
+	conda activate qiime2-2022.2
 
 	# 准备样本元数据metadata.txt、原始数据seq/*.fq.gz
 	
@@ -109,7 +109,7 @@
 	qiime diversity core-metrics-phylogenetic \
 	  --i-phylogeny rooted-tree.qza \
 	  --i-table table.qza \
-	  --p-sampling-depth 7439 \
+	  --p-sampling-depth 11216 \
 	  --m-metadata-file metadata.txt \
 	  --output-dir core-metrics-results
 
@@ -203,7 +203,7 @@
 
 # 附录
 
-## 1. qiime2 2021.11安装
+## 1. qiime2 2022.2安装
 
 ### 安装Conda
 
@@ -217,24 +217,24 @@
 
     # 附软件在线安装和打包代码
     # 下载软件列表
-	wget https://data.qiime2.org/distro/core/qiime2-2021.11-py38-linux-conda.yml
+	wget https://data.qiime2.org/distro/core/qiime2-2022.2-py38-linux-conda.yml
 	# 备用链接
-	wget -c http://210.75.224.110/github/QIIME2ChineseManual/2021.11/qiime2-2021.11-py38-linux-conda.yml
+	wget -c http://210.75.224.110/github/QIIME2ChineseManual/2022.2/qiime2-2022.2-py38-linux-conda.yml
 	# 新环境安装
-	conda env create -n qiime2-2021.11 --file qiime2-2021.11-py38-linux-conda.yml
+	conda env create -n qiime2-2022.2 --file qiime2-2022.2-py38-linux-conda.yml
 	# 环境打包(可选，1.2G)
-	n=qiime2-2021.11
+	n=qiime2-2022.2
 	conda pack -n ${n} -o ${n}.tar.gz
 
 ### 方法2. 本地安装QIIME
 
     # 安装包下载链接 
-	wget -c http://210.75.224.110/db/conda/qiime2-2021.11.tar.gz
+	wget -c http://210.75.224.110/db/conda/qiime2-2022.2.tar.gz
 	# 新环境安装
-    mkdir -p ~/miniconda3/envs/qiime2-2021.11
-    tar -xzf qiime2-2021.11.tar.gz -C ~/miniconda3/envs/qiime2-2021.11
+    mkdir -p ~/miniconda3/envs/qiime2-2022.2
+    tar -xzf qiime2-2022.2.tar.gz -C ~/miniconda3/envs/qiime2-2022.2
     # 激活并初始化环境
-    conda activate qiime2-2021.11
+    conda activate qiime2-2022.2
 	conda unpack
 
 
@@ -244,9 +244,9 @@
 	mkdir -p $wd
 	cd $wd
 	# 下载数据库文件(greengenes, 320M)
-	wget -c ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
+	# wget -c ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
 	# 国内备用链接
-	wget -c http://210.75.224.110/db/GreenGenes/gg_13_8_otus.tar.gz
+	# wget -c http://210.75.224.110/db/GreenGenes/gg_13_8_otus.tar.gz
 	# 国内备份核心99数据库(60M)
 	wget -c http://210.75.224.110/db/GreenGenes/gg_13_8_otus_99.tar.gz
 	mv gg_13_8_otus_99.tar.gz gg_13_8_otus.tar.gz
@@ -290,7 +290,7 @@
 	  --i-reference-taxonomy ref-taxonomy.qza \
 	  --o-classifier classifier_gg_13_8_99_V5-V7.qza
 
-	# 常见问题：scikit-learn版本不兼容，重新fit-classifier-naive-bayes构建训练集即可
+	# 常见问题1：scikit-learn版本不兼容，重新fit-classifier-naive-bayes构建训练集即可
 	Plugin error from feature-classifier:
 	  The scikit-learn version (0.21.2) used to generate this artifact does not match the current version of scikit-learn installed (0.22.1). Please retrain your classifier for your current deployment to prevent data-corruption errors.
 	Debug info has been saved to /tmp/qiime2-q2cli-err-5ngzk2hm.log

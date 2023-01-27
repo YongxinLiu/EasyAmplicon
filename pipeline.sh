@@ -3,8 +3,8 @@
 # 易扩增子EasyAmplicon
 
     # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)等
-    # 版本 Version: v1.14
-    # 更新 Update: 2022-1-7
+    # 版本 Version: v1.15
+    # 更新 Update: 2022-4-8
     # 系统要求 System requirement: Windows 10 / Mac OS 10.12+ / Ubuntu 16.04+
     # 引文 Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. (2021). 
     # A practical guide to amplicon and metagenomic analysis of microbiome data. Protein & Cell 12, 315-330

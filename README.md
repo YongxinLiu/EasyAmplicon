@@ -6,9 +6,9 @@ The Chinese version in (中文版见) [README_cn.md](./README_cn.md)
 
 **An easy using, open-resource, reproducible, and community-based pipeline for amplicon data analysis in microbiome**
 
-Version：v1.14
+Version：v1.18
 
-Update：2022/1/7
+Update：2023/2/3
 
 ## Pipeline Manual and file description (流程使用和文件介绍)
 
