@@ -3,16 +3,16 @@
 # 易扩增子EasyAmplicon
 
     # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)等
-    # 版本 Version: v1.15
-    # 更新 Update: 2022-4-8
-    # 系统要求 System requirement: Windows 10 / Mac OS 10.12+ / Ubuntu 16.04+
-    # 引文 Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. (2021). 
-    # A practical guide to amplicon and metagenomic analysis of microbiome data. Protein & Cell 12, 315-330
-    # doi: https://doi.org/10.1007/s13238-020-00724-8
+    # 版本 Version: v1.18
+    # 更新 Update: 2023-2-3
+    # 系统要求 System requirement: Windows 10+ / Mac OS 10.12+ / Ubuntu 20.04+
+    # 引文 Reference: Liu, et al. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based
+    # pipeline for amplicon data analysis in microbiome research. iMeta 2: e83. https://doi.org/10.1002/imt2.83
 
-    # 设置工作(work directory, wd)和软件/数据库(database, db)目录
+
+    # 设置工作(work directory, wd)和软件数据库(database, db)目录
     # 添加环境变量，并进入工作目录 Add environmental variables and enter work directory
-    # **每次打开Rstudio必须运行下面4行 Run it**
+    # **每次打开Rstudio必须运行下面4行 Run it**，可选替换${db}为EasyMicrobiome安装位置
     wd=/c/amplicon
     db=/c/EasyMicrobiome
     PATH=$PATH:${db}/win
@@ -21,26 +21,27 @@
 
 ## 1. 起始文件 start files
 
-    #1. 分析流程pipeline.sh
-    #2. 样本元信息metadata.txt，保存于result目录
-    #3. 测序数据Fastq文件保存于seq目录，通常以`.fq.gz`结尾，每个样品一对文件
-    #4. 创建临时文件存储目录，分析结束可删除
+    # 1. 分析流程pipeline.sh
+    # 2. 样本元信息metadata.txt，保存于result目录
+    # 3. 测序数据fastq文件保存于seq目录，通常以`.fq.gz`结尾，每个样品一对文件
+    # 4. 创建临时文件存储目录，分析结束可删除
     mkdir -p temp
 
 ### 1.1. 元数据/实验设计 metadata
 
     # 准备样本元数据result/metadata.txt
-    # 元数据至少3列，首列为样本ID(SampleID)，结尾列为描述(Description)
-    # cat查看文件，-A显示符号，head显示文件头，-n3控制范围前3行
-    cat -A result/metadata_raw.txt | head -n3
-    # csvtk统计表行(样本数，不含表头)列数，-t设置列分隔为制表符
+    # csvtk统计表行(样本数，不含表头)列数，-t设置列分隔为制表符，默认为;
     csvtk -t stat result/metadata_raw.txt
-    # windows用户如果结尾有^M，运行sed命令去除，再用cat -A检查结果
+    # 元数据至少3列，首列为样本ID(SampleID)，结尾列为描述(Description)
+    # cat查看文件，-A显示符号，"|"为管道符实现命令连用，head显示文件头，-n3控制范围前3行
+    cat -A result/metadata_raw.txt | head -n3
+    # windows用户结尾有^M，运行sed命令去除，再用cat -A检查
     sed 's/\r//' result/metadata_raw.txt > result/metadata.txt
     cat -A result/metadata.txt | head -n3
 
 ### 1.2. 测序数据 sequencing data
 
+    # # 本段代码可在RStudio中Ctrl + Shift + C 取消注释“#”后运行
     # # (可选)下载测序数据，按GSA的CRA(批次)和CRR(样品)编号下载数据
     # # 示例下载单个文件并改名
     # mkdir -p seq
@@ -60,31 +61,32 @@
     zless seq/KO1_1.fq.gz|head -n4 
     # 每行太长，指定查看每行的1-60个字符
     zless seq/KO1_1.fq | head | cut -c 1-60
-    # (可选)统计测序数据，依赖seqkit程序
+    # 统计测序数据，依赖seqkit程序
     seqkit stat seq/KO1_1.fq.gz
     # 批量统计测序数据并汇总表
     seqkit stat seq/*.fq.gz > result/seqkit.txt
     head result/seqkit.txt
-    
-    
 
 ### 1.3. 流程和数据库 pipeline & database
 
     # 数据库第一次使用必须解压，以后可跳过此段
 
     # usearchs可用16S/18S/ITS数据库：RDP, SILVA和UNITE，本地文件位置 ${db}/usearch/
-    # usearch数据库database下载页: http://www.drive5.com/sintax ，如RDP v16、Silva、unite数据库
-    # 易生信整理了最新的RDP v18、ezbiocloud 2018、unite2021数据库
-    # 解压缩并写入新文件，不删除原压缩包
-    gunzip -c ${db}/usearch/rdp_16s_v18.fa.gz > ${db}/usearch/rdp_16s_v18.fa
-    seqkit stat ${db}/usearch/rdp_16s_v18.fa.gz
-    # QIIME greengene 13_8有参数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
-    gunzip -c ${db}/gg/97_otus.fasta.gz > ${db}/gg/97_otus.fasta
-    seqkit stat ${db}/gg/97_otus.fasta
+    # usearch数据库database下载页: http://www.drive5.com/usearch/manual/sintax_downloads.html
+    # 解压16S RDP数据库，gunzip解压缩，seqkit stat统计
+    gunzip ${db}/usearch/rdp_16s_v18.fa.gz
+    seqkit stat ${db}/usearch/rdp_16s_v18.fa # 2.1万条序列
+    # 解压ITS UNITE数据库，mv改名简化
+    gunzip ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta.gz
+    mv ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta ${db}/usearch/unite.fa
+    seqkit stat ${db}/usearch/unite.fa # 32.6万
+    # Greengene数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
+    # 默认解压会删除原文件，-c指定输出至屏幕，> 写入新文件(可改名)
+    gunzip -c ${db}/gg/97_otus.fasta.gz > ${db}/gg/97_otus.fa
+    seqkit stat ${db}/gg/97_otus.fa
 
 
 ## 2. 序列合并和重命名 reads merge and rename
-
 
 ### 2.1 合并双端序列并按样品重命名 Merge pair-end reads and rename
 
@@ -99,6 +101,7 @@
     #依照实验设计批处理并合并
     #tail -n+2去表头，cut -f1取第一列，获得样本列表；18个样本x1.5万对序列合并8s
     #Win下复制Ctrl+C为Linux下中止，为防止异常中断，结尾添加&转后台，无显示后按回车继续
+    
     #方法1.for循环顺序处理
     # time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
     #   vsearch --fastq_mergepairs seq/${i}_1.fq.gz --reverse seq/${i}_2.fq.gz \
@@ -109,12 +112,15 @@
     time tail -n+2 result/metadata.txt | cut -f 1 | \
      rush -j 3 "vsearch --fastq_mergepairs seq/{}_1.fq.gz --reverse seq/{}_2.fq.gz \
       --fastqout temp/{}.merged.fq --relabel {}."
-      
+    # 检查最后一个文件前10行中样本名
+    head temp/`tail -n+2 result/metadata.txt | cut -f 1 | tail -n1`.merged.fq | grep ^@
+    
+    ##方法3.不支持压缩文件时解压再双端合并
     #  gunzip seq/*.fq.gz
     #  time tail -n+2 result/metadata.txt | cut -f 1 | \
     #    rush -j 1 "vsearch --fastq_mergepairs seq/{}_1.fq --reverse seq/{}_2.fq \
-    #     --fastqout temp/{}.merged.fq --relabel {}."  
-    #     
+    #     --fastqout temp/{}.merged.fq --relabel {}."
+    # 
     #   time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
     #      vsearch --fastq_mergepairs seq/${i}_1.fq --reverse seq/${i}_2.fq \
     #      --fastqout temp/${i}.merged.fq --relabel ${i}.
@@ -166,15 +172,15 @@
     vsearch --derep_fulllength temp/filtered.fa \
       --minuniquesize 10 --sizeout --relabel Uni_ \
       --output temp/uniques.fa 
-    #高丰度非冗余序列非常小(此处852KB)，名称后有size和频率
+    #高丰度非冗余序列非常小(500K~5M较适合)，名称后有size和频率
     ls -lsh temp/uniques.fa
     head -n 2 temp/uniques.fa
 
 ### 4.2 聚类OTU/去噪ASV Cluster or denoise
 
-    #有两种方法：推荐unoise3去噪获得单碱基精度ASV，传统的97%聚类OTU (属水平精度)供备选
+    #有两种方法：推荐unoise3去噪获得单碱基精度ASV，备选传统的97%聚类OTU(属水平精度)
     #usearch两种特征挑选方法均自带de novo去嵌合体
-    #-minsize二次过滤，控制OTU/ASV数量至3-5千，方便下游统计分析
+    #-minsize二次过滤，控制OTU/ASV数量至1-5千，方便下游统计分析
 
     #方法1. 97%聚类OTU，适合大数据/ASV规律不明显/reviewer要求
     #结果耗时1s, 产生508 OTUs, 去除126 chimeras
@@ -192,11 +198,9 @@
 
     #方法3. 数据过大无法使用usearch时，备选vsearch方法见"常见问题3"
 
-### 4.3 基于参考去嵌合
+### 4.3 基于参考去嵌合 Reference-based chimera detect
 
-    # Reference-based chimera detect
-
-    # 不推荐，容易引起假阴性，因为参考数据库无丰度信息，
+    # 不推荐，容易引起假阴性，因为参考数据库无丰度信息
     # 而de novo时要求亲本丰度为嵌合体16倍以上防止假阴性
     # 因为已知序列不会被去除，数据库选择越大越合理，假阴性率最低
     mkdir -p result/raw
@@ -235,7 +239,7 @@
       --db result/raw/otus.fa \
       --id 0.97 --threads 4 \
     	--otutabout result/raw/otutab.txt 
-    #224236 of 268019 (83.66%)可比对
+    #212862 of 268019 (79.42%)可比对
     # vsearch结果windows用户删除换行符^M校正为标准Linux格式
     sed -i 's/\r//' result/raw/otutab.txt
     head -n6 result/raw/otutab.txt | cut -f 1-6 |cat -A
@@ -350,8 +354,8 @@
     head result/alpha/otu_group_exist.txt
     wc -l result/alpha/otu_group_exist.txt
     # 试一试：不同丰度下各组有多少OTU/ASV
-    # 可在http://ehbio.com/test/venn/中绘图并显示各组共有和特有维恩或网络图
-    # 也可在http://www.ehbio.com/ImageGP绘制Venn、upSetView和Sanky
+    # 可在 http://ehbio.com/test/venn/ 中绘图并显示各组共有和特有维恩或网络图
+    # 也可在 http://www.ehbio.com/ImageGP 绘制Venn、upSetView和Sanky
 
 ## 7. β多样性 Beta diversity
 
@@ -403,13 +407,13 @@
 
     #方法1. usearch比对更快，但文件超限报错选方法2
     # 默认10核以下使用1核，10核以上使用10核
-    usearch -otutab temp/filtered.fa -otus ${db}/gg/97_otus.fasta \
+    usearch -otutab temp/filtered.fa -otus ${db}/gg/97_otus.fa \
     	-otutabout result/gg/otutab.txt -threads 4
     # 比对率80.0%, 1核11m，4核3m，10核2m，内存使用743Mb
     head -n3 result/gg/otutab.txt
 
     # #方法2. vsearch比对，更准更慢，但并行24-96线程更强
-    # vsearch --usearch_global temp/filtered.fa --db ${db}/gg/97_otus.fasta \
+    # vsearch --usearch_global temp/filtered.fa --db ${db}/gg/97_otus.fa \
     #   --otutabout result/gg/otutab.txt --id 0.97 --threads 12
     # 比对率81.04%, 1核30m, 12核7m
 
@@ -453,6 +457,7 @@
         --group Group --output result/alpha/ \
         --width 89 --height 59
     done
+    mv alpha_boxplot_TukeyHSD.txt result/alpha/
 
     # Alpha多样性柱状图+标准差
     Rscript ${db}/script/alpha_barplot.R --alpha_index richness \
@@ -481,6 +486,7 @@
       -a WT -b KO -c OE -d All \
       -w 3 -u 3 \
       -p WT_KO_OE_All
+
 
 ## 2. Beta多样性
 
@@ -513,8 +519,8 @@
       --input result/beta/bray_curtis.txt --design result/metadata.txt \
       --group Group --label TRUE --width 89 --height 59 \
       --output result/beta/bray_curtis.pcoa.label.pdf
+    mv beta_pcoa_stat.txt result/beta/
       
-
 ### 2.3 限制性主坐标分析CPCoA
 
     Rscript ${db}/script/beta_cpcoa.R \
@@ -569,6 +575,7 @@
       --input result/otutab.txt --taxonomy result/taxonomy.txt \
       --output result/tax/tax_maptree.pdf \
       --topN 100 --width 183 --height 118
+
 
 
 # 24、差异比较
@@ -649,6 +656,11 @@
       --width 89 --height 59 \
       --group Group --output result/compare/feature_
 
+### 1.5 三元图
+
+  #参考示例见：result\compare\ternary\ternary.Rmd 文档
+  #备选教程[246.三元图的应用与绘图实战](https://mp.weixin.qq.com/s/3w3ncpwjQaMRtmIOtr2Jvw)
+
 ## 2. STAMP输入文件准备
 
 ### 2.1 生成输入文件
@@ -685,36 +697,40 @@
       --output result/lefse/LEfSe
 
     ### 3.2 Rmd生成输入文件(可选)
-    #1. 24Compare/LEfSe目录中准备otutab.txt, metadata.txt, taxonomy.txt三个文件；
-    #2. Rstudio打开format2lefse.Rmd并Knit生成输入文件和可重复计算网页；
+    #1. result目录中存在otutab.txt, metadata.txt, taxonomy.txt三个文件；
+    #2. Rstudio打开EasyAmplicon中format2lefse.Rmd，另存至result目录并Knit生成输入文件和可重复计算网页；
 
     ### 3.3 LEfSe分析
     #方法1. 打开LEfSe.txt并在线提交 http://www.ehbio.com/ImageGP/index.php/Home/Index/LEFSe.html
-    #方法2. LEfSe本地分析(限Linux服务器、选学)，参考代码见附录
+    #方法2. LEfSe本地分析(限Linux系统、选学)，参考代码见附录
     #方法3. LEfSe官网在线使用
 
 
 # 25、QIIME 2分析流程
 
-    # 代码详见 25QIIME2/pipeline_qiime2.sh
+    # 代码详见 qiime2/pipeline_qiime2.sh
 
 
 # 31、功能预测
-
 
 ## 1. PICRUSt功能预测
 
     # PICRUSt 1.0
     # 方法1. 使用 http://www.ehbio.com/ImageGP 在线分析 gg/otutab.txt
-    # 方法2. Linux服务器用户可参考附录2. PICRUSt功能预测
+    # 方法2. Linux服务器用户可参考"附录2. PICRUSt功能预测"实现软件安装和分析
     # 然后结果使用STAMP/R进行差异比较
 
-    l=pathway2
-    sed '/# Const/d;s/OTU //' result/picrust/1641693275.txt.ko.L2.txt > result/picrust/${l}.txt
+    # R语言绘图
+    # 输入文件格式调整
+    l=L2
+    sed '/# Const/d;s/OTU //' result/picrust/all_level.ko.${l}.txt > result/picrust/${l}.txt
     num=`head -n1 result/picrust/${l}.txt|wc -w`
-    paste <(cut -f $num result/picrust/${l}.txt) <(cut -f 1-$[num-1] ${l}.txt) > result/picrust/${l}.spf
+    paste <(cut -f $num result/picrust/${l}.txt) <(cut -f 1-$[num-1] result/picrust/${l}.txt) \
+      > result/picrust/${l}.spf
     cut -f 2- result/picrust/${l}.spf > result/picrust/${l}.mat.txt
-    csvtk -t cut -f 2,1 result/picrust/${l}.spf | sed 's/;/\t/' | sed '1 s/ID/Pathway\tCategory/' > result/picrust/${l}.anno.txt
+    awk 'BEGIN{FS=OFS="\t"} {print $2,$1}' result/picrust/${l}.spf | sed 's/;/\t/' | sed '1 s/ID/Pathway\tCategory/' \
+      > result/picrust/${l}.anno.txt
+    # 差异比较
     compare="KO-WT"
     Rscript ${db}/script/compare.R \
       --input result/picrust/${l}.mat.txt --design result/metadata.txt \
@@ -722,13 +738,13 @@
       --method wilcox --pvalue 0.05 --fdr 0.2 \
       --output result/picrust/
     # 可对结果${compare}.txt筛选
-    # 绘制A/B组的柱状图，按高分类级着色和分面
+    # 绘制指定组(A/B)的柱状图，按高分类级着色和分面
     Rscript ${db}/script/compare_hierarchy_facet.R \
       --input result/picrust/${compare}.txt \
-      --data MeanB \
+      --data MeanA \
       --annotation result/picrust/${l}.anno.txt \
-      --output result/picrust/${compare}.MeanB.bar.pdf
-    # 绘制A/B两组显著差异柱状图，按高分类级分面
+      --output result/picrust/${compare}.MeanA.bar.pdf
+    # 绘制两组显著差异柱状图，按高分类级分面
     Rscript ${db}/script/compare_hierarchy_facet2.R \
       --input result/picrust/${compare}.txt \
       --pvalue 0.05 --fdr 0.1 \
@@ -747,11 +763,12 @@
 ## 3. Bugbase细菌表型预测
 
     ### 1. Bugbase命令行分析
+    cd /c/amplicon/result
     bugbase=C:/EasyMicrobiome/script/BugBase
-    rm -rf result/bugbase/
+    rm -rf bugbase/
     # 脚本已经优化适合R4.0，biom包更新为biomformat
     Rscript ${bugbase}/bin/run.bugbase.r -L ${bugbase} \
-      -i result/gg/otutab.txt -m result/metadata.txt -c Group -o result/bugbase/
+      -i gg/otutab.txt -m metadata.txt -c Group -o bugbase/
 
     ### 2. 其它可用分析
     # 使用 http://www.ehbio.com/ImageGP
@@ -759,17 +776,13 @@
     # Bugbase细菌表型预测Linux，详见附录4. Bugbase细菌表型预测
 
 
-
 # 32、MachineLearning机器学习
 
-    # RandomForest包使用的R代码见33MachineLearning目录中的RF_classification和RF_regression
-    ## Silme2随机森林/Adaboost使用代码见33MachineLearning目录中的slime2，或附录5
+    # RandomForest包使用的R代码见advanced/RandomForestClassification和RandomForestRegression
+    ## Silme2随机森林/Adaboost使用代码见EasyMicrobiome/script/slime2目录中的slime2.py，详见附录5
 
-# 33、Microeco包数据可视化
 
-    # 代码：33Microeco/Practice.Rmd
-
-# 34、Evolution进化树
+# 33、Evolution进化树
 
     cd ${wd}
     mkdir -p result/tree
@@ -820,7 +833,6 @@
     paste otutab_high.tax temp > annotation.txt
     head -n 3 annotation.txt
 
-
 ## 2. 构建进化树
 
     # 起始文件为 result/tree目录中 otus.fa(序列)、annotation.txt(物种和相对丰度)文件
@@ -839,7 +851,6 @@
     # 该方法适合于大数据，例如几百个OTUs的系统发育树！
     # Ubuntu上安装fasttree可以使用`apt install fasttree`
     # fasttree -gtr -nt otus_aligned.fas > otus.nwk
-
 
 ## 3. 进化树美化
 
@@ -866,8 +877,6 @@
     # 返回工作目录
     cd ${wd}
 
-# 35、答疑
-
 
 # 附加视频
 
@@ -883,14 +892,23 @@
     # 目录 Supp/S2SourcetrackerFeastMarkov
 
 
+## S11、网络分析ggClusterNet
+
+    # 代码：advanced/ggClusterNet/Practice.Rmd
+
+## S12、Microeco包数据可视化
+
+    # 代码：advanced/microeco/Practice.Rmd
+
+
 # 附录：Linux服务器下分析(选学)
 
     #注：Windows下可能无法运行以下代码，推荐在Linux，或Windows下Linux子系统下conda安装相关程序
 
 ## 1. LEfSe分析
 
-    mkdir -p ~/amplicon/24Compare/LEfSe
-    cd ~/amplicon/24Compare/LEfSe
+    mkdir -p ~/amplicon/lefse
+    cd ~/amplicon/lefse
     # format2lefse.Rmd代码制作或上传输入文件LEfSe.txt
     # 安装lefse
     # conda install lefse
@@ -920,8 +938,8 @@
     # 依赖数据库较大(243M)，需要自行下载
     db=~/db/
     mkdir -p ${db}/picrust/ cd ${db}/picrust/
-    wget -c http://210.75.224.110/db/picrust/16S_13_5_precalculated.tab.gz
-    wget -c http://210.75.224.110/db/picrust/ko_13_5_precalculated.tab.gz
+    wget -c http://bailab.genetics.ac.cn/db/picrust/16S_13_5_precalculated.tab.gz
+    wget -c http://bailab.genetics.ac.cn/db/picrust/ko_13_5_precalculated.tab.gz
     # 方法1. conda直接安装picrust
     n=picrust
     conda create -n ${n} ${n} -c bioconda -y
@@ -966,33 +984,33 @@
 ## 3. FAPROTAXS元素循环
 
     # 设置工作目录
-    wd=/mnt/c/amplicon/result/
-    cd ${wd}
+    wd=/mnt/c/amplicon/result/faprotax/
+    mkdir -p ${wd} && cd ${wd}
     # 设置脚本目录
-    sd=/mnt/c/EasyMicrobiome/script/
+    sd=/mnt/c/EasyMicrobiome/script/FAPROTAX_1.2.6
 
     ### 1. 软件安装
-    # 注：软件已经下载至 db/script目录，在qiime2环境下运行可满足依赖关系
-    #(可选)下载软件1.2.4版， May 1, 2020更新数据库
-    #wget -c https://pages.uoregon.edu/slouca/LoucaLab/archive/FAPROTAX/SECTION_Download/MODULE_Downloads/CLASS_Latest%20release/UNIT_FAPROTAX_1.2.4/FAPROTAX_1.2.4.zip
+    # 注：软件已经下载至 EasyAmplicon/script目录，在qiime2环境下运行可满足依赖关系
+    #(可选)下载软件新版本，以1.2.6版为例， 2022/7/14更新数据库
+    #wget -c https://pages.uoregon.edu/slouca/LoucaLab/archive/FAPROTAX/SECTION_Download/MODULE_Downloads/CLASS_Latest%20release/UNIT_FAPROTAX_1.2.6/FAPROTAX_1.2.6.zip
     #解压
-    #unzip FAPROTAX_1.2.4.zip
+    #unzip FAPROTAX_1.2.6.zip
     #(可选)依赖关系，可使用conda安装依赖包
     #conda install numpy
     #conda install biom
     # 查看conda环境名称和位置
     # conda env list
     #新建一个python3环境并配置依赖关系，或进入qiime2 python3环境
-    conda activate qiime2
+    conda activate qiime2-2022.11
     # source /home/silico_biotech/miniconda3/envs/qiime2/bin/activate
     #测试是否可运行，弹出帮助即正常工作
-    python $sd/FAPROTAX_1.2.4/collapse_table.py
+    python $sd/collapse_table.py
 
     ### 2. 制作输入OTU表
     #txt转换为biom json格式
-    biom convert -i otutab_rare.txt -o otutab_rare.biom --table-type="OTU table" --to-json
+    biom convert -i ../otutab_rare.txt -o otutab_rare.biom --table-type="OTU table" --to-json
     #添加物种注释
-    biom add-metadata -i otutab_rare.biom --observation-metadata-fp taxonomy2.txt \
+    biom add-metadata -i otutab_rare.biom --observation-metadata-fp ../taxonomy2.txt \
       -o otutab_rare_tax.biom --sc-separated taxonomy \
       --observation-header OTUID,taxonomy
     #指定输入文件、物种注释、输出文件、注释列名、属性列名
@@ -1002,8 +1020,8 @@
     #-g指定数据库位置，物种注释列名，输出过程信息，强制覆盖结果，结果文件和细节
     #下载faprotax.txt，配合实验设计可进行统计分析
     #faprotax_report.txt查看每个类别中具体来源哪些OTUs
-    python ${sd}/FAPROTAX_1.2.4/collapse_table.py -i otutab_rare_tax.biom \
-      -g ${sd}/FAPROTAX_1.2.4/FAPROTAX.txt \
+    python ${sd}/collapse_table.py -i otutab_rare_tax.biom \
+      -g ${sd}/FAPROTAX.txt \
       --collapse_by_metadata 'taxonomy' -v --force \
       -o faprotax.txt -r faprotax_report.txt
 
@@ -1011,27 +1029,25 @@
     # 对ASV(OTU)注释行，及前一行标题进行筛选
     grep 'ASV_' -B 1 faprotax_report.txt | grep -v -P '^--$' > faprotax_report.clean
     # faprotax_report_sum.pl脚本将数据整理为表格，位于public/scrit中
-    perl ${sd}/faprotax_report_sum.pl -i faprotax_report.clean -o faprotax_report
+    perl ${sd}/../faprotax_report_sum.pl -i faprotax_report.clean -o faprotax_report
     # 查看功能有无矩阵，-S不换行
     less -S faprotax_report.mat
 
 
 ## 4. Bugbase细菌表型预测
 
-    ### 1. 软件安装(仅一次)
+    ### 1. 软件安装(己整合到EasyMicrobiome中，原代码需要更新才能在当前运行)
     #有两种方法可选，推荐第一种，可选第二种，仅需运行一次
+    # #方法1. git下载，需要有git
+    # git clone https://github.com/knights-lab/BugBase
+    # #方法2. 下载并解压
+    # wget -c https://github.com/knights-lab/BugBase/archive/master.zip
+    # mv master.zip BugBase.zip
+    # unzip BugBase.zip
+    # mv BugBase-master/ BugBase
 
-    #方法1. git下载，需要有git
-    git clone https://github.com/knights-lab/BugBase
-
-    #方法2. 下载并解压
-    wget -c https://github.com/knights-lab/BugBase/archive/master.zip
-    mv master.zip BugBase.zip
-    unzip BugBase.zip
-    mv BugBase-master/ BugBase
-
-    #安装依赖包
     cd BugBase
+    #安装依赖包
     export BUGBASE_PATH=`pwd`
     export PATH=$PATH:`pwd`/bin
     #安装了所有依赖包
@@ -1070,15 +1086,15 @@
     # sudo pip3 install sklearn
 
     # 使用实战(使用QIIME 2的Python3环境，以在Windows中为例)
-    conda activate qiime2-2021.2
-    cd /mnt/c/amplicon/33MachineLearning/slime2
+    conda activate qiime2-2022.11
+    cd /mnt/c/EasyMicrobiome/script/slime2
     #使用adaboost计算10000次(16.7s)，推荐千万次
     ./slime2.py otutab.txt design.txt --normalize --tag ab_e4 ab -n 10000
     #使用RandomForest计算10000次(14.5s)，推荐百万次，支持多线程
     ./slime2.py otutab.txt design.txt --normalize --tag rf_e4 rf -n 10000
 
-## 6. PICRUSt2环境导出和导入
 
+## 6. PICRUSt2环境导出和导入
     
     # 方法1. 直接安装
     n=picrust2
@@ -1101,7 +1117,7 @@
     # 方法3. 导入安装环境，如qiime2 humann2 meta(包括picurst)
     n=picrust2
     # 复制安装包，或下载我的环境打包
-    wget -c http://210.75.224.110/db/conda/${n}.tar.gz
+    wget -c http://bailab.genetics.ac.cn/db/conda/${n}.tar.gz
     # 指定安装目录并解压
     condapath=~/miniconda2
     mkdir -p ${condapath}/envs/${n}
@@ -1110,7 +1126,7 @@
     source ${condapath}/envs/${n}/bin/activate
     conda unpack
 
-### 7. PICRUSt2功能预测
+## 7. PICRUSt2功能预测
 
     # (可选)PICRUSt2(Linux/Windows下Linux子系统，要求>16GB内存)
     # 安装
@@ -1140,12 +1156,14 @@
 	    -o KEGG
     # 统计各层级特征数量
     wc -l KEGG*
-    
+
+
+
 # 常见问题
 
 ## 1. 文件phred质量错误——Fastq质量值64转33
 
-使用head查看fastq文件，phred64质量值多为小写字母，需要使用vsearch的--fastq_convert命令转换为通用的phred33格式。
+    # 使用head查看fastq文件，phred64质量值多为小写字母，需要使用vsearch的--fastq_convert命令转换为通用的phred33格式。
 
     cd /c/amplicon/FAQ/01Q64Q33
     # 预览phred64格式，注意看第4行质量值多为小写字母
@@ -1157,11 +1175,11 @@
     # 查看转换后33编码格式，质量值多为大写字母
     head -n4 test.fq
 
-如果是Ion torrent测序结果，由于是非主流测序平台，需要公司转换帮助转换为标准的Phred33格式文件才可以使用。
+    # 如果是Ion torrent测序结果，由于是非主流测序平台，需要公司转换帮助转换为标准的Phred33格式文件才可以使用。
 
 ## 2. 序列双端已经合并——单端序列添加样本名
 
-扩增子分析要求序列名为样品名+序列编号，双端序列在合并同时可直接添加样本名。单端序列，或双端合并的序列需单独添加。这里使用vsearch的--fastq_convert命令中的--relabel参加添加样本名
+    # 扩增子分析要求序列名为样品名+序列编号，双端序列在合并同时可直接添加样本名。单端序列，或双端合并的序列需单独添加。这里使用vsearch的--fastq_convert命令中的--relabel参加添加样本名
 
     cd /c/amplicon/FAQ/02relabel
     # 查看文件序列名
@@ -1175,9 +1193,9 @@
 
 ## 3. 数据过大无法使用usearch聚类或去噪,替换vsearch
 
-仅限usearch免费版受限时，可通过提高minuniquesize参数减少非冗余数据量。OTU/ASV过万下游分析等待时间过长，确保OTU/ASV数据小于5000，一般不会受限，而且也有利于下游开展快速分析。
+    # 仅限usearch免费版受限时，可通过提高minuniquesize参数减少非冗余数据量。OTU/ASV过万下游分析等待时间过长，确保OTU/ASV数据小于5000，一般不会受限，而且也有利于下游开展快速分析。
 
-备选vsearch聚类生成OTU，但无自动de novo去嵌合功能。输入2155条序列，聚类后输出661。
+    # 备选vsearch聚类生成OTU，但无自动de novo去嵌合功能。输入2155条序列，聚类后输出661。
 
     cd /c/amplicon/FAQ/03feature
     # 重命名relabel、按相似id=97%聚类，不屏蔽qmask
@@ -1188,7 +1206,7 @@
      --centroids otus_raw.fa 
 
 
-再de novo去嵌合。55个嵌合，606个非嵌合。把OTU_1都去除了，没有Usearch内置去嵌合的方法合理。
+    # 再de novo去嵌合。55个嵌合，606个非嵌合。把OTU_1都去除了，没有Usearch内置去嵌合的方法合理。
 
     # 自身比对去嵌合
     vsearch --uchime_denovo otus_raw.fa \
@@ -1205,7 +1223,7 @@
 
 ## 5. 运行R提示Permission denied
  
-例如write.table保存表时，报错信息示例如下：意思是写入文件无权限，一般为目标文件正在被打开，请关闭相关文件后重试
+    # 例如write.table保存表时，报错信息示例如下：意思是写入文件无权限，一般为目标文件正在被打开，请关闭相关文件后重试
 
     Error in file(file, ifelse(append, "a", "w")) :
     Calls: write.table -> file
@@ -1215,7 +1233,7 @@
 
 ## 6. 文件批量命名
 
-如我们有文件A1和A2，编写一个样本名对应目标名的表格metadata.txt，检查样本名是否唯一，使用awk进行批量改名
+    # 如我们有文件A1和A2，编写一个样本名对应目标名的表格metadata.txt，检查样本名是否唯一，使用awk进行批量改名
 
     cd /c/amplicon/FAQ/06rename
     # (可选)快速生成文件列表，用于编辑metadata.txt，如A1.fq修改为WT1.fastq，以此类推，参考metadata.bak.txt
@@ -1239,9 +1257,9 @@
 
 ## 8. usearch -alpha_div_rare结果前两行出现“-”
 
-问题：抽样0时补“-”，且缺失制表符
+    #问题：抽样0时补“-”，且缺失制表符
 
-处理：替换“-”为"制作符\t+0"即可恢复
+    #处理：替换“-”为"制作符\t+0"即可恢复
 
     cd /c/amplicon/FAQ/08rare
     sed "s/-/\t0.0/g" alpha_rare_wrong.txt\
@@ -1249,7 +1267,7 @@
 
 ## 9. 物种注释otus.sintax方向全为“-”，需要序列取反向互补
 
-是原始序列方向错误，将filtered.fa序列需要取反向互补。再从头开始分析
+    #是原始序列方向错误，将filtered.fa序列需要取反向互补。再从头开始分析
 
     cd /c/amplicon/FAQ/09revcom
     vsearch --fastx_revcomp filtered_RC.fa \
@@ -1257,7 +1275,7 @@
 
 ## 10. windows换行符查看和删除
 
-Windows换行符为换行($)+^M，等于Linux换行+mac换行。分析数据中以linux格式为通用标准，因此windows中如excel编写并存为文本文件(制表符分隔)(*.txt)的表格，行尾有不可见的^M符号，导致分析出错。可使用cat -A命令查看此符号，可用sed删除。
+    #Windows换行符为换行($)+^M，等于Linux换行+mac换行。分析数据中以linux格式为通用标准，因此windows中如excel编写并存为文本文件(制表符分隔)(*.txt)的表格，行尾有不可见的^M符号，导致分析出错。可使用cat -A命令查看此符号，可用sed删除。
 
     cd /c/amplicon/FAQ/10^M
     # 查看行尾是否有^M
@@ -1272,7 +1290,7 @@ Windows换行符为换行($)+^M，等于Linux换行+mac换行。分析数据中�
 
 ## 11. UNITE数据库分析报错
 
-USEARCH使用UNITE下载的utax数据库，提示各种错误
+    #USEARCH使用UNITE下载的utax数据库，提示各种错误
 
     cd /c/amplicon/FAQ/11unite
     # 解压Unite的useach使用物种注释库
@@ -1283,22 +1301,16 @@ USEARCH使用UNITE下载的utax数据库，提示各种错误
       --tabbedout otus.sintax --strand plus
        --sintax_cutoff 0.6
 
-报错信息如下：
-
+    #报错信息如下：
     ---Fatal error---
     Missing x: in name >JN874928|SH1144646.08FU;tax=d:Metazoa,p:Cnidaria,c:Hydrozoa,o:Trachylina,f:,g:Craspedacusta,s:Craspedacusta_sowerbii_SH1144646.08FU;
-
-或
-
     “Unprintable ASCII character no 195 on or right before line 236492”
     
-分析原因为分类级存在空缺。可用sed补全即可解决
-    
+    # 分析原因为分类级存在空缺。可用sed补全即可解决
     # 分类级存在空缺，sed补全
     sed -i 's/,;/,Unnamed;/;s/:,/:Unnamed,/g' unite.fa
     # 再运行前面usearch --sintax命令
-
-注：vsearch有问题，推荐用usearch，结尾添加--strand plus才能成功运行
+    #注：vsearch有问题，推荐用usearch，结尾添加--strand plus才能成功运行
 
 ## 12. Windows的Linux子系统本地安装qiime2
 
@@ -1308,24 +1320,14 @@ USEARCH使用UNITE下载的utax数据库，提示各种错误
     bash Miniconda3-latest-Linux-x86_64.sh -b -f
     ~/miniconda3/condabin/conda init
     # 关闭终端重新打开
-
-    # 新建文件夹存放qiime2环境
-    mkdir -p ~/miniconda3/envs/qiime2-2021.2
-    # 安装包存放于C盘(/mnt/c/public/linux/qiime2-2021.2.tar.gz)，找不到可根据自己的情况进行修改位置，绝对路径格式为/mnt/其他盘
-    tar -xzf /mnt/c/public/linux/qiime2-2021.2.tar.gz -C ~/miniconda3/envs/qiime2-2021.2
-    # 激活环境
-    conda activate qiime2-2021.2
-
-    # 附软件在线安装和打包代码
-    # 在线安装
-    wget -c http://210.75.224.110/github/QIIME2ChineseManual/2021.2/qiime2-2021.2-py36-linux-conda.yml
-    conda env create -n qiime2-2021.2 --file qiime2-2021.2-py36-linux-conda.yml
-    # 打包已经安装的子系统QIIME2 2021.2
-    # 安装pack命令
-    conda install -c conda-forge conda-pack
-    # 打包Ubuntu 20.04中的qiime2-2021.2
-    cd /mnt/c/public/linux
-    conda pack -n qiime2-2021.2 -o qiime2-2021.2.tar.gz
+    # 安装包下载链接 
+    wget -c http://bailab.genetics.ac.cn/db/conda/qiime2-2022.11.tar.gz
+    # 新环境安装
+    mkdir -p ~/miniconda3/envs/qiime2-2022.11
+    tar -xzf qiime2-2022.11.tar.gz -C ~/miniconda3/envs/qiime2-2022.11
+    # 激活并初始化环境
+    conda activate qiime2-2022.11
+    conda unpack
 
 ## 13. RDP 16-18注释结果比较
 
@@ -1371,6 +1373,15 @@ USEARCH使用UNITE下载的utax数据库，提示各种错误
     - EasyMicrobiome中添加compare_stamp.R脚本，直接差异比较绘制STAMP扩展柱状图；代码详见result/CompareStamp.Rmd
     - EasyMicrobiome中添加compare_hierarchy_facet.R和compare_hierarchy_facet2.R，展示KEGG的1，2级总览和差异
     - 更新高级分析目录advanced：包括环境因子、马尔可无链、网络模块、网络比较、随机森林分类、随机森林回归、微生态等
+- 2023/2/3 EasyAmplicon 1.18:
+    - R运行环境升级为4.2.2，配套有4.2.zip的最新全套包
+    - RStudio更新为2022.12.0
+    - amplicon、EasyAmplicon和EasyMicrobiome更新为1.18
+    - QIIME 2更新为v2022.11
+    - vsearch更新为v2.22.1
+    - 新增ggClusterNet课程-文涛
+
+每季度视频课题安排：http://www.ehbio.com/trainLongTerm/TrainLongTerm/amplicongenomeLearnGuide.html
 
 使用此脚本，请引用下文：
 
@@ -1378,4 +1389,4 @@ If used this script, please cited:
 
 **Yong-Xin Liu**, Yuan Qin, **Tong Chen**, et. al. A practical guide to amplicon and metagenomic analysis of microbiome data. **Protein Cell**, 2021(12) 5:315-330, doi: [10.1007/s13238-020-00724-8](https://doi.org/10.1007/s13238-020-00724-8)
 
-Copyright 2016-2022 Yong-Xin Liu <metagenome@126.com>
+Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>

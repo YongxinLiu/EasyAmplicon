@@ -254,13 +254,10 @@ p
 ggsave(paste("test_predict.pdf", sep=""), p, width = 4, height = 2.5)
 
 ```
-
 使用此脚本，请引用下文：
 
-**Yong-Xin Liu**, Yuan Qin, **Tong Chen**, et. al. 2021. A practical guide to amplicon and metagenomic analysis of microbiome data. **Protein Cell**, 12 :315-330, doi: [10.1007/s13238-020-00724-8](https://doi.org/10.1007/s13238-020-00724-8) <span class="__dimensions_badge_embed__" data-doi="10.1007/s13238-020-00724-8" data-style="large_rectangle"></span><script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+If used this script, please cited:
 
-测试数据发表于2018年，引文如下：
+**Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
 
-Jingying Zhang#, Na Zhang#, **Yong-Xin Liu#**, et. al. (2018). Root microbiota shift in rice correlates with resident time in the field and developmental stage. Science China Life Sciences 61, 613-621, doi: https://doi.org/10.1007/s11427-018-9284-4 (**IF = 6.038**, Cover Story) <span class="__dimensions_badge_embed__" data-doi="10.1007/s11427-018-9284-4" data-style="large_rectangle"></span><script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
-
-Copyright 2016-2022 Yong-Xin Liu <metagenome@126.com>
+Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>

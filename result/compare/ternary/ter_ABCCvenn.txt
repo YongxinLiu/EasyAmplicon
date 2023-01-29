@@ -1,0 +1,4 @@
+logFC	logCPM	PValue	FDR	level	Kingdom	Phylum	Class	Order	Family	Genus	MeanA	MeanB	KO1	KO2	KO3	KO4	KO5	KO6	WT1	WT2	WT3	WT4	WT5	WT6
+OTU_173	5.168	10.448	0.000387175587811137	0.0297682716228505	Enriched	Bacteria	Firmicutes	Bacilli	Bacillales	Paenibacillaceae_1	Paenibacillus	0.258	0.007	0.012	0.011	0	1.517	0	0.008	0.013	0.003	0.005	0.014	0.005	0.003
+OTU_2717	5.463	6.982	0.000624200413464885	0.0387177555348876	Enriched	Bacteria	Firmicutes	Bacilli	Bacillales	Bacillaceae_1	Bacillus	0.015	0	0.003	0.003	0	0	0	0.083	0	0	0	0	0	0
+OTU_654	5.3	7.688	0.00298818714713866	0.0864646409994637	Enriched	Bacteria	Firmicutes	Bacilli	Bacillales	Paenibacillaceae_1	Paenibacillus	0.03	0	0.003	0	0	0.175	0	0	0.003	0	0	0	0	0

@@ -1,6 +1,6 @@
 ---
 title: "Diversity tutorial多样性分析教程"
-author: "Yong-Xin Liu(刘永鑫), Tao Wen(文涛)"
+author: "Yong-Xin Liu(刘永鑫), Tao Wen(文涛), Tong Chen(陈同)"
 date: "`r Sys.Date()`"
 output:
   html_document:
@@ -27,9 +27,9 @@ knitr::opts_chunk$set(
 	fig.align="center", fig.width=5, fig.height=3, dpi=150)
 ```
 
-如果你使用本代码，请引用：
+If you use this script, please cited 如果你使用本代码，请引用：
 
-Yong-Xin Liu, Yuan Qin, Tong Chen, Meiping Lu, Xubo Qian, Xiaoxuan Guo & Yang Bai. A practical guide to amplicon and metagenomic analysis of microbiome data. Protein & Cell 2021(12) 5:315-330, doi: https://doi.org/10.1007/s13238-020-00724-8
+**Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2(1): e83. https://doi.org/10.1002/imt2.83
 
 # 简介 Introduction
 
@@ -291,10 +291,11 @@ library(cowplot)
 (p0 = plot_grid(p1, p2, p3, p4, p5, p6, labels = c("A", "B", "C", "D", "E", "F"), ncol = 2))
 ggsave("diversity.pdf", p0, width = width * 2, height = height * 3, units = "mm")
 ```
+
 使用此脚本，请引用下文：
 
 If used this script, please cited:
 
-**Yong-Xin Liu**, Yuan Qin, **Tong Chen**, et. al. A practical guide to amplicon and metagenomic analysis of microbiome data. **Protein Cell**, 2021(12) 5:315-330, doi: [10.1007/s13238-020-00724-8](https://doi.org/10.1007/s13238-020-00724-8)
+**Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
 
-Copyright 2016-2022 Yong-Xin Liu <metagenome@126.com>
+Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>

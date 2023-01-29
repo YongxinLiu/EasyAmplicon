@@ -36,7 +36,7 @@ silva_16s_v123.fa.gz # 1.6 million for removing chimeras to prevent false negati
 
 Download page: https://unite.ut.ee/
 
-utax_reference_dataset_all_04.02.2020.fasta.gz # UNITE version 8.2 fungal sequences and annotations
+utax_reference_dataset_all_29.11.2022.fasta.gz # UNITE newly version fungal sequences and annotations
 
 The USEARCH data is a secondary arrangement and may not be updated in time. You can download the latest and full versions from the UNITE official website.
 
@@ -69,6 +69,8 @@ ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz # 30
 
 16S
 
+	rdp_16s_v18.fa.gz # 20,000万条序列，用于物种注释
+
 	rdp_16s_v16_sp.fa.gz # 1.3万条序列，用于物种注释，物种注释是越准越好
 
 	silva_16s_v123.fa.gz # 160万条，用于去嵌合体，防止假阴性去除嵌合体是越全越好
@@ -78,7 +80,7 @@ ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz # 30
 
 下载页面：https://unite.ut.ee/
 
-	utax_reference_dataset_all_04.02.2020.fasta.gz # UNITE 8.2版真菌序列及注释
+	utax_reference_dataset_all_29.11.2022.fasta.gz # UNITE 最新版真菌序列及注释
 
 USEARCH数据是二次整理，不一定及时更新，可至UNITE官网下载最新版、完整版
 
