@@ -58,7 +58,7 @@
     # gunzip seq/*.gz
     # zless按页查看压缩文件，空格翻页、q退出；head默认查看前10行，-n指定行
     ls -sh seq/
-    zless seq/KO1_1.fq.gz|head -n4 
+    zless seq/KO1_1.fq.gz | head -n4 
     # 每行太长，指定查看每行的1-60个字符
     zless seq/KO1_1.fq | head | cut -c 1-60
     # 统计测序数据，依赖seqkit程序
@@ -74,11 +74,12 @@
     # usearchs可用16S/18S/ITS数据库：RDP, SILVA和UNITE，本地文件位置 ${db}/usearch/
     # usearch数据库database下载页: http://www.drive5.com/usearch/manual/sintax_downloads.html
     # 解压16S RDP数据库，gunzip解压缩，seqkit stat统计
-    gunzip ${db}/usearch/rdp_16s_v18.fa.gz
+    # 保留原始压缩文件
+    gunzip -c ${db}/usearch/rdp_16s_v18.fa.gz > ${db}/usearch/rdp_16s_v18.fa
     seqkit stat ${db}/usearch/rdp_16s_v18.fa # 2.1万条序列
     # 解压ITS UNITE数据库，mv改名简化
-    gunzip ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta.gz
-    mv ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta ${db}/usearch/unite.fa
+    gunzip -c ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta.gz >${db}/usearch/unite.fa
+    # mv ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta ${db}/usearch/unite.fa
     seqkit stat ${db}/usearch/unite.fa # 32.6万
     # Greengene数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
     # 默认解压会删除原文件，-c指定输出至屏幕，> 写入新文件(可改名)
@@ -102,12 +103,18 @@
     #tail -n+2去表头，cut -f1取第一列，获得样本列表；18个样本x1.5万对序列合并8s
     #Win下复制Ctrl+C为Linux下中止，为防止异常中断，结尾添加&转后台，无显示后按回车继续
     
+    # 一部分电脑 rush 不支持，运行时调度失败，请使用 for 循环部分
+    # for 循环部分是放入后台运行的，点完 run 之后，看上去程序已运行完，实际没运行完，而是正在运行中。
+    # 不要急于运行后面的程序。
+    # 之前课程，有发现每次运行结果都不一样，就是因为 for 循环部分没运行完，只生成了部分数据，导致后面
+    # 每个样品 reads 数每次运行都会不一致。
     #方法1.for循环顺序处理
     # time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
     #   vsearch --fastq_mergepairs seq/${i}_1.fq.gz --reverse seq/${i}_2.fq.gz \
     #   --fastqout temp/${i}.merged.fq --relabel ${i}.
     # done &
 
+    # 一部分电脑 rush 不支持，运行时调度失败，请使用 for 循环部分
     #方法2.rush并行处理，任务数jobs(j),2可加速1倍4s；建议设置2-4
     time tail -n+2 result/metadata.txt | cut -f 1 | \
      rush -j 3 "vsearch --fastq_mergepairs seq/{}_1.fq.gz --reverse seq/{}_2.fq.gz \
@@ -116,13 +123,13 @@
     head temp/`tail -n+2 result/metadata.txt | cut -f 1 | tail -n1`.merged.fq | grep ^@
     
     ##方法3.不支持压缩文件时解压再双端合并
-    #  gunzip seq/*.fq.gz
+    #  # gunzip seq/*.fq.gz
     #  time tail -n+2 result/metadata.txt | cut -f 1 | \
-    #    rush -j 1 "vsearch --fastq_mergepairs seq/{}_1.fq --reverse seq/{}_2.fq \
+    #    rush -j 1 "vsearch --fastq_mergepairs <(zcat seq/{}_1.fq.gz) --reverse <(zcat seq/{}_2.fq.gz) \
     #     --fastqout temp/{}.merged.fq --relabel {}."
     # 
     #   time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
-    #      vsearch --fastq_mergepairs seq/${i}_1.fq --reverse seq/${i}_2.fq \
+    #      vsearch --fastq_mergepairs <(zcat seq/${i}_1.fq.gz) --reverse <(zcat seq/${i}_2.fq.gz) \
     #      --fastqout temp/${i}.merged.fq --relabel ${i}.
     #    done &
       
@@ -146,7 +153,9 @@
     cat temp/*.merged.fq > temp/all.fq
     #查看文件大小223M，软件不同版本结果略有差异
     ls -lsh temp/all.fq
-    #查看序列名，“.”之前是否为样本名，样本名绝不允许有.
+    # 查看序列名，“.”之前是否为样本名，样本名绝不允许有点 (".")
+    # 样本名有点 (.) 的一个显著特征是生成的特征表会很大，特征表里面列很多，导致后面分析出现内存不足。
+    # 后面分析获得特征表后要看一眼有没有问题，遇到内存不足问题，也要回头来排查。
     head -n 6 temp/all.fq|cut -c1-60
 
 
@@ -174,6 +183,8 @@
       --output temp/uniques.fa 
     #高丰度非冗余序列非常小(500K~5M较适合)，名称后有size和频率
     ls -lsh temp/uniques.fa
+    # Uni_1;size=6423  - 去冗余后序列的名字 Uni_1；该序列在所有样品测序数据中出现 6423 次
+    # 为出现最多的序列。
     head -n 2 temp/uniques.fa
 
 ### 4.2 聚类OTU/去噪ASV Cluster or denoise
@@ -244,10 +255,11 @@
     sed -i 's/\r//' result/raw/otutab.txt
     head -n6 result/raw/otutab.txt | cut -f 1-6 |cat -A
     # csvtk统计表行列
+    # 这里一定看好列数，是不是等于你的样品数；如果不等，一般是样品命名存在问题，具体看上面解释
     csvtk -t stat result/raw/otutab.txt
 
 
-### 5.2 去除质体和非细菌 Remove plastid and non-Bacteria
+### 5.2 物种注释，且/或去除质体和非细菌 Remove plastid and non-Bacteria
 
     # 物种注释-去除质体和非细菌/古菌并统计比例(可选)
     # RDP物种注释(rdp_16s_v18)更快，但缺少完整真核来源数据,可能不完整，耗时15s;
@@ -348,11 +360,11 @@
     head -n3 result/otutab_mean.txt
 
     #如以平均丰度>0.1%筛选，可选0.5或0.05，得到每个组的OTU组合
-    awk 'BEGIN{OFS=FS="\t"}{if(FNR==1) {for(i=2;i<=NF;i++) a[i]=$i;} \
-        else {for(i=2;i<=NF;i++) if($i>0.1) print $1, a[i];}}' \
+    awk 'BEGIN{OFS=FS="\t"}{if(FNR==1) {for(i=3;i<=NF;i++) a[i]=$i; print "OTU","Group";} \
+        else {for(i=3;i<=NF;i++) if($i>0.1) print $1, a[i];}}' \
         result/otutab_mean.txt > result/alpha/otu_group_exist.txt
     head result/alpha/otu_group_exist.txt
-    wc -l result/alpha/otu_group_exist.txt
+    cut -f 2 result/alpha/otu_group_exist.txt | sort | uniq -c
     # 试一试：不同丰度下各组有多少OTU/ASV
     # 可在 http://ehbio.com/test/venn/ 中绘图并显示各组共有和特有维恩或网络图
     # 也可在 http://www.ehbio.com/ImageGP 绘制Venn、upSetView和Sanky
@@ -638,7 +650,7 @@
 ### 1.5 单个特征的绘制
 
     # 筛选显示差异ASV，按KO组丰度降序列，取ID展示前10
-    awk '$4<0.05' result/compare/KO-WT.txt|sort -k7,7nr|cut -f1|head
+    awk '$4<0.05' result/compare/KO-WT.txt | sort -k7,7nr | cut -f1 | head
     # 差异OTU细节展示
     Rscript ${db}/script/alpha_boxplot.R --alpha_index ASV_2 \
       --input result/otutab.txt --design result/metadata.txt \
@@ -648,7 +660,7 @@
     # ID不存在会报错： Error in data.frame(..., check.names = FALSE) : 参数值意味着不同的行数: 0, 18  Calls: alpha_boxplot -> cbind -> cbind -> data.frame
     
     # 指定某列排序：按属丰度均值All降序
-    csvtk -t sort -k All:nr result/tax/sum_g.txt|head
+    csvtk -t sort -k All:nr result/tax/sum_g.txt | head
     # 差属细节展示
     Rscript ${db}/script/alpha_boxplot.R --alpha_index Lysobacter \
       --input result/tax/sum_g.txt --design result/metadata.txt \
@@ -763,8 +775,8 @@
 ## 3. Bugbase细菌表型预测
 
     ### 1. Bugbase命令行分析
-    cd /c/amplicon/result
-    bugbase=C:/EasyMicrobiome/script/BugBase
+    cd ${wd}/result
+    bugbase=${db}/script/BugBase
     rm -rf bugbase/
     # 脚本已经优化适合R4.0，biom包更新为biomformat
     Rscript ${bugbase}/bin/run.bugbase.r -L ${bugbase} \
@@ -877,6 +889,9 @@
     # 返回工作目录
     cd ${wd}
 
+## 4. 进化树可视化
+
+   https://www.bic.ac.cn/BIC/#/ 提供了更简易的可视化方式
 
 # 附加视频
 
@@ -1380,8 +1395,9 @@
     - QIIME 2更新为v2022.11
     - vsearch更新为v2.22.1
     - 新增ggClusterNet课程-文涛
+    
 
-每季度视频课题安排：http://www.ehbio.com/trainLongTerm/TrainLongTerm/amplicongenomeLearnGuide.html
+每季度视频课程安排：http://www.ehbio.com/trainLongTerm/TrainLongTerm/amplicongenomeLearnGuide.html
 
 使用此脚本，请引用下文：
 
