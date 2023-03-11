@@ -31,7 +31,7 @@
 -   在普通个人电脑上3小完成示例项目
 -   中、英文双语帮助文档，中文视频教程支持确保可重复
 
-![image](hhttps://github.com/YongxinLiu/EasyAmplicon/blob/master/result/Figure1.jpg)
+![image](https://github.com/YongxinLiu/EasyAmplicon/blob/master/result/Figure1.jpg)
 
 **图1. 易扩增子分析双端扩增子数据的流程**
 
