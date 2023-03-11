@@ -4,9 +4,9 @@
 
 英文版见(English Version in) README.md
 
-版本：1.18
+版本：1.18.1
 
-更新日期：2023/2/3
+更新日期：2023/3/11
 
 简单易学易用、开源、可重复且社区支持的扩增子数据分析流程
 
@@ -17,6 +17,7 @@
 文件描述:
 
 -   Readme.md \# 英文版帮助
+-   Readme_cn.md \# 中文版帮助
 -   pipeline.sh \# Windows或Linux版命令行分析流程
 -   pipeline_mac.sh \# MacOS版命令行分析流程
 -   result/ \# 示例结果(正对照)
@@ -30,11 +31,11 @@
 -   在普通个人电脑上3小完成示例项目
 -   中、英文双语帮助文档，中文视频教程支持确保可重复
 
-![image](http://bailab.genetics.ac.cn/Note/R/amplicon/Figure1.jpg)
+![image](hhttps://github.com/YongxinLiu/EasyAmplicon/tree/master/result/Figure1.jpg)
 
 **图1. 易扩增子分析双端扩增子数据的流程**
 
-![image](http://bailab.genetics.ac.cn/Note/R/amplicon/Figure2.jpg)
+![image](https://github.com/YongxinLiu/EasyAmplicon/tree/master/result/Figure2.jpg)
 
 **图2. 结果的部分可视化示例**
 
@@ -42,7 +43,7 @@
 
 系统要求 System requirement: Windows 10+ / Mac OS 10.12+ / Ubuntu 20.04+
 
-安装视频教程：http://bailab.genetics.ac.cn/method/EasyAmplicon/210824R1/EasyAmpliconInstall.wmv
+安装视频教程：https://www.bilibili.com/video/BV1Cb411f7La/
 
 ### 依赖软件环境(Install Dependency)
 
@@ -50,15 +51,15 @@
 
 -   R语言环境R 4.x.x，支持R代码运行：<https://www.r-project.org/>
 -   R语言开发环境RStudio 2022.xx.x，用于执行流程：<https://posit.co/download/rstudio-desktop/>
--   STAMP v2.1.3 特征表统计和分析图型界面软件 http://kiwi.cs.dal.ca/Software/STAMP 
+-   STAMP v2.1.3 特征表统计和分析图型界面软件 <http://kiwi.cs.dal.ca/Software/STAMP>
 -   (可选，仅Windows用户)Git Bash命令行环境的Git for Windows
     2.xx.x，支持在Windows系统中运行Shell语言，下载并安装最新版：<http://gitforwindows.org/>
 
-以最常用的Windows系统(87.5%)为例，你可以逐个下载上面的软件安装包：[Git for Windows](https://gitforwindows.org/)、[R](https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/base/)、[RStudio](https://posit.co/download/rstudio-desktop/)、[STAMP](https://github.com/dparks1134/STAMP/releases/download/v2.1.3/STAMP_2_1_3.exe)的[zip合集压缩包](http://bailab.genetics.ac.cn/db/win.tar.gz). 
+以最常用的Windows系统(87.5%)为例，你可以逐个下载上面的软件安装包：[Git for Windows](https://gitforwindows.org/)、[R](https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/base/)、[RStudio](https://posit.co/download/rstudio-desktop/)、[STAMP](https://github.com/dparks1134/STAMP/releases/download/v2.1.3/STAMP_2_1_3.exe)的[zip合集压缩包](https://pan.baidu.com/s/1KFW8xPfVJdeasDbNFMQ38w?pwd=0315)。
 
 - (可选，推荐)R包的快速安装
 
-在R语言的统计和可视化中会使用超过500个R包，安装不仅费时费力，而且经常出错或依赖其他编绎工具。为方便大家使用，我们提供了编绎好的R包合集下载，如 [Windows版](http://bailab.genetics.ac.cn/db/R/4.2.zip)、[Mac版](http://bailab.genetics.ac.cn/db/R/4.2_mac.zip)。你可以下载解压后，将 `4.2` 目录移动至 `C:\Users\[$UserName]\AppData\Local\R\win-library\`中即完成安装。
+在R语言的统计和可视化中会使用超过500个R包，安装不仅费时费力，而且经常出错或依赖其他编绎工具。为方便大家使用，我们提供了编绎好的R包合集下载，如 [Windows版](https://pan.baidu.com/s/1lraj4p5mXvPsRFJPkSsZFg?pwd=0315)、[Mac版](https://pan.baidu.com/s/1lGcW0TyuvK6Sy8iP0m7KjA?pwd=0315)。你可以下载解压后，将 `4.2` 目录移动至 `C:\Users\[$UserName]\AppData\Local\R\win-library\`中即完成安装。
 
 ### 安装易扩增子 (Install EasyAmplicon)
 
@@ -68,8 +69,8 @@
 下载以上项目至C或D盘，并解压。以下提供三种下载方式可选(让你永远留有后手)
 
 - 方法1. 网页下载。访问项目主页，点击 `Code` -- `Download`，选择下载位置，开始下载
-- 方法2. 直接从国内软件镜像链接下载: [EasyAmplicon](http://bailab.genetics.ac.cn/db/EasyAmplicon.tar.gz)、[EasyMicrobiome](http://bailab.genetics.ac.cn/db/EasyMicrobiome.tar.gz)
-- 方法3. git命令行下载。直接生成目录，无需解压。`git clone https://github.com/YongxinLiu/EasyAmplicon`和`git clone https://github.com/YongxinLiu/EasyMicrobiome`。 注：提示`fatal: unable to access`可能只是网络问题，重试或改天重试一般可解决，或找代理或朋友帮忙下载。
+- 方法2. git命令行下载。直接生成目录，无需解压。`git clone https://github.com/YongxinLiu/EasyAmplicon`和`git clone https://github.com/YongxinLiu/EasyMicrobiome`。 注：提示`fatal: unable to access`可能只是网络问题，重试或改天重试一般可解决，或找代理或朋友帮忙下载。
+- 方法3. 直接从国内百度网盘链接下载: [EasyAmplicon](https://pan.baidu.com/s/1xIoaQXHxdf1S_D_XGXPDjg?pwd=0315)、[EasyMicrobiome](https://pan.baidu.com/s/19bvHMVk08W_KLxSQ2miKyQ?pwd=0315)
 
 ### (可选)扩展软件和数据库
 
@@ -88,7 +89,7 @@
 
 ## 快速运行(Quick Start)
 
-使用视频教程：http://bailab.genetics.ac.cn/method/EasyAmplicon/210824R1/EasyAmpliconPipeline.wmv
+使用视频教程：https://www.bilibili.com/video/BV1is4y157Ms/
 
 1.  准确输入数据：典型的扩增子测序起始文件包括测序数据和元数据两类。
 
@@ -112,6 +113,11 @@ Beta多样性计算 - 物种注释分类汇总 - 有参分析和功能预测 -
 
 pipeline.sh 中的常见问题
 注：.sh脚本全部为markdown格式，使用有道Note或VSCode，阅读体验更佳。
+
+## 更新日志 (Change log)
+
+2023/3/11 1.18.1
+解决备用下载链接失效问题？视频转移到B站链接，下载文件提供百度云链接。
 
 
 ## 引文 (Citation)
