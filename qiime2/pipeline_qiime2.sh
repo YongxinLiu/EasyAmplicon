@@ -1,23 +1,23 @@
 [TOC]
 
-# QIIME2 2022.11分析流程
+# QIIME2 2023.2分析流程
 
 ## 0. 软件安装(附录1)
 
     # 仅限在Linux/Mac系统中运行，
     # Windows用户使用内置Linux子系统(支持右键粘贴)、Linux服务器环境下安装并运行
-    # 详细教程参阅官网https://docs.qiime2.org/2022.11/，或QIIME2教程专辑 https://mp.weixin.qq.com/s/farGisfX3fVL_5WgXS8lIg
+    # 详细教程参阅官网https://docs.qiime2.org/2023.2/，或QIIME2教程专辑 https://mp.weixin.qq.com/s/farGisfX3fVL_5WgXS8lIg
     # 安装Windows子系统，https://mp.weixin.qq.com/s/0PfA0bqdvrEbo62zPVq4kQ
 
 ## 1. 准备工作
 
     # 设置工作目录，如服务器为~/amplicon/qiime2，Win子系统如下：
-    wd=/mnt/c/amplicon/qiime2/
+    wd=/mnt/d/amplicon/qiime2/
     # 进入工作目录
     mkdir -p ${wd}
     cd ${wd}
     # 激活QIIME2工作环境，旧版conda使用source替换conda运行
-    conda activate qiime2-2022.11
+    conda activate qiime2-2023.2
     
     # 准备样本元数据metadata.txt、原始数据seq/*.fq.gz
     
@@ -150,12 +150,10 @@
 
 ## 4. 物种组成分析
 
-    # 下载GreenGenes 99% OTUs训练集 (可选)
-    # wget -c http://bailab.genetics.ac.cn/db/GreenGenes/classifier_gg_13_8_99.qza
-    ### 物种注释
-    # 1m 可选特异引物训练集如：classifier_gg_13_8_99_V5-V7.qza 是我用V5-V7训练的文件，详见附录或官方教程
-    qiime feature-classifier classify-sklearn \
-      --i-classifier classifier_gg_13_8_99.qza \
+    # 物种注释，数据库见附录，可先silva-138-99-nb-classifier.qza 或 2022.10.backbone.full-length.nb.qza
+    # 1m 可选特异引物训练集如：如classifier_gg_13_8_99_V5-V7.qza 是我用V5-V7训练的文件，详见附录或官方教程
+    time qiime feature-classifier classify-sklearn \
+      --i-classifier 2022.10.backbone.full-length.nb.qza \
       --i-reads rep-seqs.qza \
       --o-classification taxonomy.qza
     # 可视化物种注释
@@ -206,7 +204,7 @@
 
 # 附录
 
-## 1. qiime2 2022.11安装
+## 1. qiime2 2023.2安装
 
 ### 安装Conda
 
@@ -220,28 +218,44 @@
 
     # 附软件在线安装和打包代码
     # 下载软件列表
-    wget -c https://data.qiime2.org/distro/core/qiime2-2022.11-py38-linux-conda.yml
+    wget -c https://data.qiime2.org/distro/core/qiime2-2023.2-py38-linux-conda.yml
     # 备用链接
-    wget -c http://bailab.genetics.ac.cn/db/conda/qiime2-2022.11-py38-linux-conda.yml
+    wget -c http://www.imeta.science/db/conda/qiime2-2023.2-py38-linux-conda.yml
     # 新环境安装
-    conda env create -n qiime2-2022.11 --file qiime2-2022.11-py38-linux-conda.yml
+    conda env create -n qiime2-2023.2 --file qiime2-2023.2-py38-linux-conda.yml
     # 环境打包(可选，1.2G)
-    n=qiime2-2022.11
+    n=qiime2-2023.2
     conda pack -n ${n} -o ${n}.tar.gz
 
 ### 方法2. 本地安装QIIME
 
     # 安装包下载链接 
-    wget -c http://bailab.genetics.ac.cn/db/conda/qiime2-2022.11.tar.gz
+    wget -c ftp://download.nmdc.cn/tools/conda/qiime2-2023.2.tar.gz
     # 新环境安装
-    mkdir -p ~/miniconda3/envs/qiime2-2022.11
-    tar -xzf qiime2-2022.11.tar.gz -C ~/miniconda3/envs/qiime2-2022.11
+    mkdir -p ~/miniconda3/envs/qiime2-2023.2
+    tar -xzf qiime2-2023.2.tar.gz -C ~/miniconda3/envs/qiime2-2023.2
     # 激活并初始化环境
-    conda activate qiime2-2022.11
+    conda activate qiime2-2023.2
     conda unpack
 
-
 ## 2. 物种注释数据训练集
+
+### Silva 138 99% OTUs full-length sequences
+
+    # 官网下载
+    wget -c https://data.qiime2.org/2023.2/common/silva-138-99-nb-classifier.qza
+    # 备用链接
+    wget -c ftp://download.nmdc.cn/tools/amplicon/silva/silva-138-99-nb-classifier.qza
+
+### Greengenes2 2022.10 full length sequences
+
+    # 官网下载
+    wget -c http://ftp.microbio.me/greengenes_release/2022.10/2022.10.backbone.full-length.nb.qza
+    # 备用链接
+    wget -c ftp://download.nmdc.cn/tools/amplicon/GreenGenes/2022.10.backbone.full-length.nb.qza
+    
+
+## 3. 物种注释数据训练集
 
     wd=/mnt/c/amplicon/qiime2
     mkdir -p $wd
@@ -249,9 +263,9 @@
     # 下载数据库文件(greengenes, 320M)
     # wget -c ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
     # 国内备用链接
-    # wget -c http://bailab.genetics.ac.cn/db/GreenGenes/gg_13_8_otus.tar.gz
+    # wget -c ftp://download.nmdc.cn/tools/amplicon/GreenGenes/gg_13_8_otus.tar.gz
     # 国内备份核心99数据库(60M)
-    wget -c http://bailab.genetics.ac.cn/db/GreenGenes/gg_13_8_otus_99.tar.gz
+    wget -c ftp://download.nmdc.cn/tools/amplicon/GreenGenes/gg_13_8_otus_99.tar.gz
     mv gg_13_8_otus_99.tar.gz gg_13_8_otus.tar.gz
     # 解压
     tar -zxvf gg_13_8_otus.tar.gz
