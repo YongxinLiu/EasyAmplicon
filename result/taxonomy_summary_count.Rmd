@@ -37,11 +37,9 @@ knitr::opts_chunk$set(echo = TRUE)
 options(warn = -1) # Turn off warning
 
 # 1.2 解析命令行
-# 设置清华源加速下载
-site="https://mirrors.tuna.tsinghua.edu.cn/CRAN"
 # 判断命令行解析是否安装，安装并加载
 if (!suppressWarnings(suppressMessages(require("optparse", character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)))) {
-  install.packages("optparse", repos=site)
+  install.packages("optparse")
   require("optparse",character.only=T) 
 }
 # 解析参数-h显示帮助信息

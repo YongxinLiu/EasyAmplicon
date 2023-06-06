@@ -22,7 +22,7 @@ package_list <- c("randomForest","ggplot2","pheatmap")
 # 判断R包加载是否成功来决定是否安装后再加载
 for(p in package_list){
   if(!suppressWarnings(suppressMessages(require(p, character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)))){
-    install.packages(p, repos=site)
+    install.packages(p)
     suppressWarnings(suppressMessages(library(p, character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)))
   }
 }

@@ -1,12 +1,10 @@
-
-
 # 易扩增子 (EasyAmplicon)
 
 英文版见(English Version in) README.md
 
-版本：1.18.1
+版本：1.19
 
-更新日期：2023/3/11
+更新日期：2023/6/9
 
 简单易学易用、开源、可重复且社区支持的扩增子数据分析流程
 
@@ -49,17 +47,17 @@
 
 请安装与你操作系统一致的软件
 
--   R语言环境R 4.x.x，支持R代码运行：<https://www.r-project.org/>
--   R语言开发环境RStudio 2022.xx.x，用于执行流程：<https://posit.co/download/rstudio-desktop/>
+-   R语言环境R 4.x.x，支持R代码运行：<https://www.r-project.org/>，推荐下载Rtools实现包的源码安装
+-   R语言开发环境RStudio 2023.xx.x，用于执行流程：<https://posit.co/download/rstudio-desktop/>
 -   STAMP v2.1.3 特征表统计和分析图型界面软件 <http://kiwi.cs.dal.ca/Software/STAMP>
 -   (可选，仅Windows用户)Git Bash命令行环境的Git for Windows
     2.xx.x，支持在Windows系统中运行Shell语言，下载并安装最新版：<http://gitforwindows.org/>
 
-以最常用的Windows系统(87.5%)为例，你可以逐个下载上面的软件安装包：[Git for Windows](https://gitforwindows.org/)、[R](https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/base/)、[RStudio](https://posit.co/download/rstudio-desktop/)、[STAMP](https://github.com/dparks1134/STAMP/releases/download/v2.1.3/STAMP_2_1_3.exe)的[zip合集压缩包](https://pan.baidu.com/s/1KFW8xPfVJdeasDbNFMQ38w?pwd=0315)。
+以最常用的Windows系统(87.5%)为例，你可以快速下载上面的软件安装包：[Git for Windows](https://gitforwindows.org/)、[R](https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/base/)、[RStudio](https://posit.co/download/rstudio-desktop/)、[STAMP](https://github.com/dparks1134/STAMP/releases/download/v2.1.3/STAMP_2_1_3.exe)，[合集见百度网盘db/win目录](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315)。
 
 - (可选，推荐)R包的快速安装
 
-在R语言的统计和可视化中会使用超过500个R包，安装不仅费时费力，而且经常出错或依赖其他编绎工具。为方便大家使用，我们提供了编绎好的R包合集下载，如 [Windows版](https://pan.baidu.com/s/1lraj4p5mXvPsRFJPkSsZFg?pwd=0315)、[Mac版](https://pan.baidu.com/s/1lGcW0TyuvK6Sy8iP0m7KjA?pwd=0315)。你可以下载解压后，将 `4.2` 目录移动至 `C:\Users\[$UserName]\AppData\Local\R\win-library\`中即完成安装。
+在R语言的统计和可视化中会使用超过500个R包，安装不仅费时费力，而且经常出错或依赖其他编绎工具。为方便大家使用，我们提供了编绎好的R包合集下载，如 [Windows版](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315)、[Mac版](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 )。你可以下载解压后，将 `4.2` 目录移动至 `C:\Users\[$UserName]\AppData\Local\R\win-library\`中即完成安装。
 
 ### 安装易扩增子 (Install EasyAmplicon)
 
@@ -70,7 +68,7 @@
 
 - 方法1. 网页下载。访问项目主页，点击 `Code` -- `Download`，选择下载位置，开始下载
 - 方法2. git命令行下载。直接生成目录，无需解压。`git clone https://github.com/YongxinLiu/EasyAmplicon`和`git clone https://github.com/YongxinLiu/EasyMicrobiome`。 注：提示`fatal: unable to access`可能只是网络问题，重试或改天重试一般可解决，或找代理或朋友帮忙下载。
-- 方法3. 直接从国内百度网盘链接下载: [EasyAmplicon](https://pan.baidu.com/s/1xIoaQXHxdf1S_D_XGXPDjg?pwd=0315)、[EasyMicrobiome](https://pan.baidu.com/s/19bvHMVk08W_KLxSQ2miKyQ?pwd=0315)
+- 方法3. 直接从国内百度网盘链接中db/soft目录下载: [EasyAmplicon](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 )、[EasyMicrobiome](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 )
 
 ### (可选)扩展软件和数据库
 
@@ -119,6 +117,8 @@ pipeline.sh 中的常见问题
 2023/3/11 1.18.1
 解决备用下载链接失效问题？视频转移到B站链接，下载文件提供百度云链接。
 
+2023/6/4 1.19
+R和Rtools更新为4.3，RStudio更新为2023.03.1
 
 ## 引文 (Citation)
 

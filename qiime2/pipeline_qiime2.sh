@@ -217,25 +217,26 @@
 ### 方法1. Conda在线安装QIIME
 
     # 附软件在线安装和打包代码
-    # 下载软件列表
-    wget -c https://data.qiime2.org/distro/core/qiime2-2023.2-py38-linux-conda.yml
-    # 备用链接
-    wget -c http://www.imeta.science/db/conda/qiime2-2023.2-py38-linux-conda.yml
-    # 新环境安装
-    conda env create -n qiime2-2023.2 --file qiime2-2023.2-py38-linux-conda.yml
-    # 环境打包(可选，1.2G)
     n=qiime2-2023.2
+    # 下载软件列表
+    wget -c https://data.qiime2.org/distro/core/${n}-py38-linux-conda.yml
+    # 备用链接
+    wget -c http://www.imeta.science/db/conda/${n}-py38-linux-conda.yml
+    # 新环境安装，可在不同电脑服务器上安装成功后打包分发
+    conda env create -n ${n} --file ${n}-py38-linux-conda.yml
+    # 环境打包(可选，1.2G)
     conda pack -n ${n} -o ${n}.tar.gz
 
 ### 方法2. 本地安装QIIME
 
+    n=qiime2-2023.2
     # 安装包下载链接 
-    wget -c ftp://download.nmdc.cn/tools/conda/qiime2-2023.2.tar.gz
+    wget -c ftp://download.nmdc.cn/tools/conda/${n}.tar.gz
     # 新环境安装
-    mkdir -p ~/miniconda3/envs/qiime2-2023.2
-    tar -xzf qiime2-2023.2.tar.gz -C ~/miniconda3/envs/qiime2-2023.2
+    mkdir -p ~/miniconda3/envs/${n}
+    tar -xzf ${n}.tar.gz -C ~/miniconda3/envs/${n}
     # 激活并初始化环境
-    conda activate qiime2-2023.2
+    conda activate ${n}
     conda unpack
 
 ## 2. 物种注释数据训练集
@@ -290,8 +291,7 @@
       --i-reference-reads 99_otus.qza \
       --i-reference-taxonomy ref-taxonomy.qza \
       --o-classifier classifier_gg_13_8_99.qza
-    # 备用下载链接	wget -c http://bailab.genetics.ac.cn/db/GreenGenes/classifier_gg_13_8_99.qza
-      
+
     # 引物提取参考序列的扩增区段 Extract reference reads
     # 常用Greengenes 13_8 99% OTUs from 341F CCTACGGGNGGCWGCAG/805R GACTACHVGGGTATCTAATCC region of sequences（分类器描述），提供测序的引物序列，截取对应的区域进行比对，达到分类的目的。
     # 本次使用引物799F-1193R，请根据实际替换, 8m

@@ -13,8 +13,8 @@
     # 设置工作(work directory, wd)和软件数据库(database, db)目录
     # 添加环境变量，并进入工作目录 Add environmental variables and enter work directory
     # **每次打开Rstudio必须运行下面4行 Run it**，可选替换${db}为EasyMicrobiome安装位置
-    wd=/c/amplicon
-    db=/c/EasyMicrobiome
+    wd=/d/amplicon
+    db=/d/EasyMicrobiome
     PATH=$PATH:${db}/win
     cd ${wd}
 
@@ -25,7 +25,7 @@
     # 2. 样本元信息metadata.txt，保存于result目录
     # 3. 测序数据fastq文件保存于seq目录，通常以`.fq.gz`结尾，每个样品一对文件
     # 4. 创建临时文件存储目录，分析结束可删除
-    mkdir -p temp
+    mkdir -p seq result temp 
 
 ### 1.1. 元数据/实验设计 metadata
 
@@ -77,9 +77,8 @@
     # 保留原始压缩文件
     gunzip -c ${db}/usearch/rdp_16s_v18.fa.gz > ${db}/usearch/rdp_16s_v18.fa
     seqkit stat ${db}/usearch/rdp_16s_v18.fa # 2.1万条序列
-    # 解压ITS UNITE数据库，mv改名简化
-    gunzip -c ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta.gz >${db}/usearch/unite.fa
-    # mv ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta ${db}/usearch/unite.fa
+    # 解压ITS UNITE数据库，需自行从官网或网盘db/amplicon/usearch中下载
+    # gunzip -c ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta.gz >${db}/usearch/unite.fa
     seqkit stat ${db}/usearch/unite.fa # 32.6万
     # Greengene数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
     # 默认解压会删除原文件，-c指定输出至屏幕，> 写入新文件(可改名)
@@ -498,7 +497,7 @@
       -a WT -b KO -c OE -d All \
       -w 3 -u 3 \
       -p WT_KO_OE_All
-
+    # EVenn在线绘制维恩图 https://www.ehbio.com/test/venn
 
 ## 2. Beta多样性
 
@@ -713,7 +712,7 @@
     #2. Rstudio打开EasyAmplicon中format2lefse.Rmd，另存至result目录并Knit生成输入文件和可重复计算网页；
 
     ### 3.3 LEfSe分析
-    #方法1. 打开LEfSe.txt并在线提交 http://www.ehbio.com/ImageGP/index.php/Home/Index/LEFSe.html
+    #方法1. 打开LEfSe.txt并在线提交 https://www.bic.ac.cn/BIC/#/analysis?page=b%27MzY%3D%27
     #方法2. LEfSe本地分析(限Linux系统、选学)，参考代码见附录
     #方法3. LEfSe官网在线使用
 
@@ -769,7 +768,7 @@
 
 ## 2. 元素循环FAPROTAX
 
-    ## 方法1. 在线分析，推荐使用 http://www.ehbio.com/ImageGP 在线分析
+    ## 方法1. 在线分析，推荐使用 http://www.bic.ac.cn/ImageGP/index.php/Home/Index/FAPROTAX.html 在线分析
     ## 方法2. Linux下分析、如QIIME 2环境下，详见附录3
 
 ## 3. Bugbase细菌表型预测
@@ -783,7 +782,7 @@
       -i gg/otutab.txt -m metadata.txt -c Group -o bugbase/
 
     ### 2. 其它可用分析
-    # 使用 http://www.ehbio.com/ImageGP
+    # 使用 http://www.bic.ac.cn/ImageGP/index.php/Home/Index/BugBase.html
     # 官网，https://bugbase.cs.umn.edu/ ，有报错，不推荐
     # Bugbase细菌表型预测Linux，详见附录4. Bugbase细菌表型预测
 
@@ -948,19 +947,13 @@
 
 ## 2. PICRUSt功能预测
 
-    #推荐使用 http://www.ehbio.com/ImageGP 在线分析
+    #推荐使用 http://www.bic.ac.cn/BIC/#/analysis?tool_type=tool&page=b%27Mzk%3D%27 在线分析
     #有Linux服务器用户可参考以下代码搭建本地流程
-    # 依赖数据库较大(243M)，需要自行下载
-    db=~/db/
-    mkdir -p ${db}/picrust/ cd ${db}/picrust/
-    wget -c http://bailab.genetics.ac.cn/db/picrust/16S_13_5_precalculated.tab.gz
-    wget -c http://bailab.genetics.ac.cn/db/picrust/ko_13_5_precalculated.tab.gz
-    # 方法1. conda直接安装picrust
+
     n=picrust
     conda create -n ${n} ${n} -c bioconda -y
-    # 方法2. 下载软件环境meta并解压，参考picrust2安装
-    
-    wd=/mnt/c/amplicon
+
+    wd=/mnt/d/amplicon
     cd $wd/result/gg
     # 启动环境
     conda activate picrust
@@ -999,10 +992,10 @@
 ## 3. FAPROTAXS元素循环
 
     # 设置工作目录
-    wd=/mnt/c/amplicon/result/faprotax/
+    wd=/mnt/d/amplicon/result/faprotax/
     mkdir -p ${wd} && cd ${wd}
     # 设置脚本目录
-    sd=/mnt/c/EasyMicrobiome/script/FAPROTAX_1.2.6
+    sd=/mnt/d/EasyMicrobiome/script/FAPROTAX_1.2.6
 
     ### 1. 软件安装
     # 注：软件已经下载至 EasyAmplicon/script目录，在qiime2环境下运行可满足依赖关系
@@ -1016,7 +1009,7 @@
     # 查看conda环境名称和位置
     # conda env list
     #新建一个python3环境并配置依赖关系，或进入qiime2 python3环境
-    conda activate qiime2-2022.11
+    conda activate qiime2-2023.2
     # source /home/silico_biotech/miniconda3/envs/qiime2/bin/activate
     #测试是否可运行，弹出帮助即正常工作
     python $sd/collapse_table.py
@@ -1101,8 +1094,8 @@
     # sudo pip3 install sklearn
 
     # 使用实战(使用QIIME 2的Python3环境，以在Windows中为例)
-    conda activate qiime2-2022.11
-    cd /mnt/c/EasyMicrobiome/script/slime2
+    conda activate qiime2-2023.2
+    cd /mnt/d/EasyMicrobiome/script/slime2
     #使用adaboost计算10000次(16.7s)，推荐千万次
     ./slime2.py otutab.txt design.txt --normalize --tag ab_e4 ab -n 10000
     #使用RandomForest计算10000次(14.5s)，推荐百万次，支持多线程
@@ -1132,9 +1125,9 @@
     # 方法3. 导入安装环境，如qiime2 humann2 meta(包括picurst)
     n=picrust2
     # 复制安装包，或下载我的环境打包
-    wget -c http://bailab.genetics.ac.cn/db/conda/${n}.tar.gz
+    wget -c ftp://download.nmdc.cn/tools/conda/${n}.tar.gz
     # 指定安装目录并解压
-    condapath=~/miniconda2
+    condapath=~/miniconda3
     mkdir -p ${condapath}/envs/${n}
     tar -xvzf ${n}.tar.gz -C ${condapath}/envs/${n}
     # 激活环境并初始化
@@ -1144,18 +1137,17 @@
 ## 7. PICRUSt2功能预测
 
     # (可选)PICRUSt2(Linux/Windows下Linux子系统，要求>16GB内存)
-    # 安装
-    conda create -n picrust2 -c bioconda -c conda-forge picrust2=2.3.0_b
-    # 如果此方法不成功，可使用附录6的方式直接下载安装包并解压即可使用
+    # 安装参考附录6的方式直接下载安装包并解压即可使用
     
     # 加载环境
     conda activate picrust2
     # 进入工作目录，服务器要修改工作目录
-    wd=/mnt/c/amplicon/result/picrust2
+    wd=/mnt/d/amplicon/result/picrust2
     mkdir -p ${wd} && cd ${wd}
     # 运行流程，内存15.7GB，耗时12m
-    picrust2_pipeline.py -s ../otus.fa -i ../otutab.txt -o ./ -p 8
+    picrust2_pipeline.py -s ../otus.fa -i ../otutab.txt -o ./out -p 8
     # 添加EC/KO/Pathway注释
+    cd out
     add_descriptions.py -i pathways_out/path_abun_unstrat.tsv.gz -m METACYC \
       -o pathways_out/path_abun_unstrat_descrip.tsv.gz
     add_descriptions.py -i EC_metagenome_out/pred_metagenome_unstrat.tsv.gz -m EC \
@@ -1163,6 +1155,7 @@
     add_descriptions.py -i KO_metagenome_out/pred_metagenome_unstrat.tsv.gz -m KO \
       -o KO_metagenome_out/pred_metagenome_unstrat_descrip.tsv.gz 
     # KEGG按层级合并
+    db=/mnt/d/EasyMicrobiome/
     zcat KO_metagenome_out/pred_metagenome_unstrat.tsv.gz > KEGG.KO.txt
     python3 ${db}/script/summarizeAbundance.py \
       -i KEGG.KO.txt \
@@ -1329,19 +1322,15 @@
 
 ## 12. Windows的Linux子系统本地安装qiime2
 
-    # 安装Windows子系统，https://mp.weixin.qq.com/s/0PfA0bqdvrEbo62zPVq4kQ
-    # 下载、安装和启动conda
-    wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    bash Miniconda3-latest-Linux-x86_64.sh -b -f
-    ~/miniconda3/condabin/conda init
-    # 关闭终端重新打开
+    # 详见 qiime2/pipeline_qiime2.sh
+    n=qiime2-2023.2
     # 安装包下载链接 
-    wget -c http://bailab.genetics.ac.cn/db/conda/qiime2-2022.11.tar.gz
+    wget -c ftp://download.nmdc.cn/tools/conda/${n}.tar.gz
     # 新环境安装
-    mkdir -p ~/miniconda3/envs/qiime2-2022.11
-    tar -xzf qiime2-2022.11.tar.gz -C ~/miniconda3/envs/qiime2-2022.11
+    mkdir -p ~/miniconda3/envs/${n}
+    tar -xzf ${n}.tar.gz -C ~/miniconda3/envs/${n}
     # 激活并初始化环境
-    conda activate qiime2-2022.11
+    conda activate ${n}
     conda unpack
 
 ## 13. RDP 16-18注释结果比较
@@ -1392,7 +1381,7 @@
     - R运行环境升级为4.2.2，配套有4.2.zip的最新全套包
     - RStudio更新为2022.12.0
     - amplicon、EasyAmplicon和EasyMicrobiome更新为1.18
-    - QIIME 2更新为v2022.11
+    - QIIME 2更新为v2023.2
     - vsearch更新为v2.22.1
     - 新增ggClusterNet课程-文涛
     

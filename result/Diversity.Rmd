@@ -40,7 +40,7 @@ facilitates statistics and visualization of amplicon profiling data, in
 particular 16S and ITS alpha / beta diversity, and taxonomy composition.
 
 ```{r install, echo=TRUE}
-# 基于CRAN安装R包
+# 基于CRAN安装R包，检测没有则安装
 p_list = c("ggplot2", "BiocManager", "devtools")
 for(p in p_list){if (!requireNamespace(p)){install.packages(p)}
     library(p, character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)}
@@ -49,7 +49,7 @@ for(p in p_list){if (!requireNamespace(p)){install.packages(p)}
 if (!requireNamespace("ggtree", quietly = TRUE))
     BiocManager::install("ggtree")
 
-# 基于github安装，检测没有则安装
+# 基于github安装
 library(devtools)
 if(!requireNamespace("amplicon", quietly = TRUE))
   install_github("microbiota/amplicon")

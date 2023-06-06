@@ -4,9 +4,9 @@ The Chinese version in (中文版见) [README_cn.md](./README_cn.md)
 
 [**EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research**](https://doi.org/10.1002/imt2.83)
 
-Version：v1.18.1
+Version：v1.19
 
-Update：2023/3/27
+Update：2023/6/9
 
 ## Pipeline manual and file description (流程使用和文件介绍)
 
@@ -49,18 +49,18 @@ Files description:
 
 ### Install Dependency (安装依赖软件)
 
+All the software backup can be found in Baidu Net Disk：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 
+
 Please install the dependency software according with you system (Win/Mac/Linux).
 
-- R 4.x.x for run R scripts https://www.r-project.org/
-- RStudio 2022.xx.x is a integrated development environment for R https://posit.co/download/rstudio-desktop/
+- R 4.x.x for run R scripts https://www.r-project.org/, also recommended install Rtools for install source code packages.
+- RStudio 2023.xx.x is a integrated development environment for R https://posit.co/download/rstudio-desktop/
 - STAMP v2.1.3 http://kiwi.cs.dal.ca/Software/STAMP 
 - Git for Windows 2.xx.x (Windows only) http://gitforwindows.org/
 
-As the windows users (87.5%) as example, you can quickly batch download above [Git for Windows](https://gitforwindows.org/), [R](https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/windows/base/), [RStudio](https://posit.co/download/rstudio-desktop/), [STAMP](https://github.com/dparks1134/STAMP/releases/download/v2.1.3/STAMP_2_1_3.exe) in [zip](http://bailab.genetics.ac.cn/db/win.tar.gz). 
-
 - R packages quick install
 
-The statistics and visualization may require > 500 R packages. Installation is time-consuming and may also rely on other compilation tools. You can download all needed R packages in [zip for windows](http://bailab.genetics.ac.cn/db/R/4.2.zip) or [Mac](http://bailab.genetics.ac.cn/db/R/4.2_mac.zip), then unzip and take the `4.2` folder in C:\Users\[$UserName]\AppData\Local\R\win-library\
+The statistics and visualization may require > 500 R packages. Installation is time-consuming and may also rely on other compilation tools. You can download all needed R packages in https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 db/win/4.x.zip or db/mac/R4.2_mac_libraryX86_64.zip, then unzip and take the `4.x` folder in C:\Users\[$UserName]\AppData\Local\R\win-library\
 
 ### Install EasyAmplicon (安装易扩增子)
 
@@ -71,7 +71,7 @@ The statistics and visualization may require > 500 R packages. Installation is t
 
 Download the the project in C: or D:, then unzip (keep the directoray name exact the software name)
 
-- Method 2. Download by the mirror site in China: [EasyAmplicon](http://bailab.genetics.ac.cn/db/EasyAmplicon.tar.gz) [EasyMicrobiome](http://bailab.genetics.ac.cn/db/EasyMicrobiome.tar.gz)
+- Method 2. Download by the mirror site in BaiduNetDisk: https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 db/soft/EasyAmplicon.tar.gz or EasyMicrobiome.tar.gz
 
 - Method 3. `git clone https://github.com/YongxinLiu/EasyAmplicon` and `git clone https://github.com/YongxinLiu/EasyMicrobiome`. Note: `fatal: unable to access` can retry.
 
@@ -85,7 +85,7 @@ Using Windows 10+ as example:
 
 ## Example dataset (示例数据)
 
-- seq/ # raw sequencing in zipped fastq format, backup can download by metadata in GSA https://ngdc.cncb.ac.cn/gsa/
+- seq/ # raw sequencing in zipped fastq format, backup can download by metadata from GSA https://ngdc.cncb.ac.cn/gsa/
 - result/ # Example data and figures for standard pipeline, such as alpha, beta, tax
 - advanced/ # Example of advanced analysis, included data, scripts and output figures
 
@@ -104,5 +104,3 @@ If used this script, please cited:
 **Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
 
 Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
-
-

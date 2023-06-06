@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #############################################################
 # Title: Didfferent abundance OTU -- Tenary plot
 # Author: Yong-Xin Liu
-# E-mail: yxliu@genetics.ac.cn
+# E-mail: liuyongxin@caas.cn
 # Date: 2017/6/21
 # Update: 2021/4/3
 # Description: Script to draw tenary plot
@@ -33,6 +33,11 @@ knitr::opts_chunk$set(echo = TRUE)
 # Set working enviroment
 rm(list=ls()) # clean enviroment object
 source("ternary_func.R")
+
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+if (!require("Biobase", quietly = TRUE))
+    BiocManager::install("Biobase")
 
 # Rewrite header of OTU count
 write.table(paste("GroupA-Left","GroupB-Right","GroupC-Top/Common-Middle",sep = "\t"), file=paste("ter_", "sum.txt", sep=""), sep="\t", quote=F, append = FALSE, row.names=F, col.names=F)
