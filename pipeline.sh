@@ -78,7 +78,7 @@
     gunzip -c ${db}/usearch/rdp_16s_v18.fa.gz > ${db}/usearch/rdp_16s_v18.fa
     seqkit stat ${db}/usearch/rdp_16s_v18.fa # 2.1万条序列
     # 解压ITS UNITE数据库，需自行从官网或网盘db/amplicon/usearch中下载
-    # gunzip -c ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta.gz >${db}/usearch/unite.fa
+    # gunzip -c ${db}/usearch/utax_reference_dataset_all_25.07.2023.fasta.gz >${db}/usearch/unite.fa
     seqkit stat ${db}/usearch/unite.fa # 32.6万
     # Greengene数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
     # 默认解压会删除原文件，-c指定输出至屏幕，> 写入新文件(可改名)
@@ -116,13 +116,12 @@
     # 一部分电脑 rush 不支持，运行时调度失败，请使用 for 循环部分
     #方法2.rush并行处理，任务数jobs(j),2可加速1倍4s；建议设置2-4
     time tail -n+2 result/metadata.txt | cut -f 1 | \
-     rush -j 3 "vsearch --fastq_mergepairs seq/{}_1.fq.gz --reverse seq/{}_2.fq.gz \
+     rush -j 2 "vsearch --fastq_mergepairs seq/{}_1.fq.gz --reverse seq/{}_2.fq.gz \
       --fastqout temp/{}.merged.fq --relabel {}."
     # 检查最后一个文件前10行中样本名
     head temp/`tail -n+2 result/metadata.txt | cut -f 1 | tail -n1`.merged.fq | grep ^@
     
     ##方法3.不支持压缩文件时解压再双端合并
-    #  # gunzip seq/*.fq.gz
     #  time tail -n+2 result/metadata.txt | cut -f 1 | \
     #    rush -j 1 "vsearch --fastq_mergepairs <(zcat seq/{}_1.fq.gz) --reverse <(zcat seq/{}_2.fq.gz) \
     #     --fastqout temp/{}.merged.fq --relabel {}."
@@ -236,13 +235,6 @@
 
 ### 5.1 生成特征表
 
-    # 方法1. usearch生成特征表，小样本(<30)快；但大样本受限且多线程效率低，83.2%, 4核17s
-    # time usearch -otutab temp/filtered.fa \
-    #   -otus result/raw/otus.fa \
-    #   -threads 4 \
-    #   -otutabout result/raw/otutab.txt
-
-    # 方法2. vsearch生成特征表
     # id(1)：100%相似度比对49.45%序列，1m50s
     # id(0.97)：97%相似度比对83.66%序列，1m10s(更高数据使用率，更快)
     time vsearch --usearch_global temp/filtered.fa \
@@ -268,7 +260,6 @@
       --db ${db}/usearch/rdp_16s_v18.fa \
       --sintax_cutoff 0.1 \
       --tabbedout result/raw/otus.sintax 
-    head result/raw/otus.sintax | cat -A
     sed -i 's/\r//' result/raw/otus.sintax
 
     # 方法1. 原始特征表行数
@@ -416,17 +407,12 @@
     # 比对Greengenes97% OTUs比对，用于PICRUSt/Bugbase功能预测
     mkdir -p result/gg/
 
-    #方法1. usearch比对更快，但文件超限报错选方法2
+    # usearch比对更快，但文件超限报错选附录14 vsearch比对
     # 默认10核以下使用1核，10核以上使用10核
     usearch -otutab temp/filtered.fa -otus ${db}/gg/97_otus.fa \
     	-otutabout result/gg/otutab.txt -threads 4
     # 比对率80.0%, 1核11m，4核3m，10核2m，内存使用743Mb
     head -n3 result/gg/otutab.txt
-
-    # #方法2. vsearch比对，更准更慢，但并行24-96线程更强
-    # vsearch --usearch_global temp/filtered.fa --db ${db}/gg/97_otus.fa \
-    #   --otutabout result/gg/otutab.txt --id 0.97 --threads 12
-    # 比对率81.04%, 1核30m, 12核7m
 
     #统计
     usearch -otutab_stats result/gg/otutab.txt -output result/gg/otutab.stat
@@ -503,20 +489,14 @@
 
 ### 2.1 距离矩阵热图pheatmap
 
-    # 以bray_curtis为例，-f输入文件,-h是否聚类TRUE/FALSE,-u/v为宽高英寸
-    bash ${db}/script/sp_pheatmap.sh \
-      -f result/beta/bray_curtis.txt \
-      -H 'TRUE' -u 6 -v 5
     # 添加分组注释，如2，4列的基因型和地点
     cut -f 1-2 result/metadata.txt > temp/group.txt
+    # 以bray_curtis为例，-f输入文件,-h是否聚类TRUE/FALSE,-u/v为宽高英寸
     # -P添加行注释文件，-Q添加列注释
     bash ${db}/script/sp_pheatmap.sh \
       -f result/beta/bray_curtis.txt \
       -H 'TRUE' -u 6.9 -v 5.6 \
       -P temp/group.txt -Q temp/group.txt
-    # 距离矩阵与相关类似，可尝试corrplot或ggcorrplot绘制更多样式
-    # - [绘图相关系数矩阵corrplot](http://mp.weixin.qq.com/s/H4_2_vb2w_njxPziDzV4HQ)
-    # - [相关矩阵可视化ggcorrplot](http://mp.weixin.qq.com/s/AEfPqWO3S0mRnDZ_Ws9fnw)
 
 ### 2.2 主坐标分析PCoA
 
@@ -595,6 +575,7 @@
 
 ### 1.1 差异比较
 
+    # Error in file(file, ifelse(append, "a", "w")),输出目录不存在，创建目录即可
     mkdir -p result/compare/
     # 输入特征表、元数据；指定分组列名、比较组和丰度
     # 选择方法 wilcox/t.test/edgeR、pvalue和fdr和输出目录
@@ -604,8 +585,6 @@
       --group Group --compare ${compare} --threshold 0.1 \
       --method edgeR --pvalue 0.05 --fdr 0.2 \
       --output result/compare/
-    # 常见错误：Error in file(file, ifelse(append, "a", "w")) : 无法打开链结 Calls: write.table -> file
-    # 解决方法：输出目录不存在，创建目录即可
 
 ### 1.2 火山图
 
@@ -1350,6 +1329,20 @@
     tail -n+2 rdp16_sintax.txt|cut -f7|sort|uniq -c|wc -l
     tail -n+2 rdp18_sintax.txt|cut -f7|sort|uniq -c|wc -l  
 
+
+## 14. usearch生成OTU表小样本比vsearch更快
+
+    # usearch生成特征表，小样本(<30)快；但大样本受限且多线程效率低，83.2%, 4核17s
+    time usearch -otutab temp/filtered.fa \
+      -otus result/raw/otus.fa \
+      -threads 4 \
+      -otutabout result/raw/otutab.txt
+
+    # vsearch比对，更准更慢，但并行24-96线程更强
+    vsearch --usearch_global temp/filtered.fa --db ${db}/gg/97_otus.fa \
+      --otutabout result/gg/otutab.txt --id 0.97 --threads 12
+    # 比对率81.04%, 1核30m, 12核7m
+
 # 版本更新记录
 
 - 2021/4/3 EasyAmplicon 1.11:
@@ -1384,7 +1377,13 @@
     - QIIME 2更新为v2023.2
     - vsearch更新为v2.22.1
     - 新增ggClusterNet课程-文涛
-    
+- 2023/10/13 EasyAmplicon 1.20:
+    - R运行环境升级为4.3.1，配套有4.3.zip的最新全套包
+    - RStudio更新为2023.12.0
+    - amplicon、EasyAmplicon和EasyMicrobiome更新为1.20
+    - QIIME 2更新为v2023.7，数据库更新为greengene2 2022.10
+    - 新增ggpicrust2分析picrust2结果可视化
+
 
 每季度视频课程安排：http://www.ehbio.com/trainLongTerm/TrainLongTerm/amplicongenomeLearnGuide.html
 
@@ -1392,6 +1391,8 @@
 
 If used this script, please cited:
 
-**Yong-Xin Liu**, Yuan Qin, **Tong Chen**, et. al. A practical guide to amplicon and metagenomic analysis of microbiome data. **Protein Cell**, 2021(12) 5:315-330, doi: [10.1007/s13238-020-00724-8](https://doi.org/10.1007/s13238-020-00724-8)
+Yong-Xin Liu, Lei Chen, Tengfei Ma, et al. 2023. 
+EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. 
+iMeta 2: e83. https://doi.org/10.1002/imt2.83
 
 Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>

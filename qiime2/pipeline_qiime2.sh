@@ -1,23 +1,23 @@
 [TOC]
 
-# QIIME2 2023.2分析流程
+# QIIME2 2023.7分析流程
 
 ## 0. 软件安装(附录1)
 
     # 仅限在Linux/Mac系统中运行，
     # Windows用户使用内置Linux子系统(支持右键粘贴)、Linux服务器环境下安装并运行
-    # 详细教程参阅官网https://docs.qiime2.org/2023.2/，或QIIME2教程专辑 https://mp.weixin.qq.com/s/farGisfX3fVL_5WgXS8lIg
+    # 详细教程参阅官网https://docs.qiime2.org/2023.7/，或QIIME2教程专辑 https://mp.weixin.qq.com/s/farGisfX3fVL_5WgXS8lIg
     # 安装Windows子系统，https://mp.weixin.qq.com/s/0PfA0bqdvrEbo62zPVq4kQ
 
 ## 1. 准备工作
 
     # 设置工作目录，如服务器为~/amplicon/qiime2，Win子系统如下：
-    wd=/mnt/d/amplicon/qiime2/
+    wd=/mnt/c/amplicon/qiime2/
     # 进入工作目录
     mkdir -p ${wd}
     cd ${wd}
     # 激活QIIME2工作环境，旧版conda使用source替换conda运行
-    conda activate qiime2-2023.2
+    conda activate qiime2-2023.7
     
     # 准备样本元数据metadata.txt、原始数据seq/*.fq.gz
     
@@ -150,8 +150,8 @@
 
 ## 4. 物种组成分析
 
-    # 物种注释，数据库见附录，可先silva-138-99-nb-classifier.qza 或 2022.10.backbone.full-length.nb.qza
-    # 1m 可选特异引物训练集如：如classifier_gg_13_8_99_V5-V7.qza 是我用V5-V7训练的文件，详见附录或官方教程
+    # 物种注释，数据库见附录，可选silva-138-99-nb-classifier.qza 或 2022.10.backbone.full-length.nb.qza，详见附录或官方教程
+    # 此步计算时间5m，内存使用6GB
     time qiime feature-classifier classify-sklearn \
       --i-classifier 2022.10.backbone.full-length.nb.qza \
       --i-reads rep-seqs.qza \
@@ -204,7 +204,7 @@
 
 # 附录
 
-## 1. qiime2 2023.2安装
+## 1. qiime2 2023.7安装
 
 ### 安装Conda
 
@@ -212,12 +212,12 @@
     wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh -b -f
     ~/miniconda3/condabin/conda init
-    # 关闭终端重新打开
+    source ~/.bashrc
 
 ### 方法1. Conda在线安装QIIME
 
     # 附软件在线安装和打包代码
-    n=qiime2-2023.2
+    n=qiime2-2023.7
     # 下载软件列表
     wget -c https://data.qiime2.org/distro/core/${n}-py38-linux-conda.yml
     # 备用链接
@@ -229,8 +229,8 @@
 
 ### 方法2. 本地安装QIIME
 
-    n=qiime2-2023.2
-    # 安装包下载链接 
+    n=qiime2-2023.7
+    # 安装包下载链接,或百度云下载链接：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315
     wget -c ftp://download.nmdc.cn/tools/conda/${n}.tar.gz
     # 新环境安装
     mkdir -p ~/miniconda3/envs/${n}
@@ -244,7 +244,7 @@
 ### Silva 138 99% OTUs full-length sequences
 
     # 官网下载
-    wget -c https://data.qiime2.org/2023.2/common/silva-138-99-nb-classifier.qza
+    wget -c https://data.qiime2.org/2023.7/common/silva-138-99-nb-classifier.qza
     # 备用链接
     wget -c ftp://download.nmdc.cn/tools/amplicon/silva/silva-138-99-nb-classifier.qza
 
