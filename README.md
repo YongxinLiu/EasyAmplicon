@@ -4,9 +4,9 @@ The Chinese version in (中文版见) [README_cn.md](./README_cn.md)
 
 [**EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research**](https://doi.org/10.1002/imt2.83)
 
-Version：v1.19
+Version：v1.20
 
-Update：2023/6/9
+Update：2023/10/13
 
 ## Pipeline manual and file description (流程使用和文件介绍)
 

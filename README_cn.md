@@ -2,9 +2,9 @@
 
 英文版见(English Version in) README.md
 
-版本：1.19
+版本：1.20
 
-更新日期：2023/6/9
+更新日期：2023/10/13
 
 简单易学易用、开源、可重复且社区支持的扩增子数据分析流程
 
@@ -57,7 +57,7 @@
 
 - (可选，推荐)R包的快速安装
 
-在R语言的统计和可视化中会使用超过500个R包，安装不仅费时费力，而且经常出错或依赖其他编绎工具。为方便大家使用，我们提供了编绎好的R包合集下载，如 [Windows版](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315)、[Mac版](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 )。你可以下载解压后，将 `4.2` 目录移动至 `C:\Users\[$UserName]\AppData\Local\R\win-library\`中即完成安装。
+在R语言的统计和可视化中会使用超过500个R包，安装不仅费时费力，而且经常出错或依赖其他编绎工具。为方便大家使用，我们提供了编绎好的R包合集下载，如 [Windows版](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315)、[Mac版](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 )。你可以下载解压后，将 `4.3` 目录移动至 `C:\Users\[$UserName]\AppData\Local\R\win-library\`中即完成安装。
 
 ### 安装易扩增子 (Install EasyAmplicon)
 
