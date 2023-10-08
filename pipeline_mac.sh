@@ -3,8 +3,8 @@
 # 易扩增子EasyAmplicon
 
     # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)等
-    # 版本 Version: v1.18
-    # 更新 Update: 2023-2-3
+    # 版本 Version: v1.20
+    # 更新 Update: 2023-10-13
     # 系统要求 System requirement: Windows 10+ / Mac OS 10.12+ / Ubuntu 20.04+
     # 引文 Reference: Liu, et al. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based
     # pipeline for amplicon data analysis in microbiome research. iMeta 2: e83. https://doi.org/10.1002/imt2.83
@@ -20,6 +20,10 @@
     bin=${db}/mac
     chmod 755 ${bin}/*
     sed -i 's/\r//g' ${db}/script/*.sh
+    sed -i 's/\r//g' ${db}/script/*.R
+    sed -i 's/\r//g' ${db}/script/*.py
+    sed -i 's/\r//g' ${bin}/*.sh
+    sed -i 's/\r//g' ${bin}/*.r
     chmod 755 ${db}/script/*
     export PATH=${bin}:`pwd`/${bin}:${db}/script:${PATH}
     cd ${wd}
@@ -96,10 +100,10 @@
     # 解压16S RDP数据库，gunzip解压缩，seqkit stat统计
     gunzip -c ${db}/usearch/rdp_16s_v18.fa.gz > ${db}/usearch/rdp_16s_v18.fa
     seqkit stat ${db}/usearch/rdp_16s_v18.fa # 2.1万条序列
-    # 解压ITS UNITE数据库，mv改名简化
-    gunzip -c ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta.gz >${db}/usearch/unite.fa
-    # mv ${db}/usearch/utax_reference_dataset_all_29.11.2022.fasta ${db}/usearch/unite.fa
-    seqkit stat ${db}/usearch/unite.fa # 32.6万
+
+    # 解压ITS UNITE数据库，需自行从官网或网盘db/amplicon/usearch中下载
+    # gunzip -c ${db}/usearch/utax_reference_dataset_all_25.07.2023.fasta.gz >${db}/usearch/unite.fa
+    # seqkit stat ${db}/usearch/unite.fa # 32.6万
     # Greengene数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
     # 默认解压会删除原文件，-c指定输出至屏幕，> 写入新文件(可改名)
     gunzip -c ${db}/gg/97_otus.fasta.gz > ${db}/gg/97_otus.fa
@@ -149,7 +153,7 @@
     
     # 如果不支持 zlib，可以用这个方式运行。
     time tail -n+2 result/metadata.txt | cut -f 1 | \
-     rush -j 3 "vsearch --fastq_mergepairs <(zcat seq/{}_1.fq.gz) --reverse <(zcat seq/{}_2.fq.gz) \
+     rush -j 2 "vsearch --fastq_mergepairs <(zcat seq/{}_1.fq.gz) --reverse <(zcat seq/{}_2.fq.gz) \
       --fastqout temp/{}.merged.fq --relabel {}."
       
     # time tail -n+2 result/metadata.txt | cut -f 1 | \
@@ -160,9 +164,9 @@
     head temp/`tail -n+2 result/metadata.txt | cut -f 1 | tail -n1`.merged.fq | grep ^@
     
     ##方法3.不支持压缩文件时解压再双端合并
-    #  gunzip seq/*.fq.gz
+
     #  time tail -n+2 result/metadata.txt | cut -f 1 | \
-    #    rush -j 1 "vsearch --fastq_mergepairs seq/{}_1.fq --reverse seq/{}_2.fq \
+    #    rush -j 1 "vsearch --fastq_mergepairs <(zcat seq/{}_1.fq.gz) --reverse <(zcat seq/{}_2.fq.gz) \
     #     --fastqout temp/{}.merged.fq --relabel {}."
     # 
     #   time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
@@ -568,20 +572,15 @@
 
 ### 2.1 距离矩阵热图pheatmap
 
-    # 以bray_curtis为例，-f输入文件,-h是否聚类TRUE/FALSE,-u/v为宽高英寸
-    bash ${db}/script/sp_pheatmap.sh \
-      -f result/beta/bray_curtis.txt \
-      -H 'TRUE' -u 6 -v 5
     # 添加分组注释，如2，4列的基因型和地点
     cut -f 1-2 result/metadata.txt > temp/group.txt
+    # 以bray_curtis为例，-f输入文件,-h是否聚类TRUE/FALSE,-u/v为宽高英寸
     # -P添加行注释文件，-Q添加列注释
     bash ${db}/script/sp_pheatmap.sh \
       -f result/beta/bray_curtis.txt \
       -H 'TRUE' -u 6.9 -v 5.6 \
       -P temp/group.txt -Q temp/group.txt
-    # 距离矩阵与相关类似，可尝试corrplot或ggcorrplot绘制更多样式
-    # - [绘图相关系数矩阵corrplot](http://mp.weixin.qq.com/s/H4_2_vb2w_njxPziDzV4HQ)
-    # - [相关矩阵可视化ggcorrplot](http://mp.weixin.qq.com/s/AEfPqWO3S0mRnDZ_Ws9fnw)
+
 
 ### 2.2 主坐标分析PCoA
 
@@ -661,6 +660,7 @@
 
 ### 1.1 差异比较
 
+    # Error in file(file, ifelse(append, "a", "w")),输出目录不存在，创建目录即可
     mkdir -p result/compare/
     # 输入特征表、元数据；指定分组列名、比较组和丰度
     # 选择方法 wilcox/t.test/edgeR、pvalue和fdr和输出目录
@@ -670,8 +670,7 @@
       --group Group --compare ${compare} --threshold 0.1 \
       --method edgeR --pvalue 0.05 --fdr 0.2 \
       --output result/compare/
-    # 常见错误：Error in file(file, ifelse(append, "a", "w")) : 无法打开链结 Calls: write.table -> file
-    # 解决方法：输出目录不存在，创建目录即可
+
 
 ### 1.2 火山图
 
@@ -831,14 +830,88 @@
       --annotation result/picrust/${l}.anno.txt \
       --output result/picrust/${compare}.bar.pdf
       
-    # PICRUSt 2.0
-    # 软件安装，附录6. PICRUSt环境导出和导入
-    # 使用，附录7. PICRUSt2功能预测
+### PICRUSt 2.0
+    
+    # 软件安装见附录6. PICRUSt环境导出和导入
+
+    # (可选)PICRUSt2(Linux/Windows下Linux子系统，要求>16GB内存)
+    # 安装参考附录5的方式直接下载安装包并解压即可使用
+    
+    # Linux中加载conda环境
+    conda activate picrust2
+    # 进入工作目录，服务器要修改工作目录
+    wd=${wd}/result/picrust2
+    mkdir -p ${wd} && cd ${wd}
+    # 运行流程，内存15.7GB，耗时12m
+    picrust2_pipeline.py -s ../otus.fa -i ../otutab.txt -o ./out -p 8
+    # 添加EC/KO/Pathway注释
+    cd out
+    add_descriptions.py -i pathways_out/path_abun_unstrat.tsv.gz -m METACYC \
+      -o METACYC.tsv
+    add_descriptions.py -i EC_metagenome_out/pred_metagenome_unstrat.tsv.gz -m EC \
+      -o EC.tsv
+    add_descriptions.py -i KO_metagenome_out/pred_metagenome_unstrat.tsv.gz -m KO \
+      -o KO.tsv
+    # KEGG按层级合并
+    db=/mnt/d/EasyMicrobiome/
+    python3 ${db}/script/summarizeAbundance.py \
+      -i KO.tsv \
+	    -m ${db}/kegg/KO1-4.txt \
+	    -c 2,3,4 -s ',+,+,' -n raw \
+	    -o KEGG
+    # 统计各层级特征数量
+    wc -l KEGG*
+    # 可视化见picrust2文件夹中ggpicrust2.Rmd
 
 ## 2. 元素循环FAPROTAX
 
     ## 方法1. 在线分析，推荐使用 http://www.ehbio.com/ImageGP 在线分析
-    ## 方法2. Linux下分析、如QIIME 2环境下，详见附录3
+    ## 方法2. Linux下分析、如QIIME 2环境下
+
+    # 设置工作目录
+    wd2=${wd}/result/faprotax/
+    mkdir -p ${wd2} && cd ${wd2}
+    # 设置脚本目录
+    sd=${db}/EasyMicrobiome/script/FAPROTAX_1.2.7
+
+    ### 1. 软件安装
+    # 注：软件已经下载至 EasyMicrobiome/script目录，在qiime2环境下运行可满足依赖关系
+    #(可选)下载软件新版本，以1.2.7版为例， 2023/7/14更新数据库
+    #wget -c https://pages.uoregon.edu/slouca/LoucaLab/archive/FAPROTAX/SECTION_Download/MODULE_Downloads/CLASS_Latest%20release/UNIT_FAPROTAX_1.2.7/FAPROTAX_1.2.7.zip
+    #解压
+    #unzip FAPROTAX_1.2.7.zip
+    #新建一个python3环境并配置依赖关系，或进入qiime2 python3环境
+    conda activate qiime2-2023.7
+    # source /home/silico_biotech/miniconda3/envs/qiime2/bin/activate
+    #测试是否可运行，弹出帮助即正常工作
+    python $sd/collapse_table.py
+
+    ### 2. 制作输入OTU表
+    #txt转换为biom json格式
+    biom convert -i ../otutab_rare.txt -o otutab_rare.biom --table-type="OTU table" --to-json
+    #添加物种注释
+    biom add-metadata -i otutab_rare.biom --observation-metadata-fp ../taxonomy2.txt \
+      -o otutab_rare_tax.biom --sc-separated taxonomy \
+      --observation-header OTUID,taxonomy
+    #指定输入文件、物种注释、输出文件、注释列名、属性列名
+
+    ### 3. FAPROTAX功能预测
+    #python运行collapse_table.py脚本、输入带有物种注释OTU表tax.biom、
+    #-g指定数据库位置，物种注释列名，输出过程信息，强制覆盖结果，结果文件和细节
+    #下载faprotax.txt，配合实验设计可进行统计分析
+    #faprotax_report.txt查看每个类别中具体来源哪些OTUs
+    python ${sd}/collapse_table.py -i otutab_rare_tax.biom \
+      -g ${sd}/FAPROTAX.txt \
+      --collapse_by_metadata 'taxonomy' -v --force \
+      -o faprotax.txt -r faprotax_report.txt
+
+    ### 4. 制作OTU对应功能注释有无矩阵
+    # 对ASV(OTU)注释行，及前一行标题进行筛选
+    grep 'ASV_' -B 1 faprotax_report.txt | grep -v -P '^--$' > faprotax_report.clean
+    # faprotax_report_sum.pl脚本将数据整理为表格，位于public/scrit中
+    perl ${sd}/../faprotax_report_sum.pl -i faprotax_report.clean -o faprotax_report
+    # 查看功能有无矩阵，-S不换行
+    less -S faprotax_report.mat
 
 ## 3. Bugbase细菌表型预测
 
@@ -854,13 +927,20 @@
     ### 2. 其它可用分析
     # 使用 http://www.ehbio.com/ImageGP
     # 官网，https://bugbase.cs.umn.edu/ ，有报错，不推荐
-    # Bugbase细菌表型预测Linux，详见附录4. Bugbase细菌表型预测
+    # Bugbase细菌表型预测Linux，详见附录3. Bugbase细菌表型预测
 
 
 # 32、MachineLearning机器学习
 
     # RandomForest包使用的R代码见advanced/RandomForestClassification和RandomForestRegression
-    ## Silme2随机森林/Adaboost使用代码见EasyMicrobiome/script/slime2目录中的slime2.py，详见附录5
+    ## Silme2随机森林/Adaboost使用代码见EasyMicrobiome/script/slime2目录中的slime2.py，详见附录4
+    # 使用实战(使用QIIME 2的Python3环境，以在Windows中为例)
+    conda activate qiime2-2023.7
+    cd /mnt/d/EasyMicrobiome/script/slime2
+    #使用adaboost计算10000次(16.7s)，推荐千万次
+    ./slime2.py otutab.txt design.txt --normalize --tag ab_e4 ab -n 10000
+    #使用RandomForest计算10000次(14.5s)，推荐百万次，支持多线程
+    ./slime2.py otutab.txt design.txt --normalize --tag rf_e4 rf -n 10000
 
 
 # 33、Evolution进化树
@@ -1072,60 +1152,9 @@
     wc -l *.spf
 
 
-## 3. FAPROTAXS元素循环
-
-    # 设置工作目录
-    wd=/mnt/c/amplicon/result/faprotax/
-    mkdir -p ${wd} && cd ${wd}
-    # 设置脚本目录
-    sd=/mnt/c/EasyMicrobiome/script/FAPROTAX_1.2.6
-
-    ### 1. 软件安装
-    # 注：软件已经下载至 EasyAmplicon/script目录，在qiime2环境下运行可满足依赖关系
-    #(可选)下载软件新版本，以1.2.6版为例， 2022/7/14更新数据库
-    #wget -c https://pages.uoregon.edu/slouca/LoucaLab/archive/FAPROTAX/SECTION_Download/MODULE_Downloads/CLASS_Latest%20release/UNIT_FAPROTAX_1.2.6/FAPROTAX_1.2.6.zip
-    #解压
-    #unzip FAPROTAX_1.2.6.zip
-    #(可选)依赖关系，可使用conda安装依赖包
-    #conda install numpy
-    #conda install biom
-    # 查看conda环境名称和位置
-    # conda env list
-    #新建一个python3环境并配置依赖关系，或进入qiime2 python3环境
-    conda activate qiime2-2022.11
-    # source /home/silico_biotech/miniconda3/envs/qiime2/bin/activate
-    #测试是否可运行，弹出帮助即正常工作
-    python $sd/collapse_table.py
-
-    ### 2. 制作输入OTU表
-    #txt转换为biom json格式
-    biom convert -i ../otutab_rare.txt -o otutab_rare.biom --table-type="OTU table" --to-json
-    #添加物种注释
-    biom add-metadata -i otutab_rare.biom --observation-metadata-fp ../taxonomy2.txt \
-      -o otutab_rare_tax.biom --sc-separated taxonomy \
-      --observation-header OTUID,taxonomy
-    #指定输入文件、物种注释、输出文件、注释列名、属性列名
-
-    ### 3. FAPROTAX功能预测
-    #python运行collapse_table.py脚本、输入带有物种注释OTU表tax.biom、
-    #-g指定数据库位置，物种注释列名，输出过程信息，强制覆盖结果，结果文件和细节
-    #下载faprotax.txt，配合实验设计可进行统计分析
-    #faprotax_report.txt查看每个类别中具体来源哪些OTUs
-    python ${sd}/collapse_table.py -i otutab_rare_tax.biom \
-      -g ${sd}/FAPROTAX.txt \
-      --collapse_by_metadata 'taxonomy' -v --force \
-      -o faprotax.txt -r faprotax_report.txt
-
-    ### 4. 制作OTU对应功能注释有无矩阵
-    # 对ASV(OTU)注释行，及前一行标题进行筛选
-    grep 'ASV_' -B 1 faprotax_report.txt | grep -v -P '^--$' > faprotax_report.clean
-    # faprotax_report_sum.pl脚本将数据整理为表格，位于public/scrit中
-    perl ${sd}/../faprotax_report_sum.pl -i faprotax_report.clean -o faprotax_report
-    # 查看功能有无矩阵，-S不换行
-    less -S faprotax_report.mat
 
 
-## 4. Bugbase细菌表型预测
+## 3. Bugbase细菌表型预测
 
     ### 1. 软件安装(己整合到EasyMicrobiome中，原代码需要更新才能在当前运行)
     #有两种方法可选，推荐第一种，可选第二种，仅需运行一次
@@ -1161,7 +1190,7 @@
     export PATH=$PATH:`pwd`/bin
     run.bugbase.r -i otutab_gg.txt -m MappingFile.txt -c Group -o phenotype/
 
-## 5. Silme2随机森林/Adaboost
+## 4. Silme2随机森林/Adaboost
 
     #下载安装
     # cd ~/software/
@@ -1176,78 +1205,28 @@
     # sudo pip3 install pandas
     # sudo pip3 install sklearn
 
-    # 使用实战(使用QIIME 2的Python3环境，以在Windows中为例)
-    conda activate qiime2-2022.11
-    cd /mnt/c/EasyMicrobiome/script/slime2
-    #使用adaboost计算10000次(16.7s)，推荐千万次
-    ./slime2.py otutab.txt design.txt --normalize --tag ab_e4 ab -n 10000
-    #使用RandomForest计算10000次(14.5s)，推荐百万次，支持多线程
-    ./slime2.py otutab.txt design.txt --normalize --tag rf_e4 rf -n 10000
 
 
-## 6. PICRUSt2环境导出和导入
+
+## 5. PICRUSt2环境导出和导入
     
-    # 方法1. 直接安装
+    # 方法1. 下载安装包并解压 
+    # 下载安装包，备用链接见百度云：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315
+    wget -c ftp://download.nmdc.cn/tools/conda/picrust2.tar.gz
+    # 指定安装目录并解压
+    mkdir -p ~/miniconda3/envs/picrust2
+    tar -xvzf picrust2.tar.gz -C ~/miniconda3/envs/picrust2
+    # 激活环境并初始化
+    conda activate picrust2
+    conda unpack
+
+    # 方法2. 直接安装或打包安装环境
     n=picrust2
     conda create -n ${n} -c bioconda -c conda-forge ${n}=2.3.0_b
     # 加载环境
     conda activate ${n}
-
-    # 方法2. 导出安装环境
-    cd ~/db/conda/
-    # 设置环境名
-    n=picrust2
-    conda activate ${n}
-    # 打包环境为压缩包
+    # 打包环境(可选)
     conda pack -n ${n} -o ${n}.tar.gz
-    # 导出软件安装列表
-    conda env export > ${n}.yml
-    # 添加权限，方便下载和别人使用
-    chmod 755 ${n}.*
-    
-    # 方法3. 导入安装环境，如qiime2 humann2 meta(包括picurst)
-    n=picrust2
-    # 复制安装包，或下载我的环境打包
-    wget -c http://bailab.genetics.ac.cn/db/conda/${n}.tar.gz
-    # 指定安装目录并解压
-    condapath=~/miniconda2
-    mkdir -p ${condapath}/envs/${n}
-    tar -xvzf ${n}.tar.gz -C ${condapath}/envs/${n}
-    # 激活环境并初始化
-    source ${condapath}/envs/${n}/bin/activate
-    conda unpack
-
-## 7. PICRUSt2功能预测
-
-    # (可选)PICRUSt2(Linux/Windows下Linux子系统，要求>16GB内存)
-    # 安装
-    conda create -n picrust2 -c bioconda -c conda-forge picrust2=2.3.0_b
-    # 如果此方法不成功，可使用附录6的方式直接下载安装包并解压即可使用
-    
-    # 加载环境
-    conda activate picrust2
-    # 进入工作目录，服务器要修改工作目录
-    wd=/mnt/c/amplicon/result/picrust2
-    mkdir -p ${wd} && cd ${wd}
-    # 运行流程，内存15.7GB，耗时12m
-    picrust2_pipeline.py -s ../otus.fa -i ../otutab.txt -o ./ -p 8
-    # 添加EC/KO/Pathway注释
-    add_descriptions.py -i pathways_out/path_abun_unstrat.tsv.gz -m METACYC \
-      -o pathways_out/path_abun_unstrat_descrip.tsv.gz
-    add_descriptions.py -i EC_metagenome_out/pred_metagenome_unstrat.tsv.gz -m EC \
-      -o EC_metagenome_out/pred_metagenome_unstrat_descrip.tsv.gz
-    add_descriptions.py -i KO_metagenome_out/pred_metagenome_unstrat.tsv.gz -m KO \
-      -o KO_metagenome_out/pred_metagenome_unstrat_descrip.tsv.gz 
-    # KEGG按层级合并
-    zcat KO_metagenome_out/pred_metagenome_unstrat.tsv.gz > KEGG.KO.txt
-    python3 ${db}/script/summarizeAbundance.py \
-      -i KEGG.KO.txt \
-	    -m ${db}/kegg/KO1-4.txt \
-	    -c 2,3,4 -s ',+,+,' -n raw \
-	    -o KEGG
-    # 统计各层级特征数量
-    wc -l KEGG*
-
 
 
 # 常见问题
@@ -1439,6 +1418,7 @@
 
 # 版本更新记录
 
+
 - 2021/4/3 EasyAmplicon 1.11:
     - R包amplicon升级为 1.11.0，解决metadata两列报错的问题。
     - 调整课程顺序，每天上午9点-12点2节，下午1点半-6点3节。
@@ -1472,6 +1452,13 @@
     - vsearch更新为v2.22.1
     - 新增ggClusterNet课程-文涛
     - 更新 Mac 教程
+- 2023/10/13 EasyAmplicon 1.20:
+    - R运行环境升级为4.3.1，配套有4.3.zip的最新全套包
+    - RStudio更新为2023.12.0
+    - amplicon、EasyAmplicon和EasyMicrobiome更新为1.20
+    - QIIME 2更新为v2023.7，数据库更新为greengene2 2022.10
+    - 新增ggpicrust2分析picrust2结果可视化
+    - 更新FAPROTAX为1.2.7
 
 每季度视频课程安排：http://www.ehbio.com/trainLongTerm/TrainLongTerm/amplicongenomeLearnGuide.html
 
@@ -1479,6 +1466,8 @@
 
 If used this script, please cited:
 
-**Yong-Xin Liu**, Yuan Qin, **Tong Chen**, et. al. A practical guide to amplicon and metagenomic analysis of microbiome data. **Protein Cell**, 2021(12) 5:315-330, doi: [10.1007/s13238-020-00724-8](https://doi.org/10.1007/s13238-020-00724-8)
+Yong-Xin Liu, Lei Chen, Tengfei Ma, et al. 2023. 
+EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. 
+iMeta 2: e83. https://doi.org/10.1002/imt2.83
 
 Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
