@@ -31,9 +31,9 @@ If you use this script, please cited 如果你使用本代码，请引用：
 
 **Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2(1): e83. https://doi.org/10.1002/imt2.83
 
-# 简介 Introduction
+# Introduction简介
 
-## 安装 Installation
+## Installation安装
 
 The [amplicon R package](https://github.com/microbiota)
 facilitates statistics and visualization of amplicon profiling data, in
@@ -78,31 +78,31 @@ width = 89
 height = 59
 
 # 手动指定分组列和顺序，默认为字母顺序
-# metadata[[group]] = factor(metadata[[group]], levels = c("WT","KO","OE"))
+metadata[[group]] = factor(metadata[[group]], levels = c("WT","KO","OE"))
 # 按实验设计中分组出现顺序
 # metadata[[group]] = factor(metadata[[group]], levels = unique(metadata[[group]]))
 ```
 
-# α多样性 Alpha diversity
+# Alpha diversityα多样性
 
-## 箱线图+统计 Boxplot+Statistics
+## Boxplot+Statistics箱线图+统计
 
-绘制主要分三步：
 Plotting each figure mainly include three step:
+绘制主要分三步：
 
-1. 读取数据并预览格式Reading data and viewing format;
-2. 参数调整和绘图Paramters adjustment and plotting;
-3. 保存图片Saving figure.
+1. Reading data and viewing format读取数据并预览格式;
+2. Paramters adjustment and plotting参数调整和绘图;
+3. Saving figure保存图片.
 
 ```{r alpha_boxplot, fig.show='asis', fig.width=4, fig.height=2.5}
-# vegan.txt中还有6种常用α多样性，alpha.txt中有11种α多样性
+# vegan.txt include 6 alpha index，alpha.txt include 11 alpha index
 alpha_div = read.table("alpha/vegan.txt", header=T, row.names=1, sep="\t", comment.char="")
 head(alpha_div, n = 3)
 # capitalize
 library(Hmisc)
 colnames(alpha_div) = capitalize(colnames(alpha_div))
 colnames(alpha_div)
-# 选择指数"Richness","Chao1","ACE","Shannon","Simpson","Invsimpson"  
+# Select one of index "Richness","Chao1","ACE","Shannon","Simpson","Invsimpson"  
 alpha_index = "Richness"
 
 # Plotting alpha diversity Richness boxplot and stat
@@ -115,30 +115,30 @@ ggsave(paste0("alpha/alpha_boxplot_",alpha_index,".pdf"), p, width = width, heig
 # Save for cowplot 另存图片用于后期拼图
 p1 = p
 
-# 尝试探索不同的多样性各类
+# Try another index, such as Shannon, 尝试探索不同的多样性种类
 colnames(alpha_div)
 alpha_boxplot(alpha_div, index = "Shannon", metadata, groupID = group)
 
-# 尝试不同的分组方式
+# Try different group 尝试不同的分组方式
 colnames(metadata)
 alpha_boxplot(alpha_div, index = "Chao1", metadata, groupID = "Site")
 ```
 
 
-## 稀释曲线+标准误 Rarefaction curve and standard error
+## Rarefaction curve and standard error稀释曲线+标准误
 
 ```{r alpha_rare, fig.show='asis', fig.width=4, fig.height=2.5}
-# 数据读取 Data reading
+# Data reading数据读取
 alpha_rare = read.table("alpha/alpha_rare.txt", header=T, row.names=1, sep="\t", comment.char="")
 alpha_rare[1:3, 1:3]
 
-# 绘制稀释曲线+标准误 Plotting alpha rarefaction curve in group mean with standard error
+# Plotting alpha rarefaction curve in group mean with standard error绘制稀释曲线+标准误
 (p = alpha_rare_curve(alpha_rare, metadata, groupID = group))
 
 # Legend to low right 图例移至右下
 (p = p + theme(legend.position = c(0.85,0.25)))
 
-# 保存图片 Saving figure
+# Saving figure保存图片
 ggsave("alpha/alpha_rarefaction_curve.pdf", p, width = width, height = height, units = "mm")
 p2 = p
 ```
@@ -151,9 +151,9 @@ p2 = p
 
 
 
-# β多样性 Beta diversity 
+# β diversity多样性
 
-## 主坐标轴分析 PCoA
+## PCoA主坐标轴分析
 
 principal coordinate analysis (PCoA)
 
@@ -177,18 +177,17 @@ p3 = p
 
 # statistic each pairwise by adonis
 beta_pcoa_stat(distance_mat, metadata, groupID = group)
-# 结果文件默认见beta_pcoa_stat.txt
+# Result in 结果文件见 beta_pcoa_stat.txt
 
-# 展示样本标签 Display sample label
+#  Display sample label 展示样本标签
 (p = beta_pcoa(distance_mat, metadata, groupID = group, label = T))
-# 保存图片放大
+# Save figure with zoom 保存图片放大
 ggsave(paste0("beta/",distance_type,".pcoa.label.pdf"), p, width = width*1.2, height = height*1.2, units = "mm")
 ```
 
-## 有监督PCoA/CCA
+## Constrained有监督PCoA/CCA
 
-Constrained PCoA
-
+It is only available when the number of groups is >= 3, otherwise please skip this step of analysis.
 要求至少分组数量 >= 3时才可用，否则请跳过此步分析
 
 ```{r beta_cpcoa, fig.show='asis', fig.width=4, fig.height=2.5}
@@ -203,15 +202,16 @@ ggsave(paste0("beta/",distance_type,".cpcoa.pdf"), p, width = width, height = he
 p4 = p
 ```
 
-## 方差分解PERMANOVA
+## PERMANOVA方差分解
 
+Calculate whether each variable in the metadata has a significant impact on the community structure
 计算元数据中各变量是否对群落结构存在显著的影响
 
 ```{r}
-# 预览元数据表头，确定要分析的变量
+# View header 预览元数据表头，确定要分析的变量
 head(metadata,n=2)
 
-# 仅查看分组对群落的解释
+# Explanation rate of variables仅查看分组对群落的解释
 adonis_var <- adonis (as.dist(distance_mat) ~ Group, data = metadata, by=NULL, parallel=4)
 adonis_var$aov.tab
 write.table(adonis_var$aov.tab, file="beta/adonis_var_group.txt", append = F, sep="\t", quote=F, row.names=T, col.names=T)
@@ -228,21 +228,20 @@ write.table(adonis_var$aov.tab, file="beta/adonis_var.txt", append = F, sep="\t"
 ```
 
 
-# 物种组成 Taxonomy stackplot
+# Taxonomy composition物种组成
 
-## 堆叠柱状图 Stackplot
+## Stackplot 堆叠柱状图
 
 分别绘制样本和组均值的物种组成
 
 Samples and groups
 
 ```{r taxonomy, fig.show='asis', fig.width=4, fig.height=2.5}
-# 设置分析级别 门p、纲c、目o、科f、属g
+# Set taxonomic level 设置分类级别 门p、纲c、目o、科f、属g
 tax_level = "p"
 # Data reading
 tax_phylum = read.table(paste0("tax/sum_", tax_level, ".txt"), header=T, row.names=1, sep="\t", comment.char="")
 tax_phylum[1:3, 1:3]
-
 
 # Plotting samples taxonomy composition
 (p = tax_stackplot(tax_phylum, metadata, topN = 8, groupID = group, style = "sample", sorted = "abundance"))
@@ -259,7 +258,7 @@ ggsave(paste0("tax/", tax_level,"_group.pdf"), p, width = width*1.1, height = he
 ```
 
 ```{r RColorBrewer}
-# 修改配色方案
+# Change color style 修改配色方案
 library(RColorBrewer)
 display.brewer.all()
 (p = p + scale_fill_brewer(palette = "Set1"))
@@ -268,7 +267,7 @@ ggsave(paste0("tax/", tax_level,"_group.Set1.pdf"), p, width = width, height = h
 ggsave(paste0("tax/", tax_level,"_group.Set2.pdf"), p, width = width, height = height, units = "mm")
 ```
 
-## 弦图 circlize plot
+## Circlize plot弦图
 
 ```{r}
 # 输出结果有当前目录下默认参数的弦图circlize.pdf，每次颜色随机
@@ -280,11 +279,11 @@ tax_class = read.table(paste0("tax/sum_c.txt"), header=T, row.names=1, sep="\t",
 tax_circlize(tax_class, metadata, topN = 8, groupID = group)
 ```
 
-# 排版 Combo plots
-
-组合多个子图为发表格式
+# Combo plots排版
 
 Combo plots to published-ready figure
+
+组合多个子图为发表格式
 
 ```{r div_combo, fig.show='asis', fig.width=8, fig.height=7.5, dpi=72}
 library(cowplot)
@@ -292,10 +291,9 @@ library(cowplot)
 ggsave("diversity.pdf", p0, width = width * 2, height = height * 3, units = "mm")
 ```
 
-使用此脚本，请引用下文：
-
 If used this script, please cited:
+使用此脚本，请引用下文：
 
 **Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
 
-Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
+Copyright 2016-2024 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>

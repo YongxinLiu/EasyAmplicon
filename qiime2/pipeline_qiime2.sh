@@ -1,23 +1,22 @@
 [TOC]
 
-# QIIME2 2023.7分析流程
+# QIIME2 2024.2分析流程
 
 ## 0. 软件安装(附录1)
 
-    # 仅限在Linux/Mac系统中运行，
-    # Windows用户使用内置Linux子系统(支持右键粘贴)、Linux服务器环境下安装并运行
-    # 详细教程参阅官网https://docs.qiime2.org/2023.7/，或QIIME2教程专辑 https://mp.weixin.qq.com/s/farGisfX3fVL_5WgXS8lIg
+    # 在Linux、Mac、Windows内置Linux子系统(支持右键粘贴)下安装并运行
+    # 详细教程参阅官网https://docs.qiime2.org/2024.2/
     # 安装Windows子系统，https://mp.weixin.qq.com/s/0PfA0bqdvrEbo62zPVq4kQ
 
 ## 1. 准备工作
 
     # 设置工作目录，如服务器为~/amplicon/qiime2，Win子系统如下：
-    wd=/mnt/c/amplicon/qiime2/
+    wd=/mnt/d/amplicon/qiime2/
     # 进入工作目录
     mkdir -p ${wd}
     cd ${wd}
     # 激活QIIME2工作环境，旧版conda使用source替换conda运行
-    conda activate qiime2-2023.7
+    conda activate qiime2-amplicon-2024.2
     
     # 准备样本元数据metadata.txt、原始数据seq/*.fq.gz
     
@@ -150,10 +149,9 @@
 
 ## 4. 物种组成分析
 
-    # 物种注释，数据库见附录，可选silva-138-99-nb-classifier.qza 或 2022.10.backbone.full-length.nb.qza，详见附录或官方教程
-    # 此步计算时间5m，内存使用6GB
+    # 物种注释，数据库见附录，可选silva-138-99-nb-classifier.qza
     time qiime feature-classifier classify-sklearn \
-      --i-classifier 2022.10.backbone.full-length.nb.qza \
+      --i-classifier gg_2022_10_backbone_full_length.nb.qza \
       --i-reads rep-seqs.qza \
       --o-classification taxonomy.qza
     # 可视化物种注释
@@ -204,7 +202,7 @@
 
 # 附录
 
-## 1. qiime2 2023.7安装
+## 1. qiime2 2024.2安装
 
 ### 安装Conda
 
@@ -212,14 +210,14 @@
     wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh -b -f
     ~/miniconda3/condabin/conda init
-    source ~/.bashrc
+    # 关闭终端重新打开
 
 ### 方法1. Conda在线安装QIIME
 
     # 附软件在线安装和打包代码
-    n=qiime2-2023.7
+    n=qiime2-amplicon-2024.2
     # 下载软件列表
-    wget -c https://data.qiime2.org/distro/core/${n}-py38-linux-conda.yml
+    wget -c https://data.qiime2.org/distro/amplicon/${n}-py38-linux-conda.yml
     # 备用链接
     wget -c http://www.imeta.science/db/conda/${n}-py38-linux-conda.yml
     # 新环境安装，可在不同电脑服务器上安装成功后打包分发
@@ -229,8 +227,8 @@
 
 ### 方法2. 本地安装QIIME
 
-    n=qiime2-2023.7
-    # 安装包下载链接,或百度云下载链接：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315
+    n=qiime2-amplicon-2024.2
+    # 安装包下载链接 
     wget -c ftp://download.nmdc.cn/tools/conda/${n}.tar.gz
     # 新环境安装
     mkdir -p ~/miniconda3/envs/${n}
@@ -244,16 +242,18 @@
 ### Silva 138 99% OTUs full-length sequences
 
     # 官网下载
-    wget -c https://data.qiime2.org/2023.7/common/silva-138-99-nb-classifier.qza
+    wget -c https://data.qiime2.org/2024.2/common/silva-138-99-nb-classifier.qza
     # 备用链接
     wget -c ftp://download.nmdc.cn/tools/amplicon/silva/silva-138-99-nb-classifier.qza
 
 ### Greengenes2 2022.10 full length sequences
 
     # 官网下载
+    wget -c https://data.qiime2.org/classifiers/greengenes/gg_2022_10_backbone_full_length.nb.qza
     wget -c http://ftp.microbio.me/greengenes_release/2022.10/2022.10.backbone.full-length.nb.qza
     # 备用链接
     wget -c ftp://download.nmdc.cn/tools/amplicon/GreenGenes/2022.10.backbone.full-length.nb.qza
+    mv 2022.10.backbone.full-length.nb.qza gg_2022_10_backbone_full_length.nb.qza 
     
 
 ## 3. 物种注释数据训练集
@@ -291,7 +291,8 @@
       --i-reference-reads 99_otus.qza \
       --i-reference-taxonomy ref-taxonomy.qza \
       --o-classifier classifier_gg_13_8_99.qza
-
+    # 备用下载链接	wget -c http://bailab.genetics.ac.cn/db/GreenGenes/classifier_gg_13_8_99.qza
+      
     # 引物提取参考序列的扩增区段 Extract reference reads
     # 常用Greengenes 13_8 99% OTUs from 341F CCTACGGGNGGCWGCAG/805R GACTACHVGGGTATCTAATCC region of sequences（分类器描述），提供测序的引物序列，截取对应的区域进行比对，达到分类的目的。
     # 本次使用引物799F-1193R，请根据实际替换, 8m
@@ -317,11 +318,34 @@
     An error was encountered while running DADA2 in R (return code 255), please inspect stdout and stderr to learn more.
     Debug info has been saved to /tmp/qiime2-q2cli-err-utwt1cmu.log
     
-## 引文Citation
+## Citation引文
 
-    使用此脚本，请引用下文：
     If used this script, please cited:
+    使用此脚本，请引用下文：
     
-    Evan Bolyen, Jai Ram Rideout, Matthew R. Dillon, Nicholas A. Bokulich, Christian C. Abnet, Gabriel A. Al-Ghalith, Harriet Alexander, Eric J. Alm, Manimozhiyan Arumugam, Francesco Asnicar, Yang Bai, Jordan E. Bisanz, Kyle Bittinger, Asker Brejnrod, Colin J. Brislawn, C. Titus Brown, Benjamin J. Callahan, Andrés Mauricio Caraballo-Rodríguez, John Chase, Emily K. Cope, Ricardo Da Silva, Christian Diener, Pieter C. Dorrestein, Gavin M. Douglas, Daniel M. Durall, Claire Duvallet, Christian F. Edwardson, Madeleine Ernst, Mehrbod Estaki, Jennifer Fouquier, Julia M. Gauglitz, Sean M. Gibbons, Deanna L. Gibson, Antonio Gonzalez, Kestrel Gorlick, Jiarong Guo, Benjamin Hillmann, Susan Holmes, Hannes Holste, Curtis Huttenhower, Gavin A. Huttley, Stefan Janssen, Alan K. Jarmusch, Lingjing Jiang, Benjamin D. Kaehler, Kyo Bin Kang, Christopher R. Keefe, Paul Keim, Scott T. Kelley, Dan Knights, Irina Koester, Tomasz Kosciolek, Jorden Kreps, Morgan G. I. Langille, Joslynn Lee, Ruth Ley, **Yong-Xin Liu**, Erikka Loftfield, Catherine Lozupone, Massoud Maher, Clarisse Marotz, Bryan D. Martin, Daniel McDonald, Lauren J. McIver, Alexey V. Melnik, Jessica L. Metcalf, Sydney C. Morgan, Jamie T. Morton, Ahmad Turan Naimey, Jose A. Navas-Molina, Louis Felix Nothias, Stephanie B. Orchanian, Talima Pearson, Samuel L. Peoples, Daniel Petras, Mary Lai Preuss, Elmar Pruesse, Lasse Buur Rasmussen, Adam Rivers, Michael S. Robeson, Patrick Rosenthal, Nicola Segata, Michael Shaffer, Arron Shiffer, Rashmi Sinha, Se Jin Song, John R. Spear, Austin D. Swafford, Luke R. Thompson, Pedro J. Torres, Pauline Trinh, Anupriya Tripathi, Peter J. Turnbaugh, Sabah Ul-Hasan, Justin J. J. van der Hooft, Fernando Vargas, Yoshiki Vázquez-Baeza, Emily Vogtmann, Max von Hippel, William Walters, Yunhu Wan, Mingxun Wang, Jonathan Warren, Kyle C. Weber, Charles H. D. Williamson, Amy D. Willis, Zhenjiang Zech Xu, Jesse R. Zaneveld, Yilong Zhang, Qiyun Zhu, Rob Knight, J. Gregory Caporaso. 2019. Reproducible, interactive, scalable and extensible microbiome data science using QIIME 2. **Nature Biotechnology** 37: 852-857. https://doi.org/10.1038/s41587-019-0209-9
+    Evan Bolyen, Jai Ram Rideout, Matthew R. Dillon, Nicholas A. Bokulich, Christian C. Abnet, 
+    Gabriel A. Al-Ghalith, Harriet Alexander, Eric J. Alm, Manimozhiyan Arumugam, Francesco Asnicar, 
+    Yang Bai, Jordan E. Bisanz, Kyle Bittinger, Asker Brejnrod, Colin J. Brislawn, C. Titus Brown, 
+    Benjamin J. Callahan, Andrés Mauricio Caraballo-Rodríguez, John Chase, Emily K. Cope, 
+    Ricardo Da Silva, Christian Diener, Pieter C. Dorrestein, Gavin M. Douglas, Daniel M. Durall, 
+    Claire Duvallet, Christian F. Edwardson, Madeleine Ernst, Mehrbod Estaki, Jennifer Fouquier, 
+    Julia M. Gauglitz, Sean M. Gibbons, Deanna L. Gibson, Antonio Gonzalez, Kestrel Gorlick, 
+    Jiarong Guo, Benjamin Hillmann, Susan Holmes, Hannes Holste, Curtis Huttenhower, Gavin A. Huttley, 
+    Stefan Janssen, Alan K. Jarmusch, Lingjing Jiang, Benjamin D. Kaehler, Kyo Bin Kang, 
+    Christopher R. Keefe, Paul Keim, Scott T. Kelley, Dan Knights, Irina Koester, Tomasz Kosciolek, 
+    Jorden Kreps, Morgan G. I. Langille, Joslynn Lee, Ruth Ley, **Yong-Xin Liu**, Erikka Loftfield, 
+    Catherine Lozupone, Massoud Maher, Clarisse Marotz, Bryan D. Martin, Daniel McDonald, 
+    Lauren J. McIver, Alexey V. Melnik, Jessica L. Metcalf, Sydney C. Morgan, Jamie T. Morton, 
+    Ahmad Turan Naimey, Jose A. Navas-Molina, Louis Felix Nothias, Stephanie B. Orchanian, 
+    Talima Pearson, Samuel L. Peoples, Daniel Petras, Mary Lai Preuss, Elmar Pruesse, 
+    Lasse Buur Rasmussen, Adam Rivers, Michael S. Robeson, Patrick Rosenthal, Nicola Segata, 
+    Michael Shaffer, Arron Shiffer, Rashmi Sinha, Se Jin Song, John R. Spear, Austin D. Swafford, 
+    Luke R. Thompson, Pedro J. Torres, Pauline Trinh, Anupriya Tripathi, Peter J. Turnbaugh, 
+    Sabah Ul-Hasan, Justin J. J. van der Hooft, Fernando Vargas, Yoshiki Vázquez-Baeza, 
+    Emily Vogtmann, Max von Hippel, William Walters, Yunhu Wan, Mingxun Wang, Jonathan Warren, 
+    Kyle C. Weber, Charles H. D. Williamson, Amy D. Willis, Zhenjiang Zech Xu, Jesse R. Zaneveld, 
+    Yilong Zhang, Qiyun Zhu, Rob Knight, J. Gregory Caporaso. 
+    2019. Reproducible, interactive, scalable and extensible microbiome data science using QIIME 2. 
+    **Nature Biotechnology** 37: 852-857. https://doi.org/10.1038/s41587-019-0209-9
     
-    Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn> 测试整理
+    Copyright 2016-2024 Yong-Xin Liu <liuyongxin@caas.cn>

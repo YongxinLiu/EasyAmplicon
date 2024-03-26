@@ -9,7 +9,6 @@
     # 引文 Reference: Liu, et al. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based
     # pipeline for amplicon data analysis in microbiome research. iMeta 2: e83. https://doi.org/10.1002/imt2.83
 
-
     # 设置工作(work directory, wd)和软件数据库(database, db)目录
     # 添加环境变量，并进入工作目录 Add environmental variables and enter work directory
     # **每次打开Rstudio必须运行下面4行 Run it**，可选替换${db}为EasyMicrobiome安装位置
@@ -79,7 +78,7 @@
     seqkit stat ${db}/usearch/rdp_16s_v18.fa # 2.1万条序列
     # 解压ITS UNITE数据库，需自行从官网或网盘db/amplicon/usearch中下载
     # gunzip -c ${db}/usearch/utax_reference_dataset_all_25.07.2023.fasta.gz >${db}/usearch/unite.fa
-    seqkit stat ${db}/usearch/unite.fa # 32.6万
+    # seqkit stat ${db}/usearch/unite.fa # 32.6万
     # Greengene数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
     # 默认解压会删除原文件，-c指定输出至屏幕，> 写入新文件(可改名)
     gunzip -c ${db}/gg/97_otus.fasta.gz > ${db}/gg/97_otus.fa
@@ -215,7 +214,6 @@
     mkdir -p result/raw
 
     # 方法1. vsearch+rdp去嵌合(快但容易假阴性)
-    # 可自行下载silva并解压(替换rdp_16s_v18.fa为silva_16s_v123.fa)，极慢但理论上更好
     vsearch --uchime_ref temp/otus.fa \
       -db ${db}/usearch/rdp_16s_v18.fa \
       --nonchimeras result/raw/otus.fa
@@ -250,7 +248,7 @@
     csvtk -t stat result/raw/otutab.txt
 
 
-### 5.2 物种注释，且/或去除质体和非细菌 Remove plastid and non-Bacteria
+### 5.2 物种注释和去除质体和非细菌 Remove plastid and non-Bacteria
 
     # 物种注释-去除质体和非细菌/古菌并统计比例(可选)
     # RDP物种注释(rdp_16s_v18)更快，但缺少完整真核来源数据,可能不完整，耗时15s;
@@ -455,6 +453,8 @@
         --width 89 --height 59
     done
     mv alpha_boxplot_TukeyHSD.txt result/alpha/
+    # 每个指数下两两比较的P值
+    cat result/alpha/alpha_boxplot_TukeyHSD.txt
 
     # Alpha多样性柱状图+标准差
     Rscript ${db}/script/alpha_barplot.R --alpha_index richness \
@@ -511,6 +511,8 @@
       --group Group --label TRUE --width 89 --height 59 \
       --output result/beta/bray_curtis.pcoa.label.pdf
     mv beta_pcoa_stat.txt result/beta/
+    # 查看组间两两比较P值，概率事件每次略有不同
+    cat result/beta/beta_pcoa_stat.txt
       
 ### 2.3 限制性主坐标分析CPCoA
 
@@ -650,6 +652,7 @@
 
   #参考示例见：result\compare\ternary\ternary.Rmd 文档
   #备选教程[246.三元图的应用与绘图实战](https://mp.weixin.qq.com/s/3w3ncpwjQaMRtmIOtr2Jvw)
+
 
 ## 2. STAMP输入文件准备
 

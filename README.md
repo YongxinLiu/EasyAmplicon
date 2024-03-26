@@ -4,9 +4,9 @@ The Chinese version in (中文版见) [README_cn.md](./README_cn.md)
 
 [**EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research**](https://doi.org/10.1002/imt2.83)
 
-Version：v1.20
+Version：v1.21
 
-Update：2023/10/13
+Update：2024/4/12
 
 ## Pipeline manual and file description (流程使用和文件介绍)
 
@@ -17,8 +17,8 @@ Files description:
 - Readme.md # Introduction and install
 - pipeline.sh # Command-line analysis for Windows and Linux
 - pipeline_mac.sh # Command-line analysis for MacOS
-- result/ # Example data
-- result/Diversity.Rmd # Interactive analysis in R and output reproducible report in HTML format
+- result/ # Example result data
+- result/Diversity.Rmd # Interactive diversity analysis in R and output reproducible report in HTML format
 
 ## What can we do? (结果展示)
 
@@ -49,7 +49,10 @@ Files description:
 
 ### Install Dependency (安装依赖软件)
 
-All the software backup can be found in Baidu Net Disk：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 
+All the software backup can be found in 
+
+- FTP: [Filezilla](https://filezilla-project.org/index.php) visiting FTP download.nmdc.cn in anonymous. In tools directory, you can find all the software and packages in amplicon and different system supporting such mac, win
+- Baidu Net Disk：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 
 
 Please install the dependency software according with you system (Win/Mac/Linux).
 
