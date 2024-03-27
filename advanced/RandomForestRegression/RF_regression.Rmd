@@ -266,4 +266,4 @@ Data source:
 
 Jingying Zhang, Na Zhang, Yong-Xin Liu, Xiaoning Zhang, Bin Hu, Yuan Qin, Haoran Xu, Hui Wang, Xiaoxuan Guo, Jingmei Qian, Wei Wang, Pengfan Zhang, Tao Jin, Chengcai Chu, Yang Bai. 2018. Root microbiota shift in rice correlates with resident time in the field and developmental stage. Science China Life Sciences 61: 613-621. https://doi.org/10.1007/s11427-018-9284-4
 
-Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
+Copyright 2016-2024 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>

@@ -796,7 +796,7 @@
     #解压
     #unzip FAPROTAX_1.2.7.zip
     #新建一个python3环境并配置依赖关系，或进入qiime2 python3环境
-    conda activate qiime2-2023.7
+    conda activate qiime2-amplicon-2024.2
     # source /home/silico_biotech/miniconda3/envs/qiime2/bin/activate
     #测试是否可运行，弹出帮助即正常工作
     python $sd/collapse_table.py
@@ -849,7 +849,7 @@
     # RandomForest包使用的R代码见advanced/RandomForestClassification和RandomForestRegression
     ## Silme2随机森林/Adaboost使用代码见EasyMicrobiome/script/slime2目录中的slime2.py，详见附录4
     # 使用实战(使用QIIME 2的Python3环境，以在Windows中为例)
-    conda activate qiime2-2023.7
+    conda activate qiime2-amplicon-2024.2
     cd /mnt/d/EasyMicrobiome/script/slime2
     #使用adaboost计算10000次(16.7s)，推荐千万次
     ./slime2.py otutab.txt design.txt --normalize --tag ab_e4 ab -n 10000
