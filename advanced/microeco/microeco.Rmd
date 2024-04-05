@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 ```{r}
 # 基于CRAN安装R包
-p_list = c("ggplot2", "BiocManager", "devtools","picante", "GUniFrac", "ggalluvial", "rgexf")
+p_list = c("ggplot2", "BiocManager", "devtools","picante", "GUniFrac", "ggalluvial", "rgexf", 'huge', 'pulsar', 'VGAM', 'glmnet')
 for(p in p_list){if (!requireNamespace(p)){install.packages(p)}
     library(p, character.only = T, quietly = T, warn.conflicts = F)}
 # 基于Bioconductor安装R包
@@ -31,7 +31,11 @@ if (!requireNamespace("ggtree", quietly = T))
 library(devtools)
 if(!requireNamespace("microeco", quietly = T))
   install_github("ChiLiubio/microeco")
+  # R CMD INSTALL microeco-master
+  # install.packages("microeco")
 
+# 如果 github 不能自动下载，可自己下载后解压
+# 运行R CMD INSTALL SpiecEasi-master 安装
 if(!requireNamespace("SpiecEasi", quietly = T))
   install_github("zdk123/SpiecEasi")
 
@@ -164,7 +168,7 @@ t1$cal_ordination(ordination = "PCoA")
 # t1$res_ordination is the ordination result list
 class(t1$res_ordination)
 # 可视化，按组着色、形状，添加椭圆
-(p = t1$plot_ordination(plot_color = "Group", plot_shape = "Group", plot_group_ellipse = T))
+(p = t1$plot_ordination(plot_color = "Group", plot_shape = "Group", plot_type = c("point", "ellipse")))
 ggsave(paste0("beta/", "PCoA","_","bray",".pdf"), p, width = width*2, height = height*2, units = "mm")
 ```
 
@@ -195,7 +199,7 @@ ggsave(paste0("tax/", "Phylum","_","Group",".pdf"), p, width = width*2, height =
 
 # 冲击图样式
 t1 = trans_abund$new(dataset = dataset, taxrank = "Phylum", ntaxa = 8)
-(p = t1$plot_bar(use_alluvium = T, clustering = T, xtext_type_hor = F, xtext_size = 6))
+(p = t1$plot_bar(use_alluvium = T, clustering = T, xtext_size = 6))
 ggsave(paste0("tax/", "Phylum","_","alluvium",".pdf"), p, width = width*2, height = height*2, units = "mm")
 ```
 
@@ -234,9 +238,9 @@ ggsave(paste0("tax/", "Phylum","_","pie",".pdf"), p, width = width*3, height = h
 
 ```{r, fig.width=15, fig.height=15}
 # 在属水平使用metasata分析各组差异 
-t1 = trans_diff$new(dataset = dataset, method = "metastat", group = "Group", metastat_taxa_level = "Genus")
+t1 = trans_diff$new(dataset = dataset, method = "metastat", group = "Group", taxa_level = "Genus")
 # 可视化第一组，前10个属 
-(p = t1$plot_metastat(use_number = 1:10, qvalue = 0.05, choose_group = 1))
+(p = t1$plot_diff_abund(use_number = 1:10, qvalue = 0.05, choose_group = 1))
 dir.create("diff", recursive=T)
 ggsave(paste0("diff/", "Genus","_","metastat",".pdf"), p, width = width*4, height = height*4, units = "mm")
 ```
@@ -245,10 +249,10 @@ ggsave(paste0("diff/", "Genus","_","metastat",".pdf"), p, width = width*4, heigh
 
 ```{r, fig.width=9, fig.height=5}
 # lefse分析各组差异 
-t1 = trans_diff$new(dataset = dataset, method = "lefse", group = "Group", alpha = 0.01, lefse_subgroup = NULL)
+t1 = trans_diff$new(dataset = dataset, method = "lefse", group = "Group", alpha = 0.1, lefse_subgroup = NULL)
 # t1$res_lefse是LEfSe结果
 # t1$res_abund是丰度信息
-(p = t1$plot_lefse_bar(LDA_score = 4))
+(p = t1$plot_diff_bar(threshold = 4))
 ggsave(paste0("diff/", "lefse","_","Group",".pdf"), p, width = width*4, height = height*4, units = "mm")
 t1$res_lefse[1:5, ]
 ```
@@ -262,7 +266,7 @@ ggsave(paste0("diff/", "lefse","_","Group_errorbar",".pdf"), p, width = width*4,
 
 ```{r, fig.width=12, fig.height=12}
 # 绘制物种树，依赖关系更新，有时不可用，结果有时会乱，需作者优化
-t1$plot_lefse_cladogram(use_taxa_num = 200, use_feature_num = 50, clade_label_level = 5)
+t1$plot_diff_cladogram(use_taxa_num = 200, use_feature_num = 50, clade_label_level = 5)
 ```
 
 ### 机器学习

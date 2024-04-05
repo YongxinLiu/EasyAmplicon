@@ -355,7 +355,7 @@
     cut -f 2 result/alpha/otu_group_exist.txt | sort | uniq -c
     # 试一试：不同丰度下各组有多少OTU/ASV
     # 可在 http://ehbio.com/test/venn/ 中绘图并显示各组共有和特有维恩或网络图
-    # 也可在 http://www.ehbio.com/ImageGP 绘制Venn、upSetView和Sanky
+    # 也可在 https://www.bic.ac.cn/ImageGP 或 https://www.bic.ac.cn/BIC/#/ 绘制Venn、upSetView和Sanky
 
 ## 7. β多样性 Beta diversity
 
@@ -438,6 +438,7 @@
 
 ### 1.1 Alpha多样性箱线图
 
+    # 在线绘图平台 https://www.bic.ac.cn/BIC/#/ 提供更多定制参数和绘制灵活性
     # 查看帮助
     Rscript ${db}/script/alpha_boxplot.R -h
     # 完整参数，多样性指数可选richness chao1 ACE shannon simpson invsimpson
@@ -489,6 +490,7 @@
 
 ### 2.1 距离矩阵热图pheatmap
 
+    # 在线绘图平台 https://www.bic.ac.cn/BIC/#/ 提供更多定制参数和绘制灵活性
     # 添加分组注释，如2，4列的基因型和地点
     cut -f 1-2 result/metadata.txt > temp/group.txt
     # 以bray_curtis为例，-f输入文件,-h是否聚类TRUE/FALSE,-u/v为宽高英寸
@@ -500,6 +502,7 @@
 
 ### 2.2 主坐标分析PCoA
 
+    # 在线绘图平台 https://www.bic.ac.cn/BIC/#/ 提供更多定制参数和绘制灵活性
     # 输入文件，选择分组，输出文件，图片尺寸mm，统计见beta_pcoa_stat.txt
     Rscript ${db}/script/beta_pcoa.R \
       --input result/beta/bray_curtis.txt --design result/metadata.txt \
@@ -530,6 +533,7 @@
 
 ### 3.1 堆叠柱状图Stackplot
 
+    # 在线绘图平台 https://www.bic.ac.cn/BIC/#/ 提供更多定制参数和绘制灵活性
     # 以门(p)水平为例，结果包括output.sample/group.pdf两个文件
     Rscript ${db}/script/tax_stackplot.R \
       --input result/tax/sum_p.txt --design result/metadata.txt \
@@ -694,7 +698,7 @@
     #2. Rstudio打开EasyAmplicon中format2lefse.Rmd，另存至result目录并Knit生成输入文件和可重复计算网页；
 
     ### 3.3 LEfSe分析
-    #方法1. 打开LEfSe.txt并在线提交 https://www.bic.ac.cn/BIC/#/analysis?page=b%27MzY%3D%27
+    #方法1. 打开LEfSe.txt并在线提交 https://www.bic.ac.cn/BIC/#/analysis?tool_type=tool&page=b%27MzY%3D%27
     #方法2. LEfSe本地分析(限Linux系统、选学)，参考代码见附录
     #方法3. LEfSe官网在线使用
 
@@ -710,7 +714,7 @@
 
 ### PICRUSt 1.0
 
-    # 方法1. 使用 http://www.ehbio.com/ImageGP 在线分析 gg/otutab.txt
+    # 方法1. 使用 https://www.bic.ac.cn/ImageGP 在线分析 gg/otutab.txt
     # 方法2. Linux服务器用户可参考"附录2. PICRUSt功能预测"实现软件安装和分析
     # 然后结果使用STAMP/R进行差异比较
     # R语言绘图
