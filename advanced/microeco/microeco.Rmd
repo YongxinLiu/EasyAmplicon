@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 ```{r}
 # 基于CRAN安装R包
-p_list = c("ggplot2", "BiocManager", "devtools","picante", "GUniFrac", "ggalluvial", "rgexf")
+p_list = c("ggplot2", "BiocManager", "devtools","picante", "GUniFrac", "ggalluvial", "rgexf", 'huge', 'pulsar', 'VGAM', 'glmnet')
 for(p in p_list){if (!requireNamespace(p)){install.packages(p)}
     library(p, character.only = T, quietly = T, warn.conflicts = F)}
 # 基于Bioconductor安装R包
@@ -30,8 +30,11 @@ if (!requireNamespace("ggtree", quietly = T))
 # 基于github安装，检测没有则安装
 library(devtools)
 if(!requireNamespace("microeco", quietly = T))
-  install_github("ChiLiubio/microeco")
+  # install_github("ChiLiubio/microeco")
+  install.packages("microeco")
 
+# 如果 github 不能自动下载，可自己下载后解压
+# 运行R CMD INSTALL SpiecEasi-master 安装
 if(!requireNamespace("SpiecEasi", quietly = T))
   install_github("zdk123/SpiecEasi")
 
@@ -164,7 +167,7 @@ t1$cal_ordination(ordination = "PCoA")
 # t1$res_ordination is the ordination result list
 class(t1$res_ordination)
 # 可视化，按组着色、形状，添加椭圆
-(p = t1$plot_ordination(plot_color = "Group", plot_shape = "Group", plot_group_ellipse = T))
+(p = t1$plot_ordination(plot_color = "Group", plot_shape = "Group"))
 ggsave(paste0("beta/", "PCoA","_","bray",".pdf"), p, width = width*2, height = height*2, units = "mm")
 ```
 
@@ -195,7 +198,7 @@ ggsave(paste0("tax/", "Phylum","_","Group",".pdf"), p, width = width*2, height =
 
 # 冲击图样式
 t1 = trans_abund$new(dataset = dataset, taxrank = "Phylum", ntaxa = 8)
-(p = t1$plot_bar(use_alluvium = T, clustering = T, xtext_type_hor = F, xtext_size = 6))
+(p = t1$plot_bar(use_alluvium = T, clustering = T, xtext_size = 6))
 ggsave(paste0("tax/", "Phylum","_","alluvium",".pdf"), p, width = width*2, height = height*2, units = "mm")
 ```
 
