@@ -6,7 +6,7 @@ The Chinese version in (中文版见) [README_cn.md](./README_cn.md)
 
 Version：v1.21
 
-Update：2024/408/01
+Update：2024/08/01
 
 ## Pipeline manual and file description
 
