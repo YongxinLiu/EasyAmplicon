@@ -25,8 +25,8 @@ Files Description:
 - Analysis and visualization of microbiome data, especially for 16S rDNA amplicon;
 - From raw data into feature tables;
 - Support 20+ analysis methods and publish-ready visualization;
-- Finish your project on your laptop in 3 hours;
-- Supporting materials in Chinese/English (manual and videos).
+- Finish your project on your laptop in short time (approx 3 hours);
+- Supporting materials (manual and videos) in Chinese/English.
 
 ![image](http://www.imeta.science/github/EasyAmplicon/result/Figure1.jpg)
 
