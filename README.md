@@ -6,7 +6,7 @@ The Chinese version in (中文版见) [README_cn.md](./README_cn.md)
 
 Version：v1.21
 
-Update：2024/08/01
+Update：2024/08/05
 
 ## Pipeline manual and file description
 
@@ -26,11 +26,11 @@ Files Description:
 - From raw data into feature tables;
 - Support 20+ analysis methods and publish-ready visualization;
 - Finish your project on your laptop in short time (approx 3 hours);
-- Supporting materials (manual and videos) in Chinese/English.
+- Supporting materials manual and videos in Chinese/English.
 
 ![image](http://www.imeta.science/github/EasyAmplicon/result/Figure1.jpg)
 
-**Figure 1. Pipeline of EasyAmplicon for analyzing paired-end amplicon sequences.**
+**Figure 1. The pipeline of EasyAmplicon for analyzing paired-end amplicon sequences.**
 
 ![image](http://www.imeta.science/github/EasyAmplicon/result/Figure2.jpg)
 
