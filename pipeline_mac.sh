@@ -3,8 +3,8 @@
 # 易扩增子EasyAmplicon
 
     # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)等
-    # 版本 Version: v1.20
-    # 更新 Update: 2023-10-13
+    # 版本 Version: v1.21
+    # 更新 Update: 2024-4-12
     # 系统要求 System requirement: Windows 10+ / Mac OS 10.12+ / Ubuntu 20.04+
     # 引文 Reference: Liu, et al. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based
     # pipeline for amplicon data analysis in microbiome research. iMeta 2: e83. https://doi.org/10.1002/imt2.83
@@ -426,7 +426,7 @@
     cut -f 2 result/alpha/otu_group_exist.txt | sort | uniq -c
     # 试一试：不同丰度下各组有多少OTU/ASV
     # 可在 http://ehbio.com/test/venn/ 中绘图并显示各组共有和特有维恩或网络图
-    # 也可在 http://www.ehbio.com/ImageGP 绘制Venn、upSetView和Sanky
+    # 也可在 https://www.bic.ac.cn/ImageGP 或 https://www.bic.ac.cn/BIC/#/  绘制Venn、upSetView和Sanky
 
 ## 7. β多样性 Beta diversity
 
@@ -520,7 +520,7 @@
 
 ### 1.1 Alpha多样性箱线图
 
-    # 在线绘图平台 https://www.bic.ac.cn/BIC 提供更多定制参数和绘制灵活性
+    # 在线绘图平台 https://www.bic.ac.cn/BIC/#/ 提供更多定制参数和绘制灵活性
     # 查看帮助
     Rscript ${db}/script/alpha_boxplot.R -h
     # 完整参数，多样性指数可选richness chao1 ACE shannon simpson invsimpson
@@ -552,7 +552,7 @@
 
 ### 1.3 多样性维恩图
 
-    # 交互式 Venn 图  http://www.ehbio.com/test/venn
+    # 交互式 Venn 图  https://www.bic.ac.cn/test/venn
     
     # 三组比较:-f输入文件,-a/b/c/d/g分组名,-w/u为宽高英寸,-p输出文件名后缀
     bash ${db}/script/sp_vennDiagram.sh \
@@ -584,6 +584,7 @@
 
 ### 2.2 主坐标分析PCoA
 
+    # 在线绘图平台 https://www.bic.ac.cn/BIC/#/ 提供更多定制参数和绘制灵活性
     # 输入文件，选择分组，输出文件，图片尺寸mm，统计见beta_pcoa_stat.txt
     Rscript ${db}/script/beta_pcoa.R \
       --input result/beta/bray_curtis.txt --design result/metadata.txt \
@@ -612,6 +613,7 @@
 
 ### 3.1 堆叠柱状图Stackplot
 
+    # 在线绘图平台 https://www.bic.ac.cn/BIC/#/ 提供更多定制参数和绘制灵活性
     # 以门(p)水平为例，结果包括output.sample/group.pdf两个文件
     Rscript ${db}/script/tax_stackplot.R \
       --input result/tax/sum_p.txt --design result/metadata.txt \
@@ -674,6 +676,7 @@
 
 ### 1.2 火山图
 
+    # 在线绘图平台 https://www.bic.ac.cn/BIC/#/ 提供更多定制参数和绘制灵活性
     # 输入compare.R的结果，输出火山图带数据标签，可指定图片大小
     Rscript ${db}/script/compare_volcano.R \
       --input result/compare/${compare}.txt \
@@ -778,7 +781,7 @@
     #2. Rstudio打开EasyAmplicon中format2lefse.Rmd，另存至result目录并Knit生成输入文件和可重复计算网页；
 
     ### 3.3 LEfSe分析
-    #方法1. 打开LEfSe.txt并在线提交 http://www.ehbio.com/ImageGP/index.php/Home/Index/LEFSe.html
+    #方法1. 打开LEfSe.txt并在线提交 https://www.bic.ac.cn/BIC/#/analysis?tool_type=tool&page=b%27MzY%3D%27
     #方法2. LEfSe本地分析(限Linux系统、选学)，参考代码见附录
     #方法3. LEfSe官网在线使用
 
@@ -793,7 +796,7 @@
 ## 1. PICRUSt功能预测
 
     # PICRUSt 1.0
-    # 方法1. 使用 http://www.ehbio.com/ImageGP 在线分析 gg/otutab.txt
+    # 方法1. 使用 https://www.bic.ac.cn/ImageGP 在线分析 gg/otutab.txt
     # 方法2. Linux服务器用户可参考"附录2. PICRUSt功能预测"实现软件安装和分析
     # 然后结果使用STAMP/R进行差异比较
 
@@ -802,10 +805,12 @@
     l=L2
     sed '/# Const/d;s/OTU //' result/picrust/all_level.ko.${l}.txt > result/picrust/${l}.txt
     num=`head -n1 result/picrust/${l}.txt|wc -w`
-    paste <(cut -f $num result/picrust/${l}.txt) <(cut -f 1-$[num-1] result/picrust/${l}.txt) \
-      > result/picrust/${l}.spf
+    cut -f $num result/picrust/${l}.txt >a1
+    cut -f 1-$[num-1] result/picrust/${l}.txt >a2
+    paste a1 a2  > result/picrust/${l}.spf
     cut -f 2- result/picrust/${l}.spf > result/picrust/${l}.mat.txt
-    awk 'BEGIN{FS=OFS="\t"} {print $2,$1}' result/picrust/${l}.spf | sed 's/;/\t/' | sed '1 s/ID/Pathway\tCategory/' \
+    awk 'BEGIN{FS=OFS="\t"} {print $2,$1}' result/picrust/${l}.spf | \
+      sed 's/;/\t/' | sed '1 s/ID/Pathway\tCategory/' \
       > result/picrust/${l}.anno.txt
       
     head result/picrust/${l}.anno.txt
@@ -865,7 +870,7 @@
 
 ## 2. 元素循环FAPROTAX
 
-    ## 方法1. 在线分析，推荐使用 http://www.ehbio.com/ImageGP 在线分析
+    ## 方法1. 在线分析，推荐使用 https://www.bic.ac.cn/ImageGP 在线分析
     ## 方法2. Linux下分析、如QIIME 2环境下
 
     # 设置工作目录
@@ -925,7 +930,7 @@
     cd ../
 
     ### 2. 其它可用分析
-    # 使用 http://www.ehbio.com/ImageGP
+    # 使用 https://www.bic.ac.cn/ImageGP
     # 官网，https://bugbase.cs.umn.edu/ ，有报错，不推荐
     # Bugbase细菌表型预测Linux，详见附录3. Bugbase细菌表型预测
 
@@ -1104,7 +1109,7 @@
 
 ## 2. PICRUSt功能预测
 
-    #推荐使用 http://www.ehbio.com/ImageGP 在线分析
+    #推荐使用 https://www.bic.ac.cn/ImageGP 在线分析
     #有Linux服务器用户可参考以下代码搭建本地流程
     # 依赖数据库较大(243M)，需要自行下载
     db=~/db/
@@ -1460,7 +1465,7 @@
     - 新增ggpicrust2分析picrust2结果可视化
     - 更新FAPROTAX为1.2.7
 
-每季度视频课程安排：http://www.ehbio.com/trainLongTerm/TrainLongTerm/amplicongenomeLearnGuide.html
+每季度视频课程安排：https://www.bic.ac.cn/trainLongTerm/TrainLongTerm/amplicongenomeLearnGuide.html
 
 使用此脚本，请引用下文：
 

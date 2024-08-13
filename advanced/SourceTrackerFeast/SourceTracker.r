@@ -96,7 +96,7 @@
 
     if(!is.null(test)){
         # if test is numeric, cast as a row matrix
-        if(class(test) == "numeric" || class(test) == "integer"){
+        if(class(test)[1] == "numeric" || class(test)[1] == "integer"){
             test <- matrix(test, nrow=1)
         } else {
             test <- as.matrix(test)
@@ -532,7 +532,7 @@
 "rarefy" <- function(x,maxdepth){
     if(is.null(maxdepth)) return(x)
     
-    if(!is.element(class(x), c('matrix', 'data.frame','array')))
+    if(!is.element(class(x)[1], c('matrix', 'data.frame','array')))
         x <- matrix(x,nrow=1)
     nr <- nrow(x)
     nc <- ncol(x)
