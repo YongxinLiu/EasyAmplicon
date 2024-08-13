@@ -708,7 +708,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
     ### 3.2  RMD generation input file (optional)
     #1. The result directory contains three files: otutab.txt, metadata.txt, taxonomy .txt；
-    #2. Rstudio opens format2lefse.rmd in EasyAmplicon, saves to the result directory and Knit generates input files and repeatable web pages；
+    #2. format2lefse.rmd is located inside the database directory EasyMicrobiome/script/. Copy and paste this R Markdown file to the current working directory's result folder, then open it with RStudio. Use the Knit function to generate input files and reproducible web pages.
     
 	### 3.3 LEfSe Analysis 
     #Method 1. Open the LEfSe .txt and submit online https://www.bic.ac.cn/BIC/#/analysis?page=b%27MzY%3D%27
@@ -922,8 +922,8 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
 ## 1. LEfSe analysis
 
-    mkdir -p ~/amplicon/lefse
-    cd ~/amplicon/lefse
+    mkdir -p ~/EasyAmplicon/lefse
+    cd ~/EasyAmplicon/lefse
     # format2lefse.Rmd code production or upload input file LEfSe.txt
     # install lefse
     # conda install lefse
@@ -947,14 +947,16 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
 
 ## 2. PICRUSt function prediction
-
-    #It is recommended to use http://www.bic.ac.cn/BIC/#/analysis?tool_type=tool&page=b%27Mzk%3D%27 online analysis  
+    db=/mnt/c/EasyMicrobiome
+	cd $db/gg
+    #Download databse file
+    wget -c http://www.imeta.science/db/amplicon/GreenGenes/ko_13_5_precalculated.tab.gz 
+	#It is recommended to use http://www.bic.ac.cn/BIC/#/analysis?tool_type=tool&page=b%27Mzk%3D%27 online analysis  
     #Users with Linux servers can refer to the following code to build a local process
 
     n=picrust
     conda create -n ${n} ${n} -c bioconda -y
-
-    wd=/mnt/d/amplicon
+    wd=/mnt/c/EasyAmplicon
     cd $wd/result/gg
     # startup environment
     conda activate picrust
@@ -964,13 +966,13 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
         -o otutab.biom \
         --table-type="OTU table" --to-json
 
-    # Set the database directory, such as /mnt/d/db
-    db=~/db
+    # Set the database directory, such as /mnt/c/db
+    db=/mnt/c/EasyMicrobiome
     #Corrected copy number, 30s, 102M
     normalize_by_copy_number.py -i otutab.biom \
         -o otutab_norm.biom \
         -c ${db}/gg/16S_13_5_precalculated.tab.gz
-    #Predict metagenomic KO table, 3m, 1.5G, biom for downstream classification, txt for viewing and analysis
+    #Predict metagenomic KO table, 3m, 1.5G, biom for downstream classification, txt for viewing and analysis 
     predict_metagenomes.py -i otutab_norm.biom \
         -o ko.biom \
         -c ${db}/gg/ko_13_5_precalculated.tab.gz
@@ -992,11 +994,12 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
 ## 3. FAPROTAXS element cycle
 
+
     # set working directory
-    wd=/mnt/d/amplicon/result/faprotax/
+    wd=/mnt/c/EasyAmplicon/result/faprotax/
     mkdir -p ${wd} && cd ${wd}
     # Set script directory
-    sd=/mnt/d/EasyMicrobiome/script/FAPROTAX_1.2.10
+    sd=/mnt/c/EasyMicrobiome/script/FAPROTAX_1.2.10
 
     ### 1. Software Installation
     # Note: The software has been downloaded to the EasyAmplicon/script directory, and running in the qiime2 environment can satisfy the dependencies
@@ -1103,7 +1106,6 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     ./slime2.py otutab.txt design.txt --normalize --tag rf_e4 rf -n 10000
 
 
-
 ## 6. PICRUSt2 environment export and import
     
     # Method 1. Direct installation
@@ -1144,7 +1146,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     # load environment
     conda activate picrust2
     # Enter the working directory, the server needs to modify the working directory
-    wd=/mnt/d/amplicon/result/picrust2
+    wd=/mnt/c/EasyAmplicon/result/picrust2
     mkdir -p ${wd} && cd ${wd}
     # Run the process, the memory is 15.7GB, and it takes 12m
     picrust2_pipeline.py -s ../otus.fa -i ../otutab.txt -o ./out -p 8
@@ -1157,7 +1159,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     add_descriptions.py -i KO_metagenome_out/pred_metagenome_unstrat.tsv.gz -m KO \
       -o KO_metagenome_out/pred_metagenome_unstrat_descrip.tsv.gz 
     # KEGG Merged by Hierarchy
-    db=/mnt/d/EasyMicrobiome/
+    db=/mnt/c/EasyMicrobiome/
     zcat KO_metagenome_out/pred_metagenome_unstrat.tsv.gz > KEGG.KO.txt
     python3 ${db}/script/summarizeAbundance.py \
       -i KEGG.KO.txt \
@@ -1175,7 +1177,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
     # Use head to view fastq files. Most of the phred64 quality values ​​​​are lowercase letters. You need to use the --fastq_convert command of vsearch to convert them to the general phred33 format.
 
-    cd /c/amplicon/FAQ/01Q64Q33
+    cd /c/EasyAmplicon/FAQ/01Q64Q33
     # Preview the phred64 format, pay attention to see that the quality value in line 4 is mostly lowercase letters
     head -n4 test_64.fq
     # Convert quality value 64 to encoding format 33
@@ -1190,7 +1192,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 ## 2. The paired-end sequences have been merged, and now you are adding sample names to the single-end sequences
 
     # For amplicon analysis, the sequence names need to be in the format of sample name + sequence number. For paired-end sequences, you can directly add the sample name during merging. However, for single-end sequences or merged paired-end sequences, you need to add the sample name separately.Here, you can use the --relabel parameter in vsearch's --fastq_convert command to add the sample name. 
-    cd /c/amplicon/FAQ/02relabel
+    cd /c/EasyAmplicon/FAQ/02relabel
     # To view the sequence names in a file
     head -n1 test.fq
     # Rename sequences according to samples
@@ -1205,7 +1207,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     # When restricted to the limitations of the free version of USEARCH, you can reduce the non-redundant data size by increasing the "minuniquesize" parameter. If you're dealing with over 10,000 OTUs/ASVs and the downstream analysis is taking too long, ensure that the OTU/ASV data is under 5000. Typically, this won't be restricted, and it's also advantageous for faster downstream analyses
     # Using vsearch for clustering to generate OTUs is an option, but it lacks automatic de novo chimera removal. With an input of 2155 sequences, the clustering process resulted in 661 output clusters.
 
-    cd /c/amplicon/FAQ/03feature
+    cd /c/EasyAmplicon/FAQ/03feature
     # Rename using "relabel" and cluster at a similarity threshold of 97% without masking qmask
     # Record the input size ("sizein") and the output frequency ("sizeout")
     vsearch --cluster_size uniques.fa  \
@@ -1222,7 +1224,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
 ## 4. Normalization of read counts to relative abundance
 
-    cd /c/amplicon/FAQ/04norm
+    cd /c/EasyAmplicon/FAQ/04norm
     # Calculating the abundance frequency of each OTU in the samples (normalized to a total sum of 1).
     usearch -otutab_counts2freqs otutab.txt \
         -output otutab_freq.txt
@@ -1241,7 +1243,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
     # If you have files A1 and A2, you can create a metadata table "metadata.txt" that maps sample names to target names. To check if sample names are unique and rename them in batch using awk.
 
-    cd /c/amplicon/FAQ/06rename
+    cd /c/EasyAmplicon/FAQ/06rename
     # (Optional) Quickly generate a file list for editing "metadata.txt" by renaming files, for example, changing "A1.fq" to "WT1.fastq" and so on. You can refer to "metadata.bak.txt" for guidance.
     ls *.fq > metadata.txt
     # Edit the list, where the second name will be the final naming. Ensure that the names are unique
@@ -1267,7 +1269,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
     #Solution: Replace "-" with "tab character\t+0" to restore.
 
-    cd /c/amplicon/FAQ/08rare
+    cd /c/EasyAmplicon/FAQ/08rare
     sed "s/-/\t0.0/g" alpha_rare_wrong.txt\
         > alpha_rare.txt
 
@@ -1275,7 +1277,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
     #The original sequence direction is incorrect, and the sequences in filtered.fa need to be reverse complemented. Restart the analysis from the scratch
 
-    cd /c/amplicon/FAQ/09revcom
+    cd /c/EasyAmplicon/FAQ/09revcom
     vsearch --fastx_revcomp filtered_RC.fa \
       --fastaout filtered.fa
 
@@ -1283,7 +1285,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
     #In Windows, line breaks are represented as a combination of newline ($)+^M, which is equivalent to a newline in Linux plus a carriage return in macOS. When analyzing data, the Linux format is often considered the standard. Therefore, if you create a table using Excel in Windows and save it as a text file (*.txt) with tab separation, you might encounter invisible ^M symbols at the end of each line. These symbols can lead to analysis errors.You can use the cat -A command to view these symbols, and you can utilize sed to remove them.
 
-    cd /c/amplicon/FAQ/10^M
+    cd /c/EasyAmplicon/FAQ/10^M
     # Check if there is ^M at the end of the line
   	cat -A metadata.txt
   	# remove ^M, and write to new file
@@ -1298,7 +1300,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
     #USEARCH uses the utax database downloaded by UNITE, prompting various errors
 	
-    cd /c/amplicon/FAQ/11unite
+    cd /c/EasyAmplicon/FAQ/11unite
     # Unzip Unite's useeach to use the species annotation library
     gunzip -c utax_reference_dataset_all_04.02.2020.fasta.gz > unite.fa
     # Annotate the ITS sequence, the default threshold is 0.8
@@ -1326,6 +1328,8 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 	#Attached is the online installation of the software and packaging code 
     # Download the environment file 
 	wget -c https://data.qiime2.org/distro/amplicon/${n}-py39-linux-conda.yml
+	# Alternative Link
+	wget -c http://www.imeta.science/db/conda/${n}-py39-linux-conda.yml
    #Create the Conda environment   
    # Install in a new environment, and once successfully installed on different computer servers, package and distribute.
 	conda env create -n ${n} --file ${n}-py39-linux-conda.yml
@@ -1340,7 +1344,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     grep '>' ${db}/usearch/rdp_16s_v16_sp.fa|cut -f2 -d ';'|cut -f1-6 -d ','|sort|uniq|wc -l
     grep '>' ${db}/usearch/rdp_16s_v18.fa|cut -f2 -d ';'|cut -f1-6 -d ','|sort|uniq|wc -l
 
-    cd /c/amplicon/FAQ/13rdp16_18
+    cd /c/EasyAmplicon/FAQ/13rdp16_18
     # The number of doors was reduced from 15 to 13
     tail -n+2 rdp16_sintax.txt|cut -f3|sort|uniq -c|wc -l
     tail -n+2 rdp18_sintax.txt|cut -f3|sort|uniq -c|wc -l

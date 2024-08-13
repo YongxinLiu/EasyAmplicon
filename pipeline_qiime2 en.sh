@@ -12,7 +12,7 @@
 ## 1. Preparatory Work
 
     # Set up the working directory, for example, on the server it would be ~/amplicon/qiime2, and for the Windows Subsystem：
-    wd=/mnt/d/Easyamplicon/qiime2/
+    wd=/mnt/c/EasyAmplicon/qiime2/
     #  Navigate to the Working Directory
     mkdir -p ${wd}
     cd ${wd}
@@ -221,6 +221,7 @@
 	#Attached is the online installation of the software and packaging code 
     # Download the environment file 
 	wget -c https://data.qiime2.org/distro/amplicon/${n}-py39-linux-conda.yml
+	# Alternative Link: wget -c http://www.imeta.science/db/conda/${n}-py39-linux-conda.yml
    #Create the Conda environment   
    # Install in a new environment, and once successfully installed on different computer servers, package and distribute.
 	conda env create -n ${n} --file ${n}-py39-linux-conda.yml
@@ -248,7 +249,7 @@
 
 ## 3. Species Annotation data training set
 
-    wd=/mnt/c/amplicon/qiime2
+    wd=/mnt/c/EasyAmplicon/qiime2
     mkdir -p $wd
     cd $wd
     # Download the Database file(greengenes, 320M)
