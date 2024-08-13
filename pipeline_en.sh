@@ -552,7 +552,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     # Taking the phylum (p) level as an example, the results will include two files: "output.sample.pdf" and "output.group.pdf"
     Rscript ${db}/script/tax_stackplot.R \
       --input result/tax/sum_p.txt --design result/metadata.txt \
-      --group Group --color ggplot --legend 7 --width 89 --height 59 \
+      --group Group --color ggplot --legend 7 --width 89 --height 69 \
       --output result/tax/sum_p.stackplot
     # Modify colors using ggplot manual1 (22), Paired (12), or Set3 (12) color palettes
     Rscript ${db}/script/tax_stackplot.R \
@@ -565,7 +565,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     Rscript ${db}/script/tax_stackplot.R \
       --input result/tax/sum_${i}.txt --design result/metadata.txt \
       --group Group --output result/tax/sum_${i}.stackplot \
-      --legend 8 --width 89 --height 59; done
+      --legend 8 --width 89 --height 69; done
 
 ### 3.2 Chord/circular diagram using Circlize
 
@@ -630,14 +630,14 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     bash ${db}/script/compare_manhattan.sh -i result/compare/${compare}.txt \
        -t result/taxonomy.txt \
        -p result/tax/sum_p.txt \
-       -w 183 -v 59 -s 7 -l 10 \
+       -w 183 -v 109 -s 7 -l 10 \
        -o result/compare/${compare}.manhattan.p.pdf
        
           # There are only 6 gates in the picture above, switching to class c and -L class to show the details
     bash ${db}/script/compare_manhattan.sh -i result/compare/${compare}.txt \
        -t result/taxonomy.txt \
        -p result/tax/sum_c.txt \
-       -w 183 -v 59 -s 7 -l 10 -L Class \
+       -w 183 -v 149 -s 7 -l 10 -L Class \
        -o result/compare/${compare}.manhattan.c.pdf
     # Show the full legend and use AI puzzles
     bash ${db}/script/compare_manhattan.sh -i result/compare/${compare}.txt \
@@ -731,7 +731,11 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     # The results were then compared using STAMP/R
 
     # R language drawing
-    # Input file format adjustments
+    # Run this code to remove the detail of names downloading via runing through ImagGP. 
+	cd ${wd}/result/picrust/
+    find . -type f -name "*all_level*" -exec bash -c 'mv "$0" "${0/*all_level/all_level}"' {} \;
+    cd ${wd}
+	# Input file format adjustments
     l=L2
     sed '/# Const/d;s/OTU //' result/picrust/all_level.ko.${l}.txt > result/picrust/${l}.txt
     num=`head -n1 result/picrust/${l}.txt|wc -w`
@@ -965,14 +969,14 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     #Corrected copy number, 30s, 102M
     normalize_by_copy_number.py -i otutab.biom \
         -o otutab_norm.biom \
-        -c ${db}/picrust/16S_13_5_precalculated.tab.gz
+        -c ${db}/gg/16S_13_5_precalculated.tab.gz
     #Predict metagenomic KO table, 3m, 1.5G, biom for downstream classification, txt for viewing and analysis
     predict_metagenomes.py -i otutab_norm.biom \
         -o ko.biom \
-        -c ${db}/picrust/ko_13_5_precalculated.tab.gz
+        -c ${db}/gg/ko_13_5_precalculated.tab.gz
     predict_metagenomes.py -f -i otutab_norm.biom \
         -o ko.txt \
-        -c ${db}/picrust/ko_13_5_precalculated.tab.gz
+        -c ${db}/gg/ko_13_5_precalculated.tab.gz
 
     #Classify and summarize by function level, -c output KEGG_Pathways, divided into 1-3 levels
     sed  -i '/# Constru/d;s/#OTU //' ko.txt
@@ -992,23 +996,23 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     wd=/mnt/d/amplicon/result/faprotax/
     mkdir -p ${wd} && cd ${wd}
     # Set script directory
-    sd=/mnt/d/EasyMicrobiome/script/FAPROTAX_1.2.6
+    sd=/mnt/d/EasyMicrobiome/script/FAPROTAX_1.2.10
 
     ### 1. Software Installation
     # Note: The software has been downloaded to the EasyAmplicon/script directory, and running in the qiime2 environment can satisfy the dependencies
     #(Optional) Download the new version of the software, take version 1.2.6 as an example, update the database on July 14, 2022
-    #wget -c https://pages.uoregon.edu/slouca/LoucaLab/archive/FAPROTAX/SECTION_Download/MODULE_Downloads/CLASS_Latest%20release/UNIT_FAPROTAX_1.2.6/FAPROTAX_1.2.6.zip
+    #wget -c https://pages.uoregon.edu/slouca/LoucaLab/archive/FAPROTAX/SECTION_Download/MODULE_Downloads/CLASS_Latest%20release/UNIT_FAPROTAX_1.2.10/FAPROTAX_1.2.10.zip
     #unzip
-    #unzip FAPROTAX_1.2.6.zip
+    #unzip FAPROTAX_1.2.10.zip
     #(Optional) dependencies, you can use conda to install dependency packages
     #conda install numpy
     #conda install biom
     # View conda environment name and location
     # conda env list
     #Create a new python3 environment and configure dependencies, or enter the qiime2 python3 environment
-    conda activate qiime2-2023.2
+    conda activate qiime2-amplicon-2024.5
     # source /home/silico_biotech/miniconda3/envs/qiime2/bin/activate
-    #Test whether it can be run, and the help will pop up and it will work normally
+    #Test whether it can be run, and the help will pop up and it will work normally  (this code does not run successfully)
     python $sd/collapse_table.py
 
     ### 2. Make input OTU table
@@ -1035,7 +1039,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     grep 'ASV_' -B 1 faprotax_report.txt | grep -v -P '^--$' > faprotax_report.clean
     # The faprotax_report_sum.pl script organizes the data into tables and is located in public/scrit
     perl ${sd}/../faprotax_report_sum.pl -i faprotax_report.clean -o faprotax_report
-    # 查看功能有无矩阵，-S不换行
+    # Check whether the function has a matrix, -S does not wrap
     less -S faprotax_report.mat
 
 
@@ -1062,7 +1066,7 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 
 
     ### 2. Prepare input file
-    cd ~/amplicon/result
+    cd ~/EasyAmplicon/result
     #Input file: biom format based on greengene OTU table (local analysis supports txt format without conversion) and mapping file (add # to the first line of metadata.txt)
     #Upload experimental design + otutab_gg.txt just generated
     #Generate biom1.0 format for online analysis
@@ -1091,12 +1095,13 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
     # sudo pip3 install sklearn
 
     # Use actual combat (use the Python3 environment of QIIME 2, take Windows as an example)
-    conda activate qiime2-2023.2
+    conda activate qiime2-amplicon-2024.5
     cd /mnt/d/EasyMicrobiome/script/slime2
     #Use adaboost to calculate 10,000 times (16.7s), recommend tens of millions of times
     ./slime2.py otutab.txt design.txt --normalize --tag ab_e4 ab -n 10000
     #Use RandomForest to calculate 10,000 times (14.5s), recommend millions of times, support multi-threading
     ./slime2.py otutab.txt design.txt --normalize --tag rf_e4 rf -n 10000
+
 
 
 ## 6. PICRUSt2 environment export and import
@@ -1316,16 +1321,16 @@ Method 3: When the data is too large to use usearch, consider the alternative vs
 ## 12. Install qiime2 locally on the Linux subsystem of Windows
 
     # See qiime2/pipeline_qiime2.sh for details
-    n=qiime2-2023.2
-    # Installation package download link 
-    wget -c ftp://download.nmdc.cn/tools/conda/${n}.tar.gz
-    # New environment installation
-    mkdir -p ~/miniconda3/envs/${n}
-    tar -xzf ${n}.tar.gz -C ~/miniconda3/envs/${n}
-    # Activate and initialize the environment
-    conda activate ${n}
-    conda unpack
-
+  #  Set the environment name and version
+	n=qiime2-amplicon-2024.5
+	#Attached is the online installation of the software and packaging code 
+    # Download the environment file 
+	wget -c https://data.qiime2.org/distro/amplicon/${n}-py39-linux-conda.yml
+   #Create the Conda environment   
+   # Install in a new environment, and once successfully installed on different computer servers, package and distribute.
+	conda env create -n ${n} --file ${n}-py39-linux-conda.yml
+    # Environment packaging(Optional，1.2G)
+	conda pack -n ${n} -o ${n}.tar.gz
 ## 13. RDP 16-18 Annotated Results Comparison
 
     # Number of gates in a stat sequence, reduced from 60 to 39
