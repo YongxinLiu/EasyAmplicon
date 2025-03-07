@@ -99,6 +99,8 @@ Note: All the .sh script is written in markdown format, using Youdao Note or VSC
 ## Citation
 If use this script, please cite:
 
+Salsabeel Yousuf, Hao Luo, Meiyin Zeng, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Renyou Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, Waqar Afzal Malik, Chuang Ma, Hujie Lyu, Yahui Li, Huiyu Hou, Yuanping Zhou, Defeng Bai, Yao Wang, Haifei Yang, Jiani Xun, Shengda Du, Tianyuan Zhang, Xiulin Wan, Kai Peng, Shanshan Xu, Tao Wen, **Tong Chen**, **Yong-Xin Liu**. 2024. Unveiling microbial communities with EasyAmplicon: A user-centric guide to perform amplicon sequencing data analysis. **iMetaOmics** 1: e42. https://doi.org/10.1002/imo2.42
+
 **Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
 
-Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
+Copyright 2016-2025 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
