@@ -1,22 +1,22 @@
 [TOC]
 
-# QIIME2 2024.2分析流程
+# QIIME2 2024.10分析流程
 
 ## 0. 软件安装(附录1)
 
     # 在Linux、Mac、Windows内置Linux子系统(支持右键粘贴)下安装并运行
-    # 详细教程参阅官网https://docs.qiime2.org/2024.2/
+    # 详细教程参阅官网 https://docs.qiime2.org/2024.10/
     # 安装Windows子系统，https://mp.weixin.qq.com/s/0PfA0bqdvrEbo62zPVq4kQ
 
 ## 1. 准备工作
 
     # 设置工作目录，如服务器为~/amplicon/qiime2，Win子系统如下：
-    wd=/mnt/d/amplicon/qiime2/
+    wd=/mnt/d/A250412/qiime2/
     # 进入工作目录
     mkdir -p ${wd}
     cd ${wd}
     # 激活QIIME2工作环境，旧版conda使用source替换conda运行
-    conda activate qiime2-amplicon-2024.2
+    conda activate qiime2-amplicon-2024.10
     
     # 准备样本元数据metadata.txt、原始数据seq/*.fq.gz
     
@@ -30,8 +30,8 @@
     #     <(tail -n+2 ../metadata.txt)
     # cd .. && ls -lsh seq
     # 从其他地方链接(不额外占用空间)
-    ln /mnt/c/amplicon/seq/* seq/
-    ln /mnt/c/amplicon/result/metadata.txt ./
+    ln /mnt/d/A250412/seq/* seq/
+    ln /mnt/d/A250412/result/metadata.txt ./
     # 根据metadata生成manifest文件
     awk 'NR==1{print "sample-id\tforward-absolute-filepath\treverse-absolute-filepath"} \
       NR>1{print $1"\t$PWD/seq/"$1"_1.fq.gz\t$PWD/seq/"$1"_2.fq.gz"}' \
@@ -89,7 +89,7 @@
     qiime feature-table tabulate-seqs \
       --i-data rep-seqs.qza \
       --o-visualization rep-seqs.qzv
-    # 下载qzv在线查看，dada2只有1千多个ASV
+    # 下载qzv在线https://view.qiime2.org/ 查看，dada2只有1千多个ASV
 
 
 ## 3. Alpha和beta多样性分析
@@ -202,7 +202,11 @@
 
 # 附录
 
-## 1. qiime2 2024.2安装
+    wd=/mnt/c/amplicon/qiime2
+    mkdir -p $wd
+    cd $wd
+    
+## 1. qiime2 2024.10安装
 
 ### 安装Conda
 
@@ -215,19 +219,19 @@
 ### 方法1. Conda在线安装QIIME
 
     # 附软件在线安装和打包代码
-    n=qiime2-amplicon-2024.2
+    n=qiime2-amplicon-2024.10
     # 下载软件列表
-    wget -c https://data.qiime2.org/distro/amplicon/${n}-py38-linux-conda.yml
+    wget -c http://www.imeta.science/db/conda/${n}-py310-linux-conda.yml
     # 备用链接
-    wget -c http://www.imeta.science/db/conda/${n}-py38-linux-conda.yml
+    wget -c https://data.qiime2.org/distro/amplicon/${n}-py310-linux-conda.yml
     # 新环境安装，可在不同电脑服务器上安装成功后打包分发
-    conda env create -n ${n} --file ${n}-py38-linux-conda.yml
+    conda env create -n ${n} --file ${n}-py310-linux-conda.yml
     # 环境打包(可选，1.2G)
     conda pack -n ${n} -o ${n}.tar.gz
 
 ### 方法2. 本地安装QIIME
 
-    n=qiime2-amplicon-2024.2
+    n=qiime2-amplicon-2024.10
     # 安装包下载链接 
     wget -c ftp://download.nmdc.cn/tools/conda/${n}.tar.gz
     # 新环境安装
@@ -239,28 +243,43 @@
 
 ## 2. 物种注释数据训练集
 
+### Greengenes2 2022.10 full length sequences
+
+    wget -c http://ftp.microbio.me/greengenes_release/2022.10/2022.10.backbone.full-length.fna.qza
+    wget -c http://ftp.microbio.me/greengenes_release/2022.10/2022.10.backbone.tax.qza
+    # 分类器训练，耗时3小时多
+    time qiime feature-classifier fit-classifier-naive-bayes \
+      --i-reference-reads 2022.10.backbone.full-length.fna.qza \
+      --i-reference-taxonomy 2022.10.backbone.tax.qza \
+      --o-classifier classifier-gg22-full.qza 
+    # 使用与测试数据对应的V5 (799F) - V7 (1193R) 引物
+    time qiime feature-classifier extract-reads \
+      --i-sequences 2022.10.backbone.full-length.fna.qza \
+      --p-f-primer AACMGGATTAGATACCCKG \
+      --p-r-primer ACGTCATCCCCACCTTCC \
+      --p-trunc-len 350 \
+      --o-reads ref-seqs.qza
+    time qiime feature-classifier fit-classifier-naive-bayes \
+      --i-reference-reads ref-seqs.qza \
+      --i-reference-taxonomy 2022.10.backbone.tax.qza \
+      --o-classifier classifier_gg22_V5-V7.qza
+
+    # 国内高速备份链接
+    wget -c ftp://download.nmdc.cn/tools/amplicon/GreenGenes/2022.10.backbone.full-length.nb.qza
+    # QIIME或Greengene官网下载(国外较慢)
+    wget -c https://data.qiime2.org/classifiers/greengenes/gg_2022_10_backbone_full_length.nb.qza
+    wget -c http://ftp.microbio.me/greengenes_release/2022.10/2022.10.backbone.full-length.nb.qza
+    # 统一文件名
+    mv 2022.10.backbone.full-length.nb.qza gg_2022_10_backbone_full_length.nb.qza 
+    
 ### Silva 138 99% OTUs full-length sequences
 
     # 官网下载
-    wget -c https://data.qiime2.org/2024.2/common/silva-138-99-nb-classifier.qza
-    # 备用链接
-    wget -c ftp://download.nmdc.cn/tools/amplicon/silva/silva-138-99-nb-classifier.qza
+    wget -c https://data.qiime2.org/2024.10/common/silva-138-99-seqs.qza
+    wget -c https://data.qiime2.org/2024.10/common/silva-138-99-tax.qza
 
-### Greengenes2 2022.10 full length sequences
+## 3. 物种注释数据训练集(gg13为例，可选)
 
-    # 官网下载
-    wget -c https://data.qiime2.org/classifiers/greengenes/gg_2022_10_backbone_full_length.nb.qza
-    wget -c http://ftp.microbio.me/greengenes_release/2022.10/2022.10.backbone.full-length.nb.qza
-    # 备用链接
-    wget -c ftp://download.nmdc.cn/tools/amplicon/GreenGenes/2022.10.backbone.full-length.nb.qza
-    mv 2022.10.backbone.full-length.nb.qza gg_2022_10_backbone_full_length.nb.qza 
-    
-
-## 3. 物种注释数据训练集
-
-    wd=/mnt/c/amplicon/qiime2
-    mkdir -p $wd
-    cd $wd
     # 下载数据库文件(greengenes, 320M)
     # wget -c ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
     # 国内备用链接
@@ -323,29 +342,15 @@
     If used this script, please cited:
     使用此脚本，请引用下文：
     
-    Evan Bolyen, Jai Ram Rideout, Matthew R. Dillon, Nicholas A. Bokulich, Christian C. Abnet, 
-    Gabriel A. Al-Ghalith, Harriet Alexander, Eric J. Alm, Manimozhiyan Arumugam, Francesco Asnicar, 
-    Yang Bai, Jordan E. Bisanz, Kyle Bittinger, Asker Brejnrod, Colin J. Brislawn, C. Titus Brown, 
-    Benjamin J. Callahan, Andrés Mauricio Caraballo-Rodríguez, John Chase, Emily K. Cope, 
-    Ricardo Da Silva, Christian Diener, Pieter C. Dorrestein, Gavin M. Douglas, Daniel M. Durall, 
-    Claire Duvallet, Christian F. Edwardson, Madeleine Ernst, Mehrbod Estaki, Jennifer Fouquier, 
-    Julia M. Gauglitz, Sean M. Gibbons, Deanna L. Gibson, Antonio Gonzalez, Kestrel Gorlick, 
-    Jiarong Guo, Benjamin Hillmann, Susan Holmes, Hannes Holste, Curtis Huttenhower, Gavin A. Huttley, 
-    Stefan Janssen, Alan K. Jarmusch, Lingjing Jiang, Benjamin D. Kaehler, Kyo Bin Kang, 
-    Christopher R. Keefe, Paul Keim, Scott T. Kelley, Dan Knights, Irina Koester, Tomasz Kosciolek, 
-    Jorden Kreps, Morgan G. I. Langille, Joslynn Lee, Ruth Ley, **Yong-Xin Liu**, Erikka Loftfield, 
-    Catherine Lozupone, Massoud Maher, Clarisse Marotz, Bryan D. Martin, Daniel McDonald, 
-    Lauren J. McIver, Alexey V. Melnik, Jessica L. Metcalf, Sydney C. Morgan, Jamie T. Morton, 
-    Ahmad Turan Naimey, Jose A. Navas-Molina, Louis Felix Nothias, Stephanie B. Orchanian, 
-    Talima Pearson, Samuel L. Peoples, Daniel Petras, Mary Lai Preuss, Elmar Pruesse, 
-    Lasse Buur Rasmussen, Adam Rivers, Michael S. Robeson, Patrick Rosenthal, Nicola Segata, 
-    Michael Shaffer, Arron Shiffer, Rashmi Sinha, Se Jin Song, John R. Spear, Austin D. Swafford, 
-    Luke R. Thompson, Pedro J. Torres, Pauline Trinh, Anupriya Tripathi, Peter J. Turnbaugh, 
-    Sabah Ul-Hasan, Justin J. J. van der Hooft, Fernando Vargas, Yoshiki Vázquez-Baeza, 
-    Emily Vogtmann, Max von Hippel, William Walters, Yunhu Wan, Mingxun Wang, Jonathan Warren, 
-    Kyle C. Weber, Charles H. D. Williamson, Amy D. Willis, Zhenjiang Zech Xu, Jesse R. Zaneveld, 
-    Yilong Zhang, Qiyun Zhu, Rob Knight, J. Gregory Caporaso. 
-    2019. Reproducible, interactive, scalable and extensible microbiome data science using QIIME 2. 
+    Bolyen et al. 2019. Reproducible, interactive, scalable and extensible microbiome data science using QIIME 2. 
     **Nature Biotechnology** 37: 852-857. https://doi.org/10.1038/s41587-019-0209-9
+
+    Yong-Xin Liu, Lei Chen, Tengfei Ma, et al. 2023. 
+    EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. 
+    iMeta 2: e83. https://doi.org/10.1002/imt2.83
     
-    Copyright 2016-2024 Yong-Xin Liu <liuyongxin@caas.cn>
+    Yousuf, et al. 2024. Unveiling microbial communities with EasyAmplicon: 
+    A user-centric guide to perform amplicon sequencing data analysis. 
+    iMetaOmics 1: e42. https://doi.org/10.1002/imo2.42
+    
+    Copyright 2016-2025 Yong-Xin Liu <liuyongxin@caas.cn>

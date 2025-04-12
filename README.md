@@ -5,6 +5,7 @@ The Chinese version in (中文版见) [README_cn.md](./README_cn.md)
 If you using these methods, please cited the following papers:
 
 [**Liu et al, iMeta, 2024, EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research**](https://doi.org/10.1002/imt2.83)
+
 [**Yousuf et al, iMetaOmics, 2025, Unveiling microbial communities with EasyAmplicon: A user-centric guide to perform amplicon sequencing data analysis**](https://doi.org/10.1002/imo2.42)
 
 Click the title to open the DOI link, the Click "TOOLS" - "Export citation" to download RIS or EndNote file

@@ -3,16 +3,16 @@
 # 易扩增子EasyAmplicon
 
     # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)等
-    # 版本 Version: v1.21
-    # 更新 Update: 2024-4-12
+    # 版本 Version: v1.23
+    # 更新 Update: 2025-4-11
     # 系统要求 System requirement: Windows 10+ / Mac OS 10.12+ / Ubuntu 20.04+
-    # 引文 Reference: Liu, et al. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based
-    # pipeline for amplicon data analysis in microbiome research. iMeta 2: e83. https://doi.org/10.1002/imt2.83
+    # 引文 Reference: Liu, et al. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. iMeta 2: e83. https://doi.org/10.1002/imt2.83
+    # Yousuf, et al. 2024. Unveiling microbial communities with EasyAmplicon: A user-centric guide to perform amplicon sequencing data analysis. iMetaOmics 1: e42. https://doi.org/10.1002/imo2.42
 
     # 设置工作(work directory, wd)和软件数据库(database, db)目录
     # 添加环境变量，并进入工作目录 Add environmental variables and enter work directory
     # **每次打开Rstudio必须运行下面4行 Run it**，可选替换${db}为EasyMicrobiome安装位置
-    wd=/d/amplicon
+    wd=/d/A250412
     db=/d/EasyMicrobiome
     PATH=$PATH:${db}/win
     cd ${wd}
@@ -76,14 +76,14 @@
     # 保留原始压缩文件
     gunzip -c ${db}/usearch/rdp_16s_v18.fa.gz > ${db}/usearch/rdp_16s_v18.fa
     seqkit stat ${db}/usearch/rdp_16s_v18.fa # 2.1万条序列
-    # 解压ITS UNITE数据库，需自行从官网或网盘db/amplicon/usearch中下载
-    # gunzip -c ${db}/usearch/utax_reference_dataset_all_25.07.2023.fasta.gz >${db}/usearch/unite.fa
-    # seqkit stat ${db}/usearch/unite.fa # 32.6万
+    # 解压ITS UNITE数据库，需自行从官网https://unite.ut.ee 或网盘db/amplicon/usearch中下载
+    # gunzip -c ${db}/usearch/utax_reference_dataset_all_19.02.2025.fasta.gz >${db}/usearch/unite.fa
+    # seqkit stat ${db}/usearch/unite.fa # 26.6万
     # Greengene数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
     # 默认解压会删除原文件，-c指定输出至屏幕，> 写入新文件(可改名)
     gunzip -c ${db}/gg/97_otus.fasta.gz > ${db}/gg/97_otus.fa
     seqkit stat ${db}/gg/97_otus.fa
-
+    # 根据序列和物种注释制作usearch格式数据库，参考 https://mp.weixin.qq.com/s/3FCId5KuE6bigH4G2YCJVg
 
 ## 2. 序列合并和重命名 reads merge and rename
 
@@ -91,11 +91,11 @@
 
     #测试.以WT1单样品合并为例
     #time统计计算时间，real是物理时间，user是计算时间，sys是硬件等待时间
-    # time vsearch --fastq_mergepairs seq/WT1_1.fq.gz \
-    #   --reverse seq/WT1_2.fq.gz \
-    #   --fastqout temp/WT1.merged.fq \
-    #   --relabel WT1.
-    # head temp/WT1.merged.fq
+    time vsearch --fastq_mergepairs seq/WT1_1.fq.gz \
+      --reverse seq/WT1_2.fq.gz \
+      --fastqout temp/WT1.merged.fq \
+      --relabel WT1.
+    head temp/WT1.merged.fq
 
     #依照实验设计批处理并合并
     #tail -n+2去表头，cut -f1取第一列，获得样本列表；18个样本x1.5万对序列合并8s
@@ -107,10 +107,10 @@
     # 之前课程，有发现每次运行结果都不一样，就是因为 for 循环部分没运行完，只生成了部分数据，导致后面
     # 每个样品 reads 数每次运行都会不一致。
     #方法1.for循环顺序处理
-    # time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
-    #   vsearch --fastq_mergepairs seq/${i}_1.fq.gz --reverse seq/${i}_2.fq.gz \
-    #   --fastqout temp/${i}.merged.fq --relabel ${i}.
-    # done &
+    time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
+      vsearch --fastq_mergepairs seq/${i}_1.fq.gz --reverse seq/${i}_2.fq.gz \
+      --fastqout temp/${i}.merged.fq --relabel ${i}.
+    done &
 
     # 一部分电脑 rush 不支持，运行时调度失败，请使用 for 循环部分
     #方法2.rush并行处理，任务数jobs(j),2可加速1倍4s；建议设置2-4
@@ -121,14 +121,13 @@
     head temp/`tail -n+2 result/metadata.txt | cut -f 1 | tail -n1`.merged.fq | grep ^@
     
     ##方法3.不支持压缩文件时解压再双端合并
-    #  time tail -n+2 result/metadata.txt | cut -f 1 | \
-    #    rush -j 1 "vsearch --fastq_mergepairs <(zcat seq/{}_1.fq.gz) --reverse <(zcat seq/{}_2.fq.gz) \
-    #     --fastqout temp/{}.merged.fq --relabel {}."
-    # 
-    #   time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
-    #      vsearch --fastq_mergepairs <(zcat seq/${i}_1.fq.gz) --reverse <(zcat seq/${i}_2.fq.gz) \
-    #      --fastqout temp/${i}.merged.fq --relabel ${i}.
-    #    done &
+     # time tail -n+2 result/metadata.txt | cut -f 1 | \
+     #   rush -j 1 "vsearch --fastq_mergepairs <(zcat seq/{}_1.fq.gz) --reverse <(zcat seq/{}_2.fq.gz) \
+     #    --fastqout temp/{}.merged.fq --relabel {}."
+     #  time for i in `tail -n+2 result/metadata.txt|cut -f1`;do
+     #     vsearch --fastq_mergepairs <(zcat seq/${i}_1.fq.gz) --reverse <(zcat seq/${i}_2.fq.gz) \
+     #     --fastqout temp/${i}.merged.fq --relabel ${i}.
+     #   done &
       
 ### 2.2 (可选)单端文件改名 Single-end reads rename
 
@@ -348,8 +347,8 @@
     head -n3 result/otutab_mean.txt
 
     #如以平均丰度>0.1%筛选，可选0.5或0.05，得到每个组的OTU组合
-    awk 'BEGIN{OFS=FS="\t"}{if(FNR==1) {for(i=3;i<=NF;i++) a[i]=$i; print "OTU","Group";} \
-        else {for(i=3;i<=NF;i++) if($i>0.1) print $1, a[i];}}' \
+    awk 'BEGIN{OFS=FS="\t"}{if(FNR==1) {for(i=2;i<=NF;i++) a[i]=$i; print "OTU","Group";} \
+        else {for(i=2;i<=NF;i++) if($i>0.05) print $1, a[i];}}' \
         result/otutab_mean.txt > result/alpha/otu_group_exist.txt
     head result/alpha/otu_group_exist.txt
     cut -f 2 result/alpha/otu_group_exist.txt | sort | uniq -c
@@ -484,7 +483,7 @@
       -a WT -b KO -c OE -d All \
       -w 3 -u 3 \
       -p WT_KO_OE_All
-    # EVenn在线绘制维恩图 https://www.ehbio.com/test/venn
+    # EVenn在线绘制维恩图 https://www.ehbio.com/test/venn 
 
 ## 2. Beta多样性
 
@@ -542,8 +541,8 @@
     # 修改颜色--color ggplot, manual1(22), Paired(12) or Set3(12)
     Rscript ${db}/script/tax_stackplot.R \
       --input result/tax/sum_p.txt --design result/metadata.txt \
-      --group Group --color Paired --legend 12 --width 181 --height 119 \
-      --output result/tax/sum_p.stackplotPaired
+      --group Group --color Set3 --legend 10 --width 181 --height 119 \
+      --output result/tax/sum_p.stackplotSet3
       
     # 批量绘制输入包括p/c/o/f/g共5级
     for i in p c o f g; do
@@ -673,6 +672,7 @@
 
     compare="KO-WT"
     # 替换ASV(result/otutab.txt)为属(result/tax/sum_g.txt)
+    # 代码优化：补充图例、实验vs对照，柱从上到下顺序，目前为WT上KO下
     Rscript ${db}/script/compare_stamp.R \
       --input result/stamp/tax_5Family.txt --metadata result/metadata.txt \
       --group Group --compare ${compare} --threshold 0.1 \
@@ -1327,6 +1327,11 @@
       --otutabout result/gg/otutab.txt --id 0.97 --threads 12
     # 比对率81.04%, 1核30m, 12核7m
 
+## 14. vsearch不可用/无结果
+    # Windows系统更新导致vserach缺失dll依赖关系
+    # 下载新版vsearch，https://github.com/torognes/vsearch 右侧release找最新下载链接，如 vsearch-2.30.0-win-x86_64.zip
+    # 软件vsearch.exe配套带有libbz2.dll和zlib1.dll，替换EasyMicrobiome中win目录即可
+
 # 版本更新记录
 
 - 2021/4/3 EasyAmplicon 1.11:
@@ -1368,7 +1373,21 @@
     - QIIME 2更新为v2023.7，数据库更新为greengene2 2022.10
     - 新增ggpicrust2分析picrust2结果可视化
     - 更新FAPROTAX为1.2.7
+- 2025/4/11 EasyAmplicon 1.23:
+    - R运行环境升级为4.4.3，配套有4.4.zip的最新全套包
+    - RStudio更新为2024.12.1
+    - amplicon、EasyAmplicon和EasyMicrobiome更新为1.23
+    - QIIME 2更新为v2024.10，数据库更新为python 3.10版学习的greengene2 2022.10
+    - 更新vsearch至2.30，新增2个dll文件，解决windows中运行无结果问题
 
+待更新内容：
+- PacBio三代测序扩增子流程；
+- Nanopore三代测序扩增子流程；
+- ITS测序使用UNITE分析流程；
+- 18S测序使用SILVA分析流程，含SILVA格式；
+- ggClusterNet 2网络和多界分析；
+- QIIME 2中greengene2的最新数据格式化；
+- STAMP中脚本缺少图例，还有KO-WT顺序调整；
 
 每季度视频课程安排：http://www.ehbio.com/trainLongTerm/TrainLongTerm/amplicongenomeLearnGuide.html
 
@@ -1380,4 +1399,8 @@ Yong-Xin Liu, Lei Chen, Tengfei Ma, et al. 2023.
 EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. 
 iMeta 2: e83. https://doi.org/10.1002/imt2.83
 
-Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
+Yousuf, et al. 2024. Unveiling microbial communities with EasyAmplicon: 
+A user-centric guide to perform amplicon sequencing data analysis. 
+iMetaOmics 1: e42. https://doi.org/10.1002/imo2.42
+
+Copyright 2016-2025 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
