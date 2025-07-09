@@ -1,0 +1,13 @@
+file          format  type  num_seqs      sum_len  min_len  avg_len  max_len
+seq/E1.fastq  FASTQ   DNA    159,149  244,709,077    1,300  1,537.6    1,650
+seq/E2.fastq  FASTQ   DNA    379,644  598,567,087    1,300  1,576.7    1,650
+seq/E3.fastq  FASTQ   DNA    358,736  562,798,837    1,300  1,568.8    1,650
+seq/E4.fastq  FASTQ   DNA    386,104  598,135,227    1,300  1,549.2    1,650
+seq/E5.fastq  FASTQ   DNA     91,384  143,640,733    1,300  1,571.8    1,650
+seq/E6.fastq  FASTQ   DNA    533,294  839,776,234    1,300  1,574.7    1,650
+seq/E7.fastq  FASTQ   DNA     54,269   85,063,144    1,301  1,567.4    1,650
+seq/N1.fastq  FASTQ   DNA     99,991  157,065,761    1,300  1,570.8    1,650
+seq/N2.fastq  FASTQ   DNA     53,630   83,635,469    1,300  1,559.5    1,650
+seq/O1.fastq  FASTQ   DNA    347,848  537,186,532    1,300  1,544.3    1,650
+seq/O2.fastq  FASTQ   DNA    313,936  490,639,856    1,300  1,562.9    1,650
+seq/S1.fastq  FASTQ   DNA     90,837  141,756,846    1,300  1,560.6    1,650

@@ -1,0 +1,29 @@
+2025-06-24 14:07:40,413 NanoPlot 1.44.1 started with arguments Namespace(threads=4, verbose=False, store=False, raw=False, huge=False, outdir='result/nanoplot_reports/E1_report/', no_static=False, prefix='', tsv_stats=False, only_report=False, info_in_report=False, maxlength=None, minlength=None, drop_outliers=False, downsample=None, loglength=True, percentqual=False, alength=False, minqual=None, runtime_until=None, readtype='1D', barcoded=False, no_supplementary=False, color='#4CB391', colormap='Greens', format=['png'], plots=['hex', 'dot'], legacy=None, listcolors=False, listcolormaps=False, no_N50=False, N50=True, title=None, font_scale=1, dpi=100, hide_stats=False, fastq=['seq/E1.fastq'], fasta=None, fastq_rich=None, fastq_minimal=None, summary=None, bam=None, ubam=None, cram=None, pickle=None, feather=None, path='result/nanoplot_reports/E1_report/')
+2025-06-24 14:07:40,413 Python version is: 3.12.11 | packaged by conda-forge | (main, Jun  4 2025, 14:45:31) [GCC 13.3.0]
+2025-06-24 14:07:40,564 Nanoget: Starting to collect statistics from plain fastq file.
+2025-06-24 14:07:48,592 Reduced DataFrame memory usage from 2.428546905517578Mb to 2.428546905517578Mb
+2025-06-24 14:07:48,608 Nanoget: Gathered all metrics of 159149 reads
+2025-06-24 14:07:48,680 Calculated statistics
+2025-06-24 14:07:48,681 Using sequenced read lengths for plotting.
+2025-06-24 14:07:48,682 Using log10 scaled read lengths.
+2025-06-24 14:07:48,707 NanoPlot:  Valid color #4CB391.
+2025-06-24 14:07:48,707 NanoPlot:  Valid colormap Greens.
+2025-06-24 14:07:48,715 NanoPlot:  Creating length plots for Read length.
+2025-06-24 14:07:48,716 NanoPlot: Using 159149 reads with read length N50 of 1535bp and maximum of 1650bp.
+2025-06-24 14:09:24,184 Saved result/nanoplot_reports/E1_report/WeightedHistogramReadlength  as png (or png for --legacy)
+2025-06-24 14:11:40,289 No static plots are saved due to some kaleido problem:
+2025-06-24 14:11:40,289 Transform failed with error code 1: Failed to serialize document: Uncaught
+2025-06-24 14:17:50,237 Saved result/nanoplot_reports/E1_report/Non_weightedHistogramReadlength  as png (or png for --legacy)
+2025-06-24 14:20:12,122 Saved result/nanoplot_reports/E1_report/Non_weightedLogTransformed_HistogramReadlength  as png (or png for --legacy)
+2025-06-24 14:20:12,122 NanoPlot: Creating yield by minimal length plot for Read length.
+2025-06-24 14:25:28,549 Saved result/nanoplot_reports/E1_report/Yield_By_Length  as png (or png for --legacy)
+2025-06-24 14:25:28,550 Created length plots
+2025-06-24 14:25:28,551 NanoPlot: Creating Read lengths vs Average read quality plots using 159149 reads.
+2025-06-24 14:29:04,906 No static plots are saved due to some kaleido problem:
+2025-06-24 14:29:04,906 Transform failed with error code 1: Failed to serialize document: Uncaught
+2025-06-24 14:29:04,908 NanoPlot: Creating Read lengths vs Average read quality plots using 159149 reads.
+2025-06-24 14:30:05,364 No static plots are saved due to some kaleido problem:
+2025-06-24 14:30:05,364 Transform failed with error code 1: Failed to serialize document: Uncaught
+2025-06-24 14:30:05,364 Created LengthvsQual plot
+2025-06-24 14:30:05,365 Writing html report.
+2025-06-24 14:30:05,392 Finished!
