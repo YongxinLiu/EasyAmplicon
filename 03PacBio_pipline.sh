@@ -393,8 +393,8 @@
 
 ## 设置路径
 
-    path <- "fastq"  # 修改为你的fastq所在路径
-    metadata <- read.delim("metadata.txt", header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+    path <- "path/to/fastq"  # 修改为你的fastq所在路径
+    metadata <- read.delim("path/to/metadata.txt", header = TRUE, sep = "\t", stringsAsFactors = FALSE)
     
     # 获取样本ID
     samples <- metadata$SampleID
@@ -419,10 +419,10 @@
       compress = TRUE
     )
 
-## Step 2: 学习错误模型
+## Step 2: 学习错误模型 (约2小时)
     err <- learnErrors(filt_files, multithread = TRUE, randomize = TRUE)
 
-## Step 3: 去噪（每个样本单独）
+## Step 3: 去噪（每个样本单独，约1小时）
     dada_list <- vector("list", length(samples))
     names(dada_list) <- samples
     
@@ -467,208 +467,8 @@
     # saveRDS(ps, file = "phyloseq_object.rds")
 
 
-# R语言多样性和物种组成分析
 
-## 1. Alpha多样性
-
-### 1.1 Alpha多样性箱线图
-
-    # 查看帮助,后续所有R代码均可用此方法查看帮助信息
-    Rscript ${db}/script/alpha_div_box.R -h
-    # 完整参数，多样性指数可选richness chao1 ACE shannon simpson invsimpson
-    Rscript ${db}/script/alpha_div_box.R --input result/alpha/vegan.txt   --metadata result/metadata.txt   --alpha_index richness,chao1,ACE,shannon,simpson,invsimpson   --group Group   --out_prefix result/alpha/vegan
-    #--alpha_index控制绘制多样性指数类型，可绘制单个
-
-### 1.2 稀释曲线
-
-    Rscript ${db}/script/alpha_rare_curve.R \
-      --input result/alpha/alpha_rare.txt --design result/metadata.txt \
-      --group Group --output result/alpha/ \
-      --width 120 --height 78
-
-### 1.3 多样性维恩图
-
-    # 支持2-4组比较
-    Rscript ${db}/script/venn.R --input result/alpha/otu_group_exist.txt --groups feces,plaque,saliva --output result/alpha/venn.pdf
-
-## 2. Beta多样性
-
-### 2.1 距离矩阵热图pheatmap
-
-    # 以bray_curtis为例，-f输入文件,-h是否聚类TRUE/FALSE,-u/v为宽高英寸
-    bash ${db}/script/sp_pheatmap.sh \
-      -f result/beta/bray_curtis.txt \
-      -H 'TRUE' -u 6 -v 5
-    # 添加分组注释，如2，4列的基因型和地点
-    cut -f 1-2 result/metadata.txt > temp/group.txt
-    # -P添加行注释文件，-Q添加列注释
-    bash ${db}/script/sp_pheatmap.sh \
-      -f result/beta/bray_curtis.txt \
-      -H 'TRUE' -u 6.9 -v 5.6 \
-      -P temp/group.txt -Q temp/group.txt
-    # 距离矩阵与相关类似，可尝试corrplot或ggcorrplot绘制更多样式
-    # - [绘图相关系数矩阵corrplot](http://mp.weixin.qq.com/s/H4_2_vb2w_njxPziDzV4HQ)
-    # - [相关矩阵可视化ggcorrplot](http://mp.weixin.qq.com/s/AEfPqWO3S0mRnDZ_Ws9fnw)
-
-### 2.2 主坐标分析PCoA
-
-    # 输入文件，选择分组，输出文件
-    Rscript ${db}/script/beta_PCoA.R  --input result/otutab.txt   --metadata result/metadata.txt   --group Group   --output result/beta/PCoa.pdf
-      
-### 2.3 限制性主坐标分析CPCoA
-
-    Rscript ${db}/script/beta_cpcoa.R \
-      --input result/beta/bray_curtis.txt --design result/metadata.txt \
-      --group Group --output result/beta/bray_curtis.cpcoa.pdf \
-      --width 89 --height 59
-    # 添加样本标签 --label TRUE
-    Rscript ${db}/script/beta_cpcoa.R \
-      --input result/beta/bray_curtis.txt --design result/metadata.txt \
-      --group Group --label TRUE --width 89 --height 59 \
-      --output result/beta/bray_curtis.cpcoa.label.pdf
-      
-## 3. 物种组成Taxonomy
-
-### 3.1 堆叠柱状图Stackplot
-
-    # 以门(p)水平为例，结果包括output.sample/group.pdf两个文件
-    Rscript ${db}/script/tax_stackplot.R \
-      --input result/tax/sum_p.txt --design result/metadata.txt \
-      --group Group -t 10 --color manual1 --legend 7 --width 89 --height 59 \
-      --output result/tax/sum_p.stackplot
-    # 补充-t 筛选丰度前多少物种及-s x轴排列位置-s "feces,plaque,saliva" 
-    # 修改颜色--color ggplot, manual1(30), Paired(12) or Set3(12)
-    
-    # 批量绘制输入包括p/c/o/f/g共5级
-    for i in p c o f g s; do
-    Rscript ${db}/script/tax_stackplot.R \
-      --input result/tax/sum_${i}.txt --design result/metadata.txt \
-      --group Group -t 10 --output result/tax/sum_${i}.stackplot \
-      --legend 8 --width 89 --height 59; done
-
-### 3.2 弦/圈图circlize
-
-    # 以纲(class,c)为例，绘制前5组
-    i=c
-    Rscript ${db}/script/tax_circlize.R \
-      --input result/tax/sum_${i}.txt --design result/metadata.txt \
-      --group Group --legend 5
-    # 结果位于当前目录circlize.pdf(随机颜色)，circlize_legend.pdf(指定颜色+图例)
-    # 移动并改名与分类级一致
-    mv circlize.pdf result/tax/sum_${i}.circlize.pdf
-    mv circlize_legend.pdf result/tax/sum_${i}.circlize_legend.pdf
-
-### 3.3 气泡图
-
-    # 以属为例（genus，g），绘制丰度前15的属水平丰度气泡图；输入物种丰度表和样本metadata文件，输出分组物种丰度气泡图
-    i=g
-    Rscript ${db}/script/tax_bubble.R \
-    -i result/tax/sum_${i}.txt \
-    -g result/metadata.txt \
-    -c Group -w 7 -e 4 -s 15 -n 15 \
-    -o result/tax/sum_g.bubble.pdf
-
-
-
-# 4、差异比较
-
-## 1. R语言差异分析
-
-### 1.1 差异比较
-
-    mkdir -p result/compare/
-    # 输入特征表、元数据；指定分组列名、比较组和丰度
-    # 选择方法 wilcox/t.test/edgeR、pvalue和fdr和输出目录
-    # 这里选择默认的wilcox
-    compare="saliva-plaque"
-    Rscript ${db}/script/compare.R \
-      --input result/otutab.txt --design result/metadata.txt \
-      --group Group --compare ${compare} --threshold 0.01 \
-      --pvalue 0.05 --fdr 0.2 \
-      --output result/compare/
-    # 并筛选丰度为前20%的ASV（--threshold 0.05 ）用来画热图
-    compare="feces-saliva"
-    Rscript ${db}/script/compare.R \
-      --input result/otutab.txt --design result/metadata.txt \
-      --group Group --compare ${compare} --threshold 0.2 \
-      --pvalue 0.05 --fdr 0.2 \
-      --output result/compare/
-    # 常见错误：Error in file(file, ifelse(append, "a", "w")) : 无法打开链结 Calls: write.table -> file
-    # 解决方法：输出目录不存在，创建目录即可
-
-### 1.2 火山图
-
-    详见volcano.R
-
-### 1.3 热图
-
-    # 输入compare.R的结果，筛选列数，指定元数据和分组、物种注释，图大小英寸和字号
-    bash ${db}/script/compare_heatmap.sh -i result/compare/${compare}.txt -l 7 \
-       -d result/metadata.txt -A Group \
-       -t result/taxonomy.txt \
-       -w 12 -h 20 -s 14 \
-       -o result/compare/${compare}
-
-
-### 1.4 三元图
-    Rscript ${db}/script/ternary_plot.R   \
-    --input result/tax/sum_p.txt   \
-    --metadata result/metadata.txt  \
-    --group Group   \
-    --taxlevel Phylum \
-    --output result/compare/ternary_p.pdf   \
-    --topn 10
-
-## 2. STAMP差异分析图
-
-    详见stamp.R
-
-### 2.1 生成输入文件(备选)
-
-    Rscript ${db}/script/format2stamp.R -h
-    mkdir -p result/stamp
-    Rscript ${db}/script/format2stamp.R --input result/otutab.txt \
-      --taxonomy result/taxonomy.txt --threshold 0.01 \
-      --output result/stamp/tax
-    # 可选Rmd文档见result/format2stamp.Rmd
-
-
-
-# 3. 功能预测
-
-## 3.1 PICRUSt2环境导出和导入
-    
-    # 方法1. 直接安装
-    n=picrust2
-    conda create -n ${n} -c bioconda -c conda-forge ${n}=2.3.0_b
-    # 加载环境
-    conda activate ${n}
-
-    # 方法2. 导出安装环境
-    cd ~/db/conda/
-    # 设置环境名
-    n=picrust2
-    conda activate ${n}
-    # 打包环境为压缩包
-    conda pack -n ${n} -o ${n}.tar.gz
-    # 导出软件安装列表
-    conda env export > ${n}.yml
-    # 添加权限，方便下载和别人使用
-    chmod 755 ${n}.*
-    
-    # 方法3. 导入安装环境，如qiime2 humann2 meta(包括picurst)
-    n=picrust2
-    # 复制安装包，或下载我的环境打包
-    wget -c ftp://download.nmdc.cn/tools/conda/${n}.tar.gz
-    # 指定安装目录并解压
-    condapath=~/miniconda3
-    mkdir -p ${condapath}/envs/${n}
-    tar -xvzf ${n}.tar.gz -C ${condapath}/envs/${n}
-    # 激活环境并初始化
-    source ${condapath}/envs/${n}/bin/activate
-    conda unpack
-
-## 3.2 PICRUSt2功能预测
+# 3. PICRUSt2功能预测
 
     # (可选)PICRUSt2(Linux/Windows下Linux子系统，要求>16GB内存)
     # 安装参考附录6的方式直接下载安装包并解压即可使用
@@ -698,30 +498,7 @@
 	    -o KEGG
     # 统计各层级特征数量
     wc -l KEGG*
-    #功能预测结果可视化
-    # 设置比较组的名称变量，这里比较的是"feces"（粪便）和"plaque"（牙菌斑）
-    compare="feces-plaque"
-    
-    # 第一个R脚本：执行两组间的差异分析
-    # 调用R脚本compare.R
-    Rscript ${db}/script/compare.R \
-    --input KEGG.PathwayL2.raw.txt \
-    --design /d/EasyAmplicon_paper_materials/PacBio/result/metadata.txt \
-    --group Group \
-    --compare ${compare} \
-    --threshold 0 \
-    --method wilcox \
-    --pvalue 0.05 \
-    --fdr 0.2 \
-    --output ./
-    
-    # 第二个R脚本：生成层级结构的条形图
-    # 调用R脚本compare_hierarchy_facet.R
-    Rscript ${db}/script/compare_hierarchy_facet.R \
-      --input ${compare}.txt \
-      --data MeanA \
-      --annotation ../${l}.anno.txt \
-      --output ../${compare}.MeanA.bar.pdf
+   
 
 
 
@@ -798,7 +575,6 @@
     # Ubuntu上安装fasttree可以使用`apt install fasttree`
     fasttree -gtr -nt otus_aligned.fas > otus.nwk
 
-## 4.3 进化树可视化
 
 
 

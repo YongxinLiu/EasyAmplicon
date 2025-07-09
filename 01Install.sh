@@ -89,13 +89,13 @@ You can download all needed R packages in https://pan.baidu.com/s/1Ikd_47HHODOqC
 ```bash
 cd ${db}
 git clone https://github\.com/YongxinLiu/EasyAmplicon
-cd EasyAmplicon2
+cd EasyAmplicon
 chmod +x *.sh
 ```
 ### 3. 安装 EasyMicrobiome
 
 ```bash
-EasyMetagenome依赖EasyMicrobiome，其包括众多脚本、软件和数据库的集合，网址：https://github.com/YongxinLiu/EasyMicrobiome
+EasyAmplicon2依赖EasyMicrobiome，其包括众多脚本、软件和数据库的集合，网址：https://github.com/YongxinLiu/EasyMicrobiome
     
     # 方法1. 网页中下载
     # https://github.com/YongxinLiu/EasyMicrobiome 中Code Download ZIP下载压缩包，上传至服务器，并解压
@@ -130,6 +130,10 @@ conda activate easyamplicon2
 mamba install cutadapt -y
 mamba install -c bioconda picrust2 -y
 mamba install -c bioconda emu -y
+mamba install -c bioconda minimap2 -y
+mamba install -c bioconda racon -y
+mamba install -c bioconda samtools -y
+mamba install -c bioconda medaka -y
 ```
 
 
