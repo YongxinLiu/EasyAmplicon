@@ -1,0 +1,30 @@
+tax_id	abundance	lineage
+106	0.18709934910070994	Bacteria;Firmicutes;Bacilli;Lactobacillales;Streptococcaceae;Streptococcus;
+4549	0.015951783341889056	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas;
+112	0.03952509151758393	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Prevotellaceae;Prevotella_7;
+974	0.01475959880957813	Bacteria;Firmicutes;Bacilli;Lactobacillales;Streptococcaceae;Streptococcus;infantis;
+7256	0.014214833380884487	Bacteria;Firmicutes;Bacilli;Lactobacillales;Streptococcaceae;Streptococcus;oralis;
+8760	0.02766858437174414	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Prevotellaceae;Prevotella_7;melaninogenica;
+963	0.02766798418972332	Bacteria;Firmicutes;Clostridia;Peptostreptococcales-Tissierellales;Peptostreptococcaceae;Filifactor;alocis;
+5998	0.019697234691019666	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas;endodontalis;
+902	0.06192362883096167	Bacteria;Fusobacteriota;Fusobacteriia;Fusobacteriales;Fusobacteriaceae;Fusobacterium;nucleatum;
+9624	0.03022713479976585	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Porphyromonadaceae;Porphyromonas;pasteri;
+3745	0.02635041596482224	Bacteria;Fusobacteriota;Fusobacteriia;Fusobacteriales;Fusobacteriaceae;Fusobacterium;periodonticum;
+4472	0.019762845849802268	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Prevotellaceae;Prevotella;nigrescens;
+55	0.05006587615283277	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Prevotellaceae;Prevotella;
+1360	0.022397891963109356	Bacteria;Firmicutes;Clostridia;Clostridia UCG-014;
+394	0.04216073781291173	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Prevotellaceae;Prevotella_9;
+3819	0.030303030303030304	Bacteria;Fusobacteriota;Fusobacteriia;Fusobacteriales;Leptotrichiaceae;Leptotrichia;
+5127	0.048748353096179184	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Prevotellaceae;Alloprevotella;
+143	0.05665349143610013	Bacteria;Spirochaetota;Spirochaetia;Spirochaetales;Spirochaetaceae;Treponema;
+5392	0.015810276679841896	Bacteria;Patescibacteria;Saccharimonadia;Saccharimonadales;
+265	0.032036287186824594	Bacteria;Firmicutes;Negativicutes;Veillonellales-Selenomonadales;Veillonellaceae;Veillonella;
+5311	0.029887296475889502	Bacteria;Firmicutes;Negativicutes;Veillonellales-Selenomonadales;Veillonellaceae;Veillonella;parvula;
+566	0.039525691699604744	Bacteria;Firmicutes;Negativicutes;Veillonellales-Selenomonadales;Selenomonadaceae;Selenomonas;
+6756	0.015810276679841896	Bacteria;Firmicutes;Clostridia;Lachnospirales;Lachnospiraceae;Agathobacter;
+19027	0.021080368906455864	Bacteria;Firmicutes;Clostridia;Peptostreptococcales-Tissierellales;Peptostreptococcaceae;Peptostreptococcus;stomatis;
+7414	0.034255599472990776	Bacteria;Synergistota;Synergistia;Synergistales;Synergistaceae;Fretibacterium;
+6836	0.026350461133069828	Bacteria;Proteobacteria;Gammaproteobacteria;Enterobacterales;Pasteurellaceae;Haemophilus;parainfluenzae;
+5317	0.05006587615283267	Bacteria;Firmicutes;Clostridia;Oscillospirales;Ruminococcaceae;Faecalibacterium;
+unmapped	0.0	
+mapped_unclassified	0.0	
