@@ -1,0 +1,34 @@
+tax_id	abundance	superkingdom	phylum	class	order	family	genus	species
+5168	0.1111111111111111	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	MWH-UniP1 aquatic group		
+4294	0.17777777777777778	Bacteria	Proteobacteria	Gammaproteobacteria	Pseudomonadales	Litoricolaceae	Litoricola	
+4697	0.011111111111111112	Bacteria	Proteobacteria	Gammaproteobacteria	Pseudomonadales	Pseudohongiellaceae	Pseudohongiella	
+17261	0.022222222222222223	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Comamonadaceae	RS62 marine group	
+6443	0.08888888888888889	Bacteria	Bacteroidota	Bacteroidia	Sphingobacteriales	NS11-12 marine group		
+5373	0.011111111111111112	Bacteria	Cyanobacteria	Cyanobacteriia	Cyanobacteriales	Microcystaceae	Synechocystis PCC-6803	
+6942	0.05555555555555555	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Methylophilaceae	OM43 clade	
+18172	0.15555555555555556	Bacteria	Proteobacteria	Alphaproteobacteria	SAR11 clade	Clade III		
+7638	0.022222222222222223	Bacteria	Actinobacteriota	Actinobacteria	Micrococcales	Microbacteriaceae		
+11012	0.022222222222222223	Bacteria	Bacteroidota	Bacteroidia	Cytophagales	Cyclobacteriaceae	Fabibacter	
+15467	0.022222196915158633	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Alcaligenaceae	Kerstersia	
+2374	0.011111111111111112	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Methylophilaceae	Methylotenera	
+68	0.03333333333333333	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Flavobacteriaceae		
+1001	0.011111111111111112	Bacteria	Firmicutes	Bacilli	Lactobacillales	Streptococcaceae	Lactococcus	lactis
+4706	0.011111111111111112	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Verrucomicrobiales	DEV007		
+6681	0.011111111111111112	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Cryomorphaceae		
+3914	0.011111111111111112	Bacteria	Bdellovibrionota	Bdellovibrionia	Bacteriovoracales	Bacteriovoracaceae		
+714	0.011111111111111112	Bacteria	Proteobacteria	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Erythrobacter	
+6691	0.03333333333333333	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	NS9 marine group		
+6506	0.022222247529285814	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Alcaligenaceae	GKS98 freshwater group	
+15516	0.03333333333333333	Bacteria	Actinobacteriota	Actinobacteria	Micrococcales	Microbacteriaceae	Candidatus Aquiluna	
+9603	0.011111111111111112	Bacteria	Proteobacteria	Alphaproteobacteria	Rhizobiales	Rhizobiales Incertae Sedis	Anderseniella	
+8929	0.011111111111111112	Bacteria	Proteobacteria	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Aestuariicoccus	
+9048	0.011111111111111112	Bacteria	Proteobacteria	Gammaproteobacteria	Pseudomonadales	Halieaceae	Halioglobus	
+2781	0.011111111111111112	Bacteria	Campylobacterota	Campylobacteria	Campylobacterales	Sulfurimonadaceae	Sulfurimonas	
+3477	0.011111111111111112	Bacteria	Proteobacteria	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Roseibacterium	
+399	0.011111111111111112	Bacteria	Proteobacteria	Gammaproteobacteria	Enterobacterales	Alteromonadaceae	Rheinheimera	
+6113	0.011111111111111112	Bacteria	Bacteroidota	Bacteroidia	Bacteroidetes VC2.1 Bac22			
+4366	0.011111111111111112	Bacteria	Proteobacteria	Gammaproteobacteria	Enterobacterales	Alteromonadaceae	Alteromonas	macleodii
+9841	0.011111111111111112	Bacteria	Bacteroidota	Bacteroidia	Cytophagales	Cyclobacteriaceae	Algoriphagus	marincola
+76	0.011111111111111112	Bacteria	Cyanobacteria	Cyanobacteriia	Chloroplast			
+unmapped	0.0							
+mapped_unclassified	0.0							

@@ -1,0 +1,13 @@
+SampleID	total_reads	nonspecific_reads	chloroplast_reads	mitochondria_reads	filtered_reads
+E1	306	1	68	69	168
+E2	629	2	40	11	576
+E3	494	5	44	8	437
+E4	940	3	746	9	182
+E5	139	2	3	2	132
+E6	750	31	77	7	635
+E7	147	0	14	0	133
+N1	172	4	9	6	153
+N2	173	6	53	16	98
+O1	636	8	3	14	611
+O2	477	5	5	0	467
+S1	282	9	88	13	172

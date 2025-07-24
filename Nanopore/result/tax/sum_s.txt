@@ -1,0 +1,378 @@
+Species	E1	E2	E3	E4	E5	E6	E7	N1	N2	O1	O2	S1	All
+uncultured bacterium	50.4	47.5	58.3	8.63	54.7	41	43.9	58.3	37.4	33.1	49.6	48.9	39.9
+Unassigned	7.91	12.2	6.47	3.6	11.5	21.6	18	11.5	16.5	18.7	8.63	15.8	15.1
+Chaetoceros calcitrans	0	0	0	79.9	0	0	0.719	0	0	0	0	0	3.8
+uncultured organism	2.88	1.44	4.32	0.719	2.16	1.44	2.88	0	1.44	7.19	7.91	1.44	3.7
+marine metagenome	0	3.6	0.719	0	0	6.47	0	0	0	5.04	0.719	0	3.0
+uncultured marine bacterium	0.719	7.91	4.32	0	5.76	2.16	1.44	4.32	1.44	1.44	0	0	2.6
+uncultured Bacteroidetes bacterium	0	4.32	1.44	1.44	3.6	4.32	1.44	0.719	0	2.16	1.44	0	2.0
+Picochlorum sp. SENEW3	13.7	0	0	0	0	0	0	0	0	0	0	0	1.0
+uncultured gamma proteobacterium	0.719	0	0.719	0	0	1.44	0.719	0	0.719	0.719	0.719	0	0.9
+uncultured beta proteobacterium	0	5.04	2.88	0	5.76	0	0.719	6.47	3.6	0	0	0	0.8
+metagenome	0	0	0	0	0	0	2.88	3.6	2.16	0	0	2.88	0.8
+uncultured Flexibacteraceae bacterium	0	0	0	0.719	1.44	3.6	0	0	0	0	0	0	0.7
+uncultured delta proteobacterium	0.719	0	0	0	0.719	0	2.16	0	0	0.719	0	1.44	0.7
+Thalassiosira pseudonana	0	0	0.719	0	1.44	0	0	0	0	0	0	6.47	0.7
+Lentibacter algarum	0	0	0	0	0	0	0	0	0	2.16	1.44	0	0.6
+uncultured Alphaproteobacteria bacterium	0	0	0	0	0	0	0.719	0	1.44	2.88	0	0	0.6
+Picochlorum sp. 'soloecismus'	7.91	0	0	0	0	0	0	0	0	0	0	0	0.6
+uncultured Rhodobacteraceae bacterium	0	0	0	0	0	0	0	0	0	2.16	2.88	0.719	0.6
+Seohaeicola saemankumensis	0.719	1.44	0.719	2.16	0.719	0	0	0	0	0	1.44	0.719	0.5
+uncultured Epsilonproteobacteria bacterium	0.719	0.719	0	0	0	0	0.719	2.16	0.719	0.719	1.44	0	0.5
+Marivivens donghaensis	0	0	0	0.719	0	0	0	0	0	0	2.88	0	0.5
+uncultured Sphingobacteriia bacterium	0	0	0	0	0	2.16	0	0	0	0	0	0	0.4
+uncultured gamma proteobacterium CHAB-III-7	0	2.16	0	0	0.719	0	0	0	0	0	0.719	0	0.4
+uncultured Flavobacteriales bacterium	0	0	0	0	0	2.16	0	0	0	0	1.44	0	0.4
+Roseobacter sp. WM2	0.719	0	0.719	0	0.719	0.719	0	0	0	0	0	0	0.4
+Alteromonas macleodii	0	0	0.719	0	0	0.719	0	0	0	0	0	0	0.4
+uncultured actinobacterium	0	0	0.719	0	0	0	0	1.44	0.719	0	0	0	0.3
+uncultured Alcaligenaceae bacterium	0	0.719	1.44	0	0	0	0	0	0	0	0	0	0.3
+uncultured cyanobacterium	3.6	0.719	0	0	0	0	0.719	0	0	0	0	0	0.3
+Roseovarius litoreus	0	0	0	0	0	0	0	0	0	1.44	0.719	0	0.3
+Roseobacter sp. AI-2	0	0	0	0	0	0	0	0	0	1.44	0	0	0.3
+Thiomicrospira sp. ALE3	0	0	0	0	0	1.44	0	0	0	0	0	0	0.3
+Rhodobacteraceae bacterium DG1236	0	0	0	0	0	0	0	0	0	2.88	0.719	0	0.3
+Yoonia rosea	0	0	0	0	0	0	0	0	0	2.88	0	0	0.3
+Rhodobacteraceae bacterium LSUCC0246	0.719	0	0	0	0	1.44	0	0	0	0.719	0	0	0.2
+Rheinheimera perlucida	0	2.88	0	0	0	0	0	0	0	0	0	0	0.2
+epsilon proteobacterium AN-BI3A	0	0	0	0	0	0	0	0	0	0	2.88	0	0.2
+Chlorella sorokiniana	0	0	0	0	0	0	0	0	0.719	0	0	0.719	0.2
+Chaetoceros muellerii	0	1.44	0	0	0	0	0	0	0	0	0	0	0.2
+Polynucleobacter cosmopolitanus	0	0	0	0	0	0	0	0	5.04	0	0	0	0.2
+Idiomarina sp. PL006	0	0.719	0	0	0	0	0	0	0	0	0	0	0.2
+uncultured Flavobacteriia bacterium	0	0	0.719	0	0	0	0	0	0	0	0	0	0.2
+Nitzschia alba marine diatom	0	0.719	0	0	0	0	0	0	0	0	0	0	0.2
+Pythium ultimum	0	0	0	0	0	0	0	0	0	1.44	0	0.719	0.2
+uncultured Flavobacterium sp.	0	0	11.5	0	0.719	0.719	0	0	0	0	0	0	0.2
+Anabaenopsis sp. PCC 9215	0	0	0	0	0	0	0	0	3.6	0	0	0	0.2
+Candidatus Arcobacter sulfidicus	0	0	0	0	0.719	0	0	0	0	0	0.719	0	0.2
+Allochromatium minutissimum	0	0	0	0	0	0	0	0	0	0	1.44	0	0.2
+Methylophilales bacterium MBRSG12	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Chlorella heliozoae	0	0	0	0	0	0	0	0	0	0	0	2.88	0.2
+bacterium	0.719	0	0	0	0	0	0.719	0	0	0.719	0	0	0.1
+Allochromatium truperi	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+alpha proteobacterium ML42	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Polaribacter gangjinensis	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Pleomorphochaeta naphthae	0	0	0	0	0	0	0	0	0	0	2.16	0	0.1
+uncultured proteobacterium	0	0.719	0	0	0	0	0.719	0	0	0	0	0.719	0.1
+Algoriphagus sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Nodularia spumigena	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Winogradskyella sp. IMCC2192	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Rhodobacteraceae bacterium MOLA 13	0	0	0	0	0.719	0	0	0	0	0.719	0	0	0.1
+Thiomicrospira aerophila AL3	0	0	0	0	0	1.44	0	0	0	0	0	0	0.1
+uncultured Merismopedia sp.	0	0	0	0	0	0	0	0	0	0.719	0.719	0	0.1
+Microcystis sp. LZ-27	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+Rhodobacteraceae bacterium DG1295	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+Tetraselmis marina	0	0	0	0	0	0	0	0	0.719	0	0.719	0	0.1
+Algoriphagus marincola	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured Verrucomicrobia bacterium	0	0	0	0	0	0	0	0.719	0	0	0	0	0.1
+uncultured phototrophic eukaryote	0	0	0	0	0	0	0	0	2.16	0	0	0	0.1
+gamma proteobacterium SS-5	0.719	0	0	0	0	0	0.719	0	0	0	0	1.44	0.1
+marine bacterium SCRIPPS_413	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Nannochloropsis limnetica	0	0	0	0	0	0	0	0	0	0	0	0.719	0.1
+Marivita lacus	0.719	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured Clostridiales bacterium	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+Listonella anguillarum	0	0.719	0	0	0.719	0	0	0	0	0	0	0	0.1
+uncultured Flammeovirgaceae bacterium	0	0	0	0	0.719	0	0	0	0	0	0	0.719	0.1
+uncultured Firmicutes bacterium	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+uncultured Arcobacter sp.	0	0	0	0	0	0	0	0.719	0	0	0.719	0	0.1
+microbial mat metagenome	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Roseicyclus sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Rhodobacteraceae bacterium DG1240	0.719	0	0	0	0	0	0	0	0	0	0	0	0.1
+Thiomicrospira cyclica ALM1	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Alteromonas sp. 253-19	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Pythium insidiosum	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Thiomicrospira sibirica	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Psychroflexus saliphilus	0	0	0	0	0	0.719	0	0	0	0	0	0	0.1
+Polynucleobacter difficilis	0	0	0	0	0	0	0	0.719	1.44	0	0	0	0.1
+Hoeflea alexandrii	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured soil bacterium	0	0	0	0	0	0	0	0	0	0	0	1.44	0.1
+Achromobacter marplatensis	0	0	0	0	0	0	0	0	0.719	0	0	0.719	0.1
+Sulfurospirillum alkalitolerans	0	0	0	0	0	0	0	0	0	0	0.719	0	0.1
+uncultured Idiomarina sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Glaciecola sp. XM2	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Candidatus Megaira polyxenophila	0	0	0	0	0	0	0	0	0.719	0	0	0	0.1
+Neptunomonas concharum	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Neptunomonas japonica	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+Rhodomonas salina	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Muriicola jejuensis	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+Ruegeria atlantica	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Terasakiella pusilla	0	0	0	0	0	0	0	0.719	0	0	0	0	0.1
+Nannochloropsis oceanica	0	0	0	0	0	0	0	0	0.719	0	0	0.719	0.1
+Nannochloropsis gaditana	0	0.719	0	0	0	0	0	0	0	0	0	0	0.1
+Thiomicrospira microaerophila	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Rhodobacterales bacterium CB1049	0.719	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+Polynucleobacter sp. NBRC 101963	0	0	0	0	0	0	0	0	0	0	0	0.719	0.1
+Polynucleobacter sp. HTCC543	0	0	0	0	0	0	0	0	0.719	0	0	0.719	0.1
+cyanobacterium WH7B	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+bacterium YC-ZSS-LKJ131	0	0	0	0	0.719	0	0	0	0	0.719	0	0	0.1
+Planktothrix agardhii	0	0	0	0	0	0	0	0	0.719	0	0	0	0.1
+Planctonema lauterbornii	0	0	0	0	0	0	0.719	0	0.719	0	0	0	0.1
+Phormidium sp. LEGE 11384	0	0	0	0	0	0.719	0	0	0	0	0	0	0.1
+bacterium enrichment culture clone B2132011	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Nodularia harveyana	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Yoonia sediminilitoris	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Rheinheimera aquimaris	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Nitzschia sp. PL3-2	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+alpha proteobacterium HIMB114	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Pseudochlorella pringsheimii	0	0	0	0	0	0	0	0	0.719	0	0	0	0.1
+Oscillatoriales cyanobacterium 'Gollwitz Poel'	0	0	0	0.719	0	0	0	0	0	0	0	0	0.1
+Psychroserpens sp. ANY4	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Lepocinclis sp. Saema103108C	0	0	0	0	0	0	0	0	0.719	0	0	0	0.1
+uncultured prokaryote	0	0	0	0	0	0	1.44	0	0	0	0	0	0.1
+Legionella thermalis	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+uncultured planctomycete	0	0	0.719	0	0.719	0	0	0	0	0	0	0	0.1
+Lepocinclis sp. Songdang060709M	0	0	0	0	0	0	0	0	1.44	0	0	0	0.1
+Algoriphagus sp. HMD3129	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured Verrucomicrobiae bacterium	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+Lepocinclis spinosa	0	0	0	0	0	0	0	0	0.719	0	0	0	0.1
+uncultured Owenweeksia sp.	0	0	1.44	0	0	0	0	0	0	0	0	0	0.1
+Alteromonas hispanica	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Berkeleya fennica	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Halochromatium roseum	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured Limnohabitans sp.	0	0	0	0	0	0	0	0	0.719	0	0	0	0.1
+uncultured Microgenomates group bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured Hongiella sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Hydrogenophaga sp. NBRC 101324	0	0	0	0	0	0	1.44	0	0	0	0	0	0.1
+Imhoffiella purpurea	0	0	0	0	0	0	0	0	0	0	0.719	0	0.1
+Aphanizomenon flos-aquae WA102	0	0	0	0	0	0	0.719	0.719	0	0	0	0	0.1
+Hydrogenophaga pseudoflava	0	0	0	0	0	0	0	0.719	0	0	0	0	0.1
+uncultured Rickettsiales bacterium	0	0	0	0	0	0	0	1.44	0	0	0	0	0.1
+uncultured Sphingobacteriales bacterium	0	0	0	0	0	0	0.719	0	0	0	0	0	0.1
+Cyclobacterium xiamenense	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Aeromonas veronii	0	0.719	0	0	0	0	0	0	0	0	0	0	0.1
+Marvania geminata	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Mesoflavibacter sabulilitoris	0	0	0	0	0	0	0	0	0	0	1.44	0	0.1
+Cytophagales bacterium TFI 002	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Discoplastis sp. Gungnamji052507K	0	0	0	0	0	0	0	0	1.44	0	0	0	0.1
+Algoriphagus marincola HL-49	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Cryomorphaceae bacterium IMCC2672	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured Cryomorphaceae bacterium	0	0	0	0	0	0	0	0.719	0	0	0	0	0.1
+uncultured Desulfobacteraceae bacterium	0	0	0	0	0	0	0	0	0	0	0	0.719	0.1
+uncultured Cytophagales bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured Comamonadaceae bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Malaciobacter pacificus	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+uncultured Synechococcus sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured candidate division WS6 bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Wenzhouxiangella marina	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Thiothrix sp.	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Trichormus variabilis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured bacterium GRIST08	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured bacterium CA19	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Thioalkalivibrio sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Vicingus serpentipes	0	0	0	0	0.719	0	0	0	0	0	0	0	0.0
+Wandonia haliotis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Winogradskyella aurantia	0	0	0	0	0	0.719	0	0	0	0	0	0	0.0
+Thiothrix sp. FBR0112	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+uncultured sediment bacterium	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Tenericutes bacterium MZ-XQ	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+Thioalkalivibrio sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Thiocapsa sp. MTCH3IM012	0	0.719	0	0	0	0	0	0	0	0	0	0	0.0
+Thiocapsa pendens	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Synechococcus sp. RS9918	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Synechococcus sp. RS9913	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Synechocystis sp. LEGE 06083	1.44	0	0	0	0	0	0	0	0	0	0	0	0.0
+Tabrizicola aquatica	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+unidentified marine bacterioplankton	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Thiocapsa sp. MTRDDF078	0	0	0	0	0.719	0	0	0	0	0	0	0	0.0
+Thiomicrospira sp. NP20	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+uncultured eukaryote	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Thiorhodovibrio sp. 970	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Thiorhodovibrio winogradskyi	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured diatom	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured marine microorganism	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+Thiohalocapsa halophila	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured marine eukaryote	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+uncultured forest soil bacterium	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+uncultured low G+C Gram-positive bacterium	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+uncultured Spirochaetes bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+hetercystous cyanobacterium RS0112	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+filamentous cyanobacterium GSL035	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+marine bacterium ATAM173a_2	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Desulfocapsa sp.	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+marine bacterium IIA002	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+drinking water bacterium OR2	0.719	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Holosporaceae bacterium	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+bacterium enrichment culture clone DPF01	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+uncultured Fusibacter sp.	0	0.719	0	0	0	0	0	0	0	0	0	0	0.0
+bacterium str. 77003	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+bacterium enrichment culture clone Oil_45	0	0	0.719	0	0	0	0	0	0	0	0	0	0.0
+uncultured Bacteroidetes/Chlorobi group bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Candidatus Competibacter sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+soda lake metagenome	0	0.719	0	0	0	1.44	0	0	0	0	0	0	0.0
+uncultured Aquimonas sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Bacteroidales bacterium	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+uncultured Chlorella	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Chromatiales bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Cyanobacterium sp.	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+uncultured Chlorophyta	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+saltmarsh clone LCP-84	0	0.719	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Chloroflexi bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+bacterium enrichment culture clone B182011	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Pelobacter sp.	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+alpha proteobacterium bacw	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+bacterium IFAM-2074	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+bacterium SH2-3	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+bacterium RCC 1927	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Planctomycetales bacterium	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+Yoonia vestfoldensis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Sphingomonadaceae bacterium	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+actinobacterium R-36750	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Rhodocyclaceae bacterium	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+alpha proteobacterium DG1234	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+bacterium enrichment culture clone 51	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+bacterium YC-ZSS-LKJ178	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Kiritimatiellaeota bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+bacterium enrichment culture clone B1252011	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+bacterium enrichment culture clone Anammox_46	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+uncultured Methylophaga sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Mollicutes bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+bacterium WH5-7	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+bacterium YC-ZSS-LKJ152	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+uncultured Microcella sp.	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+bacterium YC-ZSS-LKJ173	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Synechococcus sp. MLCB	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Halarcobacter bivalviorum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Haloferula chungangensis	0	0	0	0.719	0	0	0	0	0	0	0	0	0.0
+Glaciecola nitratireducens FR1064	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Grylloblatta bifratrilecta	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Hoeflea phototrophica DFL-43	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Jaaginema sp. IkpSMP32	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Jannaschia cystaugens	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Hyalella azteca	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Isochrysis sp. SAG 927-2	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Flintiella sanguinaria	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Fontibacter sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Erythrobacter sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Exanthemachrysis gayraliae	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Francisella philomiragia	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Geminocystis herdmanii PCC 6308	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+Geofilum rubicundum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Francisella tularensis subsp. novicida	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Fulvivirga lutimaris	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Loktanella acticola	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Mangroviflexus xiamenensis	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Limnothrix sp. Osci-BM-01	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Limnothrix sp. TK01	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Mantoniella squamata	0	0	0	0	0	0	0.719	0.719	0	0	0	0	0.0
+Marinobacter pelagius	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Marivita sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Marichromatium purpuratum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Marinilabilia salmonicolor	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Lactococcus lactis	0	0	0	0	0.719	0	0	0	0	0	0	0	0.0
+Lepocinclis playfairiana	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Kangiella sp. MMH2-2	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Lactobacillus aviarius	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Lepocinclis tripteris	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Limnobacter sp. HTCC376	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Limnohabitans sp. Rim11	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Leptolyngbya sp. CCAP 1442/1	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Limnobacter sp.	0	0.719	0	0	0	0	0	0	0	0	0	0	0.0
+Aphanizomenon flos-aquae	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Aquiflexum balticum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Alteromonas sp. MB-3u-76	0	0	0	0	0	0.719	0	0	0	0	0	0	0.0
+Anderseniella baltica	0	0	0.719	0	0	0	0	0	0	0	0	0	0.0
+Arcticibacterium luteifluviistationis	0	0	0	0	0	0.719	0	0	0	0	0	0	0.0
+Bacteroidetes bacterium enrichment culture clone OCL_P2D11	0	0	0	0	0	0.719	0	0	0	0	0	0	0.0
+Belliella aquatica	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Arenimonas aestuarii	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Azonexus hydrophilus	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Alcaligenes sp. A36	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Aliiglaciecola coringensis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Acidovorax delafieldii	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Aerococcus viridans	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Allochromatium renukae	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Alteromonas aestuariivivens	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Alteromonas genovensis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Allochromatium sp. MT6010	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Altererythrobacter sp.	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Desulfomicrobium baculatum	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+Desulfovibrio sp. HS5	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Clostridium sp. enrichment culture clone VanCtr93	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Cysteiniphilum litorale	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Dicloster acuatus	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Durinskia baltica	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Enterobacter ludwigii	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Donghicola tyrosinivorans	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Draconibacterium orientale	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Caldanaerocella colombiensis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Calothrix sp. PCC 6303	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Belliella baltica	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Bordetella sp. CC-PW-55	0	0	0	0	0	0.719	0	0	0	0	0	0	0.0
+Candidatus Aquiluna rubra	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Chromatiales bacterium S2	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Clostridium grantii	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+Candidatus Halomonas phosphatis	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Chlorella sp. ArM0029B	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Rhodobacteraceae bacterium W09	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rhodobacteraceae bacterium W19	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Rhodobacter sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rhodobacteraceae bacterium HL-91	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rhodospirillum sp. KYW360	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Roseivirga sp. F8	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Roseobacter sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rhodovulum marinum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Roseicyclus mahoneyensis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pseudomarivita litorea	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pseudomonas sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pseudochloris wilhelmii	0.719	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pseudodesulfovibrio indicus	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Psychroflexus salis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rheinheimera baltica	0	0	0	0	0.719	0	0	0	0	0	0	0	0.0
+Rheinheimera sp. 239	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pyramimonas parkeae	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rhabdochromatium marinum	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+Spirobacillus cienkowskii	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+Spirulina major PCC 6313	0	0	0	0	0	0.719	0	0	0	0	0	0	0.0
+Snowella rosea 1LM40S01	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Soortia roseihalophila	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Staphylococcus epidermidis	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+Sulfurovum sp. enrichment culture clone C5	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Synechococcus sp. CCY9202	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Streptococcus pneumoniae	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Sulfurospirillum sp. C6	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+Rubribacterium polymorphum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Salinirepens amamiensis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Roseomonas sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Roseovarius sp. 2S5-2	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Salinivibrio proteolyticus	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Silvimonas sp. JD7	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Skeletonema pseudocostatum	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Schizothrix aff. septentrionalis LEGE 07164	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Serratia plymuthica	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+OM182 bacterium D4	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+Oceanospirillum nioense	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Nitrosococcus oceani ATCC 19707	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Nostoc sp. 8941	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Oscillatoria sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pavlova gyrans	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Pavlova lutheri	0.719	0	0	0	0	0	0	0	0	0	0	0	0.0
+Paracoccus sp.	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Parvularcula lutaonensis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Methylophilaceae bacterium KM513	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Microcystis aeruginosa	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Marivita sp. CB1101	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Marsupiomonas pelliculata	0	0	0	0.719	0	0	0	0	0	0	0	0	0.0
+Motiliproteus sediminis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Nitrincola schmidtii	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Nitrincola sp.	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Mychonastes jurisii	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Neglectella solitaria	0.719	0	0	0	0	0	0	0	0	0	0	0	0.0
+Porphyrobacter donghaensis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Portibacter lacus	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Polynucleobacter asymbioticus QLW-P1DMWA-1	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pontimonas salivibrio	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Prochlorothrix hollandica PCC 9006 = CALU 1027	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pseudoalteromonas sp. AB198d	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pseudoalteromonas tunicata	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pseudanabaena cf. persicina TAU-MAC 1415	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pseudarcobacter venerupis	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Phormidium sp. DVL1003c	0.719	0	0	0	0	0	0	0	0	0	0	0	0.0
+Planktothrix agardhii CCAP 1459/36	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Phacus paraorbicularis	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Phaeodactylibacter xiamenensis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Planktothrix sp. PCC 9018	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Plasmopara viticola	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Polynucleobacter acidiphobus	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Planococcus maritimus	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Planococcus sp. QHL14	0	0	0	0	0	0	0	0	0	0	0	0	0.0

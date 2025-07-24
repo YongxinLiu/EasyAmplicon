@@ -1,0 +1,239 @@
+Species	feces1	feces2	feces3	feces4	feces5	feces6	plaque1	plaque2	plaque3	plaque4	plaque5	plaque6	saliva1	saliva2	saliva3	saliva4	saliva5	saliva6	All
+uncultured bacterium	35.2	35.2	46.5	26	36.1	15.3	17.7	5.81	11.9	13.5	20.8	18.7	19.9	37.9	19.6	25.4	17.4	24.8	26.1
+Unassigned	7.34	3.98	6.73	4.59	3.36	6.12	6.12	2.45	6.42	6.42	5.5	11.3	5.2	18.3	15.9	24.5	31.8	16.8	13.5
+uncultured organism	15.3	30.9	17.4	15.6	30.3	37	4.89	19.6	5.2	4.28	7.03	4.89	4.28	12.2	15.6	16.2	26	17.1	13.4
+gut metagenome	25.4	2.75	8.87	7.34	4.28	15.6	0	0	0	0	0	0	0	0	0	0	0	0	2.1
+Filifactor alocis	0	0	0	0	0	0	6.73	0	11	3.06	8.26	3.36	7.34	0	0.306	0	0	0	1.5
+uncultured Treponema sp.	0	0	0	0	0	0	3.67	0	2.45	0.306	1.22	1.53	1.53	0	0	0	0	0	1.5
+Prevotella nigrescens	0	0	0	0	0	0	3.36	5.81	3.36	0.917	1.22	0	0.917	0	0	0.612	0	0	1.0
+uncultured Prevotella sp.	0	0	0	0	0	0	0.917	0	0.917	0.306	1.53	3.67	1.83	0	0.612	0.612	0	0.917	1.0
+Porphyromonas endodontalis	0	0	0	0	0	0	1.22	1.53	0.612	0.306	1.53	1.53	3.98	0	0.306	0	0	0	0.8
+Fusobacterium periodonticum	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0.612	1.22	0.612	0	2.45	0.7
+Porphyromonas gingivalis	0	0	0	0	0	0	0	3.06	13.8	4.59	12.5	5.81	7.34	0	0.612	0	0	0	0.7
+uncultured Bacteroidetes bacterium	0	0	0	0	0	0	0.917	0	0	0	0	0	0.917	0.917	0.612	0.917	0	0	0.7
+Peptostreptococcus stomatis	0	0	0	0	0	0	0	1.22	0.612	0.917	0.306	1.83	0.917	0	0.306	0	0.306	0	0.6
+Fusobacterium nucleatum	0	0	0	0	0	0	0.917	0.612	0.306	3.06	0.612	0	0.306	0	0.306	0.306	0.306	0.306	0.6
+Prevotella melaninogenica ATCC 25845	0	0	0	0	0	0	0	0	0	0	0	0.612	0	0.306	1.53	0.917	0.917	9.79	0.6
+Neisseria sp. R-22841	0	0	0	0	0	0	0	0	0	0	0	0	0	3.98	5.81	3.06	0	0	0.6
+Leptotrichia sp. oral taxon 215 str. W9775	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2.75	0.6
+uncultured Selenomonas sp.	0	0	0	0	0	0	4.59	0.612	0	0	1.83	0.306	0.917	0	0.612	0	0.917	0	0.6
+Treponema denticola	0	0	0	0	0	0	0.612	0	0.612	0.612	0	1.83	1.22	0	0	0	0	0	0.6
+Prevotella intermedia	0	0	0	0	0	0	1.22	0	1.83	7.65	0	1.83	0.306	0	0	0	0.306	0	0.5
+Porphyromonas pasteri	0	0	0	0	0	0	0	0	0	0	0	0	0	1.83	2.45	2.75	0.306	0.306	0.5
+Prevotella melaninogenica	0	0	0	0	0	0	0	0	0	0	0	0.306	0	2.14	1.53	0	0.612	0	0.5
+Streptococcus mitis	0	0	0	0	0	0	1.22	3.06	0	0	0	0	1.22	0.612	2.45	0.612	0.917	0.612	0.5
+Streptococcus cristatus	0	0	0	0	0	0	0.306	0.306	0.306	0	0	1.53	0.612	0.306	1.53	0.917	0	1.22	0.5
+Campylobacter gracilis	0	0	0	0	0	0	0	0	0	0	0.917	0	0.612	0	0	0	0	0	0.4
+Eubacterium saphenum ATCC 49989	0	0	0	0	0	0	0	0	0	0	0.612	1.53	2.75	0	0	0	0	0	0.4
+human gut metagenome	1.53	0.917	2.45	3.36	1.53	1.53	0	0	0	0.306	0	0	0	0	0	0	0	0	0.4
+Streptococcus anginosus	0	0	0	0	0	0	0.917	20.2	0.306	30.6	0.612	0.612	1.83	0	0	0	0.306	0	0.4
+Tannerella forsythia 92A2	0	0	0	0	0	0	1.53	0.306	0.612	0.306	1.22	3.36	2.45	0	0	0	0	0.917	0.4
+Solobacterium moorei	0	0	0	0	0	0	0	0.612	0.612	0.917	0	0.306	0.612	0.612	0.306	0.306	0.306	0.612	0.4
+Prevotella multiformis	0	0	0	0	0	0	0.917	0	0	0	2.14	0	0	0	0	0	0	0	0.4
+Bifidobacterium longum	0	0	0	6.42	0	3.98	0	0	0	0	0	0	0	0	0	0	0	0	0.4
+unidentified	0	0	2.45	0	0	0.306	0	0	0	0	0	0	0.306	0.306	0	0.917	0	1.53	0.4
+Desulfobulbus sp. ORNL	0	0	0	0	0	0	10.1	1.83	3.67	0.306	6.73	3.67	0	0	0	0	0	0	0.3
+Veillonella sp. oral taxon 158	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0.917	0	0.612	0.3
+Oribacterium sp. oral taxon 078 str. F0262	0	0	0	0	0	0	0.612	0	0	2.45	0.612	0	0	0	0	0	0	0	0.3
+Leptotrichia sp. oral clone EX103	0	0	0	0	0	0	0.612	0	0	0	2.75	2.45	0	0	0	0	0	0	0.3
+Butyrivibrio crossotus	0	0	5.5	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.3
+Prevotella pallens	0	0	0	0	0	0	0	0	0	0	0	1.22	0	0	1.22	0	0.917	0.612	0.3
+Streptococcus rubneri	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0.612	1.53	0.306	1.22	0	0.3
+Parvimonas micra ATCC 33270	0	0	0	0	0	0	2.14	0.306	0.306	6.73	0.306	0.306	0	0	0	0	0	0	0.3
+Gemella sanguinis	0	0	0	0	0	0	0	0	0	0	0	0.612	2.14	5.2	5.2	2.75	7.65	0.306	0.3
+Rothia mucilaginosa	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0.917	4.89	3.06	0	2.14	0.3
+metagenome	0	3.67	0.917	0	1.22	0	0	0	0	0	0	0	0	0	0	0	0	0	0.3
+Catonella morbi	0	0	0	0	0	0	0.917	0.306	0	0	0.306	2.45	0.917	0	0	0	0	0	0.3
+Gemella haemolysans ATCC 10379	0	0	0	0	0	0	0	0	0	0	0	0.612	0.306	0.917	0.917	0.306	0	0	0.2
+Streptococcus australis	0	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0	0.306	2.75	0	0.2
+Veillonella tobetsuensis	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0.612	0.917	0	0.2
+Bacteroidetes oral taxon 274 str. F0058	0	0	0	0	0	0	0.612	0	0	0	0	0.917	0.306	0.306	0	0	0.306	0	0.2
+Peptostreptococcaceae bacterium canine oral taxon 139	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0.2
+Peptococcus sp. oral clone MCE10_265	0	0	0	0	0	0	0.306	0	0.306	0	0	0.612	0	0	0	0	0	0	0.2
+uncultured Synergistetes bacterium	0	0	0	0	0	0	0	0	2.75	0	0.612	0	0	0	0	0	0	0	0.2
+Alloprevotella tannerae	0	0	0	0	0	0	0.306	0	0	0	0.306	0	0	0.306	0	0	0	0	0.2
+Phascolarctobacterium faecium	1.83	0	0	13.5	2.45	4.28	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Parvimonas micra	0	0	0	0	0	0	0.306	7.34	0	0	0.306	0	0	0	0	0	0	0	0.2
+uncultured Peptostreptococcus sp.	0	0	0	0	0	0	0.306	0	0	0	1.83	1.22	0	0	0	0	0	0	0.2
+Streptococcus gordonii	0	0	0	0	0	0	0.306	0	0.306	3.06	0	0.306	0.612	0.612	1.22	0.306	0.306	0	0.2
+Treponema denticola ATCC 33521	0	0	0	0	0	0	0	0	0	0.306	0.917	0	3.06	0	0	0	0	0	0.2
+Prevotella denticola	0	0	0	0	0	0	0.306	0.306	2.75	0	0	0	0.306	0	0	0	0	0	0.2
+uncultured Prevotellaceae bacterium	0	0	0	0	0	0	0	0	0.612	0	0	0	0	0.306	0.306	0	0	0.306	0.2
+Fretibacterium fastidiosum	0	0	0	0	0	0	0.612	0	1.22	0	1.22	0.306	0.612	0	0	0	0	0	0.2
+Dialister invisus DSM 15470	0	0	0	0	0	0	0	0	0	0.306	0.612	0.306	1.22	0	0	0	0	0	0.2
+uncultured Candidatus Saccharibacteria bacterium	0	0	0	0	0	0	2.45	0	0	0	0.612	0	0	0	0	0	0	0	0.2
+Prevotella fusca JCM 17724	0	0	0	0	0	0	0	0	1.53	0	0	2.45	0	0	0	0	0	0	0.2
+Campylobacter rectus	0	0	0	0	0	0	0.612	0	1.53	0	0	0	1.83	0	0	0	0	0	0.2
+Deferribacteres sp. oral clone JV006	0	0	0	0	0	0	0	0	1.53	0	0.612	0	0	0	0	0	0	0	0.2
+Selenomonas sputigena	0	0	0	0	0	0	0.612	0	0	0	0.306	0	0	0	0	0	0	0	0.2
+Ruminococcus callidus	1.22	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Collinsella aerofaciens	0.612	0	0.917	0.306	0	1.83	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Mycoplasmataceae genomosp. P1 oral clone MB1_G23	0	0	0	0	0	0	0	0	0	0	0.306	0.306	0	0	0	0	0	0	0.2
+Ruminococcus bicirculans	2.45	0	0.306	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Neisseria oralis	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0.2
+Neisseria subflava	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	3.36	0	0	0.2
+Bacteroides sp. oral clone BU045	0	0	0	0	0	0	0	0	0	0	0.306	0	0.306	0	0	0.306	0	0	0.2
+Streptococcus oralis	0	0	0	0	0	0	0	0	0.306	0	0	0	0.917	0.917	0.612	0.306	0	0.917	0.2
+uncultured Capnocytophaga sp.	0	0	0	0	0	0	0.612	0	0	0	0	0	0.612	0.306	0.917	0.306	0.306	0.306	0.2
+uncultured Corynebacterium sp.	0	0	0	0	0	0	0.306	0	0	0	0	2.14	0	0	0	0	0	0	0.2
+Peptostreptococcus stomatis DSM 17678	0	0	0	0	0	0	0	0	0	0	0.612	0	0.306	0	0	0	0	0	0.2
+Anaeroglobus geminatus	0	0	0	0	0	0	0.306	2.14	0.306	0	1.22	0	0	0	0	0	0	0	0.2
+Prevotella aurantiaca	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	1.22	0	1.53	0.2
+Schaalia cardiffensis	0	0	0	0	0	0	0	0	0	0	0	1.22	0.612	0	0	0	0	0	0.2
+Streptococcus pneumoniae	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0.612	0.2
+Capnocytophaga sp. ChDC OS43	0	0	0	0	0	0	0.917	0	0	0	0	0	0.306	0	0	0	0	0	0.2
+Bacteroidales genomosp. P5 oral clone MB2_P04	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0	0	0.2
+Cardiobacterium valvarum	0	0	0	0	0	0	0.306	0	0	0	0	0	0.306	0	0	0	0	0	0.2
+Capnocytophaga gingivalis	0	0	0	0	0	0	0	0.306	0	0	0	0	0.306	0	0.306	0.306	0.306	0.612	0.2
+Peptostreptococcaceae bacterium oral taxon 113 str. W5053	0	0	0	0	0	0	0	1.53	0	0	0	0.612	0.612	0	0	0	0	0	0.2
+Synergistales bacterium canine oral taxon 244	0	0	0	0	0	0	0.612	0	0.306	0.306	0.306	0.306	0	0	0	0	0	0	0.2
+Firmicutes oral clone MCE7_5	0	0	0	0	0	0	0	0.306	0	0	0	1.22	0	0	0	0	0	0	0.2
+[Eubacterium] infirmum	0	0	0	0	0	0	0.306	0	0	0	0.306	0	0.612	0	0	0	0	0.306	0.2
+Bacteroidetes sp. oral clone FX069	0	0	0	0	0	0	0	0	0	0	0	1.22	0.612	0	0	0	0	0	0.2
+Filifactor alocis ATCC 35896	0	0	0	0	0	0	0	0	5.81	0	1.53	0	0	0	0	0	0	0	0.2
+Sneathia amnii	0	0	0	0	0	0	0	0	0	0	1.53	0	0	0	0	0	0	0	0.2
+[Eubacterium] brachy	0	0	0	0	0	0	1.22	2.14	0.306	0.917	0.306	0	0	0	0	0	0	0.306	0.2
+Fusobacterium periodonticum ATCC 33693	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0.612	1.22	0	0.917	0.2
+Fusobacterium nucleatum subsp. animalis	0	0	0	0	0	0	0.612	0	1.22	0.306	0	0	0.306	0	0	0	0	0	0.2
+Bifidobacterium adolescentis	0.306	5.5	0	0	0	2.75	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Bifidobacterium catenulatum	0	0.612	0	1.22	8.87	0	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+uncultured Lachnospiraceae bacterium	0	0	0	0	0	0	0	0	0	0.306	0.306	0	0.917	0	0	0	0	0	0.2
+Fusobacterium nucleatum subsp. vincentii ATCC 49256	0	0	0	0	0	0	0	0	0	0.612	0	0	0.306	0	0	0	0.306	0	0.2
+Fusobacterium nucleatum subsp. vincentii	0	0	0	0	0	0	0.306	0.306	0.306	0.306	0	0	0	0	0	0	0	0	0.2
+Lancefieldella rimae	0	0	0	0	0	0	0	1.53	0	0.306	0	0.306	0.917	0	0	0.306	0	0	0.2
+Streptococcus infantis	0	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0	0.917	0	0	0.2
+Prevotella shahii	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1.53	0.2
+Eubacterium brachy ATCC 33089	0	0	0	0	0	0	0	0	0.612	0	0	0	0	0	0	0	0	0	0.2
+Prevotella oris	0	0	0	0	0	0	0	1.53	0.306	0	0	0	0	0	0	0	0	0	0.2
+uncultured Bergeyella sp.	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0	0	0	0.306	0.2
+Prevotella pleuritidis	0	0	0	0	0	0	3.06	0.306	0	0	0	0	0	0	0	0	0	0	0.2
+uncultured Firmicutes bacterium	0	4.89	1.53	0.612	0	0.306	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+uncultured Alloprevotella sp.	0	0	4.28	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Blautia hansenii	0	0	0	0	0	6.12	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Eubacterium sp. oral clone DO016	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.917	0.612	0	0.306	0.2
+Treponema sp. canine oral taxon 395	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0	0	0.2
+Leptotrichia sp. oral clone FP036	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0.2
+SR1 bacterium oral taxon 875	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0.306	0.306	0.1
+Streptococcus sanguinis	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Streptococcus constellatus subsp. pharyngis SK1060 = CCUG 46377	0	0	0	0	0	0	0	3.67	0	0	0	0.612	0	0	0	0	0	0	0.1
+Selenomonas sp. oral taxon 137 str. F0430	0	0	0	0	0	0	0.612	0	0	1.83	0	0	0	0	0	0	0	0	0.1
+Selenomonas sp. canine oral taxon 167	0	0	0	0	0	0	0	0	0	0	0.306	0	0.612	0	0	0	0	0	0.1
+Schaalia meyeri	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Streptococcus parasanguinis	0	0	0	0	0	0	0	0	0	0	0	0	0	0.917	0.612	0	0	0	0.1
+Schaalia odontolytica	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0.1
+candidate division SR1 bacterium taxon 345	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0.1
+[Eubacterium] rectale DSM 17629	0	0	0.306	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured Cardiobacterium sp.	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0.306	0	0	0.306	0.1
+uncultured Blautia sp.	0	0	0	0.306	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Treponema sp. oral taxon 235	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0	0	0	0	0	0.1
+Treponema sp. feline oral taxon 143	0	0	0	0	0	0	0.917	0	0	0	0	0	0	0	0	0	0	0	0.1
+[Eubacterium] minutum	0	0	0	0	0	0	0.612	0	0	0	0	0	0	0	0	0	0	0	0.1
+[Clostridium] leptum	0	0	0	0	0	0.917	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured Streptococcus sp.	0	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0.612	0	0.306	0.612	0.1
+uncultured Ruminococcaceae bacterium	0	2.14	0	10.4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+unidentified eubacterium clone 3.23	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0	0	0	0	0	0.1
+uncultured Veillonellaceae bacterium	0	0	0	0	0	0	0	0	0	0	0.612	0.306	0.306	0	0	0	0	0	0.1
+uncultured Fretibacterium sp.	0	0	0	0	0	0	0	0	0	0	0.612	0	0	0	0	0	0	0	0.1
+uncultured Erysipelotrichaceae bacterium	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+uncultured Porphyromonas sp.	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	1.22	0	0	0	0.1
+uncultured Neisseria sp.	0	0	0	0	0	0	0	0	0	0	0	0.306	0.306	0	0	0	0	0	0.1
+Treponema sp. IV:17E:D36	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0.1
+TM7 phylum sp. canine oral taxon 251	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Syntrophomonadaceae genomosp. P1	0	0	0	0	0	0	0	0	0	0	0	0	0.917	0	0	0	0	0	0.1
+Tannerella sp. oral taxon BU063 isolate Cell 5	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+TM7 phylum sp. oral clone FR058	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Streptococcus sp. oral clone MCE7_144	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1.22	0	0.1
+Streptococcus sinensis	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0.1
+Synergistetes bacterium oral taxon 363	0	0	0	0	0	0	0.917	0	0	0	0	0.306	0	0	0	0	0	0	0.1
+Synergistales bacterium canine oral taxon 203	0	0	0	0	0	0	0.612	0.306	0.917	0	0.306	0	0.306	0	0	0	0	0	0.1
+Treponema socranskii subsp. buccale	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0	0.1
+Treponema socranskii	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0.1
+Treponema sp. I:Q:AT20	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Treponema sp. 3:G:BB003	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Treponema lecithinolyticum	0	0	0	0	0	0	0.612	0	0.306	0	0	0	0	0	0	0	0	0	0.1
+Tannerella sp. oral taxon HOT-286	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0.306	0.612	0.1
+Treponema parvum	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0	0	0	0	0.1
+Treponema maltophilum	0	0	0	0	0	0	0	0	0	0	0.612	0.306	0.306	0	0	0	0	0	0.1
+Firmicutes bacterium CAG:345	0	0	0	2.14	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Eubacterium sulci ATCC 35585	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0.306	0.917	0.1
+Firmicutes oral clone BB124	0	0	0	0	0	0	0	0	0.612	0	0	0	0	0	0	0	0	0	0.1
+Firmicutes oral clone FM046	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Firmicutes oral clone CK051	0	0	0	0	0	0	0	0	0	0	0	0.306	0.612	0	0	0	0	0	0.1
+Corynebacterium durum	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0.1
+Catonella sp. oral clone BR063	0	0	0	0	0	0	0	0	0	0.612	0	0	0	0	0	0	0	0	0.1
+Dialister pneumosintes	0	0	0	0	0	0	0	1.22	0	0	0	0	0	0	0	0	0	0	0.1
+Erysipelotrichaceae bacterium GAM147	0.306	0.917	0	0	1.22	3.67	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Eikenella corrodens	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0.1
+Lautropia mirabilis	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0	0.1
+Granulicatella adiacens ATCC 49175	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0	0.1
+Leptotrichia buccalis	0	0	0	0	0	0	0	1.83	0	0	0	0	0.306	0	0	0	0	0	0.1
+Leptotrichia sp. oral clone HE012	0	0	0	0	0	0	0	0.917	0	0	0	0	0	0	0	0	0	0	0.1
+Leptotrichia sp. Marseille-P3007	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0.306	0	0.1
+Gemella haemolysans	0	0	0	0	0	0	0.612	0	0	0	0	0	0	0	0	0	0	0	0.1
+Fusobacterium canifelinum	0	0	0	0	0	0	0	0	5.2	0	0	0	0.612	0	0	0	0	0	0.1
+Gemella morbillorum	0	0	0	0	0	0	0	0	0	0.306	0	0.306	1.22	0.306	0.306	0	0	0	0.1
+Granulicatella adiacens	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Gemella sp. oral taxon 928	0	0	0	0	0	0	0	1.83	0	0	0	0	0	0	0	0	0	0	0.1
+Capnocytophaga sp.	0	0	0	0	0	0	0.612	0	0	0	0	0	0	0	0	0	0	0	0.1
+Anaerolineaceae bacterium oral taxon 439	0	0	0	0	0	0	0.917	0	0.306	0.306	0.917	0.917	0	0	0	0	0	0	0.1
+Alloprevotella tannerae ATCC 51259	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0.1
+Atopobium rimae ATCC 49626	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Bacteroides galacturonicus	1.83	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Bacteroides fluxus	1.53	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Alistipes finegoldii	0	0	0	3.36	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Aggregatibacter actinomycetemcomitans DSM 8324	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Alistipes onderdonkii	0	0	0	0.612	0.306	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Alloprevotella rava	0	0	0	0	0	0	0	0	0	0	0.917	0	0	0	0	0	0	0	0.1
+Alistipes putredinis	0	0	0	0	1.53	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Bilophila wadsworthia	0	0	0	0.612	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Bacteroidia bacterium canine oral taxon 041	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0	0	0	0	0	0.1
+Bulleidia extructa	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Campylobacter showae	0	0	0	0	0	0	0.612	0	0	0	0	0	0.612	0	0	0.306	0	0.306	0.1
+Butyrivibrio sp. oral clone DA074	0	0	0	0	0	0	0	0	0.306	0	0	0.306	0	0	0	0	0	0	0.1
+Bacteroides massiliensis	0	0	0	0	3.67	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Bacteroides intestinalis	2.45	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Bacteroides uniformis	0.917	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Bacteroides xylanisolvens	0	0	0.612	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Bacteroides vulgatus	0	0	0	0	2.75	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Leptotrichia sp. oral taxon 498	0	0	0	0	0	0.306	0	0	0.306	0	0	0	0	0	0	0	0	0	0.1
+Prevotella sp. 109	0	5.5	0	3.36	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Prevotella scopos JCM 17725	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0.1
+Prevotella sp. JCM 6330	0	0	0	0	0	0	0	0	0.917	0	0	0	0	0	0	0	0	0	0.1
+Prevotella sp. oral clone BS041	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0.1
+Prevotella sp. oral clone BR014	0	0	0	0	0	0	0.306	0	0	0	0.306	0	0.306	0	0	0	0	0	0.1
+Prevotella jejuni	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0	0	0	0.1
+Prevotella intermedia ATCC 25611 = DSM 20706	0	0	0	0	0	0	0.612	0	0	0	0	0	0.306	0	0.612	0	0	0	0.1
+Prevotella nanceiensis	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	1.83	1.22	0	0.612	0.1
+Prevotella oralis	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0.1
+Prevotella nigrescens ATCC 33563	0	0	0	0	0	0	0.612	0	0	0	0	0	0	0	0	0	0	0.306	0.1
+Rothia mucilaginosa DY-18	0	0	0	0	0	0	0	0	0	0	0	0	0	2.45	0	0	0	0	0.1
+Rothia dentocariosa ATCC 17931	0	0	0	0	0	0	1.22	0	0	0	0	0.306	0.917	0.612	0.612	0.612	0	0	0.1
+Ruminococcus lactaris ATCC 29176	1.22	2.45	0	0.306	0.306	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+SR1 bacterium human oral taxon HOT-345	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0.1
+Ruminococcus sp. UNK.MGS-30	0	0	0	0	0.917	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Prevotella sp. oral taxon 317 str. F0108	0	0	0	0	0	0	0	0	0.306	0	0.306	0.612	0	0.306	0	0	0	0	0.1
+Prevotella sp. oral clone FW035	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Prevotella veroralis	0	0	0	0	0	0	0	0	0	0	0	1.53	0	0	0	0	0	0	0.1
+Prevotellaceae bacterium Marseille-P2826	0	0	0	0	0	0	0	0	0	0	0	0	0	0.612	0.612	0	0	0	0.1
+Prevotellaceae bacterium DJF_LS10	0	0	1.22	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Prevotella intermedia 17	0	0	0	0	0	0	0	0	0	0.612	0.917	0	0	0	0.306	0	0	0.612	0.1
+Neisseria elongata subsp. nitroreducens	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0.306	0	0.306	0.306	0	0.1
+Neisseria bacilliformis ATCC BAA-1200	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Olsenella sp. oral taxon 807	0	0	0	0	0	0	0	0.306	0	0	0	2.14	0	0	0	0	0	0	0.1
+Oribacterium parvum ACB1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0.306	0.1
+Oribacterium asaccharolyticum ACB7	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0.612	0.1
+Megasphaera micronuciformis	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.917	0	0	1.22	0.1
+Leptotrichia wadei	0	0	0	0	0	0	0.306	0.917	0	0	0	0	0	0	0	0	0	0	0.1
+Metamycoplasma faucium	0	0	0	0	0	0	0.917	0	1.83	0	0.306	0	0	0	0	0	0	0	0.1
+Mogibacterium timidum	0	0	0	0	0	0	0.306	0.306	0	0	0	0	0.917	0	0	0	0	0	0.1
+Mogibacterium diversum	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0.1
+Prevotella buccae	0	0	0	0	0	0	0	0.612	0	0	0	0	0	0	0	0	0	0	0.1
+Phocaeicola abscessus CCUG 55929	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0.1
+Prevotella denticola F0289	0	0	0	0	0	0	0.306	0	0.612	0	0	0	0.917	0	0	0	0	0	0.1
+Prevotella genomosp. P8 oral clone MB3_P13	0	0	0	0	0	0	0	0	0	0	0	0	0.306	0	0	0	0	0	0.1
+Prevotella fusca	0	0	0	0	0	0	0	0	0	0	0	1.53	0	0	0	0	0	0	0.1
+Parabacteroides merdae	0.612	0.612	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Parabacteroides johnsonii	0	0	0	0	1.22	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Peptoanaerobacter stomatis	0	0	0	0	0	0	0.306	0	0	0	0	0	0	0	0	0	0	0	0.1
+Peptostreptococcus sp. MDA2346-2	0	0	0	0	0	0	0	2.75	0	0	0	0	0	0	0	0	0	0.306	0.1
+Peptococcus-like sp. oral clone I070	0	0	0	0	0	0	0	0	0	1.83	0	0	0	0	0	0	0	0	0.1

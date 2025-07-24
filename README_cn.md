@@ -2,9 +2,9 @@
 
 英文版见(English Version in) README.md
 
-版本：1.20
+版本：1.22
 
-更新日期：2023/10/13
+更新日期：2025/07/24
 
 简单易学易用、开源、可重复且社区支持的扩增子数据分析流程
 
@@ -58,8 +58,19 @@
 - (可选，推荐)R包的快速安装
 
 在R语言的统计和可视化中会使用超过500个R包，安装不仅费时费力，而且经常出错或依赖其他编绎工具。为方便大家使用，我们提供了编绎好的R包合集下载，如 [Windows版](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315)、[Mac版](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 )。你可以下载解压后，将 `4.3` 目录移动至 `C:\Users\[$UserName]\AppData\Local\R\win-library\`中即完成安装。
+    # 注意：如显示缺少某个R包，可以通过以下方法单独安装
+    # 例如DADA2包托管在Bioconductor上，需要通过BiocManager来安装。
+    # 请打开您的R或Rstudio，在控制台(Console)中输入并执行以下命令：
+    # 首先，安装Bioconductor的核心管理工具 BiocManager
+    if (!requireNamespace("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")
+    # 然后，通过 BiocManager 安装 DADA2
+    BiocManager::install("dada2")
+    # 此外，一些R包可以通过常规方式安装，比如需要 argparse 包来解析命令行参数，就可以使用：
+    install.packages("argparse")
+    安装各类R包时，控制台可能会出现大量的编译和安装信息，请耐心等待其完成。如果遇到问题，请根据提示信息检查您的R语言环境或网络连接。
 
-### 安装易扩增子 (Install EasyAmplicon)
+### 安装易扩增子2 (Install EasyAmplicon 2)
 
 -   易扩增子流程EasyAmplicon，包括分析流程代码、测序数据和示例结果(分析的正对照)， <https://github.com/YongxinLiu/EasyAmplicon>
 -   易微生物组EasyMicribome，提供易扩增子流程依赖的常用软件、脚本和数据库，  <https://github.com/YongxinLiu/EasyMicrobiome>
@@ -70,6 +81,75 @@
 - 方法2. git命令行下载。直接生成目录，无需解压。`git clone https://github.com/YongxinLiu/EasyAmplicon`和`git clone https://github.com/YongxinLiu/EasyMicrobiome`。 注：提示`fatal: unable to access`可能只是网络问题，重试或改天重试一般可解决，或找代理或朋友帮忙下载。
 - 方法3. 直接从国内百度网盘链接中db/soft目录下载: [EasyAmplicon](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 )、[EasyMicrobiome](https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 )
 
+### 安装 Conda (Conda Installation)
+
+    # 下载最新版miniconda3 v24.9.2 , 安装日期2024/11/12, 141.47 Mb
+    wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    
+    # 安装，-b批量，-f无提示，-p目录，许可协议打yes
+    bash Miniconda3-latest-Linux-x86_64.sh -b -f 
+
+    # 激活，然后关闭终端重开，提示符前出现(base)即成功
+    ~/miniconda3/condabin/conda init
+    source ~/.bashrc
+
+    # 查看版本，conda 25.5.1, python 3.13.5
+    conda -V  # 25.5.1
+    python --version  # 3.13.5
+
+    # 添加常用频道
+    conda config --add channels bioconda # 生物软件 / Bioconda for bioinformatics software
+    conda config --add channels conda-forge # Highest priority / Conda-forge has the highest priority
+    
+    # conda默认配置文件为 ~/.condarc 查看配置文件位置
+    # 你使用的是新版本 Conda（≥24），它要求用户必须手动接受各个源的服务条款（ToS），否则不能使用对应的频道。
+    # conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+    # conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+
+    # mamba是用于管理环境的 CLI 工具。相比于 conda，mamba 是用 c++重写了 conda 的部分功能，运行效率显著提高，可以进行并行的下载，使用 rpm 包管理工具中的 libsolv，可以更快的解决环境依赖问题。
+    conda install mamba -y
+    mamba install pandas -y
+    mamba install conda-pack -y
+    
+    #conda config --set channel_priority strict #设置严格的仓库优先级（最好不要使用）/ Set strict channel priority (better not to use)
+    #conda config --set channel_priority flexible #禁用仓库优先级 / Disable channel priority 
+    conda config --show-sources
+
+    # 查看虚拟环境列表 
+    conda env list
+
+更多conda中文安装使用教程参考：[Nature Method：Bioconda解决生物软件安装的烦恼](https://mp.weixin.qq.com/s/SzJswztVB9rHVh3Ak7jpfA)
+[一文掌握Conda软件安装：虚拟环境、软件通道、加速solving、跨服务器迁移](https://mp.weixin.qq.com/s/tKAU09_w7Cu7khA9M2EGEQ)
+
+#### Easyamplicon 2的创建安装及环境激活
+    **注：直接安装、下载解压安装，二选一。一种方法不成功，尝试另一种。**
+
+    cd EasyAmplicon2
+
+    ## 方法1.直接安装
+    conda env create -f EasyAmplicon2.yaml
+    conda activate easyamplicon2
+
+    ## 方法2.下载安装(推荐)
+    ### 指定conda文件名
+    s=easyamplicon2
+    soft=~/miniconda3
+
+    ### 下载安装
+    百度网盘下载链接：Baidu Net Disk：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315
+    文件路径：db/amplicon/easyamplicon2.tar.gz
+
+    ### 指定安装目录
+    mkdir -p ${soft}/envs/${s}
+    tar -xvzf ${s}.tar.gz -C ${soft}/envs/${s}
+
+    ### 启动环境
+    conda activate ${s}
+
+    ### 初始化环境
+    ### easyamplicon2环境包含了大部分分析软件
+    conda unpack
+    
 ### (可选)扩展软件和数据库
 
 -   Rtools：用于从源码进行R包的安装，windows版本见：https://cran.rstudio.com/bin/windows/Rtools/
