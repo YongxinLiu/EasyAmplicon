@@ -57,7 +57,7 @@ All the software backup can be found in
 Please install the dependency software according with you system (Win/Mac/Linux).
 
 - R 4.x.x for run R scripts https://www.r-project.org/, also recommended install Rtools for install source code packages.
-- RStudio 2023.xx.x is a integrated development environment for R https://posit.co/download/rstudio-desktop/
+- RStudio 2025.xx.x is a integrated development environment for R https://posit.co/download/rstudio-desktop/
 - STAMP v2.1.3 http://kiwi.cs.dal.ca/Software/STAMP 
 - Git for Windows 2.xx.x (Windows only) http://gitforwindows.org/
 
@@ -191,4 +191,4 @@ If used this script, please cited:
 
 **Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
 
-Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
+Copyright 2016-2025 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
