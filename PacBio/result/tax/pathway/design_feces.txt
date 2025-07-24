@@ -1,0 +1,7 @@
+sample	Group	sample_new
+feces1	feces	feces1
+feces2	feces	feces2
+feces3	feces	feces3
+feces4	feces	feces4
+feces5	feces	feces5
+feces6	feces	feces6

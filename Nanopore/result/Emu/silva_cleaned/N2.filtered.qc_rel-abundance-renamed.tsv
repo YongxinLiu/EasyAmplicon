@@ -1,0 +1,23 @@
+tax_id	abundance	superkingdom	phylum	class	order	family	genus	species
+2318	0.037037037037037035	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Comamonadaceae	Hydrogenophaga	
+6525	0.037037037037037035	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	Dinghuibacter	
+76	0.2777777777777778	Bacteria	Cyanobacteria	Cyanobacteriia	Chloroplast			
+18172	0.018518518518518517	Bacteria	Proteobacteria	Alphaproteobacteria	SAR11 clade	Clade III		
+44	0.14814814814814814	Bacteria	Proteobacteria	Alphaproteobacteria	Rickettsiales	Mitochondria		
+10298	0.03703703703698796	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	Polynucleobacter	difficilis
+9711	0.01851851851856759	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	Polynucleobacter	
+198	0.037037037037037035	Bacteria	Cyanobacteria	Cyanobacteriia	Synechococcales	Cyanobiaceae	Cyanobium PCC-6307	
+8909	0.05555555555555555	Bacteria	Cyanobacteria	Cyanobacteriia	Cyanobacteriales	Nostocaceae	Nodularia PCC-9350	
+15943	0.018518518518518517	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Nitrosomonadaceae	966-1	
+4804	0.07407407407407407	Bacteria	Cyanobacteria	Cyanobacteriia	Cyanobacteriales	Phormidiaceae	Planktothrix NIVA-CYA 15	agardhii
+6506	0.018518518518518517	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Alcaligenaceae	GKS98 freshwater group	
+286	0.07407407407407407	Bacteria	Actinobacteriota	Acidimicrobiia	Microtrichales	Ilumatobacteraceae	CL500-29 marine group	
+6531	0.018518518518518517	Bacteria	Proteobacteria	Gammaproteobacteria	Gammaproteobacteria Incertae Sedis	Unknown Family	Acidibacter	
+5782	0.018518518518518517	Bacteria	Cyanobacteria	Cyanobacteriia	Cyanobacteriales	Microcystaceae	Snowella 0TU37S04	
+13785	0.018518518518518517	Bacteria	Actinobacteriota	Actinobacteria	Micrococcales	Microbacteriaceae	Candidatus Limnoluna	
+5168	0.018518518518518517	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	MWH-UniP1 aquatic group		
+9751	0.037037037037037035	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Comamonadaceae	Limnohabitans	
+3047	0.018518518518518517	Bacteria	Proteobacteria	Alphaproteobacteria	Rickettsiales	AB1		
+7453	0.018518518518518517	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Methylophilaceae	Candidatus Methylopumilus	planktonicus
+unmapped	0.0							
+mapped_unclassified	0.0							

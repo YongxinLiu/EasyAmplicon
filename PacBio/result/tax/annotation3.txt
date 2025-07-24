@@ -1,0 +1,106 @@
+OTUID	Kingdom	Phylum	Class	Order	Family	Genus	Species	All1	All2	feces1	feces2	plaque1	plaque2	saliva1	saliva2	feces_prevalence1	feces_prevalence2	plaque_prevalence1	plaque_prevalence2	saliva_prevalence1	saliva_prevalence2
+ASV_1	Bacteria	Thermodesulfobacteriota	Desulfobulbia	Desulfobulbales	Desulfobulbaceae	Desulfobulbus	Desulfobulbus sp. ORNL	0.917097	0.917097	0	0	2.751292	2.751292	0	0	0	0	0.5	0.5	0	0
+ASV_2	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus anginosus	1.716709	1.716709	0	0	5.12990289	5.12990289	0.02022344	0.02022344	0	0	0.833333	0.833333	0.333333	0.333333
+ASV_10	Bacteria	Bacillota	Bacilli	Lactobacillales	Carnobacteriaceae	Granulicatella	uncultured organism	0.755458	0.755458	0	0	0.04070677	0.04070677	2.22566818	2.22566818	0	0	0.333333	0.333333	1	1
+ASV_3	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas gingivalis	0.78696	0.78696	0	0	2.33979396	2.33979396	0.02108637	0.02108637	0	0	0.166667	0.166667	0.333333	0.333333
+ASV_4	Bacteria	Bacillota	Bacilli	Staphylococcales	Gemellaceae	Gemella	Gemella sanguinis	0.763458	0.763458	0	0	0.09425661	0.09425661	2.19611732	2.19611732	0	0	0.333333	0.333333	1	1
+ASV_5	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	uncultured bacterium	1.032512	1.032512	3.097537	3.097537	0	0	0	0	0.5	0.5	0	0	0	0
+ASV_7	Bacteria	Actinomycetota	Actinobacteria	Micrococcales	Micrococcaceae	Rothia	uncultured bacterium	0.521109	0.521109	0	0	0	0	1.563327	1.563327	0	0	0	0	0.5	0.5
+ASV_8	Bacteria	Bacillota	Bacilli	Staphylococcales	Gemellaceae	Gemella	Gemella sanguinis	0.482017	0.482017	0	0	0	0	1.446051	1.446051	0	0	0	0	0.833333	0.833333
+ASV_9	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Neisseriaceae	Neisseria	uncultured Neisseria sp.	0.472381	0.472381	0	0	0.02949853	0.02949853	1.38764352	1.38764352	0	0	0.166667	0.166667	0.833333	0.833333
+ASV_6	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas gingivalis	0.633318	0.633318	0	0	1.899955	1.899955	0	0	0	0	0.333333	0.333333	0	0
+ASV_14	Bacteria	Actinomycetota	Actinobacteria	Micrococcales	Micrococcaceae	Rothia	uncultured organism	0.3742	0.3742	0	0	0.01152206	0.01152206	1.11107785	1.11107785	0	0	0.166667	0.166667	0.333333	0.333333
+ASV_22	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus salivarius	0.42016	0.42016	0.03987241	0.03987241	0.07842056	0.07842056	1.14218756	1.14218756	0.166667	0.166667	0.666667	0.666667	0.833333	0.833333
+ASV_13	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Unassigned	0.783529	0.783529	0	0	2.2742352	2.2742352	0.07635121	0.07635121	0	0	0.833333	0.833333	0.333333	0.333333
+ASV_18	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	uncultured bacterium	0.371407	0.371407	0	0	0	0	1.11422	1.11422	0	0	0	0	0.5	0.5
+ASV_19	Bacteria	Bacillota	Clostridia	Peptostreptococcales-Tissierellales	Peptostreptococcaceae	Filifactor	Filifactor alocis	0.50655	0.50655	0	0	1.3726487	1.3726487	0.1470021	0.1470021	0	0	0.833333	0.833333	0.333333	0.333333
+ASV_17	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	uncultured organism	0.356456	0.356456	0	0	0	0	1.069368	1.069368	0	0	0	0	0.666667	0.666667
+ASV_23	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Neisseriaceae	Neisseria	Neisseria sp. R-22841	0.378002	0.378002	0	0	0	0	1.134007	1.134007	0	0	0	0	0.333333	0.333333
+ASV_54	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Incertae Sedis	uncultured Ruminococcaceae bacterium	0.790688	0.790688	2.35226894	2.35226894	0.01979414	0.01979414	0	0	0.5	0.5	0.166667	0.166667	0	0
+ASV_49	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Unassigned	0.263252	0.263252	0	0	0	0	0.7897548	0.7897548	0	0	0	0	0.833333	0.833333
+ASV_11	Bacteria	Bacillota	Clostridia	Peptostreptococcales-Tissierellales	Family XI	Parvimonas	Parvimonas micra ATCC 33270	0.673001	0.673001	0	0	2.019002	2.019002	0	0	0	0	0.166667	0.166667	0	0
+ASV_21	Bacteria	Bacillota	Negativicutes	Acidaminococcales	Acidaminococcaceae	Phascolarctobacterium	Phascolarctobacterium faecium	0.768597	0.768597	2.305792	2.305792	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_36	Bacteria	Actinomycetota	Actinobacteria	Micrococcales	Micrococcaceae	Rothia	Rothia mucilaginosa	0.238154	0.238154	0	0	0.02949853	0.02949853	0.68496378	0.68496378	0	0	0.166667	0.166667	0.5	0.5
+ASV_12	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Unassigned	0.370116	0.370116	0	0	0	0	1.110348	1.110348	0	0	0	0	0.166667	0.166667
+ASV_35	Bacteria	Patescibacteria	Saccharimonadia	Saccharimonadales	Saccharimonadaceae	TM7x	uncultured bacterium	0.267599	0.267599	0	0	0.01120825	0.01120825	0.79158781	0.79158781	0	0	0.166667	0.166667	0.666667	0.666667
+ASV_24	Bacteria	Bacillota	Clostridia	Peptostreptococcales-Tissierellales	Peptostreptococcaceae	Filifactor	Filifactor alocis	0.360891	0.360891	0	0	0.5561151	0.5561151	0.5265568	0.5265568	0	0	0.666667	0.666667	0.166667	0.166667
+ASV_16	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas gingivalis	0.310469	0.310469	0	0	0.537996	0.537996	0.3934114	0.3934114	0	0	0.166667	0.166667	0.333333	0.333333
+ASV_42	Bacteria	Actinomycetota	Actinobacteria	Micrococcales	Micrococcaceae	Rothia	Rothia mucilaginosa DY-18	0.243135	0.243135	0	0	0.005761032	0.005761032	0.72364394	0.72364394	0	0	0.166667	0.166667	0.5	0.5
+ASV_53	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes putredinis	0.551695	0.551695	1.655084	1.655084	0	0	0	0	0.666667	0.666667	0	0	0	0
+ASV_48	Bacteria	Fusobacteriota	Fusobacteriia	Fusobacteriales	Fusobacteriaceae	Fusobacterium	uncultured Fusobacterium sp.	0.215252	0.215252	0	0	0.02949853	0.02949853	0.61625798	0.61625798	0	0	0.166667	0.166667	1	1
+ASV_34	Bacteria	Bacillota	Clostridia	Peptostreptococcales-Tissierellales	Anaerovoracaceae	Incertae Sedis	uncultured bacterium	0.260185	0.260185	0	0	0.6576807	0.6576807	0.1228736	0.1228736	0	0	1	1	0.333333	0.333333
+ASV_63	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Incertae Sedis	uncultured bacterium	0.497308	0.497308	1.491924	1.491924	0	0	0	0	0.666667	0.666667	0	0	0	0
+ASV_75	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Unassigned	0.214478	0.214478	0	0	0.01152206	0.01152206	0.63191153	0.63191153	0	0	0.166667	0.166667	0.166667	0.166667
+ASV_30	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus salivarius	0.218255	0.218255	0.04570633	0.04570633	0.05899705	0.05899705	0.55006194	0.55006194	0.5	0.5	0.166667	0.166667	0.833333	0.833333
+ASV_29	Bacteria	Fusobacteriota	Fusobacteriia	Fusobacteriales	Fusobacteriaceae	Fusobacterium	Unassigned	0.269714	0.269714	0	0	0.7061197	0.7061197	0.103022	0.103022	0	0	0.166667	0.166667	0.166667	0.166667
+ASV_80	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Segatella	uncultured bacterium	0.203407	0.203407	0.61022	0.61022	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_28	Bacteria	Verrucomicrobiota	Verrucomicrobiia	Verrucomicrobiales	Akkermansiaceae	Akkermansia	Akkermansia muciniphila	0.361865	0.361865	1.06580167	1.06580167	0.01979414	0.01979414	0	0	0.166667	0.166667	0.166667	0.166667	0	0
+ASV_726	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Unassigned	0.188039	0.188039	0	0	0	0	0.5641175	0.5641175	0	0	0	0	0.833333	0.833333
+ASV_25	Bacteria	Thermodesulfobacteriota	Desulfobulbia	Desulfobulbales	Desulfobulbaceae	Desulfobulbus	unidentified	0.25779	0.25779	0	0	0.7733692	0.7733692	0	0	0	0	0.166667	0.166667	0	0
+ASV_286	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured organism	0.428084	0.428084	1.284253	1.284253	0	0	0	0	1	1	0	0	0	0
+ASV_26	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas endodontalis	0.297345	0.297345	0	0	0.1937753	0.1937753	0.6982601	0.6982601	0	0	0.333333	0.333333	0.166667	0.166667
+ASV_77	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Unassigned	0.374846	0.374846	0	0	1.124538	1.124538	0	0	0	0	0.166667	0.166667	0	0
+ASV_394	Bacteria	Actinomycetota	Actinobacteria	Bifidobacteriales	Bifidobacteriaceae	Bifidobacterium	Bifidobacterium catenulatum	0.395243	0.395243	1.185729	1.185729	0	0	0	0	0.5	0.5	0	0	0	0
+ASV_497	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured organism	0.371646	0.371646	1.114937	1.114937	0	0	0	0	0.5	0.5	0	0	0	0
+ASV_185	Bacteria	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter	[Eubacterium] rectale DSM 17629	0.47141	0.47141	1.41423	1.41423	0	0	0	0	1	1	0	0	0	0
+ASV_81	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	uncultured bacterium	0.371229	0.371229	1.113686	1.113686	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_32	Bacteria	Bacillota	Clostridia	Peptostreptococcales-Tissierellales	Family XI	Parvimonas	Parvimonas micra ATCC 33270	0.409079	0.409079	0	0	1.227237	1.227237	0	0	0	0	0.166667	0.166667	0	0
+ASV_392	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured organism	0.277377	0.277377	0.8321296	0.8321296	0	0	0	0	0.833333	0.833333	0	0	0	0
+ASV_60	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Prevotella aurantiaca	0.150089	0.150089	0	0	0	0	0.4502677	0.4502677	0	0	0	0	0.333333	0.333333
+ASV_98	Bacteria	Bacillota	Clostridia	Oscillospirales	Oscillospiraceae	UCG-002	gut metagenome	0.306582	0.306582	0.9197467	0.9197467	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_143	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Hoylesella	Prevotella nanceiensis	0.161166	0.161166	0	0	0	0	0.4834978	0.4834978	0	0	0	0	0.833333	0.833333
+ASV_61	Bacteria	Bacillota	Clostridia	Clostridia UCG-014	Incertae Sedis	Incertae Sedis	gut metagenome	0.304417	0.304417	0.9132524	0.9132524	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_138	Bacteria	Bacillota	Negativicutes	Veillonellales-Selenomonadales	Veillonellaceae	Veillonella	uncultured organism	0.14831	0.14831	0	0	0	0	0.4449287	0.4449287	0	0	0	0	1	1
+ASV_263	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Pasteurellaceae	Haemophilus	uncultured organism	0.148363	0.148363	0	0	0.0172831	0.0172831	0.4278054	0.4278054	0	0	0.166667	0.166667	1	1
+ASV_56	Bacteria	Bacillota	Clostridia	Peptostreptococcales-Tissierellales	Anaerovoracaceae	[Eubacterium] brachy group	Eubacterium brachy ATCC 33089	0.190139	0.190139	0	0	0.56201123	0.56201123	0.008404774	0.008404774	0	0	0.833333	0.833333	0.166667	0.166667
+ASV_39	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus rubneri	0.142641	0.142641	0	0	0	0	0.4279225	0.4279225	0	0	0	0	0.666667	0.666667
+ASV_33	Bacteria	Bacillota	Clostridia	Peptostreptococcales-Tissierellales	Family XI	Parvimonas	Parvimonas micra ATCC 33270	0.213502	0.213502	0	0	0.62591678	0.62591678	0.01458839	0.01458839	0	0	0.666667	0.666667	0.333333	0.333333
+ASV_47	Bacteria	Bacillota	Clostridia	Peptostreptococcales-Tissierellales	Peptostreptococcaceae	Filifactor	Filifactor alocis ATCC 35896	0.207405	0.207405	0	0	0.6222147	0.6222147	0	0	0	0	0.333333	0.333333	0	0
+ASV_495	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured bacterium	0.309044	0.309044	0.927133	0.927133	0	0	0	0	0.5	0.5	0	0	0	0
+ASV_52	Bacteria	Fusobacteriota	Fusobacteriia	Fusobacteriales	Fusobacteriaceae	Fusobacterium	Unassigned	0.267818	0.267818	0	0	0.73477168	0.73477168	0.06868132	0.06868132	0	0	0.5	0.5	0.166667	0.166667
+ASV_103	Bacteria	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	[Ruminococcus] gnavus group	uncultured organism	0.917431	0.917431	2.752294	2.752294	0	0	0	0	0.166667	0.166667	0	0	0	0
+ASV_64	Bacteria	Bacillota	Negativicutes	Veillonellales-Selenomonadales	Veillonellaceae	Dialister	Dialister pneumosintes	0.192485	0.192485	0	0	0.53470965	0.53470965	0.04274543	0.04274543	0	0	1	1	0.333333	0.333333
+ASV_744	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotellaceae NK3B31 group	human gut metagenome	0.370972	0.370972	1.112915	1.112915	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_371	Bacteria	Actinomycetota	Actinobacteria	Bifidobacteriales	Bifidobacteriaceae	Bifidobacterium	uncultured bacterium	0.443806	0.443806	1.331419	1.331419	0	0	0	0	0.5	0.5	0	0	0	0
+ASV_58	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella	Unassigned	0.304878	0.304878	0	0	0.90004565	0.90004565	0.01458839	0.01458839	0	0	0.5	0.5	0.333333	0.333333
+ASV_117	Bacteria	Actinomycetota	Actinobacteria	Micrococcales	Micrococcaceae	Rothia	Unassigned	0.144448	0.144448	0	0	0.1684567	0.1684567	0.2648881	0.2648881	0	0	0.333333	0.333333	1	1
+ASV_68	Bacteria	Bacillota	Clostridia	Clostridia UCG-014	Incertae Sedis	Incertae Sedis	gut metagenome	0.270072	0.270072	0.8102155	0.8102155	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_756	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Incertae Sedis	uncultured bacterium	0.299409	0.299409	0.8982255	0.8982255	0	0	0	0	0.833333	0.833333	0	0	0	0
+ASV_236	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured organism	0.275331	0.275331	0.8259916	0.8259916	0	0	0	0	0.5	0.5	0	0	0	0
+ASV_37	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Unassigned	0.274141	0.274141	0	0	0.8224236	0.8224236	0	0	0	0	0.166667	0.166667	0	0
+ASV_50	Bacteria	Bacillota	Clostridia	Oscillospirales	[Eubacterium] coprostanoligenes group	Incertae Sedis	gut metagenome	0.832484	0.832484	2.497452	2.497452	0	0	0	0	0.166667	0.166667	0	0	0	0
+ASV_532	Bacteria	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	uncultured bacterium	0.285752	0.285752	0.8572569	0.8572569	0	0	0	0	1	1	0	0	0	0
+ASV_129	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Ruminococcus	uncultured bacterium	0.247781	0.247781	0.743342	0.743342	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_800	Bacteria	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Dorea	uncultured organism	0.32969	0.32969	0.98907	0.98907	0	0	0	0	1	1	0	0	0	0
+ASV_85	Bacteria	Bacillota	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus anginosus	0.304071	0.304071	0	0	0.88576331	0.88576331	0.02644903	0.02644903	0	0	0.666667	0.666667	0.333333	0.333333
+ASV_86	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Segatella	uncultured bacterium	0.254898	0.254898	0	0	0.7646946	0.7646946	0	0	0	0	0.333333	0.333333	0	0
+ASV_94	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas pasteri	0.137499	0.137499	0	0	0	0	0.4124978	0.4124978	0	0	0	0	0.166667	0.166667
+ASV_69	Bacteria	Bacillota	Clostridia	Clostridia UCG-014	Incertae Sedis	Incertae Sedis	uncultured bacterium	0.331031	0.331031	0.9930915	0.9930915	0	0	0	0	0.166667	0.166667	0	0	0	0
+ASV_152	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	uncultured bacterium	0.260417	0.260417	0.78125	0.78125	0	0	0	0	0.166667	0.166667	0	0	0	0
+ASV_235	Bacteria	Bacillota	Bacilli	Erysipelotrichales	Erysipelotrichaceae	Holdemanella	uncultured bacterium	0.216018	0.216018	0.6480547	0.6480547	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_549	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured organism	0.288911	0.288911	0.84994955	0.84994955	0.01678416	0.01678416	0	0	0.833333	0.833333	0.166667	0.166667	0	0
+ASV_66	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Tannerellaceae	Tannerella	Tannerella forsythia 92A2	0.214161	0.214161	0	0	0.5419903	0.5419903	0.100493	0.100493	0	0	0.5	0.5	0.5	0.5
+ASV_225	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Ruminococcus	uncultured bacterium	0.205952	0.205952	0.617856	0.617856	0	0	0	0	0.166667	0.166667	0	0	0	0
+ASV_224	Bacteria	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Mediterraneibacter	uncultured organism	0.237252	0.237252	0.7117554	0.7117554	0	0	0	0	0.666667	0.666667	0	0	0	0
+ASV_41	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas gingivalis	0.367028	0.367028	0	0	1.091445428	1.091445428	0.009639483	0.009639483	0	0	0.166667	0.166667	0.166667	0.166667
+ASV_504	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	Unassigned	0.200523	0.200523	0.6015703	0.6015703	0	0	0	0	0.833333	0.833333	0	0	0	0
+ASV_130	Bacteria	Actinomycetota	Actinobacteria	Bifidobacteriales	Bifidobacteriaceae	Bifidobacterium	Bifidobacterium catenulatum	0.21412	0.21412	0.6423611	0.6423611	0	0	0	0	0.166667	0.166667	0	0	0	0
+ASV_375	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Segatella	uncultured bacterium	0.234353	0.234353	0.703058	0.703058	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_72	Bacteria	Fusobacteriota	Fusobacteriia	Fusobacteriales	Fusobacteriaceae	Fusobacterium	Unassigned	0.147795	0.147795	0	0	0.2578447	0.2578447	0.1855403	0.1855403	0	0	0.666667	0.666667	0.333333	0.333333
+ASV_810	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured organism	0.213511	0.213511	0.640533	0.640533	0	0	0	0	0.833333	0.833333	0	0	0	0
+ASV_188	Bacteria	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter	uncultured organism	0.344881	0.344881	1.034644	1.034644	0	0	0	0	0.666667	0.666667	0	0	0	0
+ASV_272	Bacteria	Pseudomonadota	Gammaproteobacteria	Enterobacterales	Pasteurellaceae	Haemophilus	uncultured bacterium	0.103948	0.103948	0	0	0.02949853	0.02949853	0.28234631	0.28234631	0	0	0.166667	0.166667	0.666667	0.666667
+ASV_396	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured bacterium	0.17717	0.17717	0.531509	0.531509	0	0	0	0	0.666667	0.666667	0	0	0	0
+ASV_127	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Paraprevotella	Unassigned	0.169061	0.169061	0.5071836	0.5071836	0	0	0	0	0.5	0.5	0	0	0	0
+ASV_102	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Alistipes finegoldii	0.229731	0.229731	0.6891935	0.6891935	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_754	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured bacterium	0.20966	0.20966	0.6289789	0.6289789	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_505	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured bacterium	0.201219	0.201219	0.6036581	0.6036581	0	0	0	0	0.666667	0.666667	0	0	0	0
+ASV_165	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Prevotellaceae	Segatella	uncultured bacterium	0.164124	0.164124	0	0	0.4923729	0.4923729	0	0	0	0	0.333333	0.333333	0	0
+ASV_542	Bacteria	Bacillota	Bacilli	Erysipelotrichales	Erysipelatoclostridiaceae	Erysipelotrichaceae UCG-003	Erysipelotrichaceae bacterium GAM147	0.308701	0.308701	0.9261019	0.9261019	0	0	0	0	0.666667	0.666667	0	0	0	0
+ASV_828	Bacteria	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Dorea	uncultured organism	0.254261	0.254261	0.7627845	0.7627845	0	0	0	0	0.833333	0.833333	0	0	0	0
+ASV_150	Bacteria	Bacillota	Negativicutes	Acidaminococcales	Acidaminococcaceae	Phascolarctobacterium	Phascolarctobacterium faecium	0.241073	0.241073	0.7232191	0.7232191	0	0	0	0	0.5	0.5	0	0	0	0
+ASV_502	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured bacterium	0.162293	0.162293	0.4868779	0.4868779	0	0	0	0	0.333333	0.333333	0	0	0	0
+ASV_88	Bacteria	Thermodesulfobacteriota	Desulfobulbia	Desulfobulbales	Desulfobulbaceae	Desulfobulbus	unidentified	0.221752	0.221752	0	0	0.61946903	0.61946903	0.04578755	0.04578755	0	0	0.166667	0.166667	0.166667	0.166667
+ASV_400	Bacteria	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Agathobacter	uncultured bacterium	0.304725	0.304725	0.9141736	0.9141736	0	0	0	0	0.5	0.5	0	0	0	0
+ASV_370	Bacteria	Bacillota	Clostridia	Oscillospirales	Ruminococcaceae	Faecalibacterium	uncultured bacterium	0.163796	0.163796	0.4913895	0.4913895	0	0	0	0	0.5	0.5	0	0	0	0
+ASV_833	Bacteria	Bacillota	Clostridia	Lachnospirales	Lachnospiraceae	Blautia	uncultured bacterium	0.254842	0.254842	0.764526	0.764526	0	0	0	0	0.166667	0.166667	0	0	0	0

@@ -1,0 +1,53 @@
+ID	Pathway
+_sorting_and_degradation	 sorting and degradation
+Aging	Aging
+Amino_acid_metabolism	Amino acid metabolism
+Biosynthesis_of_other_secondary_metabolites	Biosynthesis of other secondary metabolites
+Cancer:_overview	Cancer: overview
+Cancer:_specific_types	Cancer: specific types
+Carbohydrate_metabolism	Carbohydrate metabolism
+Cardiovascular_disease	Cardiovascular disease
+Cell_growth_and_death	Cell growth and death
+Cell_motility	Cell motility
+Cellular_community_-_prokaryotes	Cellular community - prokaryotes
+Circulatory_system	Circulatory system
+Development_and_regeneration	Development and regeneration
+Digestive_system	Digestive system
+Drug_resistance:_antimicrobial	Drug resistance: antimicrobial
+Drug_resistance:_antineoplastic	Drug resistance: antineoplastic
+Endocrine_and_metabolic_disease	Endocrine and metabolic disease
+Endocrine_system	Endocrine system
+Energy_metabolism	Energy metabolism
+Environmental_adaptation	Environmental adaptation
+Excretory_system	Excretory system
+Folding	Folding
+Glycan_biosynthesis_and_metabolism	Glycan biosynthesis and metabolism
+Immune_disease	Immune disease
+Immune_system	Immune system
+Infectious_disease:_bacterial	Infectious disease: bacterial
+Infectious_disease:_parasitic	Infectious disease: parasitic
+Infectious_disease:_viral	Infectious disease: viral
+Lipid_metabolism	Lipid metabolism
+Membrane_transport	Membrane transport
+Metabolism_of_cofactors_and_vitamins	Metabolism of cofactors and vitamins
+Metabolism_of_other_amino_acids	Metabolism of other amino acids
+Metabolism_of_terpenoids_and_polyketides	Metabolism of terpenoids and polyketides
+Nervous_system	Nervous system
+Neurodegenerative_disease	Neurodegenerative disease
+Not_included_in_regular_maps	Not included in regular maps
+Nucleotide_metabolism	Nucleotide metabolism
+Poorly_characterized	Poorly characterized
+Protein_families:_genetic_information_processing	Protein families: genetic information processing
+Protein_families:_metabolism	Protein families: metabolism
+Protein_families:_signaling_and_cellular_processes	Protein families: signaling and cellular processes
+Replication_and_repair	Replication and repair
+Signal_transduction	Signal transduction
+Signaling_molecules_and_interaction	Signaling molecules and interaction
+Substance_dependence	Substance dependence
+Transcription	Transcription
+Translation	Translation
+Transport_and_catabolism	Transport and catabolism
+Unclassified:_genetic_information_processing	Unclassified: genetic information processing
+Unclassified:_metabolism	Unclassified: metabolism
+Unclassified:_signaling_and_cellular_processes	Unclassified: signaling and cellular processes
+Xenobiotics_biodegradation_and_metabolism	Xenobiotics biodegradation and metabolism

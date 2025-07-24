@@ -1,0 +1,47 @@
+tax_id	abundance	superkingdom	phylum	class	order	family	genus	species
+76	0.7512776831345827	Bacteria	Cyanobacteria	Cyanobacteriia	Chloroplast			
+18172	0.03236797274275979	Bacteria	Proteobacteria	Alphaproteobacteria	SAR11 clade	Clade III		
+6443	0.059625212947189095	Bacteria	Bacteroidota	Bacteroidia	Sphingobacteriales	NS11-12 marine group		
+7254	0.0017035775127768314	Bacteria	Actinobacteriota	Actinobacteria	Frankiales	Sporichthyaceae	hgcI clade	
+8929	0.0017035775127768314	Bacteria	Proteobacteria	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Aestuariicoccus	
+44	0.0068143100511073255	Bacteria	Proteobacteria	Alphaproteobacteria	Rickettsiales	Mitochondria		
+2583	0.0034071550255536627	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Crocinitomicaceae	Fluviicola	
+198	0.0034071550255536627	Bacteria	Cyanobacteria	Cyanobacteriia	Synechococcales	Cyanobiaceae	Cyanobium PCC-6307	
+5168	0.020442930153321975	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	MWH-UniP1 aquatic group		
+6790	0.010221465076660987	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Crocinitomicaceae	Crocinitomix	
+6942	0.01192504258943782	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Methylophilaceae	OM43 clade	
+2781	0.0034071550255536627	Bacteria	Campylobacterota	Campylobacteria	Campylobacterales	Sulfurimonadaceae	Sulfurimonas	
+9841	0.0017035775127768314	Bacteria	Bacteroidota	Bacteroidia	Cytophagales	Cyclobacteriaceae	Algoriphagus	marincola
+1906	0.0017035775127768314	Bacteria	Actinobacteriota	Acidimicrobiia	Actinomarinales			
+7080	0.0017035775127768314	Bacteria	Proteobacteria	Gammaproteobacteria	Enterobacterales	Kangiellaceae	Pleionea	
+4026	0.0034071550255536627	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Verrucomicrobiales	Rubritaleaceae	Luteolibacter	
+2310	0.0017035775127768314	Bacteria	Patescibacteria	Parcubacteria				
+13785	0.0034071550255536627	Bacteria	Actinobacteriota	Actinobacteria	Micrococcales	Microbacteriaceae	Candidatus Limnoluna	
+4697	0.0017035775127768314	Bacteria	Proteobacteria	Gammaproteobacteria	Pseudomonadales	Pseudohongiellaceae	Pseudohongiella	
+9564	0.0034071550255536627	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Flavobacteriaceae	Gaetbulibacter	
+15467	0.008517874841634394	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Alcaligenaceae	Kerstersia	
+11934	0.0034071550255536627	Bacteria	Cyanobacteria	Cyanobacteriia	Synechococcales	Prochlorotrichaceae	Prochlorothrix PCC-9006	hollandica
+6681	0.0034071550255536627	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Cryomorphaceae		
+234	0.005110732538330494	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Verrucomicrobiales	Rubritaleaceae	Roseibacillus	
+7638	0.0034071550255536627	Bacteria	Actinobacteriota	Actinobacteria	Micrococcales	Microbacteriaceae		
+3477	0.005110732538330494	Bacteria	Proteobacteria	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Roseibacterium	
+6506	0.0017035902350265942	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Alcaligenaceae	GKS98 freshwater group	
+68	0.005110732538330494	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Flavobacteriaceae		
+1591	0.0051107325383304945	Bacteria	Campylobacterota	Campylobacteria	Campylobacterales	Arcobacteraceae		
+702	0.001703577900667048	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Flavobacteriaceae	Flavobacterium	
+12644	0.0017035775127768314	Bacteria	Proteobacteria	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Marivita	lacus
+4294	0.0068143100511073255	Bacteria	Proteobacteria	Gammaproteobacteria	Pseudomonadales	Litoricolaceae	Litoricola	
+5608	0.0017035775127768314	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Comamonadaceae	Polaromonas	
+17160	0.0017035771248866145	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Flavobacteriaceae	Flavobacterium	luticocti
+1834	0.0017035775127768314	Bacteria	Firmicutes	Bacilli	Acholeplasmatales	Acholeplasmataceae	Acholeplasma	
+4706	0.0017035775127768314	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Verrucomicrobiales	DEV007		
+4908	0.0017035775127768314	Bacteria	Patescibacteria	Gracilibacteria	JGI 0000069-P22			
+13826	0.0034071550255536627	Bacteria	Proteobacteria	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Seohaeicola	saemankumensis
+4604	0.0017035775127768305	Bacteria	Campylobacterota	Campylobacteria	Campylobacterales	Arcobacteraceae	Pseudarcobacter	
+12859	0.0034071550255536627	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Flavobacteriaceae	NS3a marine group	
+6691	0.0017035775127768314	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	NS9 marine group		
+17261	0.0017035775127768314	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Comamonadaceae	RS62 marine group	
+19525	0.0017035775127768314	Bacteria	Proteobacteria	Alphaproteobacteria	Rhodospirillales	Rhodospirillaceae	Insolitispirillum	
+11512	0.0017035775127768314	Bacteria	Bacteroidota	Bacteroidia	Cytophagales	Spirosomaceae		
+unmapped	0.0							
+mapped_unclassified	0.0							
