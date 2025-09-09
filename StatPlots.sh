@@ -1,6 +1,6 @@
 [TOC]
 
-# 易扩增子EasyAmplicon2
+# 易扩增子 EasyAmplicon2
 
     # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)等
     # 版本 Version: v2.0
