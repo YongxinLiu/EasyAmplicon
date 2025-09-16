@@ -1,0 +1,4 @@
+Phylum	HY1_1	HY1_2	HY1_3	HY2_1	HY2_2	HY2_3	HY3_1	HY3_2	HY3_3	All
+Proteobacteria	97.8	97.6	98	99.8	99.5	99.3	39.6	36.7	38.5	90.6
+Firmicutes	0	0	0.0682	0	0	0	60.4	63.3	61.5	8.2
+Actinobacteria	2.21	2.41	1.9	0.218	0.532	0.709	0	0	0	1.2

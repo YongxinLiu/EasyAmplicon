@@ -1,0 +1,7 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Creating conda environment environment.yaml...
+Downloading and installing remote packages.

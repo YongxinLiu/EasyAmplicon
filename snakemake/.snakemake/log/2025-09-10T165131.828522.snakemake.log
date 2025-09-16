@@ -1,0 +1,9 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+MissingInputException in rule taxonomic_summary in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 355:
+Missing input files for rule taxonomic_summary:
+    output: results/taxonomic_summary/sum_p.txt, results/taxonomic_summary/sum_c.txt, results/taxonomic_summary/sum_o.txt, results/taxonomic_summary/sum_f.txt, results/taxonomic_summary/sum_g.txt, results/taxonomic_summary/sum_s.txt
+    affected files:
+        results/taxonomy/otus.sintax

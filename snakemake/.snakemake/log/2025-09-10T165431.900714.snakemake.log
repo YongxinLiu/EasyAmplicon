@@ -1,0 +1,134 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+alpha_diversity          1
+alpha_rarefaction        1
+beta_diversity           1
+build_tree               1
+format_taxonomy          1
+rarefy_otutab            1
+summary_report           1
+taxonomic_summary        1
+total                    9
+
+Select jobs to execute...
+Execute 3 jobs...
+[Wed Sep 10 16:54:32 2025]
+localrule rarefy_otutab:
+    input: results/feature_table/otutab_clean.txt
+    output: results/feature_table/otutab_rare.txt, results/alpha_diversity/alpha_basic.txt
+    jobid: 33
+    reason: Missing output files: results/feature_table/otutab_rare.txt
+    resources: tmpdir=/tmp
+[Wed Sep 10 16:54:32 2025]
+localrule format_taxonomy:
+    input: results/taxonomy/otus_raw.sintax
+    output: results/taxonomy/taxonomy.txt
+    jobid: 31
+    reason: Missing output files: results/taxonomy/taxonomy.txt
+    resources: tmpdir=/tmp
+[Wed Sep 10 16:54:32 2025]
+localrule build_tree:
+    input: results/feature_table/otus_raw.fa
+    output: results/phylogeny/otus.tree
+    jobid: 36
+    reason: Missing output files: results/phylogeny/otus.tree
+    resources: tmpdir=/tmp
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 268:
+Command 'set -euo pipefail;  
+        # Convert sintax format to 8-column taxonomy table
+        awk 'BEGIN{OFS=FS="\t"}{
+            delete a; 
+            a["k"]="Unassigned";a["p"]="Unassigned";a["c"]="Unassigned";
+            a["o"]="Unassigned";a["f"]="Unassigned";a["g"]="Unassigned";a["s"]="Unassigned";
+            split($2,x,";");
+            for(i in x){split(x[i],b,"__");a[b[1]]=b[2];} 
+            print $1,a["k"],a["p"],a["c"],a["o"],a["f"],a["g"],a["s"];
+        }' <(cut -f 1,4 results/taxonomy/otus_raw.sintax | sed 's/\td/\tk/;s/:/__/g;s/,/;/g;s/"//g') > temp/otus.tax
+        
+        sed 's/;/\t/g;s/.__//g;' temp/otus.tax | cut -f 1-8 |             sed '1 s/^/OTUID\tKingdom\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\n/' > results/taxonomy/taxonomy.txt' returned non-zero exit status 1.
+[Wed Sep 10 16:54:32 2025]
+Error in rule format_taxonomy:
+    message: None
+    jobid: 31
+    input: results/taxonomy/otus_raw.sintax
+    output: results/taxonomy/taxonomy.txt
+    shell:
+        
+        # Convert sintax format to 8-column taxonomy table
+        awk 'BEGIN{OFS=FS="\t"}{
+            delete a; 
+            a["k"]="Unassigned";a["p"]="Unassigned";a["c"]="Unassigned";
+            a["o"]="Unassigned";a["f"]="Unassigned";a["g"]="Unassigned";a["s"]="Unassigned";
+            split($2,x,";");
+            for(i in x){split(x[i],b,"__");a[b[1]]=b[2];} 
+            print $1,a["k"],a["p"],a["c"],a["o"],a["f"],a["g"],a["s"];
+        }' <(cut -f 1,4 results/taxonomy/otus_raw.sintax | sed 's/\td/\tk/;s/:/__/g;s/,/;/g;s/"//g') > temp/otus.tax
+        
+        sed 's/;/\t/g;s/.__//g;' temp/otus.tax | cut -f 1-8 |             sed '1 s/^/OTUID\tKingdom\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\n/' > results/taxonomy/taxonomy.txt
+        
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 295:
+Command 'set -euo pipefail;  
+        Rscript script/otutab_rare.R             --input results/feature_table/otutab_clean.txt             --depth 39             --seed 1             --normalize results/feature_table/otutab_rare.txt             --output results/alpha_diversity/alpha_basic.txt' returned non-zero exit status 2.
+[Wed Sep 10 16:54:32 2025]
+Error in rule rarefy_otutab:
+    message: None
+    jobid: 33
+    input: results/feature_table/otutab_clean.txt
+    output: results/feature_table/otutab_rare.txt, results/alpha_diversity/alpha_basic.txt
+    shell:
+        
+        Rscript script/otutab_rare.R             --input results/feature_table/otutab_clean.txt             --depth 39             --seed 1             --normalize results/feature_table/otutab_rare.txt             --output results/alpha_diversity/alpha_basic.txt
+        
+        (command exited with non-zero exit code)
+[Wed Sep 10 16:54:53 2025]
+Finished jobid: 36 (Rule: build_tree)
+1 of 9 steps (11%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Wed Sep 10 16:54:53 2025]
+Error in rule format_taxonomy:
+    message: None
+    jobid: 31
+    input: results/taxonomy/otus_raw.sintax
+    output: results/taxonomy/taxonomy.txt
+    shell:
+        
+        # Convert sintax format to 8-column taxonomy table
+        awk 'BEGIN{OFS=FS="\t"}{
+            delete a; 
+            a["k"]="Unassigned";a["p"]="Unassigned";a["c"]="Unassigned";
+            a["o"]="Unassigned";a["f"]="Unassigned";a["g"]="Unassigned";a["s"]="Unassigned";
+            split($2,x,";");
+            for(i in x){split(x[i],b,"__");a[b[1]]=b[2];} 
+            print $1,a["k"],a["p"],a["c"],a["o"],a["f"],a["g"],a["s"];
+        }' <(cut -f 1,4 results/taxonomy/otus_raw.sintax | sed 's/\td/\tk/;s/:/__/g;s/,/;/g;s/"//g') > temp/otus.tax
+        
+        sed 's/;/\t/g;s/.__//g;' temp/otus.tax | cut -f 1-8 |             sed '1 s/^/OTUID\tKingdom\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\n/' > results/taxonomy/taxonomy.txt
+        
+        (command exited with non-zero exit code)
+[Wed Sep 10 16:54:53 2025]
+Error in rule rarefy_otutab:
+    message: None
+    jobid: 33
+    input: results/feature_table/otutab_clean.txt
+    output: results/feature_table/otutab_rare.txt, results/alpha_diversity/alpha_basic.txt
+    shell:
+        
+        Rscript script/otutab_rare.R             --input results/feature_table/otutab_clean.txt             --depth 39             --seed 1             --normalize results/feature_table/otutab_rare.txt             --output results/alpha_diversity/alpha_basic.txt
+        
+        (command exited with non-zero exit code)
+Complete log(s): /mnt/d/EasyAmplicon2/snakemake/.snakemake/log/2025-09-10T165431.900714.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

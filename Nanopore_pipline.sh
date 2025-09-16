@@ -113,14 +113,26 @@
 ### 1.3. 流程和数据库
 ### 1.3. Pipeline & Database
 
-# 数据库第一次使用必须解压，以后可跳过此段
-# The database must be decompressed before the first use. This step can be skipped later.
-    # usearchs可用16S/18S/ITS数据库：
+    # 数据库第一次使用必须解压，以后可跳过此段
+    # The database must be decompressed before the first use. This step can be skipped later.
+
+    # usearch可用的16S/18S/ITS数据库：
     # Available 16S/18S/ITS databases for usearch:
-    # 解压Silva、GTDB数据库，需自行从官网或百度网盘(https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315)db/amplicon/silva(db/amplicon/GTDB)中下载
-    # Decompress the Silva database. You need to download it from the official website or the Baidu Net Disk (https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315:db/amplicon/silva;db/amplicon/GTDB).
+
+    # 解压Silva数据库，需自行从官网或百度网盘 (https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315; db/amplicon/silva) 下载
+    # Decompress the Silva database. You need to download it from the official website or the Baidu Net Disk (https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315; db/amplicon/silva).
+
     # 将SILVA数据库SILVA_modified.fasta保存在${db}/usearch/
     # Save SILVA_modified.fasta to ${db}/usearch/
+
+    # 将SILVA数据库silva_nr99_v138.1_train_DADA2.fa.gz保存在${db}/DADA2/
+    # Save silva_nr99_v138.1_train_DADA2.fa.gz to ${db}/DADA2/
+
+    # 将其他可选数据库从百度网盘 (https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315; db/amplicon/usearch)保存到${db}/usearch/目录，例如：
+    # Save other optional databases to ${db}/usearch/, for example:
+    #   sintax_defalut_emu_database.fasta.gz
+    #   sintax_ncbi_database.fasta.gz
+    #   gtdb_sintax_database.fasta.gz
     seqkit stat ${db}/usearch/SILVA_modified.fasta
     # 将Silva_Emu/和GTDB_Emu/文件夹保存到{db}
     # Save Silva_Emu/、GTDB_Emu/ to {db}

@@ -2,9 +2,9 @@
 
 英文版见(English Version in) README.md
 
-版本：1.22
+版本：2.01
 
-更新日期：2025/07/24
+更新日期：2025/09/16
 
 简单易学易用、开源、可重复且社区支持的扩增子数据分析流程
 
@@ -207,3 +207,4 @@ R和Rtools更新为4.3，RStudio更新为2023.03.1
 **Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
 
 版本所有 2016-2023 刘永鑫(Yong-Xin Liu) <liuyongxin@caas.cn>, 文涛(Tao Wen) <taowen@njau.edu.cn>, 陈同(Tong Chen) <chent@nrc.ac.cn>
+

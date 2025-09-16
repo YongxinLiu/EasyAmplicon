@@ -1,0 +1,144 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+all                         1
+alpha_diversity             1
+alpha_rarefaction           1
+beta_diversity              1
+build_feature_table         1
+build_tree                  1
+clean_feature_table         1
+denoise_asv                 1
+dereplicate                 1
+filter_bacteria             1
+format_taxonomy             1
+rarefy_table                1
+remove_chimeras             1
+rename_asvs                 1
+summary_report              1
+taxonomic_annotation        1
+taxonomic_summary           1
+total                      17
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:07:07 2025]
+localrule dereplicate:
+    input: temp/filtered.fa
+    output: temp/uniques.fa
+    jobid: 30
+    reason: Params have changed since last execution: Union of exclusive params before and now across all output: before: 1 now: 2 
+    resources: tmpdir=/tmp
+[Tue Sep  9 21:07:09 2025]
+Finished jobid: 30 (Rule: dereplicate)
+1 of 17 steps (6%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:07:09 2025]
+localrule denoise_asv:
+    input: temp/uniques.fa
+    output: temp/zotus.fa
+    jobid: 29
+    reason: Missing output files: temp/zotus.fa; Input files updated by another job: temp/uniques.fa
+    resources: tmpdir=/tmp
+[Tue Sep  9 21:07:35 2025]
+Finished jobid: 29 (Rule: denoise_asv)
+2 of 17 steps (12%) done
+Removing temporary output temp/uniques.fa.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:07:35 2025]
+localrule rename_asvs:
+    input: temp/zotus.fa
+    output: temp/otus.fa
+    jobid: 28
+    reason: Missing output files: temp/otus.fa; Input files updated by another job: temp/zotus.fa
+    resources: tmpdir=/tmp
+[Tue Sep  9 21:07:35 2025]
+Finished jobid: 28 (Rule: rename_asvs)
+3 of 17 steps (18%) done
+Removing temporary output temp/zotus.fa.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:07:35 2025]
+localrule remove_chimeras:
+    input: temp/otus.fa
+    output: results/feature_table/otus_raw.fa
+    jobid: 27
+    reason: Input files updated by another job: temp/otus.fa
+    resources: tmpdir=/tmp
+[Tue Sep  9 21:07:35 2025]
+Finished jobid: 27 (Rule: remove_chimeras)
+4 of 17 steps (24%) done
+Removing temporary output temp/otus.fa.
+Select jobs to execute...
+Execute 2 jobs...
+[Tue Sep  9 21:07:35 2025]
+localrule build_feature_table:
+    input: temp/filtered.fa, results/feature_table/otus_raw.fa
+    output: results/feature_table/otutab_raw.txt
+    jobid: 26
+    reason: Input files updated by another job: results/feature_table/otus_raw.fa
+    resources: tmpdir=/tmp
+[Tue Sep  9 21:07:35 2025]
+localrule taxonomic_annotation:
+    input: results/feature_table/otus_raw.fa
+    output: results/taxonomy/otus_raw.sintax
+    jobid: 31
+    reason: Missing output files: results/taxonomy/otus_raw.sintax; Input files updated by another job: results/feature_table/otus_raw.fa
+    resources: tmpdir=/tmp
+[Tue Sep  9 21:13:20 2025]
+Finished jobid: 31 (Rule: taxonomic_annotation)
+5 of 17 steps (29%) done
+[Tue Sep  9 21:18:12 2025]
+Finished jobid: 26 (Rule: build_feature_table)
+6 of 17 steps (35%) done
+Removing temporary output temp/filtered.fa.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:18:12 2025]
+localrule clean_feature_table:
+    input: results/feature_table/otutab_raw.txt
+    output: results/feature_table/otutab_clean.txt
+    jobid: 25
+    reason: Missing output files: results/feature_table/otutab_clean.txt; Input files updated by another job: results/feature_table/otutab_raw.txt
+    resources: tmpdir=/tmp
+[Tue Sep  9 21:18:12 2025]
+Finished jobid: 25 (Rule: clean_feature_table)
+7 of 17 steps (41%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:18:12 2025]
+localrule filter_bacteria:
+    input: results/feature_table/otutab_clean.txt, results/taxonomy/otus_raw.sintax
+    output: results/feature_table/otutab.txt, results/taxonomy/otus.sintax, results/feature_table/otus.fa, results/qc/contamination_stats.txt
+    jobid: 24
+    reason: Missing output files: results/feature_table/otus.fa, results/taxonomy/otus.sintax, results/feature_table/otutab.txt; Input files updated by another job: results/taxonomy/otus_raw.sintax, results/feature_table/otutab_clean.txt
+    resources: tmpdir=/tmp
+RuleException:
+FileNotFoundError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 272:
+[Errno 2] No such file or directory: '/mnt/d/EasyAmplicon2/snakemake/scripts/filter_bacteria.R'
+[Tue Sep  9 21:18:13 2025]
+Error in rule filter_bacteria:
+    message: None
+    jobid: 24
+    input: results/feature_table/otutab_clean.txt, results/taxonomy/otus_raw.sintax
+    output: results/feature_table/otutab.txt, results/taxonomy/otus.sintax, results/feature_table/otus.fa, results/qc/contamination_stats.txt
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Tue Sep  9 21:18:13 2025]
+Error in rule filter_bacteria:
+    message: None
+    jobid: 24
+    input: results/feature_table/otutab_clean.txt, results/taxonomy/otus_raw.sintax
+    output: results/feature_table/otutab.txt, results/taxonomy/otus.sintax, results/feature_table/otus.fa, results/qc/contamination_stats.txt
+Complete log(s): /mnt/d/EasyAmplicon2/snakemake/.snakemake/log/2025-09-09T210706.790354.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

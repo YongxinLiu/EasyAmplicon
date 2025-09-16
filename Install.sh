@@ -208,6 +208,28 @@ conda activate ${s}
 ### The easyamplicon2 environment contains most of the analysis software
 conda unpack
 
+## 方法3.下载singularity
+## Method 3. Download and run with Singularity (recommended)
+
+### 下载Singularity镜像
+### Download Singularity image
+百度网盘下载链接 Baidu Net Disk: https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315  
+文件路径 File path: db/amplicon/easyamplicon2.sif  
+
+### 指定存放目录
+### Specify storage directory
+mkdir -p ~/singularity/easyamplicon2
+mv easyamplicon2.sif ~/singularity/easyamplicon2/
+
+### 运行环境
+### Run the environment
+singularity exec ~/singularity/easyamplicon2/easyamplicon2.sif bash
+
+### 初始化环境
+### Initialize the environment
+# Singularity镜像已包含所有核心依赖，无需额外安装
+# The Singularity image contains all core dependencies and requires no additional installation
+
 ```
 
 
@@ -219,9 +241,33 @@ conda unpack
 ### 下载转换好格式的数据库
 ### Download the pre-formatted database
 ```bash
-数据库百度网盘下载链接：Baidu Net Disk：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315
-文件路径 File path：db/amplicon/silva/SILVA_modified.fasta；db/amplicon/silva/silva_nr99_v138.1_train_DADA2.fa.gz;db/amplicon/GTDB;db/amplicon/silva/Silva_Emu
+数据库百度网盘下载链接：Baidu Net Disk：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 
 
+文件路径 File path:  
+- db/amplicon/silva/SILVA_modified.fasta  
+- db/amplicon/silva/silva_nr99_v138.1_train_DADA2.fa.gz  
+- db/amplicon/usearch/gtdb_sintax_database.fasta.gz  
+- db/amplicon/usearch/sintax_defalut_emu_database.fasta.gz  
+- db/amplicon/usearch/sintax_ncbi_database.fasta.gz  
+- db/amplicon/GTDB
+- db/amplicon/silva/Silva_Emu
+
+```
+### 下载原始参考数据库（需手动转换）
+### Download the original reference databases (manual conversion required)
+```bash
+Silva: https://www.arb-silva.de/current-release/Exports
+  - SILVA_138.2_SSURef_NR99_tax_silva.fasta.gz  
+ 
+
+GTDB: https://data.gtdb.aau.ecogenomic.org/releases/release226/226.0/  
+  - bac120_taxonomy_r226.tsv; bac120_ssu_reps_r226.fna.gz ; ssu_all_r226.fna.gz
+
+NCBI: https://ftp.ncbi.nlm.nih.gov/blast/db/  
+  - 16S_ribosomal_RNA.tar.gz  
+
+Emu: https://osf.io/56uf7/files/osfstorage  
+  - emu_default.tar.gz  
 ```
 
 ## 五、添加环境变量（可选）

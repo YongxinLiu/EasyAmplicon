@@ -1,0 +1,64 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+all                         1
+format_taxonomy             1
+sintax_summary              1
+taxonomic_annotation        1
+total                       4
+
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Sep 11 10:44:06 2025]
+localrule taxonomic_annotation:
+    input: results/feature_table/otus_raw.fa
+    output: results/taxonomy/otus_raw.sintax
+    jobid: 30
+    reason: Params have changed since last execution: Union of exclusive params before and now across all output: before: 0 now: 0.1 
+    resources: tmpdir=/tmp
+[Thu Sep 11 10:45:51 2025]
+Finished jobid: 30 (Rule: taxonomic_annotation)
+1 of 4 steps (25%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Thu Sep 11 10:45:51 2025]
+localrule sintax_summary:
+    input: results/taxonomy/otus_raw.sintax, results/feature_table/otutab_rare.txt
+    output: results/taxonomic_summary/sum_p.txt, results/taxonomic_summary/sum_c.txt, results/taxonomic_summary/sum_o.txt, results/taxonomic_summary/sum_f.txt, results/taxonomic_summary/sum_g.txt, results/taxonomic_summary/sum_s.txt
+    jobid: 37
+    reason: Missing output files: results/taxonomic_summary/sum_f.txt, results/taxonomic_summary/sum_o.txt, results/taxonomic_summary/sum_g.txt, results/taxonomic_summary/sum_c.txt, results/taxonomic_summary/sum_s.txt; Input files updated by another job: results/taxonomy/otus_raw.sintax
+    resources: tmpdir=/tmp
+[Thu Sep 11 10:45:51 2025]
+localrule format_taxonomy:
+    input: results/taxonomy/otus_raw.sintax
+    output: results/taxonomy/taxonomy.txt, taxonomy2.txt, otus.tax
+    jobid: 31
+    reason: Input files updated by another job: results/taxonomy/otus_raw.sintax
+    resources: tmpdir=/tmp
+[Thu Sep 11 10:45:52 2025]
+Finished jobid: 31 (Rule: format_taxonomy)
+2 of 4 steps (50%) done
+Removing temporary output taxonomy2.txt.
+Removing temporary output otus.tax.
+[Thu Sep 11 10:45:54 2025]
+Finished jobid: 37 (Rule: sintax_summary)
+3 of 4 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Sep 11 10:45:55 2025]
+localrule all:
+    input: results/qc/seqkit_stats.txt, results/qc/filtered_stats.txt, results/feature_table/otutab_clean.txt, results/taxonomy/otus_raw.sintax, results/taxonomy/taxonomy.txt, results/alpha_diversity/alpha.txt, results/alpha_diversity/alpha_rare.txt, results/beta_diversity/bray_curtis.txt, results/taxonomic_summary/sum_p.txt, results/taxonomic_summary/sum_c.txt, results/taxonomic_summary/sum_o.txt, results/taxonomic_summary/sum_f.txt, results/taxonomic_summary/sum_g.txt, results/taxonomic_summary/sum_s.txt, results/summary_report.txt
+    jobid: 0
+    reason: Input files updated by another job: results/taxonomic_summary/sum_p.txt, results/taxonomy/otus_raw.sintax, results/taxonomic_summary/sum_f.txt, results/taxonomy/taxonomy.txt, results/taxonomic_summary/sum_o.txt, results/taxonomic_summary/sum_g.txt, results/taxonomic_summary/sum_c.txt, results/taxonomic_summary/sum_s.txt
+    resources: tmpdir=/tmp
+[Thu Sep 11 10:45:55 2025]
+Finished jobid: 0 (Rule: all)
+4 of 4 steps (100%) done
+Complete log(s): /mnt/d/EasyAmplicon2/snakemake/.snakemake/log/2025-09-11T104406.368594.snakemake.log

@@ -1,0 +1,388 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+all                         1
+alpha_diversity             1
+alpha_rarefaction           1
+beta_diversity              1
+build_feature_table         1
+build_tree                  1
+clean_feature_table         1
+cutadapt_filter             1
+decompress_fastq            9
+denoise_asv                 1
+dereplicate                 1
+fastq_to_fasta              1
+filter_bacteria             1
+filtered_stats              1
+format_taxonomy             1
+merge_samples               1
+rarefy_table                1
+relabel_sequences           9
+remove_chimeras             1
+rename_asvs                 1
+seqkit_stats                1
+summary_report              1
+taxonomic_annotation        1
+taxonomic_summary           1
+total                      40
+
+Select jobs to execute...
+Execute 8 jobs...
+[Tue Sep  9 21:01:31 2025]
+localrule decompress_fastq:
+    input: seq/HY1_3.fq.gz
+    output: temp/decompressed/HY1_3.fq
+    jobid: 4
+    reason: Missing output files: temp/decompressed/HY1_3.fq
+    wildcards: sample=HY1_3
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY1_3.fq.gz > temp/decompressed/HY1_3.fq
+[Tue Sep  9 21:01:31 2025]
+localrule decompress_fastq:
+    input: seq/HY2_3.fq.gz
+    output: temp/decompressed/HY2_3.fq
+    jobid: 7
+    reason: Missing output files: temp/decompressed/HY2_3.fq
+    wildcards: sample=HY2_3
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY2_3.fq.gz > temp/decompressed/HY2_3.fq
+[Tue Sep  9 21:01:31 2025]
+localrule decompress_fastq:
+    input: seq/HY1_2.fq.gz
+    output: temp/decompressed/HY1_2.fq
+    jobid: 3
+    reason: Missing output files: temp/decompressed/HY1_2.fq
+    wildcards: sample=HY1_2
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY1_2.fq.gz > temp/decompressed/HY1_2.fq
+[Tue Sep  9 21:01:31 2025]
+localrule decompress_fastq:
+    input: seq/HY3_3.fq.gz
+    output: temp/decompressed/HY3_3.fq
+    jobid: 10
+    reason: Missing output files: temp/decompressed/HY3_3.fq
+    wildcards: sample=HY3_3
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY3_3.fq.gz > temp/decompressed/HY3_3.fq
+[Tue Sep  9 21:01:31 2025]
+localrule decompress_fastq:
+    input: seq/HY2_2.fq.gz
+    output: temp/decompressed/HY2_2.fq
+    jobid: 6
+    reason: Missing output files: temp/decompressed/HY2_2.fq
+    wildcards: sample=HY2_2
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY2_2.fq.gz > temp/decompressed/HY2_2.fq
+[Tue Sep  9 21:01:31 2025]
+localrule decompress_fastq:
+    input: seq/HY1_1.fq.gz
+    output: temp/decompressed/HY1_1.fq
+    jobid: 2
+    reason: Missing output files: temp/decompressed/HY1_1.fq
+    wildcards: sample=HY1_1
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY1_1.fq.gz > temp/decompressed/HY1_1.fq
+[Tue Sep  9 21:01:31 2025]
+localrule decompress_fastq:
+    input: seq/HY2_1.fq.gz
+    output: temp/decompressed/HY2_1.fq
+    jobid: 5
+    reason: Missing output files: temp/decompressed/HY2_1.fq
+    wildcards: sample=HY2_1
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY2_1.fq.gz > temp/decompressed/HY2_1.fq
+[Tue Sep  9 21:01:31 2025]
+localrule decompress_fastq:
+    input: seq/HY3_2.fq.gz
+    output: temp/decompressed/HY3_2.fq
+    jobid: 9
+    reason: Missing output files: temp/decompressed/HY3_2.fq
+    wildcards: sample=HY3_2
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY3_2.fq.gz > temp/decompressed/HY3_2.fq
+[Tue Sep  9 21:01:32 2025]
+Finished jobid: 4 (Rule: decompress_fastq)
+1 of 40 steps (2%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:01:32 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY1_3.fq
+    output: temp/relabeled/HY1_3.merged.fastq
+    jobid: 17
+    reason: Missing output files: temp/relabeled/HY1_3.merged.fastq; Input files updated by another job: temp/decompressed/HY1_3.fq
+    wildcards: sample=HY1_3
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY1_3.fq -fastqout temp/relabeled/HY1_3.merged.fastq -prefix HY1_3.
+[Tue Sep  9 21:01:32 2025]
+Finished jobid: 3 (Rule: decompress_fastq)
+2 of 40 steps (5%) done
+[Tue Sep  9 21:01:32 2025]
+Finished jobid: 9 (Rule: decompress_fastq)
+3 of 40 steps (8%) done
+[Tue Sep  9 21:01:32 2025]
+Finished jobid: 2 (Rule: decompress_fastq)
+4 of 40 steps (10%) done
+[Tue Sep  9 21:01:32 2025]
+Finished jobid: 5 (Rule: decompress_fastq)
+5 of 40 steps (12%) done
+[Tue Sep  9 21:01:32 2025]
+Finished jobid: 7 (Rule: decompress_fastq)
+6 of 40 steps (15%) done
+[Tue Sep  9 21:01:32 2025]
+Finished jobid: 10 (Rule: decompress_fastq)
+7 of 40 steps (18%) done
+[Tue Sep  9 21:01:32 2025]
+Finished jobid: 6 (Rule: decompress_fastq)
+8 of 40 steps (20%) done
+Select jobs to execute...
+Execute 7 jobs...
+[Tue Sep  9 21:01:32 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY2_3.fq
+    output: temp/relabeled/HY2_3.merged.fastq
+    jobid: 20
+    reason: Missing output files: temp/relabeled/HY2_3.merged.fastq; Input files updated by another job: temp/decompressed/HY2_3.fq
+    wildcards: sample=HY2_3
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY2_3.fq -fastqout temp/relabeled/HY2_3.merged.fastq -prefix HY2_3.
+[Tue Sep  9 21:01:32 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY1_2.fq
+    output: temp/relabeled/HY1_2.merged.fastq
+    jobid: 16
+    reason: Missing output files: temp/relabeled/HY1_2.merged.fastq; Input files updated by another job: temp/decompressed/HY1_2.fq
+    wildcards: sample=HY1_2
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY1_2.fq -fastqout temp/relabeled/HY1_2.merged.fastq -prefix HY1_2.
+[Tue Sep  9 21:01:32 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY3_3.fq
+    output: temp/relabeled/HY3_3.merged.fastq
+    jobid: 23
+    reason: Missing output files: temp/relabeled/HY3_3.merged.fastq; Input files updated by another job: temp/decompressed/HY3_3.fq
+    wildcards: sample=HY3_3
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY3_3.fq -fastqout temp/relabeled/HY3_3.merged.fastq -prefix HY3_3.
+[Tue Sep  9 21:01:33 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY2_2.fq
+    output: temp/relabeled/HY2_2.merged.fastq
+    jobid: 19
+    reason: Missing output files: temp/relabeled/HY2_2.merged.fastq; Input files updated by another job: temp/decompressed/HY2_2.fq
+    wildcards: sample=HY2_2
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY2_2.fq -fastqout temp/relabeled/HY2_2.merged.fastq -prefix HY2_2.
+[Tue Sep  9 21:01:33 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY1_1.fq
+    output: temp/relabeled/HY1_1.merged.fastq
+    jobid: 15
+    reason: Missing output files: temp/relabeled/HY1_1.merged.fastq; Input files updated by another job: temp/decompressed/HY1_1.fq
+    wildcards: sample=HY1_1
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY1_1.fq -fastqout temp/relabeled/HY1_1.merged.fastq -prefix HY1_1.
+[Tue Sep  9 21:01:33 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY3_2.fq
+    output: temp/relabeled/HY3_2.merged.fastq
+    jobid: 22
+    reason: Missing output files: temp/relabeled/HY3_2.merged.fastq; Input files updated by another job: temp/decompressed/HY3_2.fq
+    wildcards: sample=HY3_2
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY3_2.fq -fastqout temp/relabeled/HY3_2.merged.fastq -prefix HY3_2.
+[Tue Sep  9 21:01:33 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY2_1.fq
+    output: temp/relabeled/HY2_1.merged.fastq
+    jobid: 18
+    reason: Missing output files: temp/relabeled/HY2_1.merged.fastq; Input files updated by another job: temp/decompressed/HY2_1.fq
+    wildcards: sample=HY2_1
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY2_1.fq -fastqout temp/relabeled/HY2_1.merged.fastq -prefix HY2_1.
+Select jobs to execute...
+[Tue Sep  9 21:01:36 2025]
+Finished jobid: 17 (Rule: relabel_sequences)
+9 of 40 steps (22%) done
+Execute 1 jobs...
+[Tue Sep  9 21:01:36 2025]
+localrule decompress_fastq:
+    input: seq/HY3_1.fq.gz
+    output: temp/decompressed/HY3_1.fq
+    jobid: 8
+    reason: Missing output files: temp/decompressed/HY3_1.fq
+    wildcards: sample=HY3_1
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY3_1.fq.gz > temp/decompressed/HY3_1.fq
+[Tue Sep  9 21:01:37 2025]
+Finished jobid: 22 (Rule: relabel_sequences)
+10 of 40 steps (25%) done
+[Tue Sep  9 21:01:37 2025]
+Finished jobid: 8 (Rule: decompress_fastq)
+11 of 40 steps (28%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Tue Sep  9 21:01:37 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY3_1.fq
+    output: temp/relabeled/HY3_1.merged.fastq
+    jobid: 21
+    reason: Missing output files: temp/relabeled/HY3_1.merged.fastq; Input files updated by another job: temp/decompressed/HY3_1.fq
+    wildcards: sample=HY3_1
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY3_1.fq -fastqout temp/relabeled/HY3_1.merged.fastq -prefix HY3_1.
+[Tue Sep  9 21:01:37 2025]
+localrule seqkit_stats:
+    input: temp/decompressed/HY1_1.fq, temp/decompressed/HY1_2.fq, temp/decompressed/HY1_3.fq, temp/decompressed/HY2_1.fq, temp/decompressed/HY2_2.fq, temp/decompressed/HY2_3.fq, temp/decompressed/HY3_1.fq, temp/decompressed/HY3_2.fq, temp/decompressed/HY3_3.fq
+    output: results/qc/seqkit_stats.txt
+    jobid: 1
+    reason: Input files updated by another job: temp/decompressed/HY3_1.fq, temp/decompressed/HY1_2.fq, temp/decompressed/HY3_3.fq, temp/decompressed/HY2_3.fq, temp/decompressed/HY3_2.fq, temp/decompressed/HY2_2.fq, temp/decompressed/HY2_1.fq, temp/decompressed/HY1_3.fq, temp/decompressed/HY1_1.fq
+    resources: tmpdir=/tmp
+Shell command: seqkit stat temp/decompressed/HY1_1.fq temp/decompressed/HY1_2.fq temp/decompressed/HY1_3.fq temp/decompressed/HY2_1.fq temp/decompressed/HY2_2.fq temp/decompressed/HY2_3.fq temp/decompressed/HY3_1.fq temp/decompressed/HY3_2.fq temp/decompressed/HY3_3.fq > results/qc/seqkit_stats.txt
+[Tue Sep  9 21:01:38 2025]
+Finished jobid: 18 (Rule: relabel_sequences)
+12 of 40 steps (30%) done
+[Tue Sep  9 21:01:38 2025]
+Finished jobid: 23 (Rule: relabel_sequences)
+13 of 40 steps (32%) done
+[Tue Sep  9 21:01:38 2025]
+Finished jobid: 16 (Rule: relabel_sequences)
+14 of 40 steps (35%) done
+[Tue Sep  9 21:01:38 2025]
+Finished jobid: 20 (Rule: relabel_sequences)
+15 of 40 steps (38%) done
+[Tue Sep  9 21:01:38 2025]
+Finished jobid: 15 (Rule: relabel_sequences)
+16 of 40 steps (40%) done
+[Tue Sep  9 21:01:38 2025]
+Finished jobid: 19 (Rule: relabel_sequences)
+17 of 40 steps (42%) done
+[Tue Sep  9 21:01:38 2025]
+Finished jobid: 1 (Rule: seqkit_stats)
+18 of 40 steps (45%) done
+Removing temporary output temp/decompressed/HY1_1.fq.
+Removing temporary output temp/decompressed/HY1_2.fq.
+Removing temporary output temp/decompressed/HY1_3.fq.
+Removing temporary output temp/decompressed/HY2_1.fq.
+Removing temporary output temp/decompressed/HY2_2.fq.
+Removing temporary output temp/decompressed/HY2_3.fq.
+Removing temporary output temp/decompressed/HY3_2.fq.
+Removing temporary output temp/decompressed/HY3_3.fq.
+[Tue Sep  9 21:01:39 2025]
+Finished jobid: 21 (Rule: relabel_sequences)
+19 of 40 steps (48%) done
+Removing temporary output temp/decompressed/HY3_1.fq.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:01:40 2025]
+localrule merge_samples:
+    input: temp/relabeled/HY1_1.merged.fastq, temp/relabeled/HY1_2.merged.fastq, temp/relabeled/HY1_3.merged.fastq, temp/relabeled/HY2_1.merged.fastq, temp/relabeled/HY2_2.merged.fastq, temp/relabeled/HY2_3.merged.fastq, temp/relabeled/HY3_1.merged.fastq, temp/relabeled/HY3_2.merged.fastq, temp/relabeled/HY3_3.merged.fastq
+    output: temp/all.fq
+    jobid: 14
+    reason: Missing output files: temp/all.fq; Input files updated by another job: temp/relabeled/HY2_1.merged.fastq, temp/relabeled/HY3_1.merged.fastq, temp/relabeled/HY1_3.merged.fastq, temp/relabeled/HY3_3.merged.fastq, temp/relabeled/HY3_2.merged.fastq, temp/relabeled/HY1_1.merged.fastq, temp/relabeled/HY2_3.merged.fastq, temp/relabeled/HY1_2.merged.fastq, temp/relabeled/HY2_2.merged.fastq
+    resources: tmpdir=/tmp
+Shell command: cat temp/relabeled/HY1_1.merged.fastq temp/relabeled/HY1_2.merged.fastq temp/relabeled/HY1_3.merged.fastq temp/relabeled/HY2_1.merged.fastq temp/relabeled/HY2_2.merged.fastq temp/relabeled/HY2_3.merged.fastq temp/relabeled/HY3_1.merged.fastq temp/relabeled/HY3_2.merged.fastq temp/relabeled/HY3_3.merged.fastq > temp/all.fq
+[Tue Sep  9 21:01:40 2025]
+Finished jobid: 14 (Rule: merge_samples)
+20 of 40 steps (50%) done
+Removing temporary output temp/relabeled/HY1_1.merged.fastq.
+Removing temporary output temp/relabeled/HY1_2.merged.fastq.
+Removing temporary output temp/relabeled/HY1_3.merged.fastq.
+Removing temporary output temp/relabeled/HY2_1.merged.fastq.
+Removing temporary output temp/relabeled/HY2_2.merged.fastq.
+Removing temporary output temp/relabeled/HY2_3.merged.fastq.
+Removing temporary output temp/relabeled/HY3_1.merged.fastq.
+Removing temporary output temp/relabeled/HY3_2.merged.fastq.
+Removing temporary output temp/relabeled/HY3_3.merged.fastq.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:01:40 2025]
+localrule cutadapt_filter:
+    input: temp/all.fq
+    output: temp/filtered.fq
+    jobid: 13
+    reason: Missing output files: temp/filtered.fq; Input files updated by another job: temp/all.fq
+    resources: tmpdir=/tmp
+Shell command: 
+        cutadapt -g "AGAGTTTGATCCTGGCTCAG...AAGTCSTAACAAGGTADCCSTA"             --error-rate=0.1             -j 8             --discard-untrimmed             -o temp/filtered.fq temp/all.fq
+        
+[Tue Sep  9 21:02:00 2025]
+Finished jobid: 13 (Rule: cutadapt_filter)
+21 of 40 steps (52%) done
+Removing temporary output temp/all.fq.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:02:01 2025]
+localrule fastq_to_fasta:
+    input: temp/filtered.fq
+    output: temp/filtered.fa
+    jobid: 12
+    reason: Missing output files: temp/filtered.fa; Input files updated by another job: temp/filtered.fq
+    resources: tmpdir=/tmp
+Shell command: 
+        vsearch --fastx_filter temp/filtered.fq             --fastq_minlen 1000             --fastq_maxlen 1800             --fastaout temp/filtered.fa             --fastq_qmax 93
+        
+[Tue Sep  9 21:02:15 2025]
+Finished jobid: 12 (Rule: fastq_to_fasta)
+22 of 40 steps (55%) done
+Removing temporary output temp/filtered.fq.
+Select jobs to execute...
+Execute 2 jobs...
+[Tue Sep  9 21:02:15 2025]
+localrule dereplicate:
+    input: temp/filtered.fa
+    output: temp/uniques.fa
+    jobid: 30
+    reason: Missing output files: temp/uniques.fa; Input files updated by another job: temp/filtered.fa
+    resources: tmpdir=/tmp
+Shell command: 
+        vsearch --derep_fulllength temp/filtered.fa             --fasta_width 0             --sizeout             --relabel Uni_             --output temp/uniques.fa             --minuniquesize 1             --threads 8
+        
+[Tue Sep  9 21:02:15 2025]
+localrule filtered_stats:
+    input: temp/filtered.fa
+    output: results/qc/filtered_stats.txt
+    jobid: 11
+    reason: Input files updated by another job: temp/filtered.fa
+    resources: tmpdir=/tmp
+Shell command: seqkit stat temp/filtered.fa > results/qc/filtered_stats.txt
+[Tue Sep  9 21:02:16 2025]
+Finished jobid: 11 (Rule: filtered_stats)
+23 of 40 steps (57%) done
+[Tue Sep  9 21:02:18 2025]
+Finished jobid: 30 (Rule: dereplicate)
+24 of 40 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:02:19 2025]
+localrule denoise_asv:
+    input: temp/uniques.fa
+    output: temp/zotus.fa
+    jobid: 29
+    reason: Missing output files: temp/zotus.fa; Input files updated by another job: temp/uniques.fa
+    resources: tmpdir=/tmp
+Shell command: usearch -unoise3 temp/uniques.fa -minsize 1 -zotus temp/zotus.fa
+Terminating processes on user request, this might take some time.
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 184:
+Command 'set -euo pipefail;  usearch -unoise3 temp/uniques.fa -minsize 1 -zotus temp/zotus.fa' died with <Signals.SIGINT: 2>.
+[Tue Sep  9 21:04:53 2025]
+Error in rule denoise_asv:
+    message: None
+    jobid: 29
+    input: temp/uniques.fa
+    output: temp/zotus.fa
+    shell:
+        usearch -unoise3 temp/uniques.fa -minsize 1 -zotus temp/zotus.fa
+        (command exited with non-zero exit code)
+Complete log(s): /mnt/d/EasyAmplicon2/snakemake/.snakemake/log/2025-09-09T210130.860768.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

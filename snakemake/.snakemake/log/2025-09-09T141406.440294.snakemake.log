@@ -1,0 +1,383 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+all                         1
+alpha_diversity             1
+alpha_rarefaction           1
+beta_diversity              1
+build_feature_table         1
+build_tree                  1
+clean_feature_table         1
+cutadapt_filter             1
+decompress_fastq            9
+denoise_asv                 1
+dereplicate                 1
+fastq_to_fasta              1
+filter_bacteria             1
+filtered_stats              1
+format_taxonomy             1
+merge_samples               1
+rarefy_table                1
+relabel_sequences           9
+remove_chimeras             1
+rename_asvs                 1
+seqkit_stats                1
+summary_report              1
+taxonomic_annotation        1
+taxonomic_summary           1
+total                      40
+
+Select jobs to execute...
+Execute 8 jobs...
+[Tue Sep  9 14:14:06 2025]
+localrule decompress_fastq:
+    input: seq/HY1_3.fq.gz
+    output: temp/decompressed/HY1_3.fq
+    jobid: 4
+    reason: Missing output files: temp/decompressed/HY1_3.fq
+    wildcards: sample=HY1_3
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY1_3.fq.gz > temp/decompressed/HY1_3.fq
+[Tue Sep  9 14:14:06 2025]
+localrule decompress_fastq:
+    input: seq/HY2_3.fq.gz
+    output: temp/decompressed/HY2_3.fq
+    jobid: 7
+    reason: Missing output files: temp/decompressed/HY2_3.fq
+    wildcards: sample=HY2_3
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY2_3.fq.gz > temp/decompressed/HY2_3.fq
+[Tue Sep  9 14:14:06 2025]
+localrule decompress_fastq:
+    input: seq/HY1_2.fq.gz
+    output: temp/decompressed/HY1_2.fq
+    jobid: 3
+    reason: Missing output files: temp/decompressed/HY1_2.fq
+    wildcards: sample=HY1_2
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY1_2.fq.gz > temp/decompressed/HY1_2.fq
+[Tue Sep  9 14:14:06 2025]
+localrule decompress_fastq:
+    input: seq/HY3_3.fq.gz
+    output: temp/decompressed/HY3_3.fq
+    jobid: 10
+    reason: Missing output files: temp/decompressed/HY3_3.fq
+    wildcards: sample=HY3_3
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY3_3.fq.gz > temp/decompressed/HY3_3.fq
+[Tue Sep  9 14:14:06 2025]
+localrule decompress_fastq:
+    input: seq/HY2_2.fq.gz
+    output: temp/decompressed/HY2_2.fq
+    jobid: 6
+    reason: Missing output files: temp/decompressed/HY2_2.fq
+    wildcards: sample=HY2_2
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY2_2.fq.gz > temp/decompressed/HY2_2.fq
+[Tue Sep  9 14:14:07 2025]
+localrule decompress_fastq:
+    input: seq/HY1_1.fq.gz
+    output: temp/decompressed/HY1_1.fq
+    jobid: 2
+    reason: Missing output files: temp/decompressed/HY1_1.fq
+    wildcards: sample=HY1_1
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY1_1.fq.gz > temp/decompressed/HY1_1.fq
+[Tue Sep  9 14:14:07 2025]
+localrule decompress_fastq:
+    input: seq/HY2_1.fq.gz
+    output: temp/decompressed/HY2_1.fq
+    jobid: 5
+    reason: Missing output files: temp/decompressed/HY2_1.fq
+    wildcards: sample=HY2_1
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY2_1.fq.gz > temp/decompressed/HY2_1.fq
+[Tue Sep  9 14:14:07 2025]
+localrule decompress_fastq:
+    input: seq/HY3_2.fq.gz
+    output: temp/decompressed/HY3_2.fq
+    jobid: 9
+    reason: Missing output files: temp/decompressed/HY3_2.fq
+    wildcards: sample=HY3_2
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY3_2.fq.gz > temp/decompressed/HY3_2.fq
+[Tue Sep  9 14:14:07 2025]
+Finished jobid: 4 (Rule: decompress_fastq)
+1 of 40 steps (2%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 14:14:07 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY1_3.fq
+    output: temp/relabeled/HY1_3.merged.fastq
+    jobid: 17
+    reason: Missing output files: temp/relabeled/HY1_3.merged.fastq; Input files updated by another job: temp/decompressed/HY1_3.fq
+    wildcards: sample=HY1_3
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY1_3.fq -fastqout temp/relabeled/HY1_3.merged.fastq -prefix HY1_3.
+[Tue Sep  9 14:14:07 2025]
+Finished jobid: 3 (Rule: decompress_fastq)
+2 of 40 steps (5%) done
+[Tue Sep  9 14:14:07 2025]
+Finished jobid: 7 (Rule: decompress_fastq)
+3 of 40 steps (8%) done
+[Tue Sep  9 14:14:07 2025]
+Finished jobid: 10 (Rule: decompress_fastq)
+4 of 40 steps (10%) done
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 97:
+Command 'set -euo pipefail;  usearch -fastx_relabel temp/decompressed/HY1_3.fq -fastqout temp/relabeled/HY1_3.merged.fastq -prefix HY1_3.' returned non-zero exit status 126.
+[Tue Sep  9 14:14:07 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 17
+    input: temp/decompressed/HY1_3.fq
+    output: temp/relabeled/HY1_3.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY1_3.fq -fastqout temp/relabeled/HY1_3.merged.fastq -prefix HY1_3.
+        (command exited with non-zero exit code)
+[Tue Sep  9 14:14:07 2025]
+Finished jobid: 2 (Rule: decompress_fastq)
+5 of 40 steps (12%) done
+[Tue Sep  9 14:14:07 2025]
+Finished jobid: 9 (Rule: decompress_fastq)
+6 of 40 steps (15%) done
+[Tue Sep  9 14:14:07 2025]
+Finished jobid: 6 (Rule: decompress_fastq)
+7 of 40 steps (18%) done
+[Tue Sep  9 14:14:08 2025]
+Finished jobid: 5 (Rule: decompress_fastq)
+8 of 40 steps (20%) done
+Select jobs to execute...
+Execute 7 jobs...
+[Tue Sep  9 14:14:08 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY2_3.fq
+    output: temp/relabeled/HY2_3.merged.fastq
+    jobid: 20
+    reason: Missing output files: temp/relabeled/HY2_3.merged.fastq; Input files updated by another job: temp/decompressed/HY2_3.fq
+    wildcards: sample=HY2_3
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY2_3.fq -fastqout temp/relabeled/HY2_3.merged.fastq -prefix HY2_3.
+[Tue Sep  9 14:14:08 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY1_2.fq
+    output: temp/relabeled/HY1_2.merged.fastq
+    jobid: 16
+    reason: Missing output files: temp/relabeled/HY1_2.merged.fastq; Input files updated by another job: temp/decompressed/HY1_2.fq
+    wildcards: sample=HY1_2
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY1_2.fq -fastqout temp/relabeled/HY1_2.merged.fastq -prefix HY1_2.
+[Tue Sep  9 14:14:08 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY3_3.fq
+    output: temp/relabeled/HY3_3.merged.fastq
+    jobid: 23
+    reason: Missing output files: temp/relabeled/HY3_3.merged.fastq; Input files updated by another job: temp/decompressed/HY3_3.fq
+    wildcards: sample=HY3_3
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY3_3.fq -fastqout temp/relabeled/HY3_3.merged.fastq -prefix HY3_3.
+[Tue Sep  9 14:14:08 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY2_2.fq
+    output: temp/relabeled/HY2_2.merged.fastq
+    jobid: 19
+    reason: Missing output files: temp/relabeled/HY2_2.merged.fastq; Input files updated by another job: temp/decompressed/HY2_2.fq
+    wildcards: sample=HY2_2
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY2_2.fq -fastqout temp/relabeled/HY2_2.merged.fastq -prefix HY2_2.
+[Tue Sep  9 14:14:08 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY1_1.fq
+    output: temp/relabeled/HY1_1.merged.fastq
+    jobid: 15
+    reason: Missing output files: temp/relabeled/HY1_1.merged.fastq; Input files updated by another job: temp/decompressed/HY1_1.fq
+    wildcards: sample=HY1_1
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY1_1.fq -fastqout temp/relabeled/HY1_1.merged.fastq -prefix HY1_1.
+[Tue Sep  9 14:14:08 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY3_2.fq
+    output: temp/relabeled/HY3_2.merged.fastq
+    jobid: 22
+    reason: Missing output files: temp/relabeled/HY3_2.merged.fastq; Input files updated by another job: temp/decompressed/HY3_2.fq
+    wildcards: sample=HY3_2
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY3_2.fq -fastqout temp/relabeled/HY3_2.merged.fastq -prefix HY3_2.
+[Tue Sep  9 14:14:08 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY2_1.fq
+    output: temp/relabeled/HY2_1.merged.fastq
+    jobid: 18
+    reason: Missing output files: temp/relabeled/HY2_1.merged.fastq; Input files updated by another job: temp/decompressed/HY2_1.fq
+    wildcards: sample=HY2_1
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY2_1.fq -fastqout temp/relabeled/HY2_1.merged.fastq -prefix HY2_1.
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 97:
+Command 'set -euo pipefail;  usearch -fastx_relabel temp/decompressed/HY2_3.fq -fastqout temp/relabeled/HY2_3.merged.fastq -prefix HY2_3.' returned non-zero exit status 126.
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 20
+    input: temp/decompressed/HY2_3.fq
+    output: temp/relabeled/HY2_3.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY2_3.fq -fastqout temp/relabeled/HY2_3.merged.fastq -prefix HY2_3.
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 97:
+Command 'set -euo pipefail;  usearch -fastx_relabel temp/decompressed/HY1_2.fq -fastqout temp/relabeled/HY1_2.merged.fastq -prefix HY1_2.' returned non-zero exit status 126.
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 16
+    input: temp/decompressed/HY1_2.fq
+    output: temp/relabeled/HY1_2.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY1_2.fq -fastqout temp/relabeled/HY1_2.merged.fastq -prefix HY1_2.
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 97:
+Command 'set -euo pipefail;  usearch -fastx_relabel temp/decompressed/HY3_3.fq -fastqout temp/relabeled/HY3_3.merged.fastq -prefix HY3_3.' returned non-zero exit status 126.
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 23
+    input: temp/decompressed/HY3_3.fq
+    output: temp/relabeled/HY3_3.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY3_3.fq -fastqout temp/relabeled/HY3_3.merged.fastq -prefix HY3_3.
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 97:
+Command 'set -euo pipefail;  usearch -fastx_relabel temp/decompressed/HY2_2.fq -fastqout temp/relabeled/HY2_2.merged.fastq -prefix HY2_2.' returned non-zero exit status 126.
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 19
+    input: temp/decompressed/HY2_2.fq
+    output: temp/relabeled/HY2_2.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY2_2.fq -fastqout temp/relabeled/HY2_2.merged.fastq -prefix HY2_2.
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 97:
+Command 'set -euo pipefail;  usearch -fastx_relabel temp/decompressed/HY1_1.fq -fastqout temp/relabeled/HY1_1.merged.fastq -prefix HY1_1.' returned non-zero exit status 126.
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 15
+    input: temp/decompressed/HY1_1.fq
+    output: temp/relabeled/HY1_1.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY1_1.fq -fastqout temp/relabeled/HY1_1.merged.fastq -prefix HY1_1.
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 97:
+Command 'set -euo pipefail;  usearch -fastx_relabel temp/decompressed/HY3_2.fq -fastqout temp/relabeled/HY3_2.merged.fastq -prefix HY3_2.' returned non-zero exit status 126.
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 22
+    input: temp/decompressed/HY3_2.fq
+    output: temp/relabeled/HY3_2.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY3_2.fq -fastqout temp/relabeled/HY3_2.merged.fastq -prefix HY3_2.
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 97:
+Command 'set -euo pipefail;  usearch -fastx_relabel temp/decompressed/HY2_1.fq -fastqout temp/relabeled/HY2_1.merged.fastq -prefix HY2_1.' returned non-zero exit status 126.
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 18
+    input: temp/decompressed/HY2_1.fq
+    output: temp/relabeled/HY2_1.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY2_1.fq -fastqout temp/relabeled/HY2_1.merged.fastq -prefix HY2_1.
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 17
+    input: temp/decompressed/HY1_3.fq
+    output: temp/relabeled/HY1_3.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY1_3.fq -fastqout temp/relabeled/HY1_3.merged.fastq -prefix HY1_3.
+        (command exited with non-zero exit code)
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 20
+    input: temp/decompressed/HY2_3.fq
+    output: temp/relabeled/HY2_3.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY2_3.fq -fastqout temp/relabeled/HY2_3.merged.fastq -prefix HY2_3.
+        (command exited with non-zero exit code)
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 16
+    input: temp/decompressed/HY1_2.fq
+    output: temp/relabeled/HY1_2.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY1_2.fq -fastqout temp/relabeled/HY1_2.merged.fastq -prefix HY1_2.
+        (command exited with non-zero exit code)
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 23
+    input: temp/decompressed/HY3_3.fq
+    output: temp/relabeled/HY3_3.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY3_3.fq -fastqout temp/relabeled/HY3_3.merged.fastq -prefix HY3_3.
+        (command exited with non-zero exit code)
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 15
+    input: temp/decompressed/HY1_1.fq
+    output: temp/relabeled/HY1_1.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY1_1.fq -fastqout temp/relabeled/HY1_1.merged.fastq -prefix HY1_1.
+        (command exited with non-zero exit code)
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 19
+    input: temp/decompressed/HY2_2.fq
+    output: temp/relabeled/HY2_2.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY2_2.fq -fastqout temp/relabeled/HY2_2.merged.fastq -prefix HY2_2.
+        (command exited with non-zero exit code)
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 22
+    input: temp/decompressed/HY3_2.fq
+    output: temp/relabeled/HY3_2.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY3_2.fq -fastqout temp/relabeled/HY3_2.merged.fastq -prefix HY3_2.
+        (command exited with non-zero exit code)
+[Tue Sep  9 14:14:08 2025]
+Error in rule relabel_sequences:
+    message: None
+    jobid: 18
+    input: temp/decompressed/HY2_1.fq
+    output: temp/relabeled/HY2_1.merged.fastq
+    shell:
+        usearch -fastx_relabel temp/decompressed/HY2_1.fq -fastqout temp/relabeled/HY2_1.merged.fastq -prefix HY2_1.
+        (command exited with non-zero exit code)
+Complete log(s): /mnt/d/EasyAmplicon2/snakemake/.snakemake/log/2025-09-09T141406.440294.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

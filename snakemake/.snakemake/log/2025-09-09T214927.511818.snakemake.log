@@ -1,0 +1,51 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+alpha_diversity          1
+alpha_rarefaction        1
+beta_diversity           1
+build_tree               1
+filter_bacteria          1
+format_taxonomy          1
+rarefy_table             1
+summary_report           1
+taxonomic_summary        1
+total                   10
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:49:27 2025]
+localrule filter_bacteria:
+    input: results/feature_table/otutab_clean.txt, results/taxonomy/otus_raw.sintax
+    output: results/feature_table/otutab.txt, results/taxonomy/otus.sintax, results/feature_table/otus.fa, results/qc/contamination_stats.txt
+    jobid: 24
+    reason: Missing output files: results/feature_table/otus.fa, results/feature_table/otutab.txt, results/taxonomy/otus.sintax; Code has changed since last execution
+    resources: tmpdir=/tmp
+RuleException:
+FileNotFoundError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 272:
+[Errno 2] No such file or directory: '/mnt/d/EasyAmplicon2/snakemake/scripts/otutab_filter_nonBac.R'
+[Tue Sep  9 21:49:27 2025]
+Error in rule filter_bacteria:
+    message: None
+    jobid: 24
+    input: results/feature_table/otutab_clean.txt, results/taxonomy/otus_raw.sintax
+    output: results/feature_table/otutab.txt, results/taxonomy/otus.sintax, results/feature_table/otus.fa, results/qc/contamination_stats.txt
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Tue Sep  9 21:49:28 2025]
+Error in rule filter_bacteria:
+    message: None
+    jobid: 24
+    input: results/feature_table/otutab_clean.txt, results/taxonomy/otus_raw.sintax
+    output: results/feature_table/otutab.txt, results/taxonomy/otus.sintax, results/feature_table/otus.fa, results/qc/contamination_stats.txt
+Complete log(s): /mnt/d/EasyAmplicon2/snakemake/.snakemake/log/2025-09-09T214927.511818.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
