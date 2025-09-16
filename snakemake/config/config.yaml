@@ -1,0 +1,126 @@
+# EasyAmplicon2 Snakemake Pipeline Configuration
+# 三代扩增子分析流程配置文件
+
+# Sample metadata file (must contain SampleID column)
+# 样本元数据文件 (必须包含SampleID列)
+metadata: "metadata.txt"
+
+# Number of threads for parallel processing
+# 并行处理的线程数
+threads: 8
+
+# Input file settings
+# 输入文件设置
+compressed_input: true  # Whether input files are compressed (.gz)
+input_format: "fq"      # Input file format: fq or fastq
+
+# Primer sequences for removal
+# 用于去除的引物序列
+primers:
+  forward: "AGAGTTTGATCCTGGCTCAG"      # 27F primer
+  reverse: "AAGTCSTAACAAGGTADCCSTA"    # 1492R primer (reverse complement will be used)
+
+# Cutadapt parameters
+# Cutadapt参数
+cutadapt:
+  error_rate: 0.1        # Maximum allowed error rate
+  min_length: 1000       # Minimum length after adapter removal
+  max_length: 1800       # Maximum length after adapter removal
+
+# Quality filtering parameters
+# 质量过滤参数
+filter:
+  min_length: 1000       # Minimum sequence length
+  max_length: 1800       # Maximum sequence length
+  max_ee: 2.0           # Maximum expected errors
+
+# Dereplication parameters
+# 去冗余参数
+derep:
+  minsize: 2             # Minimum abundance for unique sequences
+
+# Denoising/clustering parameters
+# 去噪/聚类参数
+denoise:
+  minsize: 2             # Minimum abundance for ASVs
+  method: "unoise3"      # Method: unoise3 (ASV) or cluster_otus (OTU)
+
+# Chimera removal
+# 嵌合体去除
+remove_chimeras: false   # Whether to perform reference-based chimera removal
+
+# Feature table construction
+# 特征表构建
+feature_table:
+  identity: 0.97         # Identity threshold for OTU table construction
+
+# Taxonomic annotation
+# 物种注释
+taxonomy:
+  confidence_cutoff: 0.1   # Confidence cutoff (0 for best hit, 0.6-0.8 recommended)
+
+# Rarefaction parameters
+# 稀释参数
+rarefaction:
+  depth: 7333            # Rarefaction depth (adjust based on your data)
+  seed: 1                # Random seed for reproducibility
+
+# Database paths
+# 数据库路径
+databases:
+  # SILVA database for chimera removal (FASTA format)
+  # 用于去嵌合的SILVA数据库 (FASTA格式)
+  silva_fasta: "/mnt/c/EasyMicrobiome/usearch/sintax_reference_database_complete.fasta"
+  
+  # Taxonomy database for classification
+  # 用于分类注释的数据库
+  taxonomy_db: "/mnt/c/EasyMicrobiome/usearch/sintax_reference_database_complete.fasta"
+  
+  # Greengenes database for functional prediction
+  # 用于功能预测的Greengenes数据库
+  greengenes: "/mnt/c/EasyMicrobiome/gg/97_otus.fa"
+
+# Optional analysis modules
+# 可选分析模块
+run_picrust2: false      # Run PICRUSt2 functional prediction
+build_tree: false       # Build phylogenetic tree for high-abundance OTUs
+
+# Tree building parameters (if build_tree is true)
+# 建树参数 (如果build_tree为true)
+tree:
+  min_abundance: 0.002   # Minimum relative abundance for tree construction
+  method: "fasttree"     # Method: fasttree or iqtree
+
+# PICRUSt2 parameters (if run_picrust2 is true)
+# PICRUSt2参数 (如果run_picrust2为true)
+picrust2:
+  memory: "16G"          # Memory requirement
+  reference_dir: "/path/to/picrust2_default_dir"
+
+# Output options
+# 输出选项
+output:
+  keep_intermediates: false  # Keep intermediate files
+  compress_output: true      # Compress output files
+
+# Quality control thresholds
+# 质量控制阈值
+qc:
+  min_samples: 1         # Minimum number of samples
+  min_features: 10       # Minimum number of features per sample
+  min_frequency: 1       # Minimum feature frequency
+
+# Resource allocation for cluster execution
+# 集群执行的资源分配
+resources:
+  default:
+    mem_mb: 4000
+    runtime: 120
+  
+  large_memory:
+    mem_mb: 16000
+    runtime: 300
+  
+  long_runtime:
+    mem_mb: 8000
+    runtime: 600

@@ -1,0 +1,47 @@
+name: easyamplicon2
+channels:
+  - conda-forge
+  - bioconda
+  - r
+  - defaults
+dependencies:
+  # Python and core tools
+  - python>=3.8
+  - snakemake>=7.0
+  - pandas
+  - pyyaml
+  
+  # Sequence processing tools
+  - seqkit
+  - csvtk
+  - cutadapt>=4.0
+  - vsearch>=2.22.1
+  
+  # R and statistical packages
+  - r-base>=4.0
+  - r-vegan
+  - r-ggplot2
+  - r-dplyr
+  - r-tidyr
+  - r-readr
+  - r-argparse
+  - r-stringr
+  - bioconductor-dada2
+  
+  # Phylogenetic analysis tools
+  - muscle
+  - fasttree
+  - iqtree
+  
+  # Optional functional prediction (uncomment if needed)
+  # - picrust2>=2.5.0
+  
+  # Additional utilities
+  - gzip
+  - unzip
+  - wget
+  - curl
+  
+  # Note: USEARCH needs to be installed manually from:
+  # https://www.drive5.com/usearch/
+  # After installation, add the binary to your PATH

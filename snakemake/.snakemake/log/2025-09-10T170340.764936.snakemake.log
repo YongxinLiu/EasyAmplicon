@@ -1,0 +1,72 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+alpha_diversity          1
+alpha_rarefaction        1
+beta_diversity           1
+format_taxonomy          1
+rarefy_otutab            1
+summary_report           1
+taxonomic_summary        1
+total                    8
+
+Select jobs to execute...
+Execute 2 jobs...
+[Wed Sep 10 17:03:41 2025]
+localrule format_taxonomy:
+    input: results/taxonomy/otus_raw.sintax
+    output: results/taxonomy/taxonomy.txt
+    jobid: 31
+    reason: Missing output files: results/taxonomy/taxonomy.txt
+    resources: tmpdir=/tmp
+[Wed Sep 10 17:03:41 2025]
+localrule rarefy_otutab:
+    input: results/feature_table/otutab_clean.txt
+    output: results/feature_table/otutab_rare.txt, results/alpha_diversity/alpha_basic.txt
+    jobid: 33
+    reason: Missing output files: results/feature_table/otutab_rare.txt; Params have changed since last execution: Union of exclusive params before and now across all output: before: 39 now: 7333 
+    resources: tmpdir=/tmp
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 268:
+Command 'set -euo pipefail;  
+        # Convert sintax format to 8-column taxonomy table
+        awk 'BEGIN{OFS=FS="\t"}{
+            delete a; 
+            a["k"]="Unassigned";a["p"]="Unassigned";a["c"]="Unassigned";
+            a["o"]="Unassigned";a["f"]="Unassigned";a["g"]="Unassigned";a["s"]="Unassigned";
+            split($2,x,";");
+            for(i in x){split(x[i],b,"__");a[b[1]]=b[2];} 
+            print $1,a["k"],a["p"],a["c"],a["o"],a["f"],a["g"],a["s"];
+        }' <(cut -f 1,4 results/taxonomy/otus_raw.sintax | sed 's/\td/\tk/;s/:/__/g;s/,/;/g;s/"//g') > temp/otus.tax
+        
+        sed 's/;/\t/g;s/.__//g;' temp/otus.tax | cut -f 1-8 |             sed '1 s/^/OTUID\tKingdom\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\n/' > results/taxonomy/taxonomy.txt' returned non-zero exit status 1.
+[Wed Sep 10 17:03:41 2025]
+Error in rule format_taxonomy:
+    message: None
+    jobid: 31
+    input: results/taxonomy/otus_raw.sintax
+    output: results/taxonomy/taxonomy.txt
+    shell:
+        
+        # Convert sintax format to 8-column taxonomy table
+        awk 'BEGIN{OFS=FS="\t"}{
+            delete a; 
+            a["k"]="Unassigned";a["p"]="Unassigned";a["c"]="Unassigned";
+            a["o"]="Unassigned";a["f"]="Unassigned";a["g"]="Unassigned";a["s"]="Unassigned";
+            split($2,x,";");
+            for(i in x){split(x[i],b,"__");a[b[1]]=b[2];} 
+            print $1,a["k"],a["p"],a["c"],a["o"],a["f"],a["g"],a["s"];
+        }' <(cut -f 1,4 results/taxonomy/otus_raw.sintax | sed 's/\td/\tk/;s/:/__/g;s/,/;/g;s/"//g') > temp/otus.tax
+        
+        sed 's/;/\t/g;s/.__//g;' temp/otus.tax | cut -f 1-8 |             sed '1 s/^/OTUID\tKingdom\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\n/' > results/taxonomy/taxonomy.txt
+        
+        (command exited with non-zero exit code)
+Terminating processes on user request, this might take some time.

@@ -1,0 +1,13 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+MissingInputException in rule all in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 28:
+Missing input files for rule all:
+    affected files:
+        results/taxonomic_summary/sum_o.txt
+        results/taxonomic_summary/sum_p.txt
+        results/taxonomic_summary/sum_g.txt
+        results/taxonomic_summary/sum_s.txt
+        results/taxonomic_summary/sum_c.txt
+        results/taxonomic_summary/sum_f.txt

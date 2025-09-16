@@ -1,0 +1,49 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Creating conda environment environment.yaml...
+Downloading and installing remote packages.
+CreateCondaEnvironmentException:
+Could not create conda environment from /mnt/d/EasyAmplicon2/snakemake/environment.yaml:
+Command:
+conda env create --quiet --no-default-packages --file "/mnt/d/EasyAmplicon2/snakemake/.snakemake/conda/0a64a538dfe177afafc64db94e4ca0fb_.yaml" --prefix "/mnt/d/EasyAmplicon2/snakemake/.snakemake/conda/0a64a538dfe177afafc64db94e4ca0fb_"
+Output:
+2 channel Terms of Service accepted
+Channels:
+ - conda-forge
+ - bioconda
+ - r
+ - defaults
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpo
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f6225aaa710>: Failed to establish a new connection: [Errno 111] Connection refused')': /r/noarch/repodata.json.zst
+
+Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f6225aa9a90>: Failed to establish a new connection: [Errno 111] Connection refused')': /bioconda/noarch/repodata.json.zst
+
+Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f6224118980>: Failed to establish a new connection: [Errno 111] Connection refused')': /bioconda/linux-64/repodata.json.zst
+
+Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='conda.anaconda.org', port=443): Read timed out. (read timeout=9.15)")': /bioconda/noarch/repodata.json.zst
+
+Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='conda.anaconda.org', port=443): Read timed out. (read timeout=9.15)")': /r/noarch/repodata.json.zst
+
+done
+Solving environment: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+ERROR conda.core.link:_execute(1029): An error occurred while installing package 'conda-forge::ca-certificates-2025.8.3-hbd8a1cb_0'.
+Rolling back transaction: ...working... done
+
+[Errno 1] Operation not permitted: 'cacert.pem' -> '/mnt/d/EasyAmplicon2/snakemake/.snakemake/conda/0a64a538dfe177afafc64db94e4ca0fb_/ssl/cert.pem'
+()
+
+

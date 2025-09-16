@@ -1,0 +1,77 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+all                   1
+sintax_summary        1
+total                 2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Sep 11 09:55:00 2025]
+localrule sintax_summary:
+    input: results/taxonomy/otus_raw.sintax, results/feature_table/otutab_rare.txt
+    output: results/taxonomic_summary/sum_p.txt, results/taxonomic_summary/sum_c.txt, results/taxonomic_summary/sum_o.txt, results/taxonomic_summary/sum_f.txt, results/taxonomic_summary/sum_g.txt, results/taxonomic_summary/sum_s.txt
+    jobid: 37
+    reason: Missing output files: results/taxonomic_summary/sum_p.txt, results/taxonomic_summary/sum_g.txt, results/taxonomic_summary/sum_f.txt, results/taxonomic_summary/sum_s.txt, results/taxonomic_summary/sum_c.txt, results/taxonomic_summary/sum_o.txt; Code has changed since last execution
+    resources: tmpdir=/tmp
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 374:
+Command 'set -euo pipefail;  
+        mkdir -p results/taxonomic_summary
+        
+        for rank in p c o f g s; do
+            usearch -sintax_summary results/taxonomy/otus_raw.sintax                 -otutabin results/feature_table/otutab_rare.txt                 -rank $rank                 -output results/taxonomic_summary/sum_${rank}.txt
+        done
+        
+        # Clean up taxonomy formatting
+        sed -i 's/(//g;s/)//g;s/"//g;s/\#//g;s/\/Chloroplast//g' results/taxonomic_summary/sum_*.txt' returned non-zero exit status 1.
+[Thu Sep 11 09:55:01 2025]
+Error in rule sintax_summary:
+    message: None
+    jobid: 37
+    input: results/taxonomy/otus_raw.sintax, results/feature_table/otutab_rare.txt
+    output: results/taxonomic_summary/sum_p.txt, results/taxonomic_summary/sum_c.txt, results/taxonomic_summary/sum_o.txt, results/taxonomic_summary/sum_f.txt, results/taxonomic_summary/sum_g.txt, results/taxonomic_summary/sum_s.txt
+    shell:
+        
+        mkdir -p results/taxonomic_summary
+        
+        for rank in p c o f g s; do
+            usearch -sintax_summary results/taxonomy/otus_raw.sintax                 -otutabin results/feature_table/otutab_rare.txt                 -rank $rank                 -output results/taxonomic_summary/sum_${rank}.txt
+        done
+        
+        # Clean up taxonomy formatting
+        sed -i 's/(//g;s/)//g;s/"//g;s/\#//g;s/\/Chloroplast//g' results/taxonomic_summary/sum_*.txt
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job sintax_summary since they might be corrupted:
+results/taxonomic_summary/sum_p.txt
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Thu Sep 11 09:55:01 2025]
+Error in rule sintax_summary:
+    message: None
+    jobid: 37
+    input: results/taxonomy/otus_raw.sintax, results/feature_table/otutab_rare.txt
+    output: results/taxonomic_summary/sum_p.txt, results/taxonomic_summary/sum_c.txt, results/taxonomic_summary/sum_o.txt, results/taxonomic_summary/sum_f.txt, results/taxonomic_summary/sum_g.txt, results/taxonomic_summary/sum_s.txt
+    shell:
+        
+        mkdir -p results/taxonomic_summary
+        
+        for rank in p c o f g s; do
+            usearch -sintax_summary results/taxonomy/otus_raw.sintax                 -otutabin results/feature_table/otutab_rare.txt                 -rank $rank                 -output results/taxonomic_summary/sum_${rank}.txt
+        done
+        
+        # Clean up taxonomy formatting
+        sed -i 's/(//g;s/)//g;s/"//g;s/\#//g;s/\/Chloroplast//g' results/taxonomic_summary/sum_*.txt
+        
+        (command exited with non-zero exit code)
+Complete log(s): /mnt/d/EasyAmplicon2/snakemake/.snakemake/log/2025-09-11T095500.518537.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
