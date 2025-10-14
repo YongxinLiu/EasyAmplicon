@@ -14,8 +14,12 @@
     # 设置工作(work directory, wd)和软件数据库(database, db)目录
     # 添加环境变量，并进入工作目录 Add environmental variables and enter work directory
     # **每次打开Rstudio必须运行下面4行 Run it**，可选替换${db}为EasyMicrobiome安装位置
-    wd=/c/amplicon2
-    db=/c/EasyMicrobiome
+    #wd=/c/amplicon2
+    #wd=/mnt/f/amplicon22/EasyAmplicon2
+    wd=/f/amplicon22/EasyAmplicon2
+    #db=/c/EasyMicrobiome
+    #db=/mnt/f/amplicon22/EasyMicrobiome-main
+    db=/f/amplicon22/EasyMicrobiome-main
     PATH=$PATH:${db}/win
     cd ${wd}
     
@@ -262,7 +266,7 @@
     # 修改颜色--color ggplot, manual1(30), Paired(12) or Set3(12)
 
     # 批量绘制输入包括p/c/o/f/g共5级
-    for i in p c o f g s; do
+    for i in p c o f g; do
     Rscript ${db}/script/tax_stackplot.R \
       --input result/tax/sum_${i}.txt --design result/metadata.txt \
       --group Group -t 10 --output result/tax/sum_${i}.stackplot \
@@ -678,7 +682,16 @@
     --taxlevel Phylum \
     --output result/compare/ternary_p.pdf   \
     --topn 10
-
+    
+    # Error: package or namespace load failed for ‘ggtern’: .onLoad failed in loadNamespace() for 'ggtern', details: call: NULL error: <ggplot2::element_line> object properties are invalid: - @lineend must be <character> or <NULL>, not S3<arrow>
+    # 遇到以上报错是因为ggplot2和ggtern软件包不匹配，需要将ggplot2和ggtern匹配到正确的版本
+    # remove.packages("ggplot2")
+    # install.packages("https://cran.r-project.org/src/contrib/Archive/ggplot2/ggplot2_3.4.4.tar.gz", repos = NULL, type = "source")
+    # library(ggplot2)
+    # remove.packages("ggtern")
+    # install.packages("https://cran.r-project.org/src/contrib/Archive/ggtern/ggtern_3.4.2.tar.gz",repos = NULL, type = "source")
+    # library(ggtern)
+    
     # PacBio data
     cd PacBio
     Rscript ${db}/script/Ternary_plot.R   \
@@ -741,32 +754,32 @@
 
     # Illumina data
     cd ..
-    compare="feces-plaque"
-    Rscript ${sd}/compare_stamp.R \
+    compare="feces-plaque"  
+    Rscript ${db}/script/compare_stamp.R \
       --input result/tax/sum_g2.txt --metadata result/metadata2.txt \
       --group Group --compare ${compare} --threshold 0.1 \
-      --method "t.test" --pvalue 0.2 --fdr "none" \
-      --width 80 --height 30 \
+      --method "wilcox" --pvalue 0.2 --fdr "none" \
+      --width 150 --height 120 \
       --output result/tax/stamp_${compare}
 
     # PacBio data
     cd PacBio
-    compare="feces-plaque"
-    Rscript ${sd}/compare_stamp.R \
-      --input result/tax/sum_g.txt --metadata result/metadata.txt \
+    compare="feces-plaque"  
+    Rscript ${db}/script/compare_stamp.R \
+      --input result/tax/sum_g2.txt --metadata result/metadata.txt \
       --group Group --compare ${compare} --threshold 0.1 \
-      --method "t.test" --pvalue 0.2 --fdr "none" \
-      --width 80 --height 30 \
+      --method "wilcox" --pvalue 0.2 --fdr "none" \
+      --width 150 --height 120 \
       --output result/tax/stamp_${compare}
-    
+      
     # Nanopore data
     cd ../Nanopore
     compare="East-Outside"
-    Rscript ${sd}/compare_stamp.R \
+    Rscript ${db}/script/compare_stamp.R \
       --input result/tax/sum_g2.txt --metadata result/metadata.txt \
       --group Group --compare ${compare} --threshold 0.1 \
-      --method "t.test" --pvalue 0.2 --fdr "none" \
-      --width 80 --height 30 \
+      --method "wilcox" --pvalue 0.2 --fdr "none" \
+      --width 150 --height 120 \
       --output result/tax/stamp_${compare}
     
 ```
@@ -797,6 +810,7 @@
 ### Redundancy analysis (RDA) 冗余分析
 
     # PacBio data
+    # 软件按照可能需要一些时间
     Rscript ${db}/script/RDA_microeco.R \
       --input result/tax/otutab.txt \
       --metadata result/tax/metadata.txt \
