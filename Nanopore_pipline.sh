@@ -58,6 +58,39 @@
 
 ### 1.2. 测序数据
 ### 1.2. Sequencing data
+    # Nanopore 原始数据处理（以 FAST5 格式为例，可选）
+    # Nanopore Raw Data Processing (FAST5 Example, Optional)
+    ---
+    ## Guppy 软件的下载安装
+    ## Guppy Installation
+    ### 第一步：下载 Guppy
+    从 Oxford Nanopore 官网下载安装包：  
+    Download the Guppy installer from the official Oxford Nanopore website:  
+    [https://cdn.oxfordnanoportal.com/software/analysis/ont-guppy-cpu-6.5.7-win64.msi](https://cdn.oxfordnanoportal.com/software/analysis/ont-guppy-cpu-6.5.7-win64.msi)
+    ---
+    ### 第二步：安装 Guppy
+    双击 `.msi` 文件并根据安装指引完成安装。安装完成后，将安装目录替换为你的实际路径，例如 `/d/guppy`：
+    Double-click the .msi file and follow the installation instructions.
+    After installation, replace /d/guppy with your actual installation path:
+    ```bash
+    mkdir -p /d/guppy
+    第三步：处理 FAST5 格式文件
+    使用 Guppy 对 FAST5 原始数据进行 basecalling，生成 .fastq 文件：
+    Step 3: Process FAST5 Files
+    Use Guppy to perform basecalling on FAST5 raw data, which will generate .fastq files:
+    /d/guppy/bin/guppy_basecaller \
+    -i fast5/ \
+    -s output \
+    --config dna_r9.4.1_450bps_fast.cfg \
+    -r \
+    --num_callers 4 \
+    --cpu_threads_per_caller 2
+    输出结果
+    运行完成后，生成的 .fastq 文件将保存在 output/ 文件夹中。
+    Output
+    The resulting .fastq files will be saved in the output/ directory.
+    ```
+
     # # 本段代码可在RStudio中Ctrl + Shift + C 取消注释“#”后运行
     # # This code block can be run in RStudio after uncommenting with Ctrl + Shift + C
     # # 测序数据下载百度网盘链接：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315；文件路径：db/amplicon/Nanopore/seq
