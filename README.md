@@ -52,7 +52,8 @@ Files description:
 All the software backup can be found in 
 
 - FTP: [Filezilla](https://filezilla-project.org/index.php) visiting FTP download.nmdc.cn in anonymous. In tools directory, you can find all the software and packages in amplicon and different system supporting such mac, win
-- Baidu Net Disk：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 
+- Baidu Net Disk：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315
+- Nature Microbiology Data Center: https://nmdc.cn/analyze/classification
 
 Please install the dependency software according with you system (Win/Mac/Linux).
 
@@ -192,4 +193,5 @@ If used this script, please cited:
 **Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
 
 Copyright 2016-2025 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
+
 
