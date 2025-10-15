@@ -1,18 +1,19 @@
 [TOC]
 
-# 易扩增子EasyAmplicon
+# 易扩增子EasyAmplicon 2
 
     # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)等
-    # 版本 Version: v1.23
-    # 更新 Update: 2025-4-11
+    # 版本 Version: v2.00
+    # 更新 Update: 2025-10-16
     # 系统要求 System requirement: Windows 10+ / Mac OS 10.12+ / Ubuntu 20.04+
     # 引文 Reference: Liu, et al. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. iMeta 2: e83. https://doi.org/10.1002/imt2.83
     # Yousuf, et al. 2024. Unveiling microbial communities with EasyAmplicon: A user-centric guide to perform amplicon sequencing data analysis. iMetaOmics 1: e42. https://doi.org/10.1002/imo2.42
+    # Hao Luo, et al. 2025. EasyAmplicon 2: Expanding PacBio and Nanopore Long Amplicon Sequencing Analysis Pipeline for Microbiome. Advanced Science 12: https://doi.org/https://doi.org/10.1002/advs.202512447
 
     # 设置工作(work directory, wd)和软件数据库(database, db)目录
     # 添加环境变量，并进入工作目录 Add environmental variables and enter work directory
     # **每次打开Rstudio必须运行下面4行 Run it**，可选替换${db}为EasyMicrobiome安装位置
-    wd=/d/A250412
+    wd=/d/amplicon2
     db=/d/EasyMicrobiome
     PATH=$PATH:${db}/win
     cd ${wd}
