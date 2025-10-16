@@ -81,7 +81,7 @@
       
     # Nanopore data
     # 输入文件，选择分组，输出文件
-    Rscript ${db}/script/beta_PCoA.R \
+    Rscript ${db}/script/beta_pcoa2.R \
       --input result/otutab.txt \
       --metadata result/metadata.txt \
       --group Group \
@@ -108,7 +108,7 @@
 
     # Nanopoare data
     # 以门(p)水平为例，结果包括output.sample/group.pdf两个文件
-    Rscript ${db}/script/tax_stackplot.R \
+    Rscript ${db}/script/tax_stackplot2.R \
       --input result/tax/sum_p.txt --design result/metadata.txt \
       --group Group -t 10 --color manual1 --legend 7 --width 89 --height 59 \
       --output result/tax/sum_p.stackplot
@@ -117,7 +117,7 @@
 
     # 批量绘制输入包括p/c/o/f/g共5级
     for i in p c o f g s; do
-    Rscript ${db}/script/tax_stackplot.R \
+    Rscript ${db}/script/tax_stackplot2.R \
       --input result/tax/sum_${i}.txt --design result/metadata.txt \
       --group Group -t 10 --output result/tax/sum_${i}.stackplot \
       --legend 8 --width 89 --height 59; done
