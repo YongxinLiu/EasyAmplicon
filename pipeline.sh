@@ -16,6 +16,7 @@
     wd=/d/amplicon2
     db=/d/EasyMicrobiome
     PATH=$PATH:${db}/win
+    mkdir -p ${wd}
     cd ${wd}
 
 
