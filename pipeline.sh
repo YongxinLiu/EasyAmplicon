@@ -13,7 +13,7 @@
     # 设置工作(work directory, wd)和软件数据库(database, db)目录
     # 添加环境变量，并进入工作目录 Add environmental variables and enter work directory
     # **每次打开Rstudio必须运行下面4行 Run it**，可选替换${db}为EasyMicrobiome安装位置
-    wd=/d/amplicon2
+    wd=/d/amplicon
     db=/d/EasyMicrobiome
     PATH=$PATH:${db}/win
     mkdir -p ${wd}
@@ -679,7 +679,7 @@
       --input result/stamp/tax_5Family.txt --metadata result/metadata.txt \
       --group Group --compare ${compare} --threshold 0.1 \
       --method "t.test" --pvalue 0.05 --fdr "none" \
-      --width 189 --height 159 \
+      --width 280 --height 159 \
       --output result/stamp/${compare}
     # 可选Rmd文档见result/CompareStamp.Rmd
 
@@ -1382,9 +1382,15 @@
     - QIIME 2更新为v2024.10，数据库更新为python 3.10版学习的greengene2 2022.10
     - 更新vsearch至2.30，新增2个dll文件，解决windows中运行无结果问题
 
-待更新内容：
-- PacBio三代测序扩增子流程；
-- Nanopore三代测序扩增子流程；
+- 2025/10/16 EasyAmplicon 2.00:
+    - EasyAmplicon 2.0文章在Advanced Science发表
+    - PacBio三代测序扩增子流程；
+    - Nanopore三代测序扩增子流程；
+    - Nanopore三代测序扩增子流程；
+    - vsearch v2.15.2更新为v2.30.1，新增libbz2.dll和zlib1.dll，支持压缩文件处理
+    - vsearch v2.15.2 update to v2.30.1, add libbz2.dll和zlib1.dll and support zip and gz file
+
+
 - ITS测序使用UNITE分析流程；
 - 18S测序使用SILVA分析流程，含SILVA格式；
 - ggClusterNet 2网络和多界分析；
@@ -1397,12 +1403,14 @@
 
 If used this script, please cited:
 
-Yong-Xin Liu, Lei Chen, Tengfei Ma, et al. 2023. 
-EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. 
-iMeta 2: e83. https://doi.org/10.1002/imt2.83
+Hao Luo, et al. 2025. EasyAmplicon 2: Expanding PacBio and Nanopore Long Amplicon Sequencing Analysis Pipeline for Microbiome. Advanced Science 12: https://doi.org/https://doi.org/10.1002/advs.202512447
 
 Yousuf, et al. 2024. Unveiling microbial communities with EasyAmplicon: 
 A user-centric guide to perform amplicon sequencing data analysis. 
 iMetaOmics 1: e42. https://doi.org/10.1002/imo2.42
+
+Yong-Xin Liu, Lei Chen, Tengfei Ma, et al. 2023. 
+EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. 
+iMeta 2: e83. https://doi.org/10.1002/imt2.83
 
 Copyright 2016-2025 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>
