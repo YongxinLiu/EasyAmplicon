@@ -2,11 +2,13 @@
 
 The Chinese version in (中文版见) [README_cn.md](./README_cn.md)
 
-[**EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research**](https://doi.org/10.1002/imt2.83)
+[Liu, et al. 2023. **iMeta**. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research.](https://doi.org/10.1002/imt2.83)
+[Yousuf, et al. 2024. **iMetaOmics**. Unveiling microbial communities with EasyAmplicon: A user-centric guide to perform amplicon sequencing data analysis.](https://doi.org/10.1002/imo2.42)
+[Luo, et al. 2025. **Advanced Science**. EasyAmplicon 2: Expanding PacBio and Nanopore Long Amplicon Sequencing Analysis Pipeline for Microbiome.](https://doi.org/10.1002/advs.202512447)
 
-Version：v2.01
+Version：v2.00
 
-Update：2025/09/16
+Update：2025/10/17
 
 ## Pipeline manual and file description (流程使用和文件介绍)
 
@@ -15,15 +17,30 @@ Using RStudio open the pipeline.sh
 Files description:
 
 - Readme.md # Introduction and install
+- PPT # Slide for amplicon background and practical tutorial
+- docs # Wiki tutorial
+
+For Illumina or BGI-seq next-generation sequencing amplicon
 - pipeline.sh # Command-line analysis for Windows and Linux
 - pipeline_mac.sh # Command-line analysis for MacOS
 - result/ # Example result data
+- seq # short-read sequencing amplicon
 - result/Diversity.Rmd # Interactive diversity analysis in R and output reproducible report in HTML format
+- qiime2 # Using QIIME 2 analysis amplicon data 
+- Accu16S_ITS # Absolute quantify amplicon analysis script
+- advanced #
+
+For PacBio or Nanopore third-generation long-read sequencing amplicon
+- PacBio # Pipeline for PacBio long-read amplicon sequencing analysis
+- Nanopore # Pipeline for Nanopore long-read amplicon sequencing analysis
+- Mock # Synthetic community sequencing by Illumina and Pacbio for compare short and long amplicon
+- snakemake # Pipeline for long-read sequencing amplicon
 
 ## What can we do? (结果展示)
 
-- Analysis and visualization of microbiome data, especially for 16S rDNA amplicon;
+- Analysis and visualization of amplicon in microbiome, especially for 16S rDNA sequencing;
 - From raw data into feature tables;
+- Support all types of amplicon sequencing, such as Illumina, BGI, PacBio, Nanopore, Qitan, CycloneSeq, et al.;
 - Support 20+ analysis methods and publish-ready visualization;
 - Finish your project at your laptop in 3 hours;
 - Chinese/English manual and video supported.
