@@ -98,11 +98,11 @@ cd $wd
     # conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
     # mamba是用于管理环境的 CLI 工具。相比于 conda，mamba 是用 c++重写了 conda 的部分功能，运行效率显著提高，可以进行并行的下载，使用 rpm 包管理工具中的 libsolv，可以更快的解决环境依赖问题。
     # mamba is a CLI tool for managing environments. Compared to conda, mamba rewrites some of conda's functions in C++, significantly improving operational efficiency. It can perform parallel downloads and uses libsolv from the rpm package management tool to resolve environment dependencies faster.
-    # conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
-    # conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
-    # conda install mamba -y
-    # mamba install pandas -y
-    # mamba install conda-pack -y
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+    conda install mamba -y
+    mamba install pandas -y
+    mamba install conda-pack -y
     
     #conda config --set channel_priority strict #设置严格的仓库优先级（最好不要使用）/ Set strict channel priority (better not to use)
     #conda config --set channel_priority flexible #禁用仓库优先级 / Disable channel priority
@@ -179,16 +179,13 @@ s=easyamplicon2
 soft=~/miniconda3
 ### Download and install 百度网盘下载链接：Baidu Net Disk：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315
 # File path文件路径：db/amplicon/amplicon2.tar.gz
-### Specify installation directory 指定安装目录，~
+### Specify installation directory 指定安装目录，~21s(SSD)
 mkdir -p ${soft}/envs/${s}
 time tar -xvzf ${s}.tar.gz -C ${soft}/envs/${s}
 ### 启动环境
 ### Activate the environment
 conda activate ${s}
-### 初始化环境
-### Initialize the environment
-### amplicon2环境包含了大部分分析软件
-### The amplicon2 environment contains most of the analysis software
+### 初始化环境 Initialize the environment
 conda unpack
 
 # Method方法2.Direct installation直接安装
@@ -197,37 +194,23 @@ conda activate amplicon2
 
 ## 方法3.下载singularity
 ## Method 3. Download and run with Singularity (recommended)
-
-### 下载Singularity镜像
-### Download Singularity image
-百度网盘下载链接 Baidu Net Disk: https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315  
-文件路径 File path: db/amplicon/amplicon2.sif  
-
-### 指定存放目录
-### Specify storage directory
+### Download Singularity image下载Singularity镜像
+# 百度网盘下载链接 Baidu Net Disk: https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315  
+# 文件路径 File path: db/amplicon/amplicon2.sif  
+### Specify storage directory指定存放目录
 mkdir -p ~/singularity/amplicon2
 mv amplicon2.sif ~/singularity/amplicon2/
-
-### 运行环境
-### Run the environment
+### Run the environment运行环境
 singularity exec ~/singularity/amplicon2/amplicon2.sif bash
-
-### 初始化环境
-### Initialize the environment
-# Singularity镜像已包含所有核心依赖，无需额外安装
-# The Singularity image contains all core dependencies and requires no additional installation
-
 ```
 
+## 4. 数据库下载 Database Installation
 
-## 四、数据库下载（需进行格式转换） Database Installation
-```bash
 **注：直接下载转换好格式的数据库、下载原始数据库，二选一。一种方法不成功，尝试另一种。**
 **Note: Choose one of two options: direct installation or download and unzip for installation. If one method fails, try the other.**
-```
-### 下载转换好格式的数据库
-### Download the pre-formatted database
-```bash
+
+### 方法1. 下载数据库 Download the pre-formatted database
+
 数据库百度网盘下载链接：Baidu Net Disk：https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315 
 
 文件路径 File path:  
@@ -239,14 +222,13 @@ singularity exec ~/singularity/amplicon2/amplicon2.sif bash
 - db/amplicon/GTDB
 - db/amplicon/silva/Silva_Emu
 
-```
-### 下载原始参考数据库（需手动转换）
-### Download the original reference databases (manual conversion required)
-```bash
+全部存放在EasyMicrobiome/usearch文件夹中
+
+### 方法2. 下载原始参考数据库及格式化Download the original reference databases (manual conversion required)
+
 Silva: https://www.arb-silva.de/current-release/Exports
   - SILVA_138.2_SSURef_NR99_tax_silva.fasta.gz  
  
-
 GTDB: https://data.gtdb.aau.ecogenomic.org/releases/release226/226.0/  
   - bac120_taxonomy_r226.tsv; bac120_ssu_reps_r226.fna.gz ; ssu_all_r226.fna.gz
 
@@ -255,10 +237,9 @@ NCBI: https://ftp.ncbi.nlm.nih.gov/blast/db/
 
 Emu: https://osf.io/56uf7/files/osfstorage  
   - emu_default.tar.gz  
-```
 
-## 五、添加环境变量（可选）
-## V. Add environment variables (optional)
+## 5. 添加环境变量Add environment variables (optional)
+
 ```bash
 echo "export PATH=\"$PATH:${db}/amplicon2\"" >> ~/.bashrc
 echo "export PATH=\"$PATH:${soft}/bin\"" >> ~/.bashrc
@@ -268,8 +249,8 @@ source ~/.bashrc
 ---
 
 
-## 六、软件打包（可选）
-## VI. Software packaging (optional)
+## 6. 软件打包Software packaging (optional)
+
 ```bash
 mkdir -p ~/project/amplicon2/package
 cd ~/project/amplicon2/package
@@ -279,7 +260,7 @@ conda pack -f -n amplicon2 -o amplicon2.tar.gz
 
 ---
 
-## 七、参考链接 Reference
+## 7. 参考链接 Reference
 
 * [amplicon2 GitHub](https://github\.com/YongxinLiu/EasyAmplicon)
 * [QIIME2 官方教程 / Official Tutorial](https://docs.qiime2.org/)
