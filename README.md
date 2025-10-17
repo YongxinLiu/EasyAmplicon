@@ -3,7 +3,9 @@
 The Chinese version in (中文版见) [README_cn.md](./README_cn.md)
 
 [Liu, et al. 2023. **iMeta**. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research.](https://doi.org/10.1002/imt2.83)
+
 [Yousuf, et al. 2024. **iMetaOmics**. Unveiling microbial communities with EasyAmplicon: A user-centric guide to perform amplicon sequencing data analysis.](https://doi.org/10.1002/imo2.42)
+
 [Luo, et al. 2025. **Advanced Science**. EasyAmplicon 2: Expanding PacBio and Nanopore Long Amplicon Sequencing Analysis Pipeline for Microbiome.](https://doi.org/10.1002/advs.202512447)
 
 Version：v2.00
