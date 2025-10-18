@@ -16,6 +16,12 @@
     mkdir -p $wd && cd ${wd}
     mkdir -p seq result temp 
 
+    # 在git bash下初始化
+    wd=/d/amplicon2/PacBio
+    db=/d/EasyMicrobiome
+    PATH=$PATH:${db}/win
+    cd ${wd}
+
 ## 1. Start files起始文件
 
     # 1. Analysis pipeline 分析流程: pipeline.sh
@@ -244,7 +250,8 @@
     # the contamination proportion file result/raw/otutab_nonBac.txt and the filtering details otus.sintax.discard.
     # 真菌ITS数据，请改用otutab_filter_nonFungi.R脚本，只筛选真菌
     # For fungal ITS data, please use the otutab_filter_nonFungi.R script to filter only fungi.
-    # linux下运行不成功，可切换到windows git bash中运行 db=/d/EasyMicrobiome
+    # linux下运行不成功，可切换到windows git bash中运行，且不关闭；改名termianl为git
+    # cd /d/amplicon2/PacBio; db=/d/EasyMicrobiome
     Rscript ${db}/script/otutab_filter_nonBac.R -h # 显示参数说明 / Display parameter description
     Rscript ${db}/script/otutab_filter_nonBac.R \
       --input result/raw/otutab.txt \
@@ -273,41 +280,39 @@
     usearch -otutab_stats result/otutab.txt \
       -output result/otutab.stat
     cat result/otutab.stat
-    #注意最小值、分位数，或查看result/raw/otutab_nonBac.stat中样本详细数据量，用于重采样
+    #注意最小值，如7333、分位数，或查看result/raw/otutab_nonBac.stat中样本详细数据量，用于重采样
     # Pay attention to the minimum value, quantiles, or view the detailed sample data volume in result/raw/otutab_nonBac.stat for resampling.
 
-    # Method方法2. emu annotation注释
+
+    # Method方法2. emu annotation注释(可选)
     # cutadapt by each sample
     for fq in temp/*.rename.fq; do
       sample=$(basename "$fq" .rename.fq)
       cutadapt -g "AGAGTTTGATCCTGGCTCAG...AAGTCSTAACAAGGTADCCSTA" \
         --error-rate=0.1 --action=trim --rc \
         -m 1000 -M 1800 -j 8 \
-        -o "temp/${sample}.filtered.fastq" "$fq";
+        -o "temp/${sample}.filtered.fq" "$fq";
     done
-    
-    # emu quantify (可选)
-    # for fastq in temp/*.filtered.fastq; do
-    # sample=$(basename "$fastq" .filtered.fastq)
-    # # Create a directory for each sample 为每个样本创建输出目录
-    # mkdir -p "result/Emu/silva/$sample"
-    # # emu abundance丰度估计
-    # emu abundance "$fastq" \
-    # --type map-ont \
-    # --db /mnt/c/EasyMicrobiome/Silva_Emu \
-    # --output-dir "result/Emu/silva/$sample" \
-    # --threads 4
-    # done
+    # emu quantify (可选,~1h)
+    for fastq in temp/*.filtered.fq; do
+    sample=$(basename "$fastq" .filtered.fq)
+    # Create a directory for each sample 为每个样本创建输出目录
+    mkdir -p "result/emu/$sample"
+    # emu abundance丰度估计
+    emu abundance "$fastq" \
+      --type map-pb \
+      --db /mnt/d/EasyMicrobiome/emu_default \
+      --output-dir "result/emu/$sample" \
+      --threads 4
+    done
 
-### 5.3 等量抽样标准化
-### 5.3 Normalization by subsampling
 
-    # Normlize by subsample
-    # 通过子抽样进行标准化
+### 5.3 Normalization by subsampling 等量抽样标准化
 
-    #使用vegan包进行等量重抽样，输入reads count格式Feature表result/otutab.txt
+    # Normlize by subsample 通过子抽样进行标准化
+    # 使用vegan包进行等量重抽样，输入reads count格式Feature表result/otutab.txt
     # Use the vegan package for equal resampling. The input is the feature table in reads count format: result/otutab.txt.
-    #可指定输入文件、抽样量和随机数，输出抽平表result/otutab_rare.txt和多样性alpha/vegan.txt
+    # 可指定输入文件、抽样量和随机数，输出抽平表result/otutab_rare.txt和多样性alpha/vegan.txt
     # You can specify the input file, sampling depth, and random seed. The output is the rarefied table result/otutab_rare.txt and the diversity file alpha/vegan.txt.
     mkdir -p result/alpha
     Rscript ${db}/script/otutab_rare.R --input result/otutab.txt \
@@ -318,47 +323,42 @@
       -output result/otutab_rare.stat
     cat result/otutab_rare.stat
 
-## 6. α多样性
-## 6. Alpha diversity
+## 6. Alpha diversity α多样性
 
-### 6.1. 计算α多样性
-### 6.1. Calculate alpha diversity
+### 6.1. Calculate alpha diversity 计算α多样性
 
     # 使用USEARCH计算14种alpha多样性指数(Chao1有错勿用)
     # Use USEARCH to calculate 14 alpha diversity indices (Chao1 has errors, do not use).
-    #details in http://www.drive5.com/usearch/manual/alpha_metrics.html
+    # details in http://www.drive5.com/usearch/manual/alpha_metrics.html
     usearch -alpha_div result/otutab_rare.txt \
       -output result/alpha/alpha.txt
 
-### 6.2. 计算稀释丰富度
-### 6.2. Calculate rarefaction richness
+### 6.2. Calculate rarefaction richness 计算稀释丰富度
 
-    #稀释曲线：取1%-100%的序列中OTUs数量，每次无放回抽样
+    # 稀释曲线：取1%-100%的序列中OTUs数量，每次无放回抽样
     # Rarefaction curve: Take the number of OTUs in 1%-100% of the sequences, sampling without replacement each time.
-    #Rarefaction from 1%, 2% .. 100% in richness (observed OTUs)-method without_replacement https://drive5.com/usearch/manual/cmd_otutab_subsample.html
+    # Rarefaction from 1%, 2% .. 100% in richness (observed OTUs)-method without_replacement https://drive5.com/usearch/manual/cmd_otutab_subsample.html
     usearch -alpha_div_rare result/otutab_rare.txt \
       -output result/alpha/alpha_rare.txt \
       -method without_replacement
-    #预览结果
-    # Preview the results
+    # Preview the results 预览结果
     head -n2 result/alpha/alpha_rare.txt
-    #样本测序量低出现非数值"-"的处理，详见常见问题8
+    # 样本测序量低出现非数值"-"的处理，详见常见问题8
     # For samples with low sequencing depth, non-numeric values "-" may appear. See FAQ 8 for details on how to handle this.
     sed -i "s/-/\t0.0/g" result/alpha/alpha_rare.txt
 
-### 6.3. 筛选高丰度菌
-### 6.3. Filter by abundance
+### 6.3. Filter by abundance 筛选高丰度菌
 
-    #计算各特征的均值，有组再求分组均值，需根据实验设计metadata.txt修改组列名
+    # 计算各特征的均值，有组再求分组均值，需根据实验设计metadata.txt修改组列名
     # Calculate the mean of each feature. If there are groups, calculate the group means. You need to modify the group column name according to the experimental design metadata.txt.
-    #输入文件为feautre表result/otutab.txt，实验设计metadata.txt
+    # 输入文件为feautre表result/otutab.txt，实验设计metadata.txt
     # The input files are the feature table result/otutab.txt and the experimental design metadata.txt.
-    #输出为特征表按组的均值-一个实验可能有多种分组方式
+    # 输出为特征表按组的均值-一个实验可能有多种分组方式
     # The output is the mean of the feature table by group. An experiment may have multiple grouping methods.
-    #-h显示脚本帮助(参数说明)
+    # -h显示脚本帮助(参数说明)
     # -h displays the script help (parameter description).
     Rscript ${db}/script/otu_mean.R -h
-    #scale是否标准化，zoom标准化总和，all输出全部样本均值，type计算类型mean或sum
+    # scale是否标准化，zoom标准化总和，all输出全部样本均值，type计算类型mean或sum
     # scale: whether to standardize; zoom: standardize the sum; all: output the mean of all samples; type: calculation type, mean or sum.
     Rscript ${db}/script/otu_mean.R --input result/otutab.txt \
       --metadata result/metadata.txt \
@@ -369,7 +369,7 @@
     # The result is the mean of all samples and each group.
     head -n3 result/otutab_mean.txt
 
-    #如以平均丰度>0.1%筛选，可选0.5或0.05，得到每个组的OTU组合，i=3为从第三列开始，要保留all列的话改为i=2,这里为了进行四组比较的韦恩图绘制保留了all列
+    # 如以平均丰度>0.1%筛选，可选0.5或0.05，得到每个组的OTU组合，i=3为从第三列开始，要保留all列的话改为i=2,这里为了进行四组比较的韦恩图绘制保留了all列
     # For example, filter by an average abundance of >0.1% (you can choose 0.5 or 0.05) to get the OTU combination for each group. i=3 means starting from the third column. If you want to keep the 'all' column, change it to i=2. Here, the 'all' column is kept for drawing a Venn diagram for four-group comparison.
     awk 'BEGIN{OFS=FS="\t"}{if(FNR==1) {for(i=2;i<=NF;i++) a[i]=$i; print "OTU","Group";} \
         else {for(i=2;i<=NF;i++) if($i>0.1) print $1, a[i];}}' \
@@ -383,8 +383,7 @@
     # 也可在 http://www.ehbio.com/ImageGP 绘制Venn、upSetView和Sanky
     # You can also draw Venn, upSetView, and Sankey diagrams at http://www.ehbio.com/ImageGP.
 
-## 7. β多样性
-## 7. Beta diversity
+## 7. Beta diversity β多样性
 
     #结果有多个文件，需要目录
     # The results have multiple files, so a directory is needed.
@@ -397,19 +396,18 @@
     usearch -beta_div result/otutab_rare.txt -tree result/otus.tree \
     -filename_prefix result/beta/
 
-## 8. 物种注释分类汇总
-## 8. Summary of taxonomic annotation
+## 8. Taxonomic summary 物种注释分类汇总
 
-    #OTU对应物种注释2列格式：去除sintax中置信值，只保留物种注释，替换:为_，删除引号
+    # OTU对应物种注释2列格式：去除sintax中置信值，只保留物种注释，替换:为_，删除引号
     # 2-column format for OTU corresponding species annotation: remove the confidence value in sintax, keep only the species annotation, replace ":" with "_", and delete quotation marks.
     cut -f 1,4 result/otus.sintax \
       |sed 's/\td/\tk/;s/:/__/g;s/,/;/g;s/"//g' \
       > result/taxonomy2.txt
     head -n3 result/taxonomy2.txt
 
-    #OTU对应物种8列格式：注意注释是非整齐
+    # OTU对应物种8列格式：注意注释是非整齐
     # 8-column format for OTU corresponding species: Note that the annotation is not uniform.
-    #生成物种表格OTU/ASV中空白补齐为Unassigned
+    # 生成物种表格OTU/ASV中空白补齐为Unassigned
     # In the generated species table, fill in the blanks in OTU/ASV with "Unassigned".
     awk 'BEGIN{OFS=FS="\t"}{delete a; a["k"]="Unassigned";a["p"]="Unassigned";a["c"]="Unassigned";a["o"]="Unassigned";a["f"]="Unassigned";a["g"]="Unassigned";a["s"]="Unassigned";\
       split($2,x,";");for(i in x){split(x[i],b,"__");a[b[1]]=b[2];} \
@@ -420,7 +418,7 @@
       > result/taxonomy.txt
     head -n3 result/taxonomy.txt
 
-    #统计门纲目科属，使用 rank参数 p c o f g s，为phylum, class, order, family, genus, species缩写
+    # 统计门纲目科属，使用 rank参数 p c o f g s，为phylum, class, order, family, genus, species缩写
     # Count phylum, class, order, family, genus, species. Use the rank parameter p, c, o, f, g, s, which are abbreviations for phylum, class, order, family, genus, species.
     mkdir -p result/tax
     for i in p c o f g s;do
@@ -429,52 +427,22 @@
       -output result/tax/sum_${i}.txt
     done
     sed -i 's/(//g;s/)//g;s/"//g;s/\#//g;s/\/Chloroplast//g' result/tax/sum_*.txt
-    # 列出所有文件
-    # List all files
+    # File line number 检查文件行即分类数量
     wc -l result/tax/sum_*.txt
     head -n3 result/tax/sum_s.txt
 
-## 9. 有参定量特征表
-## 9. Reference-based quantitative feature table
+## 9. Workspace cleanup and data submission 空间清理及数据提交
 
-    # 比对Greengenes97% OTUs比对，用于PICRUSt/Bugbase功能预测
-    # Align to Greengenes 97% OTUs for PICRUSt/Bugbase functional prediction.
-    mkdir -p result/gg/
-
-    #方法1. usearch比对更快，但文件超限报错选方法2
-    # Method 1. usearch alignment is faster, but if the file size exceeds the limit and an error is reported, choose method 2.
-    # 默认10核以下使用1核，10核以上使用10核
-    # By default, 1 core is used for less than 10 cores, and 10 cores are used for more than 10 cores.
-    usearch -otutab temp/filtered.fa -otus ${db}/gg/97_otus.fa \
-    	-otutabout result/gg/otutab.txt -threads 4
-    # 比对率80.8%, 4核1m, 内存使用731Mb
-    # Alignment rate 80.8%, 4 cores, 1m, memory usage 731Mb.
-    head -n3 result/gg/otutab.txt
-
-    # #方法2. vsearch比对，更准更慢，但并行24-96线程更强
-    # # Method 2. vsearch alignment is more accurate but slower, but it is more powerful with 24-96 parallel threads.
-    # vsearch --usearch_global temp/filtered.fa --db ${db}/gg/97_otus.fa \
-    #    --otutabout result/gg/otutab.txt --id 0.97 --threads 12
-    # 比对率83.83%, 12核4m24s
-    # Alignment rate 83.83%, 12 cores, 4m 24s.
-
-    #统计
-    # Statistics
-    usearch -otutab_stats result/gg/otutab.txt -output result/gg/otutab.stat
-    cat result/gg/otutab.stat
-
-## 10. 空间清理及数据提交
-## 10. Workspace cleanup and data submission
-
-    #删除中间大文件
-    # Delete large intermediate files
+    # Delete large intermediate files 删除中间大文件
     rm -rf temp/*.fq
-
     # 分双端统计md5值，用于数据提交
     # Calculate md5 values for both ends for data submission
     cd seq
-    md5sum *.fastq > ../result/md5sum.txt
+    gzip *.fq
+    md5sum *.fq.gz > ../result/md5sum.txt
     cat ../result/md5sum.txt
+    cd ..
+
 
 ```
 # 以上是基于Vsearh、Usearch的流程，接下来我们还提供利用DADA2 R软件包处理PacBio扩增子reads获得精准的ASVs，可以得到物种及其多样性信息
@@ -484,8 +452,9 @@
 # 用户可根据自己的需求选择
 # Users can choose according to their own needs.
 ```
-# EasyAmplicon 2 PacBio Pipeline (DADA2)
-# EasyAmplicon 2 PacBio 分析流程 (DADA2)
+
+# EasyAmplicon 2 PacBio Pipeline 分析流程 (DADA2,选学，视频待更新)
+
 ```
   # 在您第一次运行此流程之前，必须确保已经安装了DADA2及其他脚本依赖的R包。这个步骤只需要做一次。
   # Before you run this pipeline for the first time, you must ensure that DADA2 and other R packages that the script depends on have been installed. This step only needs to be done once.
