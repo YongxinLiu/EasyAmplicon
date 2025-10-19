@@ -10,14 +10,14 @@
     # Most of the pipeline runs in linux bash
     # **每次打开Rstudio必须运行下面4行 Run it**，可选替换${db}为EasyMicrobiome安装位置
     # **The following 4 lines must be run every time you open RStudio**, you can optionally replace ${db} with your EasyMicrobiome installation location
-    wd=/mnt/d/amplicon2/PacBio
+    wd=/mnt/d/amplicon/PacBio
     db=/mnt/d/EasyMicrobiome
     PATH=$PATH:${db}/script:${db}/linux
     mkdir -p $wd && cd ${wd}
     mkdir -p seq result temp 
 
     # 在git bash下初始化
-    wd=/d/amplicon2/PacBio
+    wd=/d/amplicon/PacBio
     db=/d/EasyMicrobiome
     PATH=$PATH:${db}/win
     cd ${wd}
@@ -87,18 +87,15 @@
 
     # 将其他可选数据库从百度网盘 (https://pan.baidu.com/s/1Ikd_47HHODOqC3Rcx6eJ6Q?pwd=0315; db/amplicon/usearch)保存到${db}/usearch/目录，例如：
     # Save other optional databases to ${db}/usearch/, for example:
-    #   sintax_defalut_emu_database.fasta.gz
+    #   sintax_defalut_emu_database.fasta.gz, emu_default.zip
     #   sintax_ncbi_database.fasta.gz
     #   gtdb_sintax_database.fasta.gz
     gunzip ${db}/usearch/sintax_defalut_emu_database.fasta.gz
     seqkit stat ${db}/usearch/sintax_defalut_emu_database.fasta    
-    # Greengene数据库用于功能注释: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
-    # Greengenes database for functional annotation: ftp://greengenes.microbio.me/greengenes_release/gg_13_5/gg_13_8_otus.tar.gz
-    # 默认解压会删除原文件，-c指定输出至屏幕，> 写入新文件(可改名)
-    # Decompression deletes the original file by default. -c specifies output to the screen, > writes to a new file (can be renamed).
-    gunzip -c ${db}/gg/97_otus.fasta.gz > ${db}/gg/97_otus.fa
-    seqkit stat ${db}/gg/97_otus.fa
-
+    # sudo install unzip
+    unzip /mnt/d/EasyMicrobiome/usearch/emu_default.zip
+    mv emu_default /mnt/d/EasyMicrobiome/usearch/
+    
 ## 2. Reads rename and merge序列重命名和合并
 
     # Example of renaming a single sequence file 单个序列改名测试
@@ -180,7 +177,8 @@
 
     mkdir -p result/raw
 
-    # Option 1. Chimera removal with vsearch + SILVA
+    # Option 1. Chimera removal with vsearch + SILVA (Suggest skip 建议跳过)
+    # 800M数据库，16GB直接终端3次奔溃，需关闭其他应用，或在32G内存电脑成功 ~1min
     vsearch --uchime_ref temp/otus.fa \
       -db ${db}/usearch/SILVA_modified.fasta \
       --nonchimeras result/raw/otus.fa
@@ -251,7 +249,7 @@
     # 真菌ITS数据，请改用otutab_filter_nonFungi.R脚本，只筛选真菌
     # For fungal ITS data, please use the otutab_filter_nonFungi.R script to filter only fungi.
     # linux下运行不成功，可切换到windows git bash中运行，且不关闭；改名termianl为git
-    # cd /d/amplicon2/PacBio; db=/d/EasyMicrobiome
+    # cd /d/amplicon/PacBio; db=/d/EasyMicrobiome
     Rscript ${db}/script/otutab_filter_nonBac.R -h # 显示参数说明 / Display parameter description
     Rscript ${db}/script/otutab_filter_nonBac.R \
       --input result/raw/otutab.txt \
@@ -301,7 +299,7 @@
     # emu abundance丰度估计
     emu abundance "$fastq" \
       --type map-pb \
-      --db /mnt/d/EasyMicrobiome/emu_default \
+      --db /mnt/d/EasyMicrobiome/usearch/emu_default \
       --output-dir "result/emu/$sample" \
       --threads 4
     done
@@ -409,14 +407,14 @@
     # 8-column format for OTU corresponding species: Note that the annotation is not uniform.
     # 生成物种表格OTU/ASV中空白补齐为Unassigned
     # In the generated species table, fill in the blanks in OTU/ASV with "Unassigned".
-    awk 'BEGIN{OFS=FS="\t"}{delete a; a["k"]="Unassigned";a["p"]="Unassigned";a["c"]="Unassigned";a["o"]="Unassigned";a["f"]="Unassigned";a["g"]="Unassigned";a["s"]="Unassigned";\
+    awk 'BEGIN{OFS=FS="\t"}{delete a; a["k"]="Unassigned";a["p"]="Unassigned";a["c"]="Unassigned";a["o"]="Unassigned";a["f"]="Unassigned";a["g"]="Unassigned";a["s"]="Unassigned"; \
       split($2,x,";");for(i in x){split(x[i],b,"__");a[b[1]]=b[2];} \
       print $1,a["k"],a["p"],a["c"],a["o"],a["f"],a["g"],a["s"];}' \
       result/taxonomy2.txt > temp/otus.tax
     sed 's/;/\t/g;s/.__//g;' temp/otus.tax|cut -f 1-8 | \
       sed '1 s/^/OTUID\tKingdom\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\n/' \
       > result/taxonomy.txt
-    head -n3 result/taxonomy.txt
+    head -n4 result/taxonomy.txt
 
     # 统计门纲目科属，使用 rank参数 p c o f g s，为phylum, class, order, family, genus, species缩写
     # Count phylum, class, order, family, genus, species. Use the rank parameter p, c, o, f, g, s, which are abbreviations for phylum, class, order, family, genus, species.
@@ -485,9 +483,9 @@
        # METADATA: 元数据文件的路径，应包含样本信息。
        # SCRIPT_PATH: 将要执行的R脚本的路径。
        # TAXONOMY_DB: 物种注释数据库文件的路径。
-       INPUT_DIR="/mnt/d/EasyAmplicon2/PacBio/seq"
-       OUTPUT_DIR="/mnt/d/EasyAmplicon2/PacBio/result/pacbio_dada2_output"
-       METADATA="/mnt/d//EasyAmplicon2/PacBio/result/metadata.txt"
+       INPUT_DIR="/mnt/d/Easyamplicon/PacBio/seq"
+       OUTPUT_DIR="/mnt/d/Easyamplicon/PacBio/result/pacbio_dada2_output"
+       METADATA="/mnt/d//Easyamplicon/PacBio/result/metadata.txt"
        SCRIPT_PATH="${db}/script/DADA2_PB.R"
        TAXONOMY_DB="${db}/DADA2/silva_nr99_v138.1_train_DADA2.fa.gz"
        # Run the R script using Rscript
@@ -571,8 +569,8 @@
     conda activate picrust2
     # 进入工作目录，服务器要修改工作目录
     # Enter the working directory. The working directory needs to be modified on the server.
-    mkdir -p /mnt/c/EasyAmplicon2/PacBio/result/picrust2
-    cd /mnt/c/EasyAmplicon2/PacBio/result/picrust2
+    mkdir -p /mnt/c/Easyamplicon/PacBio/result/picrust2
+    cd /mnt/c/Easyamplicon/PacBio/result/picrust2
     # 运行流程，内存15.7GB，耗时12m；内存不足会导致程序中断，out目录里只有一个intermediate/文件夹，需使用大内存设备运行
     # Run the pipeline. Memory: 15.7GB, time: 12m. Insufficient memory will cause the program to be interrupted. The out directory will only have an intermediate/ folder. A device with large memory is required.
     picrust2_pipeline.py -s ../otus.fa -i ../otutab.txt -o ./out -p 8
