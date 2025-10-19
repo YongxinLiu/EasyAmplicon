@@ -1,0 +1,25 @@
+tax_id	abundance	species	genus	family	order	class	phylum	clade	superkingdom	subspecies	species subgroup	species group
+381	0.04546128781997926	Mesorhizobium loti	Mesorhizobium	Phyllobacteriaceae	Rhizobiales	Alphaproteobacteria	Proteobacteria		Bacteria			
+28901	0.2783949609597398	Salmonella enterica	Salmonella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+303	0.27748050157424026	Pseudomonas putida	Pseudomonas	Pseudomonadaceae	Pseudomonadales	Gammaproteobacteria	Proteobacteria		Bacteria			Pseudomonas putida group
+1355477	0.008333333333333333	Bradyrhizobium diazoefficiens	Bradyrhizobium	Bradyrhizobiaceae	Rhizobiales	Alphaproteobacteria	Proteobacteria		Bacteria			
+380	0.06501743945312637	Sinorhizobium fredii	Sinorhizobium	Rhizobiaceae	Rhizobiales	Alphaproteobacteria	Proteobacteria		Bacteria			Sinorhizobium fredii group
+194963	0.003998673856837879	Sinorhizobium americanum	Sinorhizobium	Rhizobiaceae	Rhizobiales	Alphaproteobacteria	Proteobacteria		Bacteria			
+1902	0.003432482879724234	Streptomyces coelicolor	Streptomyces	Streptomycetaceae	Streptomycetales	Actinobacteria	Actinobacteria	Terrabacteria group	Bacteria			Streptomyces albidoflavus group
+1916	0.001228534069428308	Streptomyces lividans	Streptomyces	Streptomycetaceae	Streptomycetales	Actinobacteria	Actinobacteria	Terrabacteria group	Bacteria			
+2259647	0.23979432337953066	Raoultella sp. X13	Raoultella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+54291	0.02293086989750488	Raoultella ornithinolytica	Raoultella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+548	0.003535785550582946	Klebsiella aerogenes	Klebsiella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+1827481	0.0007958739269895687	Enterobacter sp. ODB01	Enterobacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+2015795	0.0009485040140795921	Klebsiella sp. LY	Klebsiella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+1134687	0.0030532575213251833	Klebsiella michiganensis	Klebsiella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+83655	0.0054147166385289155	Leclercia adecarboxylata	Leclercia	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+85698	0.021257062146892654	Achromobacter xylosoxidans	Achromobacter	Alcaligenaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria			
+573	0.0012118102936137757	Klebsiella pneumoniae	Klebsiella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+299767	0.0069642315575597965	Enterobacter ludwigii	Enterobacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			Enterobacter cloacae complex
+550	0.0035340007425679336	Enterobacter cloacae	Enterobacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			Enterobacter cloacae complex
+208224	0.0022205310172772066	Enterobacter kobei	Enterobacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			Enterobacter cloacae complex
+693444	0.0012061625413733513	Enterobacteriaceae bacterium strain FGI 57		Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+615	0.003785656825765341	Serratia marcescens	Serratia	Yersiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+unmapped	0.0											
+mapped_unclassified	0.0											

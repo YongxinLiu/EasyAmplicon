@@ -1,0 +1,33 @@
+Species	HY1_1	HY1_2	HY1_3	HY2_1	HY2_2	HY2_3	HY3_1	HY3_3	All
+(Unassigned)	35.3	35.1	35.3	45.1	42.1	41.6	32.5	35	26.2
+Salmonella enterica	0.177	0.177	0.245	13.4	12.5	13	19.9	18.8	21.4
+Serratia marcescens	18.5	19.4	19.3	0.245	0.3	0.341	0	0	10.7
+Escherichia coli	0	0	0	0	0	0	9.95	10.4	6.3
+Raoultella planticola	0.0136	0	0.0136	7.73	7.45	7.23	0	0	4.8
+Raoultella ornithinolytica	0.0136	0.0136	0	2.59	2.41	2.18	0	0	4.4
+Escherichia fergusonii	0	0	0	0	0	0	2.52	2.32	3.7
+Limosilactobacillus fermentum	0	0	0	0	0	0	9.78	7.8	3.7
+Pantoea agglomerans	1.76	1.76	1.94	0.205	0.0955	0.177	0	0	2.2
+Achromobacter xylosoxidans	8.6	7.58	7.9	1.04	0.927	1.16	0	0	1.8
+Klebsiella aerogenes	0	0	0	0.641	0.586	0.682	0	0	1.5
+Enterobacter ludwigii	10.1	10.8	9.57	0.341	0.327	0.327	0	0	1.5
+Bacillus subtilis	0	0	0.0273	0	0	0	7.6	8.65	1.1
+Serratia surfactantfaciens	3.5	3.11	3.35	0.0273	0.0818	0.0409	0	0	1.1
+Pseudomonas plecoglossicida	0.0818	0.0682	0.0818	9.87	11.5	11.1	0	0.0136	1.1
+Achromobacter marplatensis	2.78	2.66	2.77	0.245	0.191	0.218	0	0	1.1
+Achromobacter spanius	3.63	3.44	3.23	0.15	0.177	0.3	0	0	0.7
+Bacillus halotolerans	0	0	0	0	0	0	2.75	2.82	0.7
+Staphylococcus aureus	0	0	0.0136	0	0	0	5.55	6.23	0.7
+Pseudomonas putida	0.0136	0.123	0.164	8.5	9.29	8.86	0	0	0.7
+Streptomyces rubrogriseus	0.286	0.218	0.136	0.0273	0.0682	0.0409	0	0	0.4
+Streptomyces violaceolatus	0.273	0.191	0.164	0.0273	0.0273	0.0955	0	0	0.4
+Streptomyces coelicoflavus	0.191	0.0955	0.109	0.0136	0.0136	0.0273	0	0	0.4
+Shigella flexneri	0	0	0	0	0	0	0.109	0.109	0.4
+Sinorhizobium fredii	1.84	1.09	2.28	5.3	6.59	7.39	0	0	0.4
+Leclercia adecarboxylata	2.24	2.78	2.28	0.0818	0.123	0.0955	0	0	0.4
+Enterobacter cloacae	8.51	9.04	8.5	0.314	0.341	0.368	0	0	0.4
+Enterobacter asburiae	2.02	2.24	2.48	0.123	0.123	0.123	0	0	0.4
+Listeria monocytogenes	0	0	0	0	0	0	2.75	2.86	0.4
+Pseudomonas aeruginosa	0	0	0	0	0	0.0136	5.33	3.52	0.4
+Mesorhizobium jarvisii	0.15	0.136	0.205	4.04	4.79	4.58	0	0	0.4
+Listeria welshimeri	0	0	0	0	0	0	1.24	1.51	0.4

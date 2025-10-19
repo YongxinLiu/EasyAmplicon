@@ -1,0 +1,14 @@
+tax_id	abundance	species	genus	family	order	class	phylum	clade	superkingdom	subspecies	species subgroup	species group
+194963	0.003048245132628593	Sinorhizobium americanum	Sinorhizobium	Rhizobiaceae	Rhizobiales	Alphaproteobacteria	Proteobacteria		Bacteria			
+380	0.021226300657887224	Sinorhizobium fredii	Sinorhizobium	Rhizobiaceae	Rhizobiales	Alphaproteobacteria	Proteobacteria		Bacteria			Sinorhizobium fredii group
+1916	0.009054605629173288	Streptomyces lividans	Streptomyces	Streptomycetaceae	Streptomycetales	Actinobacteria	Actinobacteria	Terrabacteria group	Bacteria			
+1902	0.008663028299398136	Streptomyces coelicolor	Streptomyces	Streptomycetaceae	Streptomycetales	Actinobacteria	Actinobacteria	Terrabacteria group	Bacteria			Streptomyces albidoflavus group
+615	0.23875177179390564	Serratia marcescens	Serratia	Yersiniaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+299767	0.4421033852228421	Enterobacter ludwigii	Enterobacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			Enterobacter cloacae complex
+85698	0.2671595982142857	Achromobacter xylosoxidans	Achromobacter	Alcaligenaceae	Burkholderiales	Betaproteobacteria	Proteobacteria		Bacteria			
+381	0.0022321506380556066	Mesorhizobium loti	Mesorhizobium	Phyllobacteriaceae	Rhizobiales	Alphaproteobacteria	Proteobacteria		Bacteria			
+303	0.0028599330357142855	Pseudomonas putida	Pseudomonas	Pseudomonadaceae	Pseudomonadales	Gammaproteobacteria	Proteobacteria		Bacteria			Pseudomonas putida group
+61645	0.0025352931316998647	Enterobacter asburiae	Enterobacter	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			Enterobacter cloacae complex
+28901	0.0023656882444084725	Salmonella enterica	Salmonella	Enterobacteriaceae	Enterobacterales	Gammaproteobacteria	Proteobacteria		Bacteria			
+unmapped	0.0											
+mapped_unclassified	0.0											

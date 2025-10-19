@@ -1,0 +1,8 @@
+Order	HY1_1	HY1_2	HY1_3	HY2_1	HY2_2	HY2_3	HY3_1	HY3_3	All
+Enterobacterales	67.3	69.5	68.9	63.1	57.9	57.7	36.5	37.3	80.1
+Burkholderiales	28.3	26.5	26.5	2.48	2.32	2.9	0	0	5.9
+Bacillales	0	0	0.0682	0	0	0	48.4	51.4	5.2
+Lactobacillales	0	0	0	0	0	0	9.78	7.8	3.7
+Pseudomonadales	0.15	0.218	0.341	24.3	27.2	25.9	5.33	3.53	2.6
+Streptomycetales	2.2	2.47	1.69	0.232	0.464	0.845	0	0	1.5
+Rhizobiales	2.05	1.3	2.51	9.91	12.2	12.7	0	0	1.1
