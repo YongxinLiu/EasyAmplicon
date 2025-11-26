@@ -1,0 +1,5 @@
+GroupA-Left	GroupB-Right	GroupC-Top/Common-Middle
+A	B	C
+24	21	6
+A	B	Common
+39	36	3

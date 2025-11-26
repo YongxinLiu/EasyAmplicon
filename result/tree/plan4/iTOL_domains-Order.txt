@@ -1,0 +1,102 @@
+DATASET_DOMAINS
+SEPARATOR TAB
+BACKBONE_COLOR	#FFFFFF
+BACKBONE_HEIGHT	0
+BORDER_WIDTH	0
+COLOR	#bebada
+DATASET_LABEL	Order
+HEIGHT_FACTOR	1
+LEGEND_COLORS	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#a6cee3	#1f78b4
+LEGEND_LABELS	Bacillales	Burkholderiales	Caulobacterales	Chromatiales	Flavobacteriales	Gammaproteobacteria_incertae_sedis	Geodermatophilales	Herpetosiphonales	Micrococcales	Micromonosporales	Myxococcales	Nevskiales	Propionibacteriales	Pseudomonadales	Pseudonocardiales	Rhizobiales	Rhodospirillales	Sphingomonadales	Streptomycetales	Streptosporangiales	Unassigned	Xanthomonadales
+LEGEND_SHAPES	EL	EL	EL	EL	EL	RE	RE	RE	RE	RE	TL	TL	TL	TL	TL	TR	TR	TR	TR	TR	DI	DI
+LEGEND_TITLE	Order
+MARGIN	5
+SHOW_DOMAIN_LABELS	0
+WIDTH	25
+DATA
+ASV_2	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_3	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_4	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_8	10	TR|0|10|#33a02c|Streptomycetales
+ASV_6	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_7	10	EL|0|10|#fb9a99|Flavobacteriales
+ASV_18	10	TL|0|10|#fb9a99|Pseudonocardiales
+ASV_9	10	RE|0|10|#fb9a99|Micromonosporales
+ASV_10	10	TR|0|10|#a6cee3|Rhizobiales
+ASV_11	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_14	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_12	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_15	10	TR|0|10|#a6cee3|Rhizobiales
+ASV_13	10	EL|0|10|#fb9a99|Flavobacteriales
+ASV_16	10	TR|0|10|#33a02c|Streptomycetales
+ASV_17	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_28	10	TR|0|10|#fb9a99|Streptosporangiales
+ASV_20	10	TL|0|10|#fb9a99|Pseudonocardiales
+ASV_30	10	DI|0|10|#a6cee3|Unassigned
+ASV_23	10	TL|0|10|#fb9a99|Pseudonocardiales
+ASV_21	10	TL|0|10|#b2df8a|Propionibacteriales
+ASV_1276	10	TR|0|10|#a6cee3|Rhizobiales
+ASV_29	10	RE|0|10|#fb9a99|Micromonosporales
+ASV_22	10	TR|0|10|#b2df8a|Sphingomonadales
+ASV_113	10	TL|0|10|#fb9a99|Pseudonocardiales
+ASV_26	10	TL|0|10|#fb9a99|Pseudonocardiales
+ASV_24	10	TL|0|10|#fb9a99|Pseudonocardiales
+ASV_31	10	TR|0|10|#a6cee3|Rhizobiales
+ASV_27	10	TR|0|10|#a6cee3|Rhizobiales
+ASV_34	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_33	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_35	10	RE|0|10|#33a02c|Micrococcales
+ASV_36	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_41	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_37	10	DI|0|10|#a6cee3|Unassigned
+ASV_173	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_38	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_40	10	EL|0|10|#a6cee3|Bacillales
+ASV_42	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_39	10	TL|0|10|#fb9a99|Pseudonocardiales
+ASV_70	10	TR|0|10|#b2df8a|Sphingomonadales
+ASV_47	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_68	10	EL|0|10|#b2df8a|Caulobacterales
+ASV_45	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_44	10	TL|0|10|#fb9a99|Pseudonocardiales
+ASV_54	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_52	10	RE|0|10|#fb9a99|Micromonosporales
+ASV_46	10	TR|0|10|#a6cee3|Rhizobiales
+ASV_43	10	RE|0|10|#b2df8a|Herpetosiphonales
+ASV_48	10	EL|0|10|#33a02c|Chromatiales
+ASV_51	10	TL|0|10|#fb9a99|Pseudonocardiales
+ASV_50	10	RE|0|10|#33a02c|Micrococcales
+ASV_53	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_49	10	EL|0|10|#fb9a99|Flavobacteriales
+ASV_55	10	TR|0|10|#1f78b4|Rhodospirillales
+ASV_58	10	TR|0|10|#a6cee3|Rhizobiales
+ASV_62	10	TL|0|10|#b2df8a|Propionibacteriales
+ASV_67	10	TR|0|10|#a6cee3|Rhizobiales
+ASV_56	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_63	10	TL|0|10|#33a02c|Pseudomonadales
+ASV_61	10	TR|0|10|#1f78b4|Rhodospirillales
+ASV_59	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_60	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_76	10	RE|0|10|#a6cee3|Gammaproteobacteria_incertae_sedis
+ASV_66	10	DI|0|10|#a6cee3|Unassigned
+ASV_73	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_456	10	RE|0|10|#1f78b4|Geodermatophilales
+ASV_69	10	TR|0|10|#a6cee3|Rhizobiales
+ASV_82	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_72	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_93	10	TL|0|10|#33a02c|Pseudomonadales
+ASV_71	10	DI|0|10|#1f78b4|Xanthomonadales
+ASV_74	10	TR|0|10|#a6cee3|Rhizobiales
+ASV_77	10	DI|0|10|#1f78b4|Xanthomonadales
+ASV_75	10	TL|0|10|#b2df8a|Propionibacteriales
+ASV_83	10	TL|0|10|#a6cee3|Myxococcales
+ASV_84	10	TL|0|10|#a6cee3|Myxococcales
+ASV_81	10	DI|0|10|#1f78b4|Xanthomonadales
+ASV_79	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_78	10	EL|0|10|#1f78b4|Burkholderiales
+ASV_80	10	RE|0|10|#b2df8a|Herpetosiphonales
+ASV_88	10	EL|0|10|#b2df8a|Caulobacterales
+ASV_86	10	RE|0|10|#fb9a99|Micromonosporales
+ASV_89	10	TL|0|10|#1f78b4|Nevskiales
+ASV_92	10	DI|0|10|#a6cee3|Unassigned
+ASV_855	10	RE|0|10|#fb9a99|Micromonosporales

@@ -1,0 +1,42 @@
+Species	HY1_1	HY1_2	HY1_3	HY2_1	HY2_2	HY2_3	HY3_1	HY3_2	HY3_3	All
+Unassigned	23.4	23.2	23.7	12.6	11.4	12.2	7.54	6.75	9.19	23.6
+Salmonella enterica	0.177	0.218	0.205	23.8	21.5	21.7	18.6	18.1	17.5	19.0
+Serratia marcescens	18.3	18.4	18.9	0.177	0.245	0.355	0	0	0	9.1
+Raoultella ornithinolytica	0	0	0	10.8	10.5	9.59	0	0	0	6.9
+Escherichia coli	0	0	0	0	0	0	3.33	2.45	2.96	5.1
+Raoultella planticola	0.0136	0.0136	0.0136	4.45	4.06	4.2	0	0	0	4.2
+Escherichia fergusonii	0	0	0	0	0	0	2.39	1.79	3.14	3.6
+Limosilactobacillus fermentum	0	0	0	0	0	0	9.37	9.37	7.51	3.3
+Pantoea agglomerans	15.1	16.6	15.5	0.627	0.641	0.668	0	0	0	3.0
+Enterobacter ludwigii	14.2	14.3	14.1	0.586	0.695	0.845	0	0	0	2.1
+Achromobacter xylosoxidans	10.8	10	9.94	0.955	0.927	1.05	0	0	0	2.1
+Achromobacter spanius	1.34	1.57	1.65	0.177	0.0955	0.286	0	0	0	1.5
+Achromobacter marplatensis	8.37	8.33	7.5	0.559	0.423	0.764	0	0	0	1.5
+Bacillus subtilis	0	0	0.0273	0	0	0	10.7	11.9	12.3	1.2
+Staphylococcus aureus	0	0	0.0273	0	0	0	18.6	18.9	19	1.2
+Klebsiella aerogenes	0	0	0	0.382	0.273	0.3	0	0	0	0.9
+Serratia surfactantfaciens	0.368	0.395	0.423	0.0136	0	0.0136	0	0	0	0.9
+Pseudomonas plecoglossicida	0.0273	0.15	0.177	10.9	11.9	11.3	0	0	0	0.9
+Pseudomonas putida	0.164	0.0682	0.0955	13.2	15.1	14.3	0	0	0.0136	0.9
+Shigella boydii	0	0	0	0	0	0	0.0545	0.0545	0.0682	0.6
+Raoultella sp. X13	0	0	0.0136	5.29	4.81	4.81	0	0	0	0.6
+Raoultella electrica	0.0136	0	0	4.06	3.53	3.5	0	0	0	0.6
+Achromobacter denitrificans	2.74	2.28	2.1	0.273	0.286	0.327	0	0	0	0.6
+Enterobacter cloacae	0.723	0.695	0.873	0.205	0.15	0.123	0	0	0	0.6
+Listeria monocytogenes	0	0	0	0	0	0	8.37	9.03	8.56	0.6
+Achromobacter pulmonis	0.545	0.532	0.491	0.0545	0.0545	0.0682	0	0	0	0.6
+Bacillus amyloliquefaciens	0	0	0	0	0	0	2.7	2.7	2.99	0.3
+Shigella flexneri	0	0	0	0	0	0	0.436	0.409	0.491	0.3
+Streptomyces coelicoflavus	1.45	1.92	1.46	0.164	0.436	0.532	0	0	0	0.3
+Streptomyces humiferus	0.191	0.0818	0.164	0.0136	0.0136	0.0409	0	0	0	0.3
+Shigella sonnei	0	0	0	0	0	0	2.92	2.86	2.56	0.3
+Sinorhizobium fredii	1.84	1.1	2.39	5.39	6.64	7.3	0	0	0	0.3
+Bacillus mojavensis	0	0	0	0	0	0	0.164	0.123	0.177	0.3
+Listeria innocua	0	0	0	0	0	0	1.3	1.5	1.27	0.3
+Escherichia albertii	0	0	0	0	0	0	0.3	0.273	0.436	0.3
+Mesorhizobium jarvisii	0.136	0.136	0.232	4.09	4.92	4.49	0	0	0	0.3
+Pseudomonas aeruginosa	0	0	0	0	0	0	5.03	5.05	3.22	0.3
+Raoultella terrigena	0	0	0	0.6	0.395	0.395	0	0	0	0.3
+Bacillus tequilensis	0	0	0	0	0	0	2.09	2.02	2.47	0.3
+Enterococcus faecalis	0	0	0.0136	0	0	0	6.08	6.63	6.15	0.3
+Bradyrhizobium nitroreducens	0.0682	0.0682	0.0273	0.559	0.927	0.805	0	0	0	0.3

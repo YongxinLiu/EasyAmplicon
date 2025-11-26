@@ -1,0 +1,102 @@
+DATASET_DOMAINS
+SEPARATOR TAB
+BACKBONE_COLOR	#FFFFFF
+BACKBONE_HEIGHT	0
+BORDER_WIDTH	0
+COLOR	#bebada
+DATASET_LABEL	Family
+HEIGHT_FACTOR	1
+LEGEND_COLORS	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#e31a1c	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#e31a1c	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#e31a1c	#a6cee3	#1f78b4	#b2df8a	#33a02c	#fb9a99	#e31a1c	#a6cee3	#1f78b4
+LEGEND_LABELS	Anaeromyxobacteraceae	Bacillaceae	Bradyrhizobiaceae	Caulobacteraceae	Comamonadaceae	Devosiaceae	Flavobacteriaceae	Geodermatophilaceae	Herpetosiphonaceae	Intrasporangiaceae	Kribbellaceae	Microbacteriaceae	Micromonosporaceae	Nevskiaceae	Nocardioidaceae	Oxalobacteraceae	Polyangiaceae	Pseudomonadaceae	Pseudonocardiaceae	Rhizobiaceae	Rhodospirillaceae	Sphingomonadaceae	Streptomycetaceae	Thermomonosporaceae	Unassigned	Xanthomonadaceae
+LEGEND_SHAPES	EL	EL	EL	EL	EL	EL	RE	RE	RE	RE	RE	RE	TL	TL	TL	TL	TL	TL	TR	TR	TR	TR	TR	TR	DI	DI
+LEGEND_TITLE	Family
+MARGIN	5
+SHOW_DOMAIN_LABELS	0
+WIDTH	25
+DATA
+ASV_2	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_3	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_4	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_8	10	TR|0|10|#fb9a99|Streptomycetaceae
+ASV_6	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_7	10	RE|0|10|#a6cee3|Flavobacteriaceae
+ASV_18	10	TR|0|10|#a6cee3|Pseudonocardiaceae
+ASV_9	10	TL|0|10|#a6cee3|Micromonosporaceae
+ASV_10	10	TR|0|10|#1f78b4|Rhizobiaceae
+ASV_11	10	TL|0|10|#33a02c|Oxalobacteraceae
+ASV_14	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_12	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_15	10	EL|0|10|#b2df8a|Bradyrhizobiaceae
+ASV_13	10	RE|0|10|#a6cee3|Flavobacteriaceae
+ASV_16	10	TR|0|10|#fb9a99|Streptomycetaceae
+ASV_17	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_28	10	TR|0|10|#e31a1c|Thermomonosporaceae
+ASV_20	10	TR|0|10|#a6cee3|Pseudonocardiaceae
+ASV_30	10	DI|0|10|#a6cee3|Unassigned
+ASV_23	10	TR|0|10|#a6cee3|Pseudonocardiaceae
+ASV_21	10	RE|0|10|#fb9a99|Kribbellaceae
+ASV_1276	10	DI|0|10|#a6cee3|Unassigned
+ASV_29	10	TL|0|10|#a6cee3|Micromonosporaceae
+ASV_22	10	TR|0|10|#33a02c|Sphingomonadaceae
+ASV_113	10	TR|0|10|#a6cee3|Pseudonocardiaceae
+ASV_26	10	TR|0|10|#a6cee3|Pseudonocardiaceae
+ASV_24	10	TR|0|10|#a6cee3|Pseudonocardiaceae
+ASV_31	10	TR|0|10|#1f78b4|Rhizobiaceae
+ASV_27	10	EL|0|10|#b2df8a|Bradyrhizobiaceae
+ASV_34	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_33	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_35	10	RE|0|10|#33a02c|Intrasporangiaceae
+ASV_36	10	TL|0|10|#33a02c|Oxalobacteraceae
+ASV_41	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_37	10	DI|0|10|#a6cee3|Unassigned
+ASV_173	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_38	10	TL|0|10|#33a02c|Oxalobacteraceae
+ASV_40	10	EL|0|10|#1f78b4|Bacillaceae
+ASV_42	10	TL|0|10|#33a02c|Oxalobacteraceae
+ASV_39	10	TR|0|10|#a6cee3|Pseudonocardiaceae
+ASV_70	10	TR|0|10|#33a02c|Sphingomonadaceae
+ASV_47	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_68	10	EL|0|10|#33a02c|Caulobacteraceae
+ASV_45	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_44	10	TR|0|10|#a6cee3|Pseudonocardiaceae
+ASV_54	10	TL|0|10|#33a02c|Oxalobacteraceae
+ASV_52	10	TL|0|10|#a6cee3|Micromonosporaceae
+ASV_46	10	TR|0|10|#1f78b4|Rhizobiaceae
+ASV_43	10	RE|0|10|#b2df8a|Herpetosiphonaceae
+ASV_48	10	DI|0|10|#a6cee3|Unassigned
+ASV_51	10	TR|0|10|#a6cee3|Pseudonocardiaceae
+ASV_50	10	RE|0|10|#e31a1c|Microbacteriaceae
+ASV_53	10	TL|0|10|#33a02c|Oxalobacteraceae
+ASV_49	10	RE|0|10|#a6cee3|Flavobacteriaceae
+ASV_55	10	DI|0|10|#a6cee3|Unassigned
+ASV_58	10	EL|0|10|#e31a1c|Devosiaceae
+ASV_62	10	TL|0|10|#b2df8a|Nocardioidaceae
+ASV_67	10	TR|0|10|#1f78b4|Rhizobiaceae
+ASV_56	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_63	10	TL|0|10|#e31a1c|Pseudomonadaceae
+ASV_61	10	TR|0|10|#b2df8a|Rhodospirillaceae
+ASV_59	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_60	10	TL|0|10|#33a02c|Oxalobacteraceae
+ASV_76	10	DI|0|10|#a6cee3|Unassigned
+ASV_66	10	DI|0|10|#a6cee3|Unassigned
+ASV_73	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_456	10	RE|0|10|#1f78b4|Geodermatophilaceae
+ASV_69	10	EL|0|10|#b2df8a|Bradyrhizobiaceae
+ASV_82	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_72	10	TL|0|10|#33a02c|Oxalobacteraceae
+ASV_93	10	TL|0|10|#e31a1c|Pseudomonadaceae
+ASV_71	10	DI|0|10|#1f78b4|Xanthomonadaceae
+ASV_74	10	EL|0|10|#e31a1c|Devosiaceae
+ASV_77	10	DI|0|10|#1f78b4|Xanthomonadaceae
+ASV_75	10	TL|0|10|#b2df8a|Nocardioidaceae
+ASV_83	10	TL|0|10|#fb9a99|Polyangiaceae
+ASV_84	10	EL|0|10|#a6cee3|Anaeromyxobacteraceae
+ASV_81	10	DI|0|10|#1f78b4|Xanthomonadaceae
+ASV_79	10	TL|0|10|#33a02c|Oxalobacteraceae
+ASV_78	10	EL|0|10|#fb9a99|Comamonadaceae
+ASV_80	10	RE|0|10|#b2df8a|Herpetosiphonaceae
+ASV_88	10	EL|0|10|#33a02c|Caulobacteraceae
+ASV_86	10	TL|0|10|#a6cee3|Micromonosporaceae
+ASV_89	10	TL|0|10|#1f78b4|Nevskiaceae
+ASV_92	10	DI|0|10|#a6cee3|Unassigned
+ASV_855	10	TL|0|10|#a6cee3|Micromonosporaceae

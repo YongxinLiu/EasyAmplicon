@@ -1,0 +1,9 @@
+Vertex	62
+Edge	180
+Average_degree	5.80645161290323
+Average_path_length	2.54592901878914
+Network_diameter	6
+Clustering_coefficient	0.584131326949384
+Density	0.0951877313590693
+Heterogeneity	1.13634951694049
+Centralization	0.29825489159175

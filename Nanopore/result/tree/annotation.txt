@@ -1,0 +1,20 @@
+OTUID	Kingdom	Phylum	Class	Order	Family	Genus	Species	All	East	North	Outside	South
+OTU_118	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Flavobacteriaceae	NS3a marine group	uncultured bacterium	1.269679	2.1316681	0.0000000	0.1572327	0.0000000
+OTU_15	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Litorivicinaceae	Litorivicinus	uncultured bacterium	2.215146	3.7300073	0.0000000	0.2358491	0.0000000
+OTU_1684	Bacteria	Cyanobacteriota	Cyanobacteriia	Chloroplast	Incertae Sedis	Incertae Sedis	Chaetoceros calcitrans	0.195035	0.3343465	0.0000000	0.0000000	0.0000000
+OTU_1747	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	NS9 marine group	Incertae Sedis	uncultured bacterium	0.231087	0.3961499	0.0000000	0.0000000	0.0000000
+OTU_1773	Bacteria	Campylobacterota	Campylobacteria	Campylobacterales	Arcobacteraceae	Arcobacter	uncultured bacterium	1.064494	0.1027749	0.0000000	6.0272537	0.0000000
+OTU_1901	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Cryomorphaceae	Incertae Sedis	Unassigned	0.344444	0.5904762	0.0000000	0.0000000	0.0000000
+OTU_1977	Bacteria	Campylobacterota	Campylobacteria	Campylobacterales	Sulfurimonadaceae	Sulfurimonas	uncultured bacterium	0.393466	0.03809524	0.00000000	2.22746331	0.00000000
+OTU_200	Bacteria	Bacillota	Bacilli	Izemoplasmatales	Izemoplasmataceae	Izimaplasma	uncultured bacterium	0.181159	0.3105576	0.0000000	0.0000000	0.0000000
+OTU_27	Bacteria	Cyanobacteriota	Cyanobacteriia	Chloroplast	Incertae Sedis	Incertae Sedis	uncultured cyanobacterium	0.812577	1.39299	0.00000	0.00000	0.00000
+OTU_2703	Bacteria	Pseudomonadota	Alphaproteobacteria	Rickettsiales	Mitochondria	Incertae Sedis	uncultured bacterium	0.290698	0.000000	1.744186	0.000000	0.000000
+OTU_2861	Bacteria	Pseudomonadota	Alphaproteobacteria	Rickettsiales	Mitochondria	Incertae Sedis	uncultured bacterium	0.192678	0.000000	1.156069	0.000000	0.000000
+OTU_2872	Bacteria	Cyanobacteriota	Cyanobacteriia	Chloroplast	Incertae Sedis	Incertae Sedis	Unassigned	0.192678	0.000000	1.156069	0.000000	0.000000
+OTU_297	Bacteria	Pseudomonadota	Gammaproteobacteria	Pseudomonadales	Litorivicinaceae	Litorivicinus	uncultured bacterium	0.741114	0.2738032	3.4883721	0.0000000	0.0000000
+OTU_371	Bacteria	Bacteroidota	Bacteroidia	Sphingobacteriales	NS11-12 marine group	Incertae Sedis	uncultured Bacteroidetes bacterium	0.374479	0.61950235	0.00000000	0.07861635	0.00000000
+OTU_49	Bacteria	Cyanobacteriota	Cyanobacteriia	Synechococcales	Cyanobiaceae	Cyanobium PCC-6307	Unassigned	0.103186	0.1768895	0.0000000	0.0000000	0.0000000
+OTU_511	Bacteria	Cyanobacteriota	Cyanobacteriia	Chloroplast	Incertae Sedis	Incertae Sedis	Chaetoceros calcitrans	4.71183	8.077423	0.000000	0.000000	0.000000
+OTU_73	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	MWH-UniP1 aquatic group	Incertae Sedis	uncultured bacterium	0.418229	0.7169647	0.0000000	0.0000000	0.0000000
+OTU_944	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	NS9 marine group	Incertae Sedis	uncultured Flavobacterium sp.	1.028835	1.74125574	0.00000000	0.07861635	0.00000000
+OTU_980	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Methylophilaceae	OM43 clade	uncultured beta proteobacterium	1.11502	0.9978415	3.1976744	0.0000000	0.0000000

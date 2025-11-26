@@ -1,0 +1,269 @@
+---
+title: "随机森林回归 Random Forest Regression"
+author: "Yong-Xin Liu(刘永鑫)"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    theme: cerulean
+    highlight: haddock
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+    code_fold: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+回归一般常用于时间序列分析。本示例原文于2018年由作者发表于Science China Life Sciences封面文章。引文和数据出处见文末引文。
+
+实验设计有两个品种，种植在两个地点。最少要求同一种材料或人群在一个地点上的连续采样。
+
+这里先以A50作为测试集建模，交叉验证筛选与时间相关，可用于指示时间的特征(Feature)，展示这些特征贡献度和在时间序列上分布。
+
+然后用测试集评估模型，观察数据拟合程度；再用训练集IR24评估模型，看跨品种(或人群，或人地点)条件下的普适性。
+
+## 读取文件
+
+读取实验设计、特征表，并进行数据筛选和交叉筛选
+
+```{r}
+# 读取实验设计、和物种分类文件
+tc_map = read.table("metadata.txt",header = T, row.names = 1)
+tc_map$genotype = as.factor(tc_map$genotype)
+# 物种分类文件，由qiime summarize_taxa.py生成，详见扩增子分析流程系列
+# 本研究以纲水平进行训练，其实各层面都可以，具体那个层面最优，需要逐个测试寻找。推荐纲、科，不建议用OTU，差异过大
+otu_table =read.table("otu_table_tax_L3.txt",header = T, row.names = 1)
+# 筛选品种作为训练集
+sub_map = tc_map[tc_map$genotype %in% c("A50"),] # ,"IR24"
+# 筛选OTU
+idx = rownames(sub_map) %in% colnames(otu_table)
+sub_map = sub_map[idx,]
+sub_otu = otu_table[, rownames(sub_map)] 
+```
+
+  
+## 随机森林回归
+
+```{r}
+package_list <- c("randomForest","ggplot2","pheatmap")
+# 判断R包加载是否成功来决定是否安装后再加载
+for(p in package_list){
+  if(!suppressWarnings(suppressMessages(require(p, character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)))){
+    install.packages(p, repos=site)
+    suppressWarnings(suppressMessages(library(p, character.only = TRUE, quietly = TRUE, warn.conflicts = FALSE)))
+  }
+}
+library(randomForest)
+set.seed(315)
+rf = randomForest(t(sub_otu), sub_map$day, importance=TRUE, proximity=TRUE, ntree = 1000)
+print(rf)
+```
+
+
+
+## 交叉验证选择Features
+
+```{r}
+set.seed(315) # 随机数据保证结果可重复，必须
+# rfcv是随机森林交叉验证函数：Random Forest Cross Validation
+result = rfcv(t(sub_otu), sub_map$day, cv.fold=5)
+# 查看错误率表，23时错误率最低，为最佳模型
+result$error.cv
+# 绘制验证结果 
+with(result, plot(n.var, error.cv, log="x", type="o", lwd=2))
+```
+```{r}
+## 建立数据框保存多次结果
+error.cv0 = data.frame(num = result$n.var, error.1 =  result$error.cv)
+## 指定随机数循环5次
+for (i in 1:(1+4)){
+  print(i)
+  set.seed(i)
+  result= rfcv(t(sub_otu), sub_map$day, cv.fold=5) #  scale = "log", step = 0.9
+  error.cv0 = cbind(error.cv0, result$error.cv)
+}
+error.cv0 
+```
+
+## 绘制交叉验证曲线
+
+```{r}
+# 提取x轴标签
+n.var = error.cv0$num
+# 提取y轴数据+标签
+error.cv = error.cv0[,2:6]
+colnames(error.cv) = paste('err',1:5,sep='.')
+# 添加均值
+err.mean = apply(error.cv,1,mean)
+# 合并新的数据库，x+error+mean
+allerr = data.frame(num=n.var,err.mean=err.mean,error.cv)
+# number of otus selected 人为在图中观察的结果，30几乎为最低，且数量可接受
+optimal = 23
+
+# 图1：机器学习结果交叉验证图，选择Top features
+# 图中 + 5条灰色拆线+1条黑色均值拆线+一条最优垂线+X轴对数变换
+write.table(allerr, file = "rfcv.txt", sep = "\t", quote = F, row.names = T, col.names = T)
+
+p = ggplot() + # 开始绘图
+  geom_line(aes(x = allerr$num, y = allerr$err.1), colour = 'grey') + # 5次验证灰线 
+  geom_line(aes(x = allerr$num, y = allerr$err.2), colour = 'grey') + 
+  geom_line(aes(x = allerr$num, y = allerr$err.3), colour = 'grey') + 
+  geom_line(aes(x = allerr$num, y = allerr$err.4), colour = 'grey') + 
+  geom_line(aes(x = allerr$num, y = allerr$err.5), colour = 'grey') + 
+  geom_line(aes(x = allerr$num, y = allerr$err.mean), colour = 'black') + # 均值黑线
+  geom_vline(xintercept = optimal, colour='black', lwd=0.36, linetype="dashed") + # 最优垂线
+  coord_trans(x = "log2") + # X轴对数变换和刻度
+  scale_x_continuous(breaks = sort(error.cv0$num)) + # , max(allerr$num)
+  labs(title=paste('Training set (n = ', dim(t(sub_otu))[1],')', sep = ''), 
+       x='Number of features ', y='Mean decreased error') + 
+  annotate("text", x = optimal, y = max(allerr$err.mean), label=paste("optimal = ", optimal, sep="")) + theme_bw()
+p  
+ggsave(p, file = "rfcv.pdf", width = 89, height = 59, unit = 'mm')
+```
+
+## 导出feature重要性
+
+根据验证验证，预览和保存feature贡献度
+
+```{r}
+imp= as.data.frame(rf$importance)
+imp = imp[order(imp[,1],decreasing = T),]
+head(imp,n=10)
+write.table(imp,file = "importance_class.txt",quote = F,sep = '\t', row.names = T, col.names = T)
+# 简单可视化
+# varImpPlot(rf, main = "Top 10 - Feature OTU importance",n.var = 9, bg = par("bg"),
+#            color = par("fg"), gcolor = par("fg"), lcolor = "gray" )
+```
+
+
+## ggplot2美化feature贡献度
+
+```{r}
+# 读取所有feature贡献度
+imp = read.table("importance_class.txt", header=T, row.names= 1, sep="\t") 
+# 分析选择top23分组效果最好
+imp = head(imp, n=23)
+# 反向排序X轴，让柱状图从上往下画
+imp = imp[order(1:23,decreasing = T),]
+
+# imp物种名分解，提纲作为名称，门作为注释
+# 去除公共部分
+imp$temp = gsub("k__Bacteria;p__","",rownames(imp),perl=TRUE) 
+# 提取门名称
+# 删除；后面的内容
+imp$phylum = gsub(";.+","",imp$temp, perl=TRUE)
+# 删除带中括号的名称
+imp$phylum = gsub("[\\[\\]]+","",imp$phylum,perl=TRUE) 
+# 提取纲名称
+imp$class = gsub("[\\w\\[\\];_]+;c__","",imp$temp,perl=TRUE)  
+imp$class = gsub("[\\[\\]]+","",imp$class,perl=TRUE)
+# 添加纲level保持队形
+imp$class=factor(imp$class,levels = imp$class)
+
+# 图1. 绘制物种类型种重要性柱状图
+library(ggplot2)
+p=ggplot(data = imp, mapping = aes(x=class,y=X.IncMSE,fill=phylum)) + 
+  geom_bar(stat="identity")+coord_flip()+theme_bw()
+p
+ggsave(paste("rf_imp_feature",".pdf", sep=""), p, width = 8, height =4)
+```
+
+
+
+
+# 时间序列展示Features热图
+
+```{r}
+# 加载热图绘制包
+library(pheatmap)
+# 数据筛选23个feature展示
+sub_abu = sub_otu[rownames(imp),]
+# 简化行名
+rownames(sub_abu) = imp$class
+
+# 直接自动聚类出图
+pheatmap(sub_abu, scale = "row")
+
+# 按时间为组合并均值
+sampFile = as.data.frame(sub_map$day2,row.names = row.names(sub_map))
+colnames(sampFile)[1] = "group"
+mat_t = t(sub_abu)
+mat_t2 = merge(sampFile, mat_t, by="row.names")
+mat_t2 = mat_t2[,-1]
+mat_mean = aggregate(mat_t2[,-1], by=mat_t2[1], FUN=mean) # mean
+otu_norm_group = do.call(rbind, mat_mean)[-1,]
+colnames(otu_norm_group) = mat_mean$group
+pheatmap(otu_norm_group,scale="row",cluster_cols = F, cluster_rows = T)
+pheatmap(otu_norm_group, scale = "row", filename = "heatmap_groups.pdf", width = 5, height = 5)
+```
+
+## 模型预测效率
+
+基于训练集相关性评估
+
+```{r}
+# 模型评估
+train.p = predict(rf, type = "response")
+df = data.frame(observed = sub_map$day, predict = train.p)
+# 保存预测结果与真实结果比较
+write.table(df,file = "train_predict.txt",quote = F,sep = '\t', row.names = T, col.names = T)
+cor = cor.test(df[,1], df[,2], method = "spearman") # spearman or pearson
+m = lm(observed ~ predict, df)
+
+p = ggplot(df, aes(predict, observed)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = paste("rho = " , round(cor$estimate, digits = 3), ", P = " , signif(cor$p.value, digits = 3), ", R2 = ", round(summary(m)$r.squared, digits = 3) , sep = "")) +
+  theme_bw()
+p
+ggsave(paste("train_predict.pdf", sep=""), p, width = 4, height = 2.5)
+```
+
+基于测序集评估模型普适性
+
+```{r}
+
+## 预测验证集
+test_map = tc_map[tc_map$genotype %in% c("IR24"),]
+# 筛选OTU
+idx = rownames(test_map) %in% colnames(otu_table)
+test_map = test_map[idx,]
+test_otu = otu_table[, rownames(test_map)]   
+
+test.p = predict(rf, t(test_otu), type = "response")
+
+df = data.frame(observed = test_map$day, predict = test.p)
+# 保存预测结果与真实结果比较
+write.table(df,file = "test_predict.txt",quote = F,sep = '\t', row.names = T, col.names = T)
+
+cor = cor.test(df[,1], df[,2], method = "spearman")
+m = lm(observed ~ predict, df)
+
+p = ggplot(df, aes(predict, observed)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = paste("rho = " , round(cor$estimate, digits = 3), ", P = " , signif(cor$p.value, digits = 3), ", R2 = ", round(summary(m)$r.squared, digits = 3) , sep = "")) +
+  theme_bw()
+p
+ggsave(paste("test_predict.pdf", sep=""), p, width = 4, height = 2.5)
+
+```
+使用此脚本，请引用下文：
+
+If used this script, please cited:
+
+**Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
+
+数据来源：
+
+Data source:
+
+Jingying Zhang, Na Zhang, Yong-Xin Liu, Xiaoning Zhang, Bin Hu, Yuan Qin, Haoran Xu, Hui Wang, Xiaoxuan Guo, Jingmei Qian, Wei Wang, Pengfan Zhang, Tao Jin, Chengcai Chu, Yang Bai. 2018. Root microbiota shift in rice correlates with resident time in the field and developmental stage. Science China Life Sciences 61: 613-621. https://doi.org/10.1007/s11427-018-9284-4
+
+Copyright 2016-2024 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>

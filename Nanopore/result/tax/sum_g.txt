@@ -1,0 +1,359 @@
+Genus	E1	E2	E3	E4	E5	E6	E7	N1	N2	O1	O2	S1	All
+Incertae Sedis	69.1	35.3	48.9	89.2	36.7	34.5	41	43.2	50.4	25.2	20.1	54	42.4
+Unassigned	1.44	2.88	2.88	0	4.32	5.76	7.91	2.16	4.32	12.2	6.47	2.16	6.2
+Litorivicinus	1.44	12.9	8.63	0.719	13.7	18.7	0	7.91	0	1.44	1.44	0	3.7
+Saccharedens	1.44	4.32	4.32	0	1.44	9.35	0	0	1.44	1.44	0.719	1.44	3.1
+Arcobacter	0	0	0	0.719	1.44	0	2.16	8.63	0	2.88	19.4	0	1.9
+Candidatus Aquiluna	2.16	1.44	5.04	0.719	1.44	2.16	0.719	0	0.719	0.719	0.719	1.44	1.7
+Sulfurimonas	0	0	1.44	0	0.719	0.719	0.719	3.6	0	4.32	5.76	0.719	1.7
+Lentibacter	0	0	0	0	0	0	0	0	0	4.32	8.63	0	1.5
+Roseicyclus	0	0	0	0	0	0	0	0	0	5.04	0.719	0	1.4
+Roseibacterium	2.16	0	0.719	0.719	1.44	2.88	0	0	0	2.88	0	0	1.3
+Marivita	1.44	0	0	0	0.719	1.44	0	0	0	6.47	0.719	0	1.1
+Yoonia	0	0	0	0	0	0	0	0	0	5.04	0	0	0.9
+Polynucleobacter	0	0	0	0	0	0	0	1.44	12.9	0	0	3.6	0.9
+Thiomicrospira	0	0	0	0	0	4.32	0	0	0	0	0	0	0.8
+Kerstersia	1.44	4.32	0	0	4.32	0.719	0	0	0.719	0	0	0	0.8
+Hydrogenophaga	0	2.88	0	0.719	0	0	1.44	1.44	0	0	0	0.719	0.7
+Glaciecola	0	0.719	0.719	0	0	1.44	0	0	0	0	0	0	0.7
+Roseivirga	0	0	0.719	0	0.719	2.16	0	0	0	1.44	0.719	0	0.7
+Algoriphagus	0	0.719	0.719	0	0.719	0	0	0.719	0	0	0	0	0.6
+Roseovarius	0	0	0	0	0	0.719	0	0	0	2.16	0.719	0	0.6
+Seohaeicola	0.719	1.44	0.719	2.16	1.44	0	0	0	0	0	1.44	0.719	0.6
+Nodularia PCC-9350	0	0	0	0	0	0	0	0	3.6	0	0	0	0.6
+Methylotenera	0	2.88	0	0	1.44	0	0	0	0	0.719	0	0	0.6
+Cyanobium PCC-6307	2.88	1.44	0	0	0	0.719	0	1.44	1.44	0	0	0	0.5
+Marivivens	0	0	0	0.719	0	0	0	0	0	0	2.88	0	0.5
+Alteromonas	0	0.719	0	0	1.44	2.16	0	0	0	1.44	0.719	0	0.5
+Arsukibacterium	0	2.88	0	0	0	0	0	0	0	0	0	0	0.4
+Allochromatium	0	0	0	0	0	0	0	0	0	0.719	2.16	0	0.4
+Candidatus Limnoluna	0	0.719	1.44	0	0	0	0	0	0.719	0	0	2.16	0.4
+Limnohabitans	0	0	0	0	0	0	0	0	5.76	0	0	2.88	0.4
+Coxiella	0	0	0	0	0	0	0	0	0	0.719	1.44	0	0.4
+Tropicimonas-Psychromarinibacter	0	0	0	0	0.719	0.719	0	0	0	2.16	0	0	0.4
+Sulfurospirillum	0	0	0	0	0	0	0	0	0	0.719	4.32	0	0.4
+Izimaplasma	0	0.719	2.16	0	0.719	1.44	0	1.44	0	0	0.719	0	0.3
+OM43 clade	0	0	3.6	0	5.76	0	0	7.19	0	0	0	0	0.3
+Pseudidiomarina	0	0.719	0	0	0	0	0	0	0	0	0	0	0.3
+Clostridium	0	0	0	0	0	0	0	0	0	1.44	0.719	2.88	0.3
+Dinghuibacter	0	0	0	0	0	0	0.719	2.88	1.44	0	0	1.44	0.3
+Hoeflea	0	0	0	0	0.719	0	2.16	0	0	0	0	0	0.3
+Sulfurovum	0.719	1.44	0	0	0.719	0	1.44	0	0	0	0	0	0.3
+Mesohalobacter	0	0	0	0	0	0	0	0	0	0.719	0	0	0.3
+Legionella	0	0	0	0	0.719	0	0	0	0	0	0	0	0.3
+Nodosilinea PCC-7104	0	0	0	0	0	0	0.719	0.719	0	0.719	0	0	0.3
+Planktothrix NIVA-CYA 15	0	0	0	0	0	0	0.719	0	2.88	0	0	0	0.2
+Thiohalocapsa	0	0	0	0	0	0	0	0	0	0.719	1.44	0	0.2
+Phormidium MBIC10003	0	0	0	0.719	0	0.719	0	0	0	0	0.719	0	0.2
+NS3a marine group	1.44	6.47	10.1	0	2.16	0	0	0	0	0	0	0	0.2
+Fusibacter	0	0.719	0	0.719	0	0	0	0.719	0	0	0.719	0	0.2
+Fuscovulum	0	0	0	0	0	0	0	0	0	0	0	4.32	0.2
+CL500-29 marine group	0.719	0.719	0	0	0	0	0.719	0	1.44	0	0	0	0.2
+Candidatus Nitrosoarchaeum	0	0	0	0	0.719	0	1.44	0	0	0	0	1.44	0.2
+Pirellula	0	0	0	0	0	0	2.88	0	0	0	0	0	0.2
+Thiobacillus	0	0.719	0	0	0	0	0.719	0	0	0	0	0.719	0.2
+Peredibacter	0	0	0	0	0.719	0	0	0.719	0	0	0	0	0.2
+Qipengyuania	0	0	0	0.719	0	0	0	0	0	2.16	0	0	0.2
+Rheinheimera	0	0	0	0	2.88	0	0	0	0	0	0	0	0.2
+Halochromatium	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Polaribacter	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Candidatus Megaira	0.719	0	0	0	0	0	0	0.719	0.719	0	0.719	0	0.2
+RS62 marine group	0	0	0.719	0	0	0	0	1.44	0	0	0	0	0.2
+Erythrobacter	0.719	0	0	0	0	0.719	0.719	0	0	0	0	0	0.2
+Thiocapsa	0	0.719	0	0	0.719	0	0.719	0	0	0	0	1.44	0.2
+Candidatus Competibacter	1.44	0	0	0	0	0	0	0	0	0	0	0	0.2
+Lentimonas	0	0	0	0	0	0	0.719	0	0	0	0	0	0.2
+Salinarimonas	1.44	0	0	0	0	0	3.6	0	0	0	0	0	0.2
+Mesoflavibacter	0	0	0	0	0	0	0	0	0	0	1.44	0	0.2
+Verruc-01	0	0	0	0	0.719	0	0	0.719	0	0	0	0	0.2
+Flavimaricola	0	0	0	0	0	0	0	0	0	0.719	0	0.719	0.2
+Alcanivorax	0	0.719	0	0	0	1.44	0.719	0	0	0	0	0	0.2
+Defluviitaleaceae UCG-011	0	0	0	0	0	0	0	0	0	0	0	0	0.2
+Roseibaca	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+Aeromonas	0	0.719	0	0	0.719	0	0	0	0	0	0	0	0.1
+Synechocystis PCC-6803	2.16	0	0	0	0	0	0	0	0.719	0	0	0	0.1
+Acholeplasma	0	0	0	0.719	0	0.719	0	0.719	0	0	0.719	0	0.1
+Owenweeksia	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Luteolibacter	0	0	0	0	0	0	0.719	0	0	0	0	0	0.1
+Natranaerovirga	0	0	0	0	0	0	0	0	0	0.719	1.44	0.719	0.1
+Psychroflexus	0	0	0	0	0	0.719	0	0	0	0	0	0	0.1
+hgcI clade	0	0	0	0	0	0	0	0.719	0	0	0	0	0.1
+Chachezhania	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+Winogradskyella	0	0	0	0	0	0.719	0	0	0	0	0	0	0.1
+Limnobacter	0	0.719	0	0	0	0	0	0	0	0	0	0	0.1
+Pleomorphochaeta	0	0	0	0	0	0	0	0	0	0	2.16	0	0.1
+Anaerovorax	0	0	0	0	0	0	0.719	0	0	0.719	0	0	0.1
+Filomicrobium	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Lunatibacter	0	0	0	0	0	0	2.16	0	0	0	0	0	0.1
+Lautropia	0	0	0	0	0	0	1.44	0	0	0	0	0	0.1
+Pseudohongiella	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Brumimicrobium	0	0	0	0	0	0.719	0	0	0	0	0	0	0.1
+Woeseia	0	0	0.719	0	0.719	0	0	0	0	0	0	0	0.1
+Gaetbulibacter	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Altererythrobacter	0.719	0	0	0	0.719	0	0.719	0	0	0	0.719	0	0.1
+Fluviicola	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+Lewinella	0	0.719	0	0	0	0	0	0	0	0	0	0	0.1
+Neptunomonas	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+Novosphingobium	0	0	0	0	0	0	0	0.719	0	0	0	1.44	0.1
+Vicingus	0	0	1.44	0	0.719	0	0	0	0	0	0	0	0.1
+Thiomicrorhabdus	0	0	0	0	0	0	0	0	0	0	0.719	0	0.1
+Pararhodobacter	0.719	0	0	0	0	0	0	0	0	0	0	0	0.1
+Aestuariicoccus	0.719	0	0	0	0	0	0.719	0	0	0.719	0	0	0.1
+Cypionkella	0	0	0	0	0	0	0.719	0	0	0	0	0.719	0.1
+Sulfuricurvum	0	0	0	0	0	0	0	0.719	0.719	0	0	1.44	0.1
+Snowella 0TU37S04	0	0	0	0	0	0	0	0	0.719	0	0	0.719	0.1
+Roseimarinus	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Psychroserpens	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+966-1	0	0	0	0	0	0	0.719	0	0	0	0	0	0.1
+Tangfeifania	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Pseudomonas	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Tabrizicola	0	0	0	0	0	0	0	0	0	0	0	1.44	0.1
+Marinoscillum	0	0	0.719	0	0	0	0	0	0	0	0.719	0	0.1
+Salinirepens	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Imhoffiella	0	0	0	0	0	0	0	0	0	0.719	0.719	0	0.1
+Haliea	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Marinobacter	0	0	0	0	0	0	0	0	0	0	0	0.719	0.1
+SM1A02	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Synechococcus CC9902	0	0	0	0	0	0.719	0	0	0	0	0	0	0.1
+Roseibacillus	0	0.719	0	0	0	0	0	0	0	0	0	0	0.1
+Vibrio	0	0.719	0	0	0.719	0	0	0	0	0	0	0	0.1
+Arthrospira PCC-7345	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Candidatus Berkiella	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+Rhodovulum	0.719	0	0	0	0	0	0	0	0	0	0	0	0.1
+Crocinitomix	0	0.719	0	0	0	0	0	0	0	0	0	0	0.1
+Planococcus	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+Arenimonas	0	0	0	0	0	0	1.44	0	0	0	0	0	0.1
+Vallitalea	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Francisella	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Flavobacterium	0	0	0	0	0	0	0	0	0	0	0	0.719	0.1
+NS10 marine group	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+CK06-06-Mud-MAS4B-21	0	0	0	0	0	0.719	0	1.44	0	0	0	0	0.1
+Candidatus Thiobios	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Luminiphilus	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+JTB255 marine benthic group	0	0	0	0	0	0	0.719	0	0	0	0	0	0.1
+Sediminispirochaeta	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Limnothrix	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Marichromatium	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Mariniblastus	0	0.719	0	0	0	0	0	0	0	0	0	0	0.1
+Phycocomes	0	0	0	0	0	0	0	0	0	0	0.719	0	0.1
+Planctomicrobium	0.719	0	0	0	0	0	0	0	0	0	0	0	0.1
+Roseomonas	0	0	0	0	0	0	0	0	0.719	0	0	0	0.1
+Acidibacter	0	0	0	0	0	0	0.719	0	0	0	0	0	0.1
+Pseudodesulfovibrio	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Puniceicoccus	0	0	0	0	0	0	0	0	0	0.719	0	0	0.1
+RBG-16-49-21	0	0	0	0	0	0	0	0	0	0	0	0.719	0.1
+Pseudoalteromonas	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Nordella	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Ruminiclostridium	0	0	0	0	0	0	0.719	0	0	0	0	0	0.1
+Muriicola	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+Sagittula	0	0	0	0	0	0	0	0	0	0	0.719	0	0.1
+Mesorhizobium	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Nitrincola	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Aurantiacibacter	0	0	0	0	0	0	0	0	0.719	0	0	0	0.1
+Ruegeria	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Nioella	0	0	0	0	0	0	0	0	0	0	0.719	0	0.1
+Leptolyngbya PCC-6406	0	0	0	0	0	0	0	0	0.719	0	0	0	0.1
+UCG-012	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Desulfosarcina	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Cyclobacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+CL500-3	0	0	0	0	0	0	0	0.719	0	0	0	0	0.1
+Enterobacter	0	0	0	0	0	0	0.719	0	0	0	0	0	0.1
+Streptococcus	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Clade Ia	0	0	0.719	0	0	0	0	0	0	0	0	0	0.1
+Halioglobus	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Thiorhodovibrio	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Geitlerinema PCC-7105	0	0.719	0	0	0	0	0	0	0	0	0	0	0.1
+Calothrix PCC-6303	0	0	0	0	0	0	1.44	0	0	0	0	0	0.1
+Terasakiella	0	0	0	0	0	0	0	0.719	0	0	0	0	0.1
+Escherichia-Shigella	0	0	0	0	0	0	0	0.719	0	0	0	0.719	0.1
+UBA6140	0	0	0	0	0	0	0	0.719	0.719	0	0	0	0.1
+Truepera	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Ilumatobacter	0	0	0	0	0	0	0	0.719	0	0	0	0	0.1
+Anderseniella	0	0	0.719	0	0	0	0	0	0	0	0	0	0.1
+Jannaschia	0	0	0	0	0	0	0	0	0	0	0.719	0	0.1
+Zag_111	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Candidatus Methylopumilus	0	0	0	0	0	0	0	0	1.44	0	0	0	0.1
+Belliella	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Lactococcus	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+Castellaniella	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+Christensenellaceae R-7 group	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Lentimicrobium	0	0.719	0	0	0	0	0	0	0	0	0	0	0.1
+Candidatus Jidaibacter	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+endosymbionts	0	0	0	0	0	0	0	0	0	0	0.719	0	0.1
+Desulfotignum	0	0.719	0.719	0	0	0	0	0	0	0	0	0	0.1
+Roseinatronobacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Acanthopleuribacter	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Roseburia	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Thiogranum	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Acidimangrovimonas	0	0.719	0	0	0	0	0	0	0	0	0	0	0.0
+Roseibium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Thiolinea	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Aquicella	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+Acidovorax	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Reinekea	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Wandonia	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+WCHB1-32	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rhabdochromatium	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+alphaI cluster	0.719	0	0	0	0	0	0	0	0	0	0	0	0.0
+livecontrolB21	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+R76-B128	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Wenzhouxiangella	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Aphanizomenon MDT14a	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Rhodophyticola	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Robiginitalea	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rhodospirillum	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Rhodoferax	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Rhizobium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+UCG-004	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rhodoluna	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Roseitalea	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Sandaracinomonas	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Salinivibrio	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Schizothrix LEGE 07164	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Staphylococcus	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+Sulfitobacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Aquiflexum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Sumerlaea	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Acetivibrio	0	0	0	0	0.719	0	0	0	0	0	0	0	0.0
+Aquimonas	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Spirulina PCC-6313	0	0	0	0	0	0.719	0	0	0	0	0	0	0.0
+Silvimonas	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Sideroxydans	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Silvanigrella	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+Silicimonas	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Soortia	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Serratia	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Acetobacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Sphingorhabdus	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Shivajiella	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Sva0081 sediment group	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rubribacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Thalassocola	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rubrimonas	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Terrisporobacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Acidaminobacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Thiocystis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Thioflavicoccus	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Thioalkalivibrio	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Roseofilum AO1-A	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Terrimicrobium	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Syntrophotalea	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+SEEP-SRB4	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Synechococcus MBIC10613	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+SKP-2	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+SEEP-SRB1	0.719	0	0	0	0	0	0	0	0	0	0	0	0.0
+Tenacibaculum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rubrivivax	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+SBZC-1223	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Tateyamaria	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Gemmatimonas	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Geminocystis PCC-6308	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+GWE2-31-10	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Geothermobacter	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Geofilum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Gemmobacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Campylobacter	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+Ellin6067	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+ESFC-1	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Draconibacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Fulvivirga	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Erysipelothrix	0	0.719	0	0	0	0	0	0	0	0	0	0	0.0
+Ereboglobus	0	0	0	0	0.719	0	0	0	0	0	0	0	0.0
+Gillisia	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Hypnocyclicus	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Hyphomonas	0.719	0	0	0	0	0	0	0	0	0	0	0	0.0
+Histidinibacterium	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+Ketobacter	0	0	0	0	0.719	0	0	0	0	0	0	0	0.0
+JTB215	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Insolitispirillum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Halopeptonella	0	0	0	0	0	0.719	0	0	0	0	0	0	0.0
+Granulosicoccus	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Gracilimonas	0	0.719	0	0	0	0	0	0	0	0	0	0	0.0
+Anabaena PCC-7122	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Halomonas	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Haloferula	0	0	0	0.719	0	0	0	0	0	0	0	0	0.0
+Halobacteriovorax	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Donghicola	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Cetobacterium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Catellicoccus	0	0	0	0	0.719	0	0	0	0	0	0	0	0.0
+Carboxylicivirga	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Congregibacter	0	0	0.719	0	0	0	0	0	0	0	0.719	0	0.0
+Comamonas	0	0	0	0	0	0	1.44	0	0	0	0	0	0.0
+Cohaesibacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Candidatus Tenderia	0	0	0	0	0	0.719	0	0	0	0	0	0	0.0
+Candidatus Latescibacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Candidatus Hepatincola	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Candidatus Entotheonella	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Candidatus Planktophila	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Candidatus Ovatusbacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Candidatus Midichloria	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+Candidatus Aquirestis	0	0	0	0	0	0	0	0	0	0	0	2.16	0.0
+Desulfonema	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Desulfomicrobium	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+Desulfobacca	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Desulfovirga	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Desulfosudis	0	0	0.719	0	0	0	0	0	0	0	0	0	0.0
+Desulforhopalus	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Desulfatitalea	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Cylindrospermopsis CRJ1	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Cryomorpha	0	0.719	0	0	0	0	0	0	0	0	0	0	0.0
+Crassaminicella	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Desulfatiglans	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+DBS1	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Cysteiniphilum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Lacihabitans	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Peptoclostridium	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Parvularcula	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Paraglaciecola	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+Phormidium IAM M-71	0.719	0	0	0	0	0	0	0	0	0	0	0	0.0
+Phormidesmis ANT.LACV5.1	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Phaeodactylibacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Paracoccus	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Oceanicaulis	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+OM60NOR5 clade	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+OM27 clade	0	0	0	0	0	0	0	0	0	0.719	0	0	0.0
+Paenibacillus	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+P3OB-42	0	0	0	0.719	0	0	0	0	0	0	0	0	0.0
+Oceanospirillum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Phycisphaera	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Andreesenia	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+Prochlorothrix PCC-9006	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Portibacter	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Pseudomethylobacillus	0	0	0	0	0	0	0	0.719	0.719	0	0	0	0.0
+Pseudolysobacter	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Pseudohaliea	0	0	0	0	0	0	0	0	0	0	0.719	0	0.0
+Pontimonas	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Pleionea	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Arcticibacterium	0	0	0	0	0	0.719	0	0	0	0	0	0	0.0
+Planktothricoides SR001	0	0.719	0	0	0	0	0	0	0	0	0	0	0.0
+Acinetobacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Polycyclovorans	0	0	0.719	0	0	0	0	0	0	0	0	0	0.0
+Polaromonas	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Nostoc PCC-8976	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Marinilabilia	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Mangroviflexus	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+MSBL3	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Marivibrio	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+Marisediminicola	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Marinomonas	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+ML602J-51	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Ligilactobacillus	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Leptothrix	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Alishewanella	0	0.719	0	0	0	0	0	0	0	0	0	0	0.0
+MD3-55	0	0	0	0	0	0	0	0.719	0	0	0	0	0.0
+MBIC10086	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Azospira	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Aestuariibacter	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Nitratireductor	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Nautella	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Aurantivirga	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Nostoc PCC-7524	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Aerococcus	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Nitrosococcus	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Motiliproteus	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Methylophaga	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Methylonatrum	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Azonexus	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Motilimonas	0	0	0	0	0.719	0	0	0	0	0	0	0	0.0
+Monoglobus	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Microcystis PCC-7914	0	0	0	0	0	0	0	0	0	0	0	0	0.0

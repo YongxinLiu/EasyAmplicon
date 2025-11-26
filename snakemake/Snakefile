@@ -1,0 +1,465 @@
+#!/usr/bin/env python3
+"""
+EasyAmplicon2: Snakemake workflow for PacBio/Nanopore amplicon analysis
+Based on the original PBsnakemake.R pipeline
+Author: Yong-xin Liu et al.
+Version: 2.1 Snakemake (No Conda - Use Existing Environment)
+
+Prerequisites: 
+- Activate your easyamplicon2 environment before running
+- All required software should be available in PATH
+"""
+
+import os
+import pandas as pd
+
+# Load configuration
+configfile: "config/config.yaml"
+
+# Load and validate sample metadata
+samples_df = pd.read_csv(config["metadata"], sep="\t")
+# Basic validation without schema for simplicity
+assert "SampleID" in samples_df.columns, "metadata must contain 'SampleID' column"
+
+# Extract sample names
+SAMPLES = samples_df["SampleID"].tolist()
+
+# Final target rule
+rule all:
+    input:
+        # Quality control reports
+        "results/qc/seqkit_stats.txt",
+        "results/qc/filtered_stats.txt",
+        
+        # Feature table and taxonomy
+        "results/feature_table/otutab_clean.txt",
+        "results/taxonomy/otus_raw.sintax",
+        "results/taxonomy/taxonomy.txt",
+        
+        # Diversity analysis
+        "results/alpha_diversity/alpha.txt",
+        "results/alpha_diversity/alpha_rare.txt",
+        "results/beta_diversity/bray_curtis.txt",
+        
+        # Taxonomic summary
+        expand("results/taxonomic_summary/sum_{rank}.txt", rank=["p", "c", "o", "f", "g", "s"]),
+        
+        # Optional outputs
+        "results/picrust2/KO_metagenome_out/pred_metagenome_unstrat.tsv.gz" if config.get("run_picrust2", False) else [],
+        "results/phylogeny/otus.nwk" if config.get("build_tree", False) else [],
+        
+        # Summary report
+        "results/summary_report.txt"
+
+# Rule to create necessary directories
+rule create_directories:
+    output:
+        directory("temp"),
+        directory("results"),
+        directory("results/qc"),
+        directory("results/feature_table"),
+        directory("results/taxonomy"),
+        directory("results/alpha_diversity"),
+        directory("results/beta_diversity"),
+        directory("results/taxonomic_summary"),
+        directory("results/phylogeny"),
+        directory("results/picrust2")
+    shell:
+        """
+        mkdir -p temp results/{{qc,feature_table,taxonomy,alpha_diversity,beta_diversity,taxonomic_summary,phylogeny,picrust2}}
+        """
+
+# Decompress sequencing files if needed
+rule decompress_fastq:
+    input:
+        "seq/{sample}.fq.gz"
+    output:
+        temp("temp/decompressed/{sample}.fq")
+    shell:
+        "gunzip -c {input} > {output}"
+
+# Generate sequence statistics
+rule seqkit_stats:
+    input:
+        expand("temp/decompressed/{sample}.fq", sample=SAMPLES)
+    output:
+        "results/qc/seqkit_stats.txt"
+    shell:
+        "seqkit stat {input} > {output}"
+
+# Relabel sequences with sample names
+rule relabel_sequences:
+    input:
+        "temp/decompressed/{sample}.fq" if config.get("compressed_input", True) else "seq/{sample}.fq"
+    output:
+        temp("temp/relabeled/{sample}.merged.fastq")
+    shell:
+        "usearch -fastx_relabel {input} -fastqout {output} -prefix {wildcards.sample}."
+
+# Merge all samples into single file
+rule merge_samples:
+    input:
+        expand("temp/relabeled/{sample}.merged.fastq", sample=SAMPLES)
+    output:
+        temp("temp/all.fq")
+    shell:
+        "cat {input} > {output}"
+
+# Remove primers and quality filter
+rule cutadapt_filter:
+    input:
+        "temp/all.fq"
+    output:
+        temp("temp/filtered.fq")
+    params:
+        fwd_primer=config["primers"]["forward"],
+        rev_primer=config["primers"]["reverse"],
+        error_rate=config["cutadapt"]["error_rate"],
+        threads=config["threads"]
+    shell:
+        """
+        cutadapt -g "{params.fwd_primer}...{params.rev_primer}" \
+            --error-rate={params.error_rate} \
+            -j {params.threads} \
+            --discard-untrimmed \
+            -o {output} {input}
+        """
+
+# Convert to FASTA and filter by length
+rule fastq_to_fasta:
+    input:
+        "temp/filtered.fq"
+    output:
+        temp("temp/filtered.fa")
+    params:
+        min_len=config["filter"]["min_length"],
+        max_len=config["filter"]["max_length"]
+    shell:
+        """
+        vsearch --fastx_filter {input} \
+            --fastq_minlen {params.min_len} \
+            --fastq_maxlen {params.max_len} \
+            --fastaout {output} \
+            --fastq_qmax 93
+        """
+
+# Generate filtered sequence statistics
+rule filtered_stats:
+    input:
+        "temp/filtered.fa"
+    output:
+        "results/qc/filtered_stats.txt"
+    shell:
+        "seqkit stat {input} > {output}"
+
+# Dereplicate sequences
+rule dereplicate:
+    input:
+        "temp/filtered.fa"
+    output:
+        temp("temp/uniques.fa")
+    params:
+        threads=config["threads"],
+        minsize=config["derep"]["minsize"]
+    shell:
+        """
+        vsearch --derep_fulllength {input} \
+            --fasta_width 0 \
+            --sizeout \
+            --relabel Uni_ \
+            --output {output} \
+            --minuniquesize {params.minsize} \
+            --threads {params.threads}
+        """
+
+# Cluster OTUs or denoise ASVs
+rule denoise_asv:
+    input:
+        "temp/uniques.fa"
+    output:
+        temp("temp/zotus.fa")
+    params:
+        minsize=config["denoise"]["minsize"]
+    shell:
+        "usearch -unoise3 {input} -minsize {params.minsize} -zotus {output}"
+
+# Rename Zotus to ASVs
+rule rename_asvs:
+    input:
+        "temp/zotus.fa"
+    output:
+        temp("temp/otus.fa")
+    shell:
+        "sed 's/Zotu/ASV_/g' {input} > {output}"
+
+# Optional: Reference-based chimera removal
+rule remove_chimeras:
+    input:
+        "temp/otus.fa"
+    output:
+        "results/feature_table/otus_raw.fa"
+    params:
+        db=config["databases"]["silva_fasta"]
+    shell:
+        """
+        if [ "{config[remove_chimeras]}" = "True" ]; then
+            vsearch --uchime_ref {input} \
+                --db {params.db} \
+                --nonchimeras {output}
+        else
+            cp {input} {output}
+        fi
+        """
+
+# Build feature table
+rule build_feature_table:
+    input:
+        seqs="temp/filtered.fa",
+        otus="results/feature_table/otus_raw.fa"
+    output:
+        "results/feature_table/otutab_raw.txt"
+    params:
+        threads=config["threads"],
+        identity=config["feature_table"]["identity"]
+    shell:
+        """
+        vsearch --usearch_global {input.seqs} \
+            --db {input.otus} \
+            --id {params.identity} \
+            --threads {params.threads} \
+            --otutabout {output}
+        """
+
+# Clean feature table format
+rule clean_feature_table:
+    input:
+        "results/feature_table/otutab_raw.txt"
+    output:
+        temp("results/feature_table/otutab_clean.txt")
+    shell:
+        """
+        sed 's/\\r//g' {input} > {output}
+        """
+
+# Taxonomic annotation
+rule taxonomic_annotation:
+    input:
+        "results/feature_table/otus_raw.fa"
+    output:
+        "results/taxonomy/otus_raw.sintax"
+    params:
+        db=config["databases"]["taxonomy_db"],
+        cutoff=config["taxonomy"]["confidence_cutoff"]
+    shell:
+        """
+        vsearch --sintax {input} \
+            --db {params.db} \
+            --sintax_cutoff {params.cutoff} \
+            --tabbedout {output}
+        """
+
+# Convert sintax to standard taxonomy format
+rule format_taxonomy:
+    input:
+        sintax="results/taxonomy/otus_raw.sintax"
+    output:
+        taxonomy="results/taxonomy/taxonomy.txt",
+        mid=temp("taxonomy2.txt"),
+        tmp=temp("otus.tax")
+    shell:
+        """
+        # Step 1: cut & sed
+        cut -f 1,4 {input.sintax} \
+          | sed 's/\td/\tk/;s/:/__/g;s/,/;/g;s/"//g' \
+          > {output.mid}
+
+        # Step 2: awk
+        awk 'BEGIN{{OFS=FS="\\t"}}{{
+              delete a;
+              a["k"]="Unassigned";a["p"]="Unassigned";a["c"]="Unassigned";
+              a["o"]="Unassigned";a["f"]="Unassigned";a["g"]="Unassigned";a["s"]="Unassigned";
+              split($2,x,";");
+              for(i in x){{split(x[i],b,"__");a[b[1]]=b[2];}}
+              print $1,a["k"],a["p"],a["c"],a["o"],a["f"],a["g"],a["s"];
+          }}' {output.mid} > {output.tmp}
+
+        # Step 3: final cleanup & header
+        sed 's/;/\\t/g;s/.__//g;' {output.tmp} \
+          | cut -f 1-8 \
+          | sed '1 s/^/OTUID\\tKingdom\\tPhylum\\tClass\\tOrder\\tFamily\\tGenus\\tSpecies\\n/' \
+          > {output.taxonomy}
+        """
+
+# Rarefy feature table
+rule rarefy_otutab:
+    input:
+        otutab="results/feature_table/otutab_clean.txt"
+    output:
+        normalize="results/feature_table/otutab_rare.txt",
+        alpha="results/alpha_diversity/alpha_basic.txt"
+    params:
+        depth=7333,
+        seed=1,
+        script="scripts/otutab_rare.R"
+    shell:
+        """
+        Rscript {params.script} \
+            --input {input.otutab} \
+            --depth {params.depth} \
+            --seed {params.seed} \
+            --normalize {output.normalize} \
+            --output {output.alpha}
+        """
+
+# Calculate alpha diversity
+rule alpha_diversity:
+    input:
+        "results/feature_table/otutab_rare.txt"
+    output:
+        "results/alpha_diversity/alpha.txt"
+    shell:
+        "usearch -alpha_div {input} -output {output}"
+
+# Calculate rarefaction curves
+rule alpha_rarefaction:
+    input:
+        "results/feature_table/otutab_rare.txt"
+    output:
+        "results/alpha_diversity/alpha_rare.txt"
+    shell:
+        """
+        usearch -alpha_div_rare {input} \
+            -output {output} \
+            -method without_replacement
+        
+        # Replace missing values with 0
+        sed -i 's/-/\\t0.0/g' {output}
+        """
+
+# Build phylogenetic tree for beta diversity
+rule build_tree:
+    input:
+        "results/feature_table/otus_raw.fa"
+    output:
+        "results/phylogeny/otus.tree"
+    shell:
+        "usearch -cluster_agg {input} -treeout {output}"
+
+# Calculate beta diversity
+rule beta_diversity:
+    input:
+        otutab="results/feature_table/otutab_rare.txt",
+        tree="results/phylogeny/otus.tree"
+    output:
+        "results/beta_diversity/bray_curtis.txt",
+        "results/beta_diversity/jaccard.txt",
+        "results/beta_diversity/unifrac.txt"
+    shell:
+        """
+        usearch -beta_div {input.otutab} \
+            -tree {input.tree} \
+            -filename_prefix results/beta_diversity/
+        """
+
+# Taxonomic summary at different levels
+rule sintax_summary:
+    input:
+        sintax="results/taxonomy/otus_raw.sintax",
+        otutab="results/feature_table/otutab_rare.txt"
+    output:
+        expand("results/taxonomic_summary/sum_{rank}.txt", rank=["p","c","o","f","g","s"])
+    shell:
+        """
+        mkdir -p results/taxonomic_summary
+        
+        for rank in p c o f g s; do
+            usearch -sintax_summary {input.sintax} \
+                    -otutabin {input.otutab} \
+                    -rank $rank \
+                    -output results/taxonomic_summary/sum_${{rank}}.raw.txt
+
+            sed 's/(//g;s/)//g;s/"//g;s/#//g;s/\\/Chloroplast//g' \
+                results/taxonomic_summary/sum_${{rank}}.raw.txt > results/taxonomic_summary/sum_${{rank}}.txt
+        done
+        """
+
+# Optional: PICRUSt2 functional prediction
+rule picrust2:
+    input:
+        otus="results/feature_table/otus_raw.fa",
+        otutab="results/feature_table/otutab_clean.txt"
+    output:
+        "results/picrust2/KO_metagenome_out/pred_metagenome_unstrat.tsv.gz"
+    params:
+        threads=config["threads"],
+        outdir="results/picrust2"
+    shell:
+        """
+        if [ "{config[run_picrust2]}" = "True" ]; then
+            picrust2_pipeline.py -s {input.otus} -i {input.otutab} -o {params.outdir} -p {params.threads}
+        else
+            mkdir -p results/picrust2/KO_metagenome_out
+            touch {output}
+        fi
+        """
+
+# Optional: Build high-abundance phylogenetic tree
+rule phylogenetic_tree:
+    input:
+        otutab="results/feature_table/otutab_rare.txt",
+        otus="results/feature_table/otus_raw.fa",
+        taxonomy="results/taxonomy/taxonomy.txt"
+    output:
+        "results/phylogeny/otus.nwk"
+    params:
+        min_freq=config.get("tree", {}).get("min_abundance", 0.002)
+    shell:
+        """
+        if [ "{config[build_tree]}" = "True" ]; then
+            # Filter high abundance OTUs
+            usearch -otutab_trim {input.otutab} \
+                -min_otu_freq {params.min_freq} \
+                -output temp/tree_otutab.txt
+            
+            # Get OTU IDs
+            sed '1 s/#OTU ID/OTUID/' temp/tree_otutab.txt | cut -f 1 > temp/tree_otus.id
+            
+            # Extract sequences
+            usearch -fastx_getseqs {input.otus} -labels temp/tree_otus.id -fastaout temp/tree_otus.fa
+            
+            # Align sequences
+            muscle -in temp/tree_otus.fa -out temp/tree_otus_aligned.fas
+            
+            # Build tree
+            fasttree -gtr -nt temp/tree_otus_aligned.fas > {output}
+        else
+            touch {output}
+        fi
+        """
+
+# Generate summary report
+rule summary_report:
+    input:
+        qc1="results/qc/seqkit_stats.txt",
+        qc2="results/qc/filtered_stats.txt",
+        otutab="results/feature_table/otutab_clean.txt",
+        alpha="results/alpha_diversity/alpha.txt"
+    output:
+        "results/summary_report.txt"
+    shell:
+        """
+        echo "EasyAmplicon2 Snakemake Pipeline Summary" > {output}
+        echo "=======================================" >> {output}
+        echo "" >> {output}
+        echo "Input sequences statistics:" >> {output}
+        cat {input.qc1} >> {output}
+        echo "" >> {output}
+        echo "Filtered sequences statistics:" >> {output}
+        cat {input.qc2} >> {output}
+        echo "" >> {output}
+        echo "Feature table dimensions:" >> {output}
+        echo "Features: $(tail -n+2 {input.otutab} | wc -l)" >> {output}
+        echo "Samples: $(head -n1 {input.otutab} | tr '\\t' '\\n' | wc -l | awk '{{print $1-1}}')" >> {output}
+        echo "" >> {output}
+        echo "Analysis completed successfully!" >> {output}
+        """

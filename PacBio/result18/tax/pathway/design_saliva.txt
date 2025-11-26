@@ -1,0 +1,7 @@
+sample	Group	sample_new
+saliva1	saliva	saliva1
+saliva2	saliva	saliva2
+saliva3	saliva	saliva3
+saliva4	saliva	saliva4
+saliva5	saliva	saliva5
+saliva6	saliva	saliva6

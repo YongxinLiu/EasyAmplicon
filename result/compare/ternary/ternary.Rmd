@@ -1,0 +1,153 @@
+---
+title: "三元图绘制"
+author: "刘永鑫(Yong-Xin Liu)"
+date: "`r Sys.Date()`"
+output: html_document
+---
+ 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+ 
+## 设置输入输出文件和参数
+
+绘制三元图，是三组比较；本质上是三组间两两比较再比较。
+
+```{r}
+
+#############################################################
+# Title: Didfferent abundance OTU -- Tenary plot
+# Author: Yong-Xin Liu
+# E-mail: liuyongxin@caas.cn
+# Date: 2017/6/21
+# Update: 2021/4/3
+# Description: Script to draw tenary plot
+# Input File required in the blow list: 
+# 需要DA_OTU计算各组间的差异OTU结果
+# 1. "metadata.txt"  Design of experiment
+# 2. "otu_table.txt" OTU table, better include taxonomy
+# 3. "tern.txt" ternary list
+# Group A/B/C lie in left, right and top of triangle
+#############################################################
+
+# Set working enviroment
+rm(list=ls()) # clean enviroment object
+source("ternary_func.R")
+
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+if (!require("Biobase", quietly = TRUE))
+    BiocManager::install("Biobase")
+
+# Rewrite header of OTU count
+write.table(paste("GroupA-Left","GroupB-Right","GroupC-Top/Common-Middle",sep = "\t"), file=paste("ter_", "sum.txt", sep=""), sep="\t", quote=F, append = FALSE, row.names=F, col.names=F)
+
+# default color:left green, right orange, top red, background grey; alternative to yellow, blue, dark_green, very_dark_green, sea_green, black, dark_brown, drak_red
+color=c(c_green,c_orange,c_red,c_grey) 
+
+# Read the design & OTU table with taxonomy information
+design = read.table("metadata.txt", header=T, row.names= 1, sep="\t") 
+otu_table = read.delim("otutab.txt", row.names= 1,  header=T, sep="\t")
+tern_group=read.table("tern.txt", header=F, sep="\t") 
+
+# loop for each ternery plot
+for(i in 1:dim(tern_group)[1]){
+  # i=1
+  # Format a line to a column, then can format to character
+  tern=as.character(t(tern_group[i,]))
+  
+  # Select design and otu_table
+  if (TRUE){sub_design = subset(design,group %in% tern )}else{sub_design=design}
+
+  # 比较实验设计与OTU表一致；因为样品会有缺失
+  idx = rownames(sub_design) %in% colnames(otu_table) 
+  sub_design = sub_design[idx,]
+  count = otu_table[, rownames(sub_design)] 
+
+  # normalize to 1000
+  norm= as.data.frame(t(t(count)/colSums(count))*100)
+  colSums(norm)
+  
+  # merge group to mean
+  ## 按样品名合并实验组与转置的OTU
+  mat_t2 = merge(sub_design[c("group")], t(norm), by="row.names")[,-1]
+  ## 按实验设计求组平均值
+  mat_mean = aggregate(mat_t2[,-1], by=mat_t2[1], FUN=mean) # mean 
+#  per3= do.call(rbind, mat_mean)[-1,] # Error in rowSums(per3) : 'x' must be numeric
+  per3=t(mat_mean[,-1])
+  colnames(per3) = mat_mean$group
+  per3=as.data.frame(per3[rowSums(per3)>0,]) # remove all 0 OTU
+  per3=per3[,tern] # reorder per3 as input
+
+  # 三元图中A/B/C三个组分别位于三角形的左、右和顶
+  # 1. 三角相对于另两者显著富集的OTU
+  per3$color=color[4] # set all default # 设置点默认颜色为灰
+  ## select A specific
+  AvB = read.table(paste("otu_",tern[1],"vs",tern[2],"_enriched.txt",sep=""), header=T, row.names= 1, sep="\t")
+  AvC = read.table(paste("otu_",tern[1],"vs",tern[3],"_enriched.txt",sep=""), header=T, row.names= 1, sep="\t")
+  A = intersect(row.names(AvB), row.names(AvC))
+  if (length(A)>0){per3[A,]$color=color[1]} # set all default
+  ## select B specific
+  BvA = read.table(paste("otu_",tern[2],"vs",tern[1],"_enriched.txt",sep=""), header=T, row.names= 1, sep="\t")
+  BvC = read.table(paste("otu_",tern[2],"vs",tern[3],"_enriched.txt",sep=""), header=T, row.names= 1, sep="\t")
+  B = intersect(row.names(BvA), row.names(BvC))
+  if (length(B)>0){per3[B,]$color=color[2]} # set all default
+  ## select C specific
+  CvA = read.table(paste("otu_",tern[3],"vs",tern[1],"_enriched.txt",sep=""), header=T, row.names= 1, sep="\t")
+  CvB = read.table(paste("otu_",tern[3],"vs",tern[2],"_enriched.txt",sep=""), header=T, row.names= 1, sep="\t")
+  C = intersect(row.names(CvA), row.names(CvB))
+  if (length(C)>0){per3[C,]$color=color[3]} # set all default
+  ## output pdf and png in 8x8 inches
+  per3lg=log2(per3[,1:3]*1+1) # 对数变换，差OTU千分比的差距，点大小更均匀
+  pdf(file=paste("ter_",tern[1],tern[2],tern[3],".pdf", sep=""), height = 8, width = 8)
+  tern_e(per3lg[,1:3], prop=T, col=per3$color, grid_color="black", labels_color="transparent", pch=19, main="Tenary Plot")
+  dev.off()
+  # png(file=paste("ter_",tern[1],tern[2],tern[3],".png", sep=""), height = 8, width = 8, units = "in", res = 300)
+  # tern_e(per3lg[,1:3], prop=T, col=per3$color, grid_color="black", labels_color="transparent", pch=19, main="Tenary Plot")
+  # dev.off()
+  ## Write hightlight OUT
+  if (length(A)>0){write.table(AvB[A,], file=paste("ter_", tern[1],tern[2],tern[3],tern[1],".txt", sep=""), sep="\t", quote=F, row.names=T, col.names=T)}
+  if (length(B)>0){write.table(BvA[B,], file=paste("ter_", tern[1],tern[2],tern[3],tern[2],".txt", sep=""), sep="\t", quote=F, row.names=T, col.names=T)}
+  if (length(C)>0){write.table(CvA[C,], file=paste("ter_", tern[1],tern[2],tern[3],tern[3],".txt", sep=""), sep="\t", quote=F, row.names=T, col.names=T)}
+  ## Write hightlight OUT summary
+  write.table(paste(tern[1],tern[2],tern[3],sep = "\t"), file=paste("ter", "_sum.txt", sep=""), sep="\t", quote=F, append = TRUE, row.names=F, col.names=F)
+  write.table(paste(length(A),length(B),length(C),sep = "\t"), file=paste("ter", "_sum.txt", sep=""), sep="\t", quote=F, append = TRUE, row.names=F, col.names=F)
+  
+  # 2. 两底角相对于顶点显著富集的OTU，分共有和特有，类似维恩图
+  per3$color=color[4] # set all default # 设置点默认颜色为灰
+  AvC = read.table(paste("otu_",tern[1],"vs",tern[3],"_enriched.txt",sep=""), header=T, row.names= 1, sep="\t")
+  BvC = read.table(paste("otu_",tern[2],"vs",tern[3],"_enriched.txt",sep=""), header=T, row.names= 1, sep="\t")
+  C = intersect(row.names(AvC), row.names(BvC))
+  A = setdiff(row.names(AvC), C) 
+  B = setdiff(row.names(BvC), C) 
+  if (length(A)>0){per3[A,]$color=color[1]} 
+  if (length(B)>0){per3[B,]$color=color[2]} 
+  if (length(C)>0){per3[C,]$color=color[3]}
+  ## output pdf and png in 8x8 inches
+  per3lg=log2(per3[,1:3]*1+1) # 对数变换，差OTU千分比的差距，点大小更均匀
+  pdf(file=paste("ter_",tern[1],tern[2],tern[3],"venn.pdf", sep=""), height = 8, width = 8)
+  tern_e(per3lg[,1:3], prop=T, col=per3$color, grid_color="black", labels_color="transparent", pch=19, main="Tenary Plot")
+  dev.off()
+  # png(file=paste("ter_",tern[1],tern[2],tern[3],"venn.png", sep=""), height = 8, width = 8, units = "in", res = 300)
+  # tern_e(per3lg[,1:3], prop=T, col=per3$color, grid_color="black", labels_color="transparent", pch=19, main="Tenary Plot")
+  # dev.off()
+  ## Write hightlight OUT
+  if (length(A)>0){write.table(AvC[A,], file=paste("ter_", tern[1],tern[2],tern[3],tern[1],"venn.txt", sep=""), sep="\t", quote=F, row.names=T, col.names=T)}
+  if (length(B)>0){write.table(BvC[B,], file=paste("ter_", tern[1],tern[2],tern[3],tern[2],"venn.txt", sep=""), sep="\t", quote=F, row.names=T, col.names=T)}
+  if (length(C)>0){write.table(AvC[C,], file=paste("ter_", tern[1],tern[2],tern[3],tern[3],"venn.txt", sep=""), sep="\t", quote=F, row.names=T, col.names=T)}
+  ## Write hightlight OUT summary
+  write.table(paste(tern[1],tern[2],"Common",sep = "\t"), file=paste("ter", "_sum.txt", sep=""), sep="\t", quote=F, append = TRUE, row.names=F, col.names=F)
+  write.table(paste(length(A),length(B),length(C),sep = "\t"), file=paste("ter", "_sum.txt", sep=""), sep="\t", quote=F, append = TRUE, row.names=F, col.names=F)
+  
+}
+
+```
+
+
+使用此脚本，请引用下文：
+
+If used this script, please cited:
+
+**Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
+
+Copyright 2016-2024 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>

@@ -1,0 +1,35 @@
+Phylum	E1	E2	E3	E4	E5	E6	E7	N1	N2	O1	O2	S1	All
+Pseudomonadota	48.9	63.3	33.8	12.2	61.9	46.8	49.6	36.7	43.2	64.7	37.4	29.5	46.8
+Cyanobacteriota	25.9	3.6	7.19	82.7	2.16	16.5	12.9	10.1	41.7	1.44	2.16	35.3	17.4
+Bacteroidota	3.6	19.4	38.8	2.88	16.5	23	10.1	15.8	2.88	7.91	9.35	6.47	13.1
+Campylobacterota	0.719	1.44	2.88	1.44	2.88	2.88	4.32	12.9	0.719	7.91	30.2	0.719	4.4
+Bacillota	0	3.6	5.04	0.719	4.32	2.16	2.16	5.04	0.719	7.19	9.35	5.76	3.9
+Actinomycetota	3.6	2.88	7.19	0	3.6	2.16	2.88	1.44	2.88	0.719	0.719	4.32	3.6
+Unassigned	0	0.719	1.44	0	1.44	4.32	0	2.16	3.6	0.719	0.719	2.88	2.1
+Patescibacteria	0.719	0	0	0	0	0	1.44	0	0	2.16	2.16	2.88	1.6
+Verrucomicrobiota	0	0	0.719	0	2.88	0.719	3.6	4.32	0.719	2.16	1.44	1.44	1.5
+Bdellovibrionota	15.1	0.719	0	0	0.719	0	2.88	2.88	1.44	1.44	0	0	1.5
+Thermodesulfobacteriota	0.719	1.44	0.719	0	0.719	0	2.16	0.719	0	2.16	0	5.04	1.0
+Planctomycetota	0.719	0.719	0.719	0	0.719	0.719	4.32	2.88	0.719	0.719	0	0.719	0.9
+Candidatus Kapabacteria	0	0	0	0	0	0.719	0	3.6	0	0.719	1.44	0	0.4
+Spirochaetota	0	0	0	0	0	0	0	0	0	0	2.88	0.719	0.3
+SAR324 cladeMarine group B	0	0	0	0	0.719	0	1.44	0	0	0	0	0.719	0.2
+Chloroflexota	0	0.719	0	0	0	0	0	0	0	0	0.719	0.719	0.2
+Balneolota	0	1.44	0	0	0	0	0	1.44	0	0	0	0	0.2
+Acidobacteriota	0	0	0	0	0	0	0.719	0	0.719	0	0.719	0.719	0.2
+Sva0485	0	0	0.719	0	0	0	0.719	0	0	0	0	1.44	0.1
+Myxococcota	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+Fermentibacterota	0	0	0	0	0.719	0	0	0	0	0	0	0	0.1
+Fusobacteriota	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Cloacimonadota	0	0	0	0	0	0	0	0	0	0	0.719	0	0.1
+Deinococcota	0	0	0	0	0	0	0	0	0	0	0	0	0.1
+Sumerlaeota	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Rhodothermota	0	0	0	0	0	0	0.719	0	0	0	0	0	0.0
+Elusimicrobiota	0	0	0	0	0	0	0	0	0.719	0	0	0	0.0
+Entotheonellaeota	0	0	0	0	0	0	0	0	0	0	0	0.719	0.0
+Candidatus Eremiobacterota	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Dependentiae	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Latescibacterota	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Margulisbacteria	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Gemmatimonadota	0	0	0	0	0	0	0	0	0	0	0	0	0.0
+Ignavibacteriota	0	0	0.719	0	0	0	0	0	0	0	0	0	0.0

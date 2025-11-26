@@ -1,0 +1,369 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+all                         1
+alpha_diversity             1
+alpha_rarefaction           1
+beta_diversity              1
+build_feature_table         1
+build_tree                  1
+clean_feature_table         1
+cutadapt_filter             1
+decompress_fastq            1
+denoise_asv                 1
+dereplicate                 1
+fastq_to_fasta              1
+filter_bacteria             1
+filtered_stats              1
+format_taxonomy             1
+merge_samples               1
+rarefy_table                1
+relabel_sequences           9
+remove_chimeras             1
+rename_asvs                 1
+seqkit_stats                1
+summary_report              1
+taxonomic_annotation        1
+taxonomic_summary           1
+total                      32
+
+Select jobs to execute...
+Execute 8 jobs...
+[Tue Sep  9 14:46:58 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY1_3.fq
+    output: temp/relabeled/HY1_3.merged.fastq
+    jobid: 17
+    reason: Missing output files: temp/relabeled/HY1_3.merged.fastq
+    wildcards: sample=HY1_3
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY1_3.fq -fastqout temp/relabeled/HY1_3.merged.fastq -prefix HY1_3.
+[Tue Sep  9 14:46:58 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY2_3.fq
+    output: temp/relabeled/HY2_3.merged.fastq
+    jobid: 20
+    reason: Missing output files: temp/relabeled/HY2_3.merged.fastq
+    wildcards: sample=HY2_3
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY2_3.fq -fastqout temp/relabeled/HY2_3.merged.fastq -prefix HY2_3.
+[Tue Sep  9 14:46:58 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY1_2.fq
+    output: temp/relabeled/HY1_2.merged.fastq
+    jobid: 16
+    reason: Missing output files: temp/relabeled/HY1_2.merged.fastq
+    wildcards: sample=HY1_2
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY1_2.fq -fastqout temp/relabeled/HY1_2.merged.fastq -prefix HY1_2.
+[Tue Sep  9 14:46:58 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY3_3.fq
+    output: temp/relabeled/HY3_3.merged.fastq
+    jobid: 23
+    reason: Missing output files: temp/relabeled/HY3_3.merged.fastq
+    wildcards: sample=HY3_3
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY3_3.fq -fastqout temp/relabeled/HY3_3.merged.fastq -prefix HY3_3.
+[Tue Sep  9 14:46:58 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY2_2.fq
+    output: temp/relabeled/HY2_2.merged.fastq
+    jobid: 19
+    reason: Missing output files: temp/relabeled/HY2_2.merged.fastq
+    wildcards: sample=HY2_2
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY2_2.fq -fastqout temp/relabeled/HY2_2.merged.fastq -prefix HY2_2.
+[Tue Sep  9 14:46:58 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY1_1.fq
+    output: temp/relabeled/HY1_1.merged.fastq
+    jobid: 15
+    reason: Missing output files: temp/relabeled/HY1_1.merged.fastq
+    wildcards: sample=HY1_1
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY1_1.fq -fastqout temp/relabeled/HY1_1.merged.fastq -prefix HY1_1.
+[Tue Sep  9 14:46:58 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY3_2.fq
+    output: temp/relabeled/HY3_2.merged.fastq
+    jobid: 22
+    reason: Missing output files: temp/relabeled/HY3_2.merged.fastq
+    wildcards: sample=HY3_2
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY3_2.fq -fastqout temp/relabeled/HY3_2.merged.fastq -prefix HY3_2.
+[Tue Sep  9 14:46:58 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY2_1.fq
+    output: temp/relabeled/HY2_1.merged.fastq
+    jobid: 18
+    reason: Missing output files: temp/relabeled/HY2_1.merged.fastq
+    wildcards: sample=HY2_1
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY2_1.fq -fastqout temp/relabeled/HY2_1.merged.fastq -prefix HY2_1.
+Select jobs to execute...
+[Tue Sep  9 14:47:03 2025]
+Finished jobid: 22 (Rule: relabel_sequences)
+1 of 32 steps (3%) done
+Execute 1 jobs...
+[Tue Sep  9 14:47:03 2025]
+localrule decompress_fastq:
+    input: seq/HY3_1.fq.gz
+    output: temp/decompressed/HY3_1.fq
+    jobid: 8
+    reason: Missing output files: temp/decompressed/HY3_1.fq
+    wildcards: sample=HY3_1
+    resources: tmpdir=/tmp
+Shell command: gunzip -c seq/HY3_1.fq.gz > temp/decompressed/HY3_1.fq
+[Tue Sep  9 14:47:03 2025]
+Finished jobid: 17 (Rule: relabel_sequences)
+2 of 32 steps (6%) done
+[Tue Sep  9 14:47:03 2025]
+Finished jobid: 20 (Rule: relabel_sequences)
+3 of 32 steps (9%) done
+[Tue Sep  9 14:47:03 2025]
+Finished jobid: 16 (Rule: relabel_sequences)
+4 of 32 steps (12%) done
+[Tue Sep  9 14:47:03 2025]
+Finished jobid: 23 (Rule: relabel_sequences)
+5 of 32 steps (16%) done
+[Tue Sep  9 14:47:03 2025]
+Finished jobid: 18 (Rule: relabel_sequences)
+6 of 32 steps (19%) done
+[Tue Sep  9 14:47:03 2025]
+Finished jobid: 15 (Rule: relabel_sequences)
+7 of 32 steps (22%) done
+[Tue Sep  9 14:47:03 2025]
+Finished jobid: 19 (Rule: relabel_sequences)
+8 of 32 steps (25%) done
+[Tue Sep  9 14:47:04 2025]
+Finished jobid: 8 (Rule: decompress_fastq)
+9 of 32 steps (28%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Tue Sep  9 14:47:04 2025]
+localrule relabel_sequences:
+    input: temp/decompressed/HY3_1.fq
+    output: temp/relabeled/HY3_1.merged.fastq
+    jobid: 21
+    reason: Missing output files: temp/relabeled/HY3_1.merged.fastq; Input files updated by another job: temp/decompressed/HY3_1.fq
+    wildcards: sample=HY3_1
+    resources: tmpdir=/tmp
+Shell command: usearch -fastx_relabel temp/decompressed/HY3_1.fq -fastqout temp/relabeled/HY3_1.merged.fastq -prefix HY3_1.
+[Tue Sep  9 14:47:04 2025]
+localrule seqkit_stats:
+    input: temp/decompressed/HY1_1.fq, temp/decompressed/HY1_2.fq, temp/decompressed/HY1_3.fq, temp/decompressed/HY2_1.fq, temp/decompressed/HY2_2.fq, temp/decompressed/HY2_3.fq, temp/decompressed/HY3_1.fq, temp/decompressed/HY3_2.fq, temp/decompressed/HY3_3.fq
+    output: results/qc/seqkit_stats.txt
+    jobid: 1
+    reason: Missing output files: results/qc/seqkit_stats.txt; Input files updated by another job: temp/decompressed/HY3_1.fq
+    resources: tmpdir=/tmp
+Shell command: seqkit stat temp/decompressed/HY1_1.fq temp/decompressed/HY1_2.fq temp/decompressed/HY1_3.fq temp/decompressed/HY2_1.fq temp/decompressed/HY2_2.fq temp/decompressed/HY2_3.fq temp/decompressed/HY3_1.fq temp/decompressed/HY3_2.fq temp/decompressed/HY3_3.fq > results/qc/seqkit_stats.txt
+[Tue Sep  9 14:47:06 2025]
+Finished jobid: 1 (Rule: seqkit_stats)
+10 of 32 steps (31%) done
+Removing temporary output temp/decompressed/HY1_1.fq.
+Removing temporary output temp/decompressed/HY1_2.fq.
+Removing temporary output temp/decompressed/HY1_3.fq.
+Removing temporary output temp/decompressed/HY2_1.fq.
+Removing temporary output temp/decompressed/HY2_2.fq.
+Removing temporary output temp/decompressed/HY2_3.fq.
+Removing temporary output temp/decompressed/HY3_2.fq.
+Removing temporary output temp/decompressed/HY3_3.fq.
+[Tue Sep  9 14:47:06 2025]
+Finished jobid: 21 (Rule: relabel_sequences)
+11 of 32 steps (34%) done
+Removing temporary output temp/decompressed/HY3_1.fq.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 14:47:07 2025]
+localrule merge_samples:
+    input: temp/relabeled/HY1_1.merged.fastq, temp/relabeled/HY1_2.merged.fastq, temp/relabeled/HY1_3.merged.fastq, temp/relabeled/HY2_1.merged.fastq, temp/relabeled/HY2_2.merged.fastq, temp/relabeled/HY2_3.merged.fastq, temp/relabeled/HY3_1.merged.fastq, temp/relabeled/HY3_2.merged.fastq, temp/relabeled/HY3_3.merged.fastq
+    output: temp/all.fq
+    jobid: 14
+    reason: Missing output files: temp/all.fq; Input files updated by another job: temp/relabeled/HY3_1.merged.fastq, temp/relabeled/HY3_2.merged.fastq, temp/relabeled/HY2_3.merged.fastq, temp/relabeled/HY1_1.merged.fastq, temp/relabeled/HY2_1.merged.fastq, temp/relabeled/HY3_3.merged.fastq, temp/relabeled/HY2_2.merged.fastq, temp/relabeled/HY1_2.merged.fastq, temp/relabeled/HY1_3.merged.fastq
+    resources: tmpdir=/tmp
+Shell command: cat temp/relabeled/HY1_1.merged.fastq temp/relabeled/HY1_2.merged.fastq temp/relabeled/HY1_3.merged.fastq temp/relabeled/HY2_1.merged.fastq temp/relabeled/HY2_2.merged.fastq temp/relabeled/HY2_3.merged.fastq temp/relabeled/HY3_1.merged.fastq temp/relabeled/HY3_2.merged.fastq temp/relabeled/HY3_3.merged.fastq > temp/all.fq
+[Tue Sep  9 14:47:08 2025]
+Finished jobid: 14 (Rule: merge_samples)
+12 of 32 steps (38%) done
+Removing temporary output temp/relabeled/HY1_1.merged.fastq.
+Removing temporary output temp/relabeled/HY1_2.merged.fastq.
+Removing temporary output temp/relabeled/HY1_3.merged.fastq.
+Removing temporary output temp/relabeled/HY2_1.merged.fastq.
+Removing temporary output temp/relabeled/HY2_2.merged.fastq.
+Removing temporary output temp/relabeled/HY2_3.merged.fastq.
+Removing temporary output temp/relabeled/HY3_1.merged.fastq.
+Removing temporary output temp/relabeled/HY3_2.merged.fastq.
+Removing temporary output temp/relabeled/HY3_3.merged.fastq.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 14:47:08 2025]
+localrule cutadapt_filter:
+    input: temp/all.fq
+    output: temp/filtered.fq
+    jobid: 13
+    reason: Missing output files: temp/filtered.fq; Input files updated by another job: temp/all.fq
+    resources: tmpdir=/tmp
+Shell command: 
+        cutadapt -g "AGAGTTTGATCCTGGCTCAG...AAGTCSTAACAAGGTADCCSTA"             --error-rate=0.1             -j 8             --discard-untrimmed             -o temp/filtered.fq temp/all.fq
+        
+[Tue Sep  9 14:47:19 2025]
+Finished jobid: 13 (Rule: cutadapt_filter)
+13 of 32 steps (41%) done
+Removing temporary output temp/all.fq.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 14:47:19 2025]
+localrule fastq_to_fasta:
+    input: temp/filtered.fq
+    output: temp/filtered.fa
+    jobid: 12
+    reason: Missing output files: temp/filtered.fa; Input files updated by another job: temp/filtered.fq
+    resources: tmpdir=/tmp
+Shell command: 
+        vsearch --fastx_filter temp/filtered.fq             --fastq_minlen 1000             --fastq_maxlen 1800             --fastaout temp/filtered.fa             --fastq_qmax 93
+        
+[Tue Sep  9 14:47:32 2025]
+Finished jobid: 12 (Rule: fastq_to_fasta)
+14 of 32 steps (44%) done
+Removing temporary output temp/filtered.fq.
+Select jobs to execute...
+Execute 2 jobs...
+[Tue Sep  9 14:47:32 2025]
+localrule dereplicate:
+    input: temp/filtered.fa
+    output: temp/uniques.fa
+    jobid: 30
+    reason: Missing output files: temp/uniques.fa; Input files updated by another job: temp/filtered.fa
+    resources: tmpdir=/tmp
+Shell command: 
+        vsearch --derep_fulllength temp/filtered.fa             --fasta_width 0             --sizeout             --relabel Uni_             --output temp/uniques.fa             --minuniquesize 1             --threads 8
+        
+[Tue Sep  9 14:47:32 2025]
+localrule filtered_stats:
+    input: temp/filtered.fa
+    output: results/qc/filtered_stats.txt
+    jobid: 11
+    reason: Missing output files: results/qc/filtered_stats.txt; Input files updated by another job: temp/filtered.fa
+    resources: tmpdir=/tmp
+Shell command: seqkit stat temp/filtered.fa > results/qc/filtered_stats.txt
+[Tue Sep  9 14:47:33 2025]
+Finished jobid: 11 (Rule: filtered_stats)
+15 of 32 steps (47%) done
+[Tue Sep  9 14:47:36 2025]
+Finished jobid: 30 (Rule: dereplicate)
+16 of 32 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 14:47:36 2025]
+localrule denoise_asv:
+    input: temp/uniques.fa
+    output: temp/zotus.fa
+    jobid: 29
+    reason: Missing output files: temp/zotus.fa; Input files updated by another job: temp/uniques.fa
+    resources: tmpdir=/tmp
+Shell command: usearch -unoise3 temp/uniques.fa -minsize 1 -zotus temp/zotus.fa
+[Tue Sep  9 15:40:28 2025]
+Finished jobid: 29 (Rule: denoise_asv)
+17 of 32 steps (53%) done
+Removing temporary output temp/uniques.fa.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 15:40:28 2025]
+localrule rename_asvs:
+    input: temp/zotus.fa
+    output: temp/otus.fa
+    jobid: 28
+    reason: Missing output files: temp/otus.fa; Input files updated by another job: temp/zotus.fa
+    resources: tmpdir=/tmp
+Shell command: sed 's/Zotu/ASV_/g' temp/zotus.fa > temp/otus.fa
+[Tue Sep  9 15:40:30 2025]
+Finished jobid: 28 (Rule: rename_asvs)
+18 of 32 steps (56%) done
+Removing temporary output temp/zotus.fa.
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 15:40:30 2025]
+localrule remove_chimeras:
+    input: temp/otus.fa
+    output: results/feature_table/otus_raw.fa
+    jobid: 27
+    reason: Missing output files: results/feature_table/otus_raw.fa; Input files updated by another job: temp/otus.fa
+    resources: tmpdir=/tmp
+Shell command: 
+        if [ "False" = "True" ]; then
+            vsearch --uchime_ref temp/otus.fa                 --db /path/to/SILVA_modified.fasta                 --nonchimeras results/feature_table/otus_raw.fa
+        else
+            cp temp/otus.fa results/feature_table/otus_raw.fa
+        fi
+        
+[Tue Sep  9 15:40:30 2025]
+Finished jobid: 27 (Rule: remove_chimeras)
+19 of 32 steps (59%) done
+Removing temporary output temp/otus.fa.
+Select jobs to execute...
+Execute 2 jobs...
+[Tue Sep  9 15:40:30 2025]
+localrule build_feature_table:
+    input: temp/filtered.fa, results/feature_table/otus_raw.fa
+    output: results/feature_table/otutab_raw.txt
+    jobid: 26
+    reason: Missing output files: results/feature_table/otutab_raw.txt; Input files updated by another job: results/feature_table/otus_raw.fa, temp/filtered.fa
+    resources: tmpdir=/tmp
+Shell command: 
+        vsearch --usearch_global temp/filtered.fa             --db results/feature_table/otus_raw.fa             --id 0.97             --threads 8             --otutabout results/feature_table/otutab_raw.txt
+        
+[Tue Sep  9 15:40:30 2025]
+localrule taxonomic_annotation:
+    input: results/feature_table/otus_raw.fa
+    output: results/taxonomy/otus_raw.sintax
+    jobid: 31
+    reason: Missing output files: results/taxonomy/otus_raw.sintax; Input files updated by another job: results/feature_table/otus_raw.fa
+    resources: tmpdir=/tmp
+Shell command: 
+        vsearch --sintax results/feature_table/otus_raw.fa             --db /path/to/taxonomy_database.fasta             --sintax_cutoff 0             --tabbedout results/taxonomy/otus_raw.sintax
+        
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 254:
+Command 'set -euo pipefail;  
+        vsearch --sintax results/feature_table/otus_raw.fa             --db /path/to/taxonomy_database.fasta             --sintax_cutoff 0             --tabbedout results/taxonomy/otus_raw.sintax' returned non-zero exit status 1.
+[Tue Sep  9 15:40:30 2025]
+Error in rule taxonomic_annotation:
+    message: None
+    jobid: 31
+    input: results/feature_table/otus_raw.fa
+    output: results/taxonomy/otus_raw.sintax
+    shell:
+        
+        vsearch --sintax results/feature_table/otus_raw.fa             --db /path/to/taxonomy_database.fasta             --sintax_cutoff 0             --tabbedout results/taxonomy/otus_raw.sintax
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job taxonomic_annotation since they might be corrupted:
+results/taxonomy/otus_raw.sintax
+[Tue Sep  9 15:48:36 2025]
+Finished jobid: 26 (Rule: build_feature_table)
+20 of 32 steps (62%) done
+Removing temporary output temp/filtered.fa.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Tue Sep  9 15:48:36 2025]
+Error in rule taxonomic_annotation:
+    message: None
+    jobid: 31
+    input: results/feature_table/otus_raw.fa
+    output: results/taxonomy/otus_raw.sintax
+    shell:
+        
+        vsearch --sintax results/feature_table/otus_raw.fa             --db /path/to/taxonomy_database.fasta             --sintax_cutoff 0             --tabbedout results/taxonomy/otus_raw.sintax
+        
+        (command exited with non-zero exit code)
+Complete log(s): /mnt/d/EasyAmplicon2/snakemake/.snakemake/log/2025-09-09T144657.357677.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

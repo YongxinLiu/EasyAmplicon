@@ -1,0 +1,8 @@
+variable_name	cor_method	corr_res	p_res	significance
+Depth	pearson	0.0759027057489519	0.232	
+Temperature	pearson	0.16685491479067	0.117	
+Salinity	pearson	0.121476229090538	0.196	
+Density	pearson	0.112326834113973	0.211	
+DO	pearson	0.189889008450435	0.122	
+Turbidity	pearson	0.0639361616616104	0.294	
+PO4	pearson	0.0281968588446551	0.381	

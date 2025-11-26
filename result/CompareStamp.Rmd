@@ -1,0 +1,328 @@
+---
+title: "STAMP扩展柱状图(extended error bar plot)"
+author: "刘永鑫(Yong-Xin Liu)"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+    theme: cerulean
+    highlight: haddock
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+    code_fold: show
+  word_document:
+    toc: yes
+    toc_depth: '3'
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+```
+
+# R语言差异比较
+
+# 0. 参数说明
+
+修改下面`default=`后面的文件和参数。
+
+输入文件为原始OTU表(otutab.txt)+物种注释(taxonomy.txt)+分组信息(metadata.txt)
+
+输入文件"-i", "--input"，OTU table in counts; 原始OTU表counts值；
+
+实验设计"-d", "--metadata"，默认`metadata.txt`，可手动修改文件位置；
+
+物种注释"-t", "--taxonomy"，Taxonomy file; 物种注释
+
+分组列名"-n", "--group"，默认将metadata.txt中的group列作为分组信息，可修改为任意列名；
+
+输入文件前缀"-o", "--output"，默认为空时，输出为当前目录前缀为KO-WT_all/sig.txt统计表格，A-B_volcano/manhattan/heatmap.pdf组比较图片。
+
+物种图例顺序"-T", "--top10tax"，Top 10 phylum; 自定义门图例
+
+比较组"-c", "--compare"，Groups comparison; 组间比较，默认为KO-WT
+
+Pvalue阈值"-p", "--pvalue"，Threshold of P-value, 显著性阈值
+
+假阳性率阈值"-f", "--fdr"，Threshold of FDR, 假阳性率阈值
+
+图片宽"-w", "--width"，默认89 mm，根据图像布局可适当增大或缩小
+
+图片高"-e", "--height"，默认59 mm，根据图像布局可适当增大或缩小
+
+# 1. 解析命令行
+
+```{r parameter}
+# 判断命令行解析是否安装，安装并加载
+if (!suppressWarnings(suppressMessages(require("optparse", character.only=TRUE, quietly=TRUE, warn.conflicts=FALSE)))) {
+  install.packages(optparse)
+  require("optparse",character.only=T) 
+}
+# 解析参数-h显示帮助信息
+if (TRUE){
+  option_list=list(
+    make_option(c("-i", "--input"), type="character", default="stamp/tax_6Genus.txt", # otutab.txt
+                help="OTU table in counts; 原始OTU表counts值 [default %default]"),
+    make_option(c("-d", "--metadata"), type="character", default="metadata.txt",
+                help="metadata file; 实验设计文件 [default %default]"),
+    # make_option(c("-t", "--taxonomy"), type="character", default="taxonomy.txt",
+    #             help="Taxonomy file; 物种注释 [default %default]"),
+    # make_option(c("-T", "--top10tax"), type="character", default="tax_phylum.top10",
+    #             help="Top 10 phylum; 自定义门图例 [default %default]"),    
+    make_option(c("-n", "--group"), type="character", default="Group",
+                help="Group name; 分组列名 [default %default]"),
+    make_option(c("-c", "--compare"), type="character", default="KO-OE",
+                help="Groups comparison; 组间比较 [default %default]"),
+    make_option(c("-p", "--pvalue"), type="numeric", default=0.05,
+                help="Threshold of P-value, 显著性阈值 [default %default]"),
+    make_option(c("-f", "--fdr"), type="numeric", default=0.1,
+                help="Threshold of FDR, 假阳性率阈值 [default %default]"),
+    make_option(c("-t", "--threshold"), type="numeric", default=0.1,
+                help="Relative abundance, 相对丰度，默认千一 [default %default]"),    
+    make_option(c("-o", "--output"), type="character", default="",
+                help="Output prefix; 结果前缀.txt表/pdf图 [default %default]"),
+    make_option(c("-w", "--width"), type="numeric", default=89,
+                help="Figure width; 图片宽mm [default %default]"),
+    make_option(c("-e", "--height"), type="numeric", default=59,
+                help="Figure heidth; 图片高mm [default %default]")
+  )
+  opts=parse_args(OptionParser(option_list=option_list))
+  
+  # 调置如果无调设置输出，根据其它参数设置默认输出
+  if (opts$output==""){
+    opts$output=paste("stamp/",opts$compare, sep="")}
+  
+  # 显示输入输出参数，用户确认是否正确
+  print("Parameters are as follows. Please check it!")
+  print(paste("The input data matrix file is ", opts$input,  sep=""))
+  print(paste("The metadata file is ", opts$metadata,  sep=""))
+  # print(paste("The taxonomy file is ", opts$taxonomy,  sep=""))
+  # print(paste("Top 10 phylum file is ", opts$top10tax,  sep=""))
+  print(paste("Group name is ", opts$group,  sep=""))
+  print(paste("Group compare is ", opts$compare,  sep=""))
+  print(paste("Threshold of P-value is ", opts$pvalue,  sep=""))
+  print(paste("Threshold of FDR is ", opts$fdr,  sep=""))
+  print(paste("Threshold of relative abundance is ", opts$threshold,  sep=""))
+  print(paste("Output figure width ", opts$width,  sep=""))
+  print(paste("Output figure height ", opts$height,  sep=""))
+  print(paste("The output file is ", opts$output, sep=""))
+}
+```
+
+# 2. 依赖关系检查、安装和加载
+
+```{r dependcy}
+# 2.1 安装CRAN来源常用包
+# 依赖包列表：差异分析、绘图、热图、数据变换和开发者工具
+package_list=c("tidyverse", "ggplot2","BiocManager","pheatmap","dplyr","devtools")
+# 判断R包加载是否成功来决定是否安装后再加载
+for(p in package_list){
+  if(!suppressWarnings(suppressMessages(require(p, character.only=TRUE, quietly=TRUE, warn.conflicts=FALSE)))){
+    install.packages(p, repos=site)
+    suppressWarnings(suppressMessages(library(p, character.only=TRUE, quietly=TRUE, warn.conflicts=FALSE)))
+  }
+}
+
+# 2.2 安装bioconductor常用包
+# 基于reads counts值组间差异分析包
+package_list=c("limma","edgeR")
+for(p in package_list){
+  if(!suppressWarnings(suppressMessages(require(p, character.only=TRUE, quietly=TRUE, warn.conflicts=FALSE)))){
+    BiocManager::install(p)
+    suppressWarnings(suppressMessages(library(p, character.only=TRUE, quietly=TRUE, warn.conflicts=FALSE)))
+  }
+}
+```
+
+# 3. 读取输入文件
+
+```{r input}
+# 读取OTU表
+dat=read.table(opts$input, header=T, row.names= 1, sep="\t", comment.char="") 
+
+# 读取实验设计
+metadata=read.table(opts$metadata, header=T, row.names= 1, sep="\t", comment.char="") 
+
+# 将选定的分组列统一命名为group
+metadata$group=metadata[,opts$group]
+
+# 标准化和按丰度筛选
+idx=rownames(metadata) %in% colnames(dat)
+table(idx)
+metadata=metadata[idx,,drop=F]
+dat=dat[, rownames(metadata)]
+
+#----丰度过滤#----
+# 标准化为百分比
+if (TRUE){ # normalize
+  norm=t(t(dat)/colSums(dat,na=T)*100)
+}else{
+  norm=as.matrix(data)
+}
+# 按丰度筛选标准化特征表和原始值
+idx=rowMeans(norm) > opts$threshold
+norm=norm[idx, ]
+colSums(norm)
+dat=dat[idx, ]
+
+#----差异比较组筛选#----
+group_list=strsplit(opts$compare,'-')[[1]]
+idx=metadata$group %in% group_list
+table(idx)
+sub_metadata=metadata[idx,,drop=F]
+sub_dat=as.matrix(dat[, rownames(sub_metadata)])
+```
+
+# 4. 比较和绘图
+
+```{r}
+# data <- data*100
+# data <- data %>% filter(apply(data,1,mean) > 1)
+data <- t(sub_dat)
+data1 <- data.frame(data, sub_metadata$group)
+colnames(data1) <- c(colnames(data),"Group")
+data1$Group <- as.factor(data1$Group)
+
+## t-test
+
+diff <- data1 %>% 
+    select_if(is.numeric) %>%
+    map_df(~ broom::tidy(t.test(. ~ Group,data=data1)), .id='var')
+# c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none")
+diff$p.value <- p.adjust(diff$p.value,"none")
+diff <- diff %>% filter(p.value < 0.05)
+
+## wilcox
+# library(tidyverse)
+# diff1 <- data1 %>% 
+#     select_if(is.numeric) %>%
+#     map_df(~ broom::tidy(wilcox.test(. ~ Group,data=data1)), .id='var')
+# 
+# diff1$p.value <- p.adjust(diff1$p.value,"bonferroni")
+# diff1 <- diff %>% filter(p.value < 0.05)
+
+## 绘图数据构建
+## 左侧条形图
+abun.bar <- data1[,c(diff$var,"Group")] %>% 
+    gather(variable,value,-Group) %>% 
+    group_by(variable,Group) %>% 
+    summarise(Mean=mean(value))
+
+## 右侧散点图
+diff.mean <- diff[,c("var","estimate","conf.low","conf.high","p.value")]
+diff.mean$Group <- c(ifelse(diff.mean$estimate >0,levels(data1$Group)[1],
+                            levels(data1$Group)[2]))
+diff.mean <- diff.mean[order(diff.mean$estimate,decreasing=TRUE),]
+
+## 左侧条形图
+library(ggplot2)
+cbbPalette <- c("#E69F00", "#56B4E9")
+abun.bar$variable <- factor(abun.bar$variable,levels=rev(diff.mean$var))
+p1 <- ggplot(abun.bar,aes(variable,Mean,fill=Group)) +
+    scale_x_discrete(limits=levels(diff.mean$var)) +
+    coord_flip() +
+    xlab("") +
+    ylab("Mean proportion (%)") +
+    theme(panel.background=element_rect(fill='transparent'),
+          panel.grid=element_blank(),
+          axis.ticks.length=unit(0.4,"lines"), 
+          axis.ticks=element_line(color='black'),
+          axis.line=element_line(colour="black"),
+          axis.title.x=element_text(colour='black', size=12,face="bold"),
+          axis.text=element_text(colour='black',size=10,face="bold"),
+          legend.title=element_blank(),
+          legend.text=element_text(size=12,face="bold",colour="black",
+                                   margin=margin(r=20)),
+          legend.position=c(-1,-0.1),
+          legend.direction="horizontal",
+          legend.key.width=unit(0.8,"cm"),
+          legend.key.height=unit(0.5,"cm"))
+
+
+for (i in 1:(nrow(diff.mean) - 1)) 
+    p1 <- p1 + annotate('rect', xmin=i+0.5, xmax=i+1.5, ymin=-Inf, ymax=Inf, 
+                        fill=ifelse(i %% 2 == 0, 'white', 'gray95'))
+
+p1 <- p1 + 
+    geom_bar(stat="identity",position="dodge",width=0.7,colour="black") +
+    scale_fill_manual(values=cbbPalette)
+
+
+## 右侧散点图
+diff.mean$var <- factor(diff.mean$var,levels=levels(abun.bar$variable))
+diff.mean$p.value <- signif(diff.mean$p.value,3)
+diff.mean$p.value <- as.character(diff.mean$p.value)
+p2 <- ggplot(diff.mean,aes(var,estimate,fill=Group)) +
+    theme(panel.background=element_rect(fill='transparent'),
+          panel.grid=element_blank(),
+          axis.ticks.length=unit(0.4,"lines"), 
+          axis.ticks=element_line(color='black'),
+          axis.line=element_line(colour="black"),
+          axis.title.x=element_text(colour='black', size=12,face="bold"),
+          axis.text=element_text(colour='black',size=10,face="bold"),
+          axis.text.y=element_blank(),
+          legend.position="none",
+          axis.line.y=element_blank(),
+          axis.ticks.y=element_blank(),
+          plot.title=element_text(size=15,face="bold",colour="black",hjust=0.5)) +
+    scale_x_discrete(limits=levels(diff.mean$var)) +
+    coord_flip() +
+    xlab("") +
+    ylab("Difference in mean proportions (%)") +
+    labs(title="95% confidence intervals") 
+
+for (i in 1:(nrow(diff.mean) - 1)) 
+    p2 <- p2 + annotate('rect', xmin=i+0.5, xmax=i+1.5, ymin=-Inf, ymax=Inf, 
+                        fill=ifelse(i %% 2 == 0, 'white', 'gray95'))
+
+p2 <- p2 +
+    geom_errorbar(aes(ymin=conf.low, ymax=conf.high), 
+                  position=position_dodge(0.8), width=0.5, size=0.5) +
+    geom_point(shape=21,size=3) +
+    scale_fill_manual(values=cbbPalette) +
+    geom_hline(aes(yintercept=0), linetype='dashed', color='black')
+    
+    
+p3 <- ggplot(diff.mean,aes(var,estimate,fill=Group)) +
+    geom_text(aes(y=0,x=var),label=diff.mean$p.value,
+              hjust=0,fontface="bold",inherit.aes=FALSE,size=3) +
+    geom_text(aes(x=nrow(diff.mean)/2 +0.5,y=0.85),label="P-value (corrected)",
+             srt=90,fontface="bold",size=5) +
+    coord_flip() +
+    ylim(c(0,1)) +
+    theme(panel.background=element_blank(),
+          panel.grid=element_blank(),
+          axis.line=element_blank(),
+          axis.ticks=element_blank(),
+          axis.text=element_blank(),
+          axis.title=element_blank())
+```
+
+# 5. 输出图表
+
+```{r}
+## 图像拼接
+library(patchwork)
+(p <- p1 + p2 + p3 + plot_layout(widths=c(4,6,2)))
+
+## 保存图像
+ggsave(paste0(opts$output, "_", gsub(".txt", "", basename(opts$input)), ".pdf"), p, width=opts$width*2, height=opts$height*dim(diff)[1]/10, units="mm")
+#----3.2 保存表格 Saving#----
+filename=paste0(opts$output, "_", basename(opts$input))
+write.table(diff, file=filename, append=F, quote=F, sep='\t', row.names=F, col.names=T)
+```
+
+代码基于红皇后学术推文：https://mp.weixin.qq.com/s/1EFYt2KJOIx_zmT5Xltkeg
+
+使用此脚本，请引用下文：
+
+If used this script, please cited:
+
+**Yong-Xin Liu**, Lei Chen, Tengfei Ma, Xiaofang Li, Maosheng Zheng, Xin Zhou, Liang Chen, Xubo Qian, Jiao Xi, Hongye Lu, Huiluo Cao, Xiaoya Ma, Bian Bian, Pengfan Zhang, Jiqiu Wu, Ren-You Gan, Baolei Jia, Linyang Sun, Zhicheng Ju, Yunyun Gao, **Tao Wen**, **Tong Chen**. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. **iMeta** 2: e83. https://doi.org/10.1002/imt2.83
+
+Copyright 2016-2023 Yong-Xin Liu <liuyongxin@caas.cn>, Tao Wen <taowen@njau.edu.cn>, Tong Chen <chent@nrc.ac.cn>

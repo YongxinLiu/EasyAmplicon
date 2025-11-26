@@ -1,0 +1,7 @@
+sample	Group	sample_new
+plaque1	plaque	plaque1
+plaque2	plaque	plaque2
+plaque3	plaque	plaque3
+plaque4	plaque	plaque4
+plaque5	plaque	plaque5
+plaque6	plaque	plaque6

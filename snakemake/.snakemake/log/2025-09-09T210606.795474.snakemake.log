@@ -1,0 +1,53 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+all                         1
+alpha_diversity             1
+alpha_rarefaction           1
+beta_diversity              1
+build_feature_table         1
+build_tree                  1
+clean_feature_table         1
+denoise_asv                 1
+filter_bacteria             1
+format_taxonomy             1
+rarefy_table                1
+remove_chimeras             1
+rename_asvs                 1
+summary_report              1
+taxonomic_annotation        1
+taxonomic_summary           1
+total                      16
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Sep  9 21:06:07 2025]
+localrule denoise_asv:
+    input: temp/uniques.fa
+    output: temp/zotus.fa
+    jobid: 29
+    reason: Missing output files: temp/zotus.fa; Updated input files: temp/uniques.fa
+    resources: tmpdir=/tmp
+Terminating processes on user request, this might take some time.
+RuleException:
+CalledProcessError in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 184:
+Command 'set -euo pipefail;  usearch -unoise3 temp/uniques.fa -minsize 1 -zotus temp/zotus.fa' died with <Signals.SIGINT: 2>.
+[Tue Sep  9 21:06:35 2025]
+Error in rule denoise_asv:
+    message: None
+    jobid: 29
+    input: temp/uniques.fa
+    output: temp/zotus.fa
+    shell:
+        usearch -unoise3 temp/uniques.fa -minsize 1 -zotus temp/zotus.fa
+        (command exited with non-zero exit code)
+Complete log(s): /mnt/d/EasyAmplicon2/snakemake/.snakemake/log/2025-09-09T210606.795474.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

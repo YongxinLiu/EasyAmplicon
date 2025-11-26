@@ -1,0 +1,33 @@
+
+
+Forms_Biofilms
+Number of samples in each treatment group:
+
+KO OE WT 
+ 6  6  6 
+
+Proportion with phenotype (mean):
+       KO        OE        WT 
+0.9158879 0.8511340 0.8755880 
+
+Proportion with phenotype (median):
+       KO        OE        WT 
+0.9162921 0.8486079 0.8700309 
+
+Standard deviation:
+         KO          OE          WT 
+0.009292643 0.013062136 0.015858715 
+
+Pairwise Mann-Whitney-Wilcoxon Tests were performed.
+Pairwise p-values are:
+ KO_vs_OE  KO_vs_WT  OE_vs_WT 
+0.0021645 0.0021645 0.0259740 
+
+FDR-corrected pairwise p-values are:
+   KO_vs_OE    KO_vs_WT    OE_vs_WT 
+0.003246753 0.003246753 0.025974026 
+
+Kruskal-Wallis Test was performed.
+
+Group p-value is:
+0.001080416 

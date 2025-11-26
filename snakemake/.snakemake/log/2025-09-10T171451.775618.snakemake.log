@@ -1,0 +1,35 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+alpha_diversity          1
+alpha_rarefaction        1
+beta_diversity           1
+format_taxonomy          1
+rarefy_otutab            1
+summary_report           1
+taxonomic_summary        1
+total                    8
+
+Select jobs to execute...
+Execute 2 jobs...
+RuleException in rule format_taxonomy in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 262:
+NameError: The name 'OFS=FS="\t"' is unknown in this context. Please make sure that you defined that variable. Also note that braces not used for variable access have to be escaped by repeating them, i.e. {{print $1}}, when formatting the following:
+
+        # Convert sintax format to 8-column taxonomy table
+        cut -f 1,4 {input}   | sed 's/	d/	k/;s/:/__/g;s/,/;/g;s/"//g'   | awk 'BEGIN{OFS=FS="	"}{
+        delete a;
+        a["k"]="Unassigned";a["p"]="Unassigned";a["c"]="Unassigned";
+        a["o"]="Unassigned";a["f"]="Unassigned";a["g"]="Unassigned";a["s"]="Unassigned";
+        split($2,x,";");
+        for(i in x){split(x[i],b,"__");a[b[1]]=b[2];}
+        print $1,a["k"],a["p"],a["c"],a["o"],a["f"],a["g"],a["s"];
+    }' > {output}
+        

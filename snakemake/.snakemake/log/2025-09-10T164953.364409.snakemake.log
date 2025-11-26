@@ -1,0 +1,9 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: DESKTOP-AN5766Q
+Building DAG of jobs...
+MissingInputException in rule build_tree in file "/mnt/d/EasyAmplicon2/snakemake/Snakefile_noconda", line 330:
+Missing input files for rule build_tree:
+    output: results/phylogeny/otus.tree
+    affected files:
+        results/feature_table/otus.fa

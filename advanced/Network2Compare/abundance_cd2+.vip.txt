@@ -1,0 +1,8 @@
+ID
+Prevotella
+Bacteroides
+Peptoniphilus
+Lactobacillus
+Porphyromonas
+Anaerococcus
+Dialister

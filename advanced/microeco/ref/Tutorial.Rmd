@@ -1,0 +1,597 @@
+---
+title: "Diversity tutorial多样性分析教程"
+author: "Chi Liu(刘驰)"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = T, echo=T, comment="#>", message=F, warning=F,
+	fig.align="center", fig.width=5, fig.height=3, dpi=150)
+```
+
+参考教程: https://chiliubio.github.io/microeco/
+
+## 加载包和数据
+
+```{r}
+library(devtools)
+# devtools::install_github("ChiLiubio/microeco")
+# 加载程序包
+library(microeco)
+# 加载测试数据
+data(sample_info_16S)
+data(otu_table_16S)
+data(taxonomy_table_16S)
+data(phylo_tree_16S)
+data(env_data_16S)
+
+# 设置随机数据，使用结果可重复
+set.seed(123)
+# 加载ggplot2绘图包并设置样式
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+## 数据格式预览
+
+```{r}
+class(otu_table_16S)
+otu_table_16S[1:5, 1:5]
+
+class(taxonomy_table_16S)
+taxonomy_table_16S[1:5, 1:3]
+
+library(magrittr)
+# 使用流程写法%<>%，类似于Linux中的"|"
+taxonomy_table_16S %<>% tidy_taxonomy
+
+class(sample_info_16S)
+sample_info_16S[1:5, ]
+
+class(env_data_16S)
+env_data_16S[1:5, 1:3]
+
+class(phylo_tree_16S)
+
+# 生成本包数据格式
+dataset <- microtable$new(sample_table = sample_info_16S, otu_table = otu_table_16S, tax_table = taxonomy_table_16S, phylo_tree = phylo_tree_16S)
+class(dataset)
+print(dataset)
+# 交叉筛选
+dataset$tidy_dataset()
+print(dataset)
+
+# 按界筛选
+dataset$tax_table %<>% base::subset(Kingdom == "k__Archaea" | Kingdom == "k__Bacteria")
+print(dataset)
+
+# 过滤叶绿体和线粒体
+dataset$filter_pollution(taxa = c("mitochondria", "chloroplast"))
+print(dataset)
+# 过滤后物种注释与OTU表不对应，再交叉筛选
+dataset$tidy_dataset()
+print(dataset)
+# 统计样本数据量范围
+dataset$sample_sums() %>% range
+
+# 按各分类层级汇总
+dataset$cal_abund()
+class(dataset$taxa_abund)
+
+# 保存层级表，界、门、纲、目、科、属和种共7个
+dir.create("taxa_abund")
+dataset$save_abund(dirpath = "taxa_abund")
+
+# 计算alpha多样性，并保存
+dataset$cal_alphadiv(PD = FALSE)
+dir.create("alpha_diversity")
+dataset$save_alphadiv(dirpath = "alpha_diversity")
+
+# 计算beta多样性，并保存
+dataset$cal_betadiv(unifrac = TRUE)
+class(dataset$beta_diversity)
+dir.create("beta_diversity")
+dataset$save_betadiv(dirpath = "beta_diversity")
+```
+
+## 物种组成trans_abund 
+
+```{r}
+# 绘制前10个门
+t1 <- trans_abund$new(dataset = dataset, taxrank = "Phylum", ntaxa = 10)
+p=t1$plot_bar(others_color = "grey70", facet = "Group", xtext_keep = FALSE, legend_text_italic = FALSE)
+p
+
+# 按组均值
+t1 <- trans_abund$new(dataset = dataset, taxrank = "Phylum", ntaxa = 10, groupmean = "Group")
+t1$plot_bar(others_color = "grey70", legend_text_italic = FALSE)
+
+# 冲击图样式
+t1 <- trans_abund$new(dataset = dataset, taxrank = "Phylum", ntaxa = 8)
+# use_alluvium = TRUE make the alluvial plot, clustering =TRUE can be used to reorder the samples by clustering
+t1$plot_bar(use_alluvium = TRUE, clustering = TRUE, xtext_type_hor = FALSE, xtext_size = 6)
+```
+
+
+```{r}
+# 箱线图组间差异
+t1 <- trans_abund$new(dataset = dataset, taxrank = "Class", ntaxa = 15)
+t1$plot_box(group = "Group")
+
+# 热图展示前40个属
+t1 <- trans_abund$new(dataset = dataset, taxrank = "Genus", ntaxa = 40)
+t1$plot_heatmap(facet = "Group", xtext_keep = FALSE, withmargin = FALSE)
+
+# 计算前6个门的均值
+t1 <- trans_abund$new(dataset = dataset, taxrank = "Phylum", ntaxa = 6, groupmean = "Group")
+# 饼图按一行显示
+t1$plot_pie(facet_nrow = 1)
+```
+
+## 维恩图 trans_venn 
+
+```{r}
+# 按组合并样本
+dataset1 <- dataset$merge_samples(use_group = "Group")
+print(dataset1)
+# 生成维恩图
+t1 <- trans_venn$new(dataset1, ratio = "seqratio")
+# 数值是OTU各类，比例是相对丰度
+t1$plot_venn()
+```
+```{r}
+# 按样本"Type"分组
+dataset1 <- dataset$merge_samples(use_group = "Type")
+t1 <- trans_venn$new(dataset1)
+# 绘制花瓣图
+t1$plot_venn(petal_plot = TRUE)
+```
+```{r}
+dataset1 <- dataset$merge_samples(use_group = "Group")
+t1 <- trans_venn$new(dataset1)
+# 转换维恩结果为样本/种表，仅考虑有/无
+t2 <- t1$trans_venn_com(use_OTUs_frequency = TRUE)
+# 新microtable类，每部分认为是一个样本
+class(t2)
+```
+
+```{r}
+# 计算频次的相对丰度
+t2$cal_abund()
+# 转化为前10个属，并绘图
+t3 <- trans_abund$new(dataset = t2, taxrank = "Genus", ntaxa = 10)
+t3$plot_bar(bar_type = "part", legend_text_italic = T, ylab_title = "Frequency (%)", xtext_type_hor = FALSE)
+```
+
+```{r}
+# 按前8门，绘制饼图
+t3 <- trans_abund$new(dataset = t2, taxrank = "Phylum", ntaxa = 8)
+t3$plot_pie(facet_nrow = 3, use_colors = rev(c(RColorBrewer::brewer.pal(8, "Dark2"), "grey50")))
+```
+## alpha多样性 trans_alpha 
+
+```{r}
+# 计算alpha多样性
+t1 <- trans_alpha$new(dataset = dataset, group = "Group")
+t1$alpha_stat[1:5, ]
+
+# KW组间统计
+t1$cal_diff(method = "KW")
+t1$res_alpha_diff[1:5, ]
+
+# ANOVA统计
+t1$cal_diff(method = "anova")
+t1$res_alpha_diff
+t1$plot_alpha(add_letter = TRUE, measure = "Chao1")
+t1$plot_alpha(pair_compare = TRUE, measure = "Chao1")
+```
+## Beta多样性 trans_beta 
+
+```{r}
+# 计算beta多样性
+t1 <- trans_beta$new(dataset = dataset, group = "Group", measure = "bray", ordination = "PCoA")
+# 可视化，按组着色、形状，添加椭圆
+t1$plot_ordination(plot_color = "Group", plot_shape = "Group", plot_group_ellipse = TRUE)
+
+# 计算组内距离
+t1$cal_group_distance()
+# 组间统计
+t1$plot_group_distance(distance_pair_stat = TRUE)
+```
+
+
+```{r}
+# 计算组间距离
+t1$cal_group_distance(within_group = FALSE)
+t1$plot_group_distance(distance_pair_stat = TRUE)
+
+# use replace_name to set the label name, group parameter used to set the color
+t1$plot_clustering(group = "Group", replace_name = c("Saline", "Type"))
+```
+
+```{r}
+# 聚类图，按组着色，名称为两组名组合
+t1$plot_clustering(group = "Group", replace_name = c("Saline", "Type"))
+```
+```{r}
+# PERMANOVA整体统计
+t1$cal_manova(cal_manova_all = TRUE)
+t1$res_manova$aov.tab
+
+# PERMANOVA组间两两统计
+t1$cal_manova(cal_manova_paired = TRUE)
+t1$res_manova
+```
+
+```{r}
+# 特定组统计"Group + Type"
+t1$cal_manova(cal_manova_set = "Group + Type")
+t1$res_manova$aov.tab
+```
+## 差异比较 trans_diff 
+
+目前有metastat, LEfSe和随机森林3种方法可选。
+
+```{r}
+# 在属水平使用metasata分析各组差异 
+t1 <- trans_diff$new(dataset = dataset, method = "metastat", group = "Group", metastat_taxa_level = "Genus")
+# 可视化第一组，前10个属 
+t1$plot_metastat(use_number = 1:10, qvalue = 0.05, choose_group = 1)
+```
+```{r}
+# lefse分析各组差异 
+t1 <- trans_diff$new(dataset = dataset, method = "lefse", group = "Group", alpha = 0.01, lefse_subgroup = NULL)
+# t1$res_lefse是LEfSe结果
+# t1$res_abund是丰度信息
+t1$plot_lefse_bar(LDA_score = 4)
+t1$res_lefse[1:5, ]
+```
+```{r}
+# 显示前30差异，柱+标准差
+t1$plot_diff_abund(use_number = 1:30)
+```
+
+```{r}
+# 绘制物种树
+t1$plot_lefse_cladogram(use_taxa_num = 200, use_feature_num = 50, clade_label_level = 5)
+```
+
+原始有太多层级结果，可以手动控制标签
+
+```{r}
+# 选择上图中合适位置，且不重叠的标签
+use_labels <- c("c__Deltaproteobacteria", "c__Actinobacteria", "o__Rhizobiales", "p__Proteobacteria", "p__Bacteroidetes", 
+    "o__Micrococcales", "p__Acidobacteria", "p__Verrucomicrobia", "p__Firmicutes", 
+    "p__Chloroflexi", "c__Acidobacteria", "c__Gammaproteobacteria", "c__Betaproteobacteria", "c__KD4-96",
+    "c__Bacilli", "o__Gemmatimonadales", "f__Gemmatimonadaceae", "o__Bacillales", "o__Rhodobacterales")
+# 使用指定标签
+t1$plot_lefse_cladogram(use_taxa_num = 200, use_feature_num = 50, select_show_labels = use_labels)
+```
+
+机器学习统计差异
+
+```{r}
+# 随机森林：按分组找属水平标记
+t1 <- trans_diff$new(dataset = dataset, method = "rf", group = "Group", rf_taxa_level = "Genus")
+# 展示前20的特征
+t2 <- t1$plot_diff_abund(use_number = 1:20, only_abund_plot = FALSE)
+# 拼图
+gridExtra::grid.arrange(t2$p1, t2$p2, ncol=2, nrow = 1, widths = c(2,2))
+```
+
+## 环境因子分析 trans_env
+
+```{r}
+# RDA分析增加环境因子
+t1 <- trans_env$new(dataset = dataset, add_data = env_data_16S[, 4:11])
+# 使用bray-curtis距离dbrda
+t1$cal_rda(use_dbrda = TRUE, use_measure = "bray")
+# 调整箭头长度，控制数量
+t1$trans_rda(adjust_arrow_length = TRUE, max_perc_env = 10)
+# 按组着色绘图
+t1$plot_rda(plot_color = "Group")
+```
+```{r}
+# 使用属水平
+t1$cal_rda(use_dbrda = FALSE, taxa_level = "Genus")
+# 控制属显示数量
+t1$trans_rda(show_taxa = 10, adjust_arrow_length = TRUE, max_perc_env = 1500, max_perc_tax = 3000, min_perc_env = 200, min_perc_tax = 300)
+# t1$res_rda_trans is the transformed result for plotting
+t1$plot_rda(plot_color = "Group")
+```
+
+```{r}
+# mantel检验
+t1$cal_mantel(use_measure = "bray")
+t1$res_mantel
+```
+使用随机森林属的生物标志，与环境因子相关分析
+
+```{r}
+# 属水平标记
+t2 <- trans_diff$new(dataset = dataset, method = "rf", group = "Group", rf_taxa_level = "Genus")
+# 添加环境因子
+t1 <- trans_env$new(dataset = dataset, add_data = env_data_16S[, 4:11])
+# 相关分析环境与40个属 
+t1$cal_cor(use_data = "other", p_adjust_method = "fdr", other_taxa = t2$res_rf$Taxa[1:40])
+# 热图展示
+t1$plot_corr()
+# 调整用Pheatmap并聚类
+t1$plot_corr(pheatmap = TRUE)
+# 按组分别计算相关
+t1$cal_cor(by_group = "Group", use_data = "other", p_adjust_method = "fdr", other_taxa = t2$res_rf$Taxa[1:40])
+# return t1$res_cor
+t1$plot_corr()
+```
+
+```{r}
+# 环境因子与alpha多样性相关
+t1 <- trans_env$new(dataset = dataset, add_data = env_data_16S[, 4:11])
+t1$cal_cor(add_abund_table = dataset$alpha_diversity)
+t1$plot_corr()
+```
+
+## 零模型 trans_nullmodel
+
+运行时间有点长(测试时跳过)
+
+```{r eval=FALSE, include=FALSE}
+# 使用1000 OTUs作为例子，
+t1 <- trans_nullmodel$new(dataset, taxa_number = 1000, add_data = env_data_16S)
+# 使用pH作为测试变量
+t1$cal_mantel_corr(use_env = "pH")
+# 绘图
+t1$plot_mantel_corr()
+
+# 计算500次零模型
+t1$cal_ses_betampd(runs=500, abundance.weighted = TRUE)
+
+# 添加betaNRI矩阵至Beta多样性列表
+dataset$beta_diversity[["betaNRI"]] <- t1$res_ses_betampd
+# 创建trans_beta对象, 使用"betaNRI"测量
+t2 <- trans_beta$new(dataset = dataset, group = "Group", measure = "betaNRI")
+# 转换每组的距离
+t2$cal_group_distance()
+# 绘图
+g1 <- t2$plot_group_distance(distance_pair_stat = TRUE)
+g1 + geom_hline(yintercept = -2, linetype = 2) + geom_hline(yintercept = 2, linetype = 2)
+```
+
+```{r}
+# 创建列表存储trans_nullmodel结果
+sesbeta_each <- list()
+group_col <- "Group"
+all_groups <- unique(dataset$sample_table[, group_col])
+# 每个组单独计算
+for(i in all_groups){
+    # 同上面操作，但需提供'group'和'select_group'
+    test <- trans_nullmodel$new(dataset, group = group_col, select_group = i, taxa_number = 1000, add_data = env_data_16S)
+    test$cal_ses_betampd(runs = 500, abundance.weighted = TRUE)
+    sesbeta_each[[i]] <- test$res_ses_betampd
+}
+library(reshape2)
+# 合并，并转换为对称矩阵
+test <- lapply(sesbeta_each, melt) %>% do.call(rbind, .) %>%
+    reshape2::dcast(., Var1~Var2, value.var = "value") %>% `row.names<-`(.[,1]) %>% .[, -1, drop = FALSE]
+# 同上段操作
+dataset$beta_diversity[["betaNRI"]] <- test
+t2 <- trans_beta$new(dataset = dataset, group = "Group", measure = "betaNRI")
+t2$cal_group_distance()
+g1 <- t2$plot_group_distance(distance_pair_stat = TRUE)
+g1 + geom_hline(yintercept = -2, linetype = 2) + geom_hline(yintercept = 2, linetype = 2)
+```
+
+```{r eval=FALSE, include=FALSE}
+# 运行500次零模型
+t1$cal_ses_betamntd(runs=500, abundance.weighted = TRUE)
+
+# 计算Bray-Curtis-based Raup-Crick)
+t1$cal_rcbray(runs = 1000)
+
+# 使用betaNTI和rcbray评估过程
+t1$cal_process(use_betamntd = TRUE)
+t1$res_process
+```
+
+
+## 网络分析 trans_network 
+
+相关网络
+
+```{r}
+# 使用R cor.test计算，速度慢
+t1 <- trans_network$new(dataset = dataset, cal_cor = "base", taxa_level = "OTU", filter_thres = 0.001, cor_method = "spearman")
+```
+
+```{r}
+# SparCC方法，依赖SpiecEasi包，速度较慢，可过滤低丰度提速
+# library(devtools)
+# install_github("zdk123/SpiecEasi")
+t1 <- trans_network$new(dataset = dataset, cal_cor = "SparCC", taxa_level = "OTU", filter_thres = 0.005, SparCC_simu_num = 100)
+```
+
+```{r}
+# 当OTU数据较大，可用WGCNA快速计算相关
+t1 <- trans_network$new(dataset = dataset, cal_cor = "WGCNA", taxa_level = "OTU", filter_thres = 0.001, cor_method = "spearman")
+```
+
+```{r}
+# 自动选择相关性阈值
+t1$cal_network(p_thres = 0.01, COR_optimization = TRUE)
+# 相关性阈值0.7
+t1$cal_network(p_thres = 0.01, COR_cut = 0.7)
+# 保存网络文件，依赖rgexf包
+# BiocManager::install("rgexf")
+t1$save_network(filepath = "network.gexf")
+# 计算网络属性
+t1$cal_network_attr()
+t1$res_network_attr
+# 分类节点为模块
+t1$cal_node_type()
+head(t1$res_node_type)
+# 保存结果用于功能分析trans_func
+network_node_type <- t1$res_node_type
+# 绘制模块内连通性，模块间连通性
+t1$plot_taxa_roles(use_type = 1)
+```
+```{r}
+# 按门分类绘图
+t1$plot_taxa_roles(use_type = 2)
+```
+
+```{r}
+t1$cal_eigen()
+t1$res_eigen
+```
+
+```{r}
+# 生成环境因子trans_env对象
+t2 <- trans_env$new(dataset = dataset, add_data = env_data_16S[, 4:11])
+# 计算相关
+t2$cal_cor(add_abund_table = t1$res_eigen)
+# plot the correlation heatmap
+t2$plot_corr()
+```
+
+```{r}
+# 计算分类单元内/间相关统计
+t1$cal_sum_links(taxa_level = "Phylum")
+# 返回 t1$res_sum_links_pos 和 t1$res_sum_links_neg
+# devtools::install_github("mattflor/chorddiag")
+t1$plot_sum_links(plot_pos = TRUE, plot_num = 5)
+```
+
+```{r eval=FALSE, include=FALSE}
+# 提取部分网络，如提取模块1
+t1$subset_network(node = t1$res_node_type %>% .[.$module == "M1", ] %>% rownames, rm_single = TRUE)
+# 使用cal_cor选择NA
+t1 <- trans_network$new(dataset = dataset, cal_cor = NA, taxa_level = "OTU", filter_thres = 0.005)
+t1$cal_network(network_method = "SpiecEasi")
+t1$res_network
+```
+
+## 功能预测 trans_func 
+
+FAPROTAX、FUNGuild 功能预测
+
+```{r}
+t2 <- trans_func$new(dataset)
+t2$cal_spe_func()
+t2$res_spe_func[1:5, 1:2]
+
+# 计算网络中每个OTU的功能 
+t2$cal_spe_func_perc(use_community = FALSE, node_type_table = network_node_type)
+# 绘图
+t2$plot_spe_func_perc(select_samples = paste0("M", 1:10))
+```
+
+```{r}
+# 查看功能 分组列表
+t2$func_group_list
+# 查看某一类
+t2$show_prok_func("methanotrophy")
+# 计算相对丰度
+t2$cal_spe_func_perc(use_community = TRUE)
+# 计算功能与环境因子相关
+t3 <- trans_env$new(dataset = dataset, add_data = env_data_16S[, 4:11])
+t3$cal_cor(add_abund_table = t2$res_spe_func_perc, cor_method = "spearman")
+# 绘图
+t3$plot_corr(pheatmap = TRUE)
+```
+
+```{r}
+# show the ITS dataset preprocessing, the functional identification of OTUs and functional redundancy of modules
+data(sample_info_ITS)
+data(otu_table_ITS)
+data(taxonomy_table_ITS)
+# create microtable object
+dataset <- microtable$new(sample_table = sample_info_ITS, otu_table = otu_table_ITS, tax_table = taxonomy_table_ITS)
+# remove the taxa not assigned in the Kingdom "k__Fungi"
+dataset$tax_table %<>% base::subset(Kingdom == "k__Fungi")
+# use tidy_dataset() to make OTUs and samples information consistent across files
+dataset$tidy_dataset()
+# create trans_network object
+t1 <- trans_network$new(dataset = dataset, cal_cor = "WGCNA", taxa_level = "OTU", filter_thres = 0.000001, cor_method = "spearman")
+# create correlation network 
+t1$cal_network(p_thres = 0.05, COR_cut = 0.6)
+# calculate node topological properties
+t1$cal_node_type()
+node_type_table <- t1$res_node_type
+# create trans_func object
+t2 <- trans_func$new(dataset)
+# identify species traits, automatically select database for prokaryotes or fungi
+t2$cal_spe_func()
+# calculate abundance-unweighted functional redundancy of each trait for each network module
+t2$cal_spe_func_perc(use_community = FALSE, node_type_table = node_type_table)
+# plot the functional redundancy of network modules
+t2$plot_spe_func_perc(select_samples = paste0("M", 1:10))
+```
+
+## 附录
+
+### 添加图层
+
+```{r}
+data("dataset")
+t1 <- trans_abund$new(dataset = dataset, taxrank = "Phylum", ntaxa = 10, groupmean = "Group")
+g1 <- t1$plot_bar(others_color = "grey70", legend_text_italic = FALSE)
+g1 + theme_classic() + theme(axis.title.y = element_text(size = 18))
+```
+### 克隆数据clone
+
+原始引用只是链接，并变有全完复制一份，修改即修改全部
+```{r}
+t1 <- clone(dataset)
+t2 <- clone(t1)
+t2$sample_table <- NULL
+identical(t2, t1)
+
+# 不使用clone，原始数据也会被影响
+t2 <- t1
+t2$sample_table <- NULL
+identical(t2, t1)
+```
+
+### 取子集subset
+
+```{r}
+# 先克隆，再取子集和交叉筛选
+group1 <- clone(dataset)
+group1$sample_table <- subset(group1$sample_table, Group == "CW")
+group1$tidy_dataset()
+
+# 再取另一组
+group2 <- clone(dataset)
+group2$sample_table <- subset(group2$sample_table, Group == "IW")
+group2$tidy_dataset()
+```
+
+### 改变对象
+
+```{r}
+# 添加一个有用的矩阵
+dataset$my_matrix <- matrix(1, nrow = 4, ncol = 4)
+# 修改信息
+dataset$sample_table %<>% .[, -2]
+```
+
+## 从文件导入
+
+https://github.com/ChiLiubio/file2meco
+
+
+```{r}
+library(devtools)
+devtools::install_github("ChiLiubio/file2meco")
+
+```
+
+使用此脚本，请引用下文：
+
+Chi Liu, Yaoming Cui, Xiangzhen Li & Minjie Yao. (2020). microeco: an R package for data mining in microbial community ecology. FEMS Microbiology Ecology 97, doi: https://doi.org/10.1093/femsec/fiaa255

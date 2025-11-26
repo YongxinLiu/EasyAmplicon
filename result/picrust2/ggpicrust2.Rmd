@@ -1,0 +1,90 @@
+[TOC]
+
+# ggpicrust2：PICRUSt2结果分析和可视化
+
+https://github.com/cafferychen777/ggpicrust2
+
+ggpicrust2是一个综合软件包，旨在为分析和解释 PICRUSt2 功能预测结果提供无缝且直观的解决方案。它提供了广泛的功能，包括通路名称/描述注释、高级差异丰度 (differential abundance, DA) 方法以及 DA 结果的可视化。
+
+
+```{r}
+# 软件检测和安装
+if(!requireNamespace("ggpicrust2", quietly = TRUE))
+  devtools::install_github('cafferychen777/ggpicrust2')
+library(readr)
+library(ggpicrust2)
+library(tibble)
+library(tidyverse)
+library(ggprism)
+library(patchwork)
+```
+
+## 工作流程ggpicrust2
+
+```{r}
+# 加载必要的数据: abundance data（丰度数据） and metadata（元数据）
+df <- read_delim("KO_metagenome_out/pred_metagenome_unstrat.tsv.gz", delim = "\t", col_names = TRUE, trim_ws = TRUE)
+# 样本列表：有些分析只能有2个分组
+md <- read_delim("../metadata.txt", delim = "\t", escape_double = FALSE, trim_ws = TRUE)
+
+# 转换KO为通路
+kegg_abundance <- ko2kegg_abundance(data = df)
+
+# PCA
+p = pathway_pca(abundance = kegg_abundance, metadata = md, group = "Group")
+ggsave("pathway_pca.pdf", p, width = 160, height = 100, units = "mm")
+
+
+# 只能有2个分组
+# 筛选样本
+idx = md$Group %in% c("KO", "WT")
+md = md[idx,]
+idx = colnames(kegg_abundance) %in% md$SampleID # c(md$SampleID, "function", "#NAME")
+kegg_abundance = kegg_abundance[,idx]
+
+# 组间差异比较
+daa <- pathway_daa(abundance = kegg_abundance, metadata = md, group = "Group", daa_method = "LinDA", select = NULL, p.adjust = "none", reference = "WT")
+write.table(daa, file="daa_LinDA_WT.txt", append = F, sep="\t", quote=F, row.names=F, col.names=T)
+
+
+#注释结果，仅筛选p<0.05的结果
+annotated_daa <- pathway_annotation(pathway = "KO",
+  daa_results_df = daa, ko_to_kegg = T)
+
+# 进一步过滤 p < 0.05/0.01/0.001的特征    
+feature_filter <- annotated_daa %>% 
+  filter(p_adjust < 0.05)
+
+# 创建热图
+kegg_abundance$pathway = rownames(kegg_abundance)
+p = pathway_heatmap(
+  abundance = kegg_abundance %>% 
+    right_join(
+      feature_filter %>% select(all_of(c("feature","pathway_name"))),
+      by = c("pathway" = "feature")
+    ) %>% select(-"pathway") %>% 
+    column_to_rownames("pathway_name"),
+  metadata = md, 
+  group = "Group"
+)
+ggsave("pathway_heatmap.pdf", p, width = 160*1.5, height = 100*1.5, units = "mm")
+
+
+# 分析流程, method: ALDEx2(无结果)、DESeq2、edgeR(结果>30)、limma voom、metagenomeSeq、LinDA(无结果)、Maaslin2
+result <- ggpicrust2(data = df[,c("function", md$SampleID)],
+                     metadata = md, group = "Group", reference = "WT",
+                     pathway = "KO", daa_method = "LinDA", p.adjust = "none",
+                     ko_to_kegg = TRUE, order = "pathway_class",
+                     p_values_bar = TRUE, x_lab = "pathway_name")
+
+# 访问第一个DA方法的绘图、预览和保存
+pathway_errorbar <- result[[1]]$plot
+pathway_errorbar
+ggsave("pathway_errorbar.pdf", pathway_errorbar, width = 360, height = 180, units = "mm")
+# 访问第一个DA方法的绘图和结果数据
+pathway_errorbar <- result[[1]]$results
+head(pathway_errorbar)
+write.table(pathway_errorbar, file="pathway_errorbar.txt", append = F, sep="\t", quote=F, row.names=F, col.names=T)
+```    
+
+ 

@@ -1,0 +1,10 @@
+SampleID	total_reads	nonspecific_reads	chloroplast_reads	mitochondria_reads	filtered_reads
+HY1_1	8263	0	0	0	8263
+HY1_2	8172	0	0	0	8172
+HY1_3	10288	0	0	0	10288
+HY2_1	7789	0	0	0	7789
+HY2_2	10050	0	0	0	10050
+HY2_3	10113	0	0	0	10113
+HY3_1	9297	0	0	0	9297
+HY3_2	6845	0	0	0	6845
+HY3_3	11591	0	0	0	11591

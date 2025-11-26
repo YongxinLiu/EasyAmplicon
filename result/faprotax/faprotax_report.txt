@@ -1,0 +1,1548 @@
+# Report for collapsed table: faprotax.txt
+# Collapsed table generated on: 2023.01.28 22:11:48
+# Original table: otutab_rare_tax.biom
+# Details:
+#  Original BIOM table contained 1363 rows & 18 columns
+#  After filtering rows & columns based on names and metadata, obtained a table comprising 1363 rows & 18 columns
+#  After (potentially) filtering out records based on name, obtained a table comprising 1363 records & 18 data entries per record
+# Used command:
+#   /mnt/c/EasyMicrobiome/script/FAPROTAX_1.2.6/collapse_table.py -i otutab_rare_tax.biom -g /mnt/c/EasyMicrobiome/script/FAPROTAX_1.2.6/FAPROTAX.txt --collapse_by_metadata taxonomy -v --force -o faprotax.txt -r faprotax_report.txt
+#
+# Summary of group assignments:
+#   methanotrophy: 2 records
+#   acetoclastic_methanogenesis: 0 records
+#   methanogenesis_by_disproportionation_of_methyl_groups: 0 records
+#   methanogenesis_using_formate: 0 records
+#   methanogenesis_by_CO2_reduction_with_H2: 0 records
+#   methanogenesis_by_reduction_of_methyl_compounds_with_H2: 0 records
+#   hydrogenotrophic_methanogenesis: 0 records
+#   methanogenesis: 0 records
+#   methanol_oxidation: 8 records
+#   methylotrophy: 10 records
+#   aerobic_ammonia_oxidation: 0 records
+#   aerobic_nitrite_oxidation: 3 records
+#   nitrification: 3 records
+#   sulfate_respiration: 1 records
+#   sulfur_respiration: 2 records
+#   dark_sulfite_oxidation: 0 records
+#   sulfite_respiration: 0 records
+#   thiosulfate_respiration: 0 records
+#   respiration_of_sulfur_compounds: 3 records
+#   arsenate_detoxification: 0 records
+#   arsenate_respiration: 0 records
+#   dissimilatory_arsenate_reduction: 0 records
+#   arsenite_oxidation_detoxification: 0 records
+#   arsenite_oxidation_energy_yielding: 0 records
+#   dissimilatory_arsenite_oxidation: 0 records
+#   anammox: 0 records
+#   nitrate_denitrification: 0 records
+#   nitrite_denitrification: 0 records
+#   nitrous_oxide_denitrification: 0 records
+#   denitrification: 0 records
+#   chitinolysis: 22 records
+#   knallgas_bacteria: 0 records
+#   dark_hydrogen_oxidation: 5 records
+#   nitrogen_fixation: 11 records
+#   nitrate_ammonification: 0 records
+#   nitrite_ammonification: 0 records
+#   nitrite_respiration: 0 records
+#   cellulolysis: 7 records
+#   xylanolysis: 0 records
+#   dark_sulfide_oxidation: 0 records
+#   dark_sulfur_oxidation: 0 records
+#   dark_thiosulfate_oxidation: 0 records
+#   dark_oxidation_of_sulfur_compounds: 7 records
+#   manganese_oxidation: 1 records
+#   manganese_respiration: 0 records
+#   ligninolysis: 0 records
+#   fermentation: 9 records
+#   aerobic_chemoheterotrophy: 424 records
+#   invertebrate_parasites: 0 records
+#   human_pathogens_septicemia: 0 records
+#   human_pathogens_pneumonia: 0 records
+#   human_pathogens_nosocomia: 0 records
+#   human_pathogens_meningitis: 0 records
+#   human_pathogens_gastroenteritis: 0 records
+#   human_pathogens_diarrhea: 0 records
+#   human_pathogens_all: 0 records
+#   fish_parasites: 0 records
+#   human_gut: 0 records
+#   human_associated: 0 records
+#   mammal_gut: 0 records
+#   animal_parasites_or_symbionts: 1 records
+#   plant_pathogen: 0 records
+#   oil_bioremediation: 0 records
+#   aromatic_hydrocarbon_degradation: 0 records
+#   aromatic_compound_degradation: 37 records
+#   aliphatic_non_methane_hydrocarbon_degradation: 0 records
+#   hydrocarbon_degradation: 2 records
+#   dark_iron_oxidation: 0 records
+#   iron_respiration: 9 records
+#   nitrate_respiration: 13 records
+#   nitrate_reduction: 31 records
+#   nitrogen_respiration: 13 records
+#   fumarate_respiration: 0 records
+#   intracellular_parasites: 3 records
+#   chlorate_reducers: 0 records
+#   predatory_or_exoparasitic: 24 records
+#   chloroplasts: 0 records
+#   nonphotosynthetic_cyanobacteria: 0 records
+#   photosynthetic_cyanobacteria: 0 records
+#   anoxygenic_photoautotrophy_H2_oxidizing: 0 records
+#   anoxygenic_photoautotrophy_S_oxidizing: 4 records
+#   anoxygenic_photoautotrophy_Fe_oxidizing: 0 records
+#   anoxygenic_photoautotrophy: 4 records
+#   oxygenic_photoautotrophy: 0 records
+#   photoautotrophy: 4 records
+#   aerobic_anoxygenic_phototrophy: 0 records
+#   photoheterotrophy: 2 records
+#   phototrophy: 6 records
+#   plastic_degradation: 0 records
+#   ureolysis: 22 records
+#   reductive_acetogenesis: 0 records
+#   chemoheterotrophy: 468 records
+#
+# Loaded 92 groups comprising 8309 members (5042 unique members)
+# Established 1161 assignments of records to groups
+# 525 out of 1363 records (38.518 %) were assigned to at least one group
+# 838 out of 1363 records (61.482 %) could not be assigned to any group (leftovers)
+# 32 groups were represented (i.e. associated with at least one record)
+# Detailed group assignments are listed below
+
+# methanotrophy (2 records):
+    ASV_808 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylocystaceae*g__Methylocystis)
+    ASV_1427 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylocystaceae*g__Methylosinus)
+
+
+# acetoclastic_methanogenesis (0 records):
+
+
+# methanogenesis_by_disproportionation_of_methyl_groups (0 records):
+
+
+# methanogenesis_using_formate (0 records):
+
+
+# methanogenesis_by_CO2_reduction_with_H2 (0 records):
+
+
+# methanogenesis_by_reduction_of_methyl_compounds_with_H2 (0 records):
+
+
+# hydrogenotrophic_methanogenesis (0 records):
+
+
+# methanogenesis (0 records):
+
+
+# methanol_oxidation (8 records):
+    ASV_149 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylobacillus)
+    ASV_1289 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylophilus)
+    ASV_1507 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylotenera)
+    ASV_879 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylotenera)
+    ASV_1033 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylovorus)
+    ASV_614 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Novimethylophilus)
+    ASV_199 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Novimethylophilus)
+    ASV_227 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Pseudomethylobacillus)
+
+
+# methylotrophy (10 records):
+    ASV_808 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylocystaceae*g__Methylocystis)
+    ASV_1427 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylocystaceae*g__Methylosinus)
+    ASV_149 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylobacillus)
+    ASV_1289 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylophilus)
+    ASV_1507 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylotenera)
+    ASV_879 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylotenera)
+    ASV_1033 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylovorus)
+    ASV_614 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Novimethylophilus)
+    ASV_199 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Novimethylophilus)
+    ASV_227 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Pseudomethylobacillus)
+
+
+# aerobic_ammonia_oxidation (0 records):
+
+
+# aerobic_nitrite_oxidation (3 records):
+    ASV_1487 (k__Bacteria*p__Nitrospirae*c__Nitrospira*o__Nitrospirales*f__Nitrospiraceae*g__Nitrospira)
+    ASV_555 (k__Bacteria*p__Nitrospirae*c__Nitrospira*o__Nitrospirales*f__Nitrospiraceae*g__Nitrospira)
+    ASV_506 (k__Bacteria*p__Nitrospirae*c__Nitrospira*o__Nitrospirales*f__Nitrospiraceae*g__Nitrospira)
+
+
+# nitrification (3 records):
+    ASV_1487 (k__Bacteria*p__Nitrospirae*c__Nitrospira*o__Nitrospirales*f__Nitrospiraceae*g__Nitrospira)
+    ASV_555 (k__Bacteria*p__Nitrospirae*c__Nitrospira*o__Nitrospirales*f__Nitrospiraceae*g__Nitrospira)
+    ASV_506 (k__Bacteria*p__Nitrospirae*c__Nitrospira*o__Nitrospirales*f__Nitrospiraceae*g__Nitrospira)
+
+
+# sulfate_respiration (1 records):
+    ASV_1032 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Syntrophobacterales*f__Syntrophobacteraceae*g__Syntrophobacter)
+
+
+# sulfur_respiration (2 records):
+    ASV_365 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Desulfuromonadaceae*g__Desulfuromonas)
+    ASV_106 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Desulfuromonadaceae*g__Desulfuromonas)
+
+
+# dark_sulfite_oxidation (0 records):
+
+
+# sulfite_respiration (0 records):
+
+
+# thiosulfate_respiration (0 records):
+
+
+# respiration_of_sulfur_compounds (3 records):
+    ASV_365 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Desulfuromonadaceae*g__Desulfuromonas)
+    ASV_106 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Desulfuromonadaceae*g__Desulfuromonas)
+    ASV_1032 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Syntrophobacterales*f__Syntrophobacteraceae*g__Syntrophobacter)
+
+
+# arsenate_detoxification (0 records):
+
+
+# arsenate_respiration (0 records):
+
+
+# dissimilatory_arsenate_reduction (0 records):
+
+
+# arsenite_oxidation_detoxification (0 records):
+
+
+# arsenite_oxidation_energy_yielding (0 records):
+
+
+# dissimilatory_arsenite_oxidation (0 records):
+
+
+# anammox (0 records):
+
+
+# nitrate_denitrification (0 records):
+
+
+# nitrite_denitrification (0 records):
+
+
+# nitrous_oxide_denitrification (0 records):
+
+
+# denitrification (0 records):
+
+
+# chitinolysis (22 records):
+    ASV_791 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1401 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_257 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1369 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1055 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_360 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1434 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_425 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_519 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1028 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_176 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_77 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_405 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_457 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_94 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1331 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_128 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_219 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_913 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_886 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1140 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_422 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+
+
+# knallgas_bacteria (0 records):
+
+
+# dark_hydrogen_oxidation (5 records):
+    ASV_98 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_469 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_356 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_331 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_1311 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+
+
+# nitrogen_fixation (11 records):
+    ASV_181 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_69 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_667 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_15 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_27 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_1153 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_808 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylocystaceae*g__Methylocystis)
+    ASV_1231 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Azospirillaceae*g__Azospirillum)
+    ASV_1173 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Azospirillaceae*g__Azospirillum)
+    ASV_1152 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Rhodospirillaceae*g__Magnetospirillum)
+    ASV_567 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Oxalobacteraceae*g__Herbaspirillum)
+
+
+# nitrate_ammonification (0 records):
+
+
+# nitrite_ammonification (0 records):
+
+
+# nitrite_respiration (0 records):
+
+
+# cellulolysis (7 records):
+    ASV_1026 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Promicromonosporaceae*g__Cellulosimicrobium)
+    ASV_504 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_463 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_345 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_1402 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_296 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_1299 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+
+
+# xylanolysis (0 records):
+
+
+# dark_sulfide_oxidation (0 records):
+
+
+# dark_sulfur_oxidation (0 records):
+
+
+# dark_thiosulfate_oxidation (0 records):
+
+
+# dark_oxidation_of_sulfur_compounds (7 records):
+    ASV_192 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_141 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_660 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_209 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_563 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_828 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_179 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+
+
+# manganese_oxidation (1 records):
+    ASV_898 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Geodermatophilales*f__Geodermatophilaceae*g__Geodermatophilus)
+
+
+# manganese_respiration (0 records):
+
+
+# ligninolysis (0 records):
+
+
+# fermentation (9 records):
+    ASV_586 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Cellulomonadaceae*g__Cellulomonas)
+    ASV_815 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Cellulomonadaceae*g__Cellulomonas)
+    ASV_1026 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Promicromonosporaceae*g__Cellulosimicrobium)
+    ASV_127 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Lactobacillales*f__Streptococcaceae*g__Streptococcus)
+    ASV_1398 (k__Bacteria*p__Firmicutes*c__Clostridia*o__Clostridiales*f__Peptostreptococcaceae*g__Intestinibacter)
+    ASV_1460 (k__Bacteria*p__Firmicutes*c__Erysipelotrichia*o__Erysipelotrichales*f__Erysipelotrichaceae*g__Turicibacter)
+    ASV_365 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Desulfuromonadaceae*g__Desulfuromonas)
+    ASV_106 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Desulfuromonadaceae*g__Desulfuromonas)
+    ASV_1345 (k__Bacteria*p__Verrucomicrobia*c__Opitutae*o__Opitutales*f__Opitutaceae*g__Opitutus)
+
+
+# aerobic_chemoheterotrophy (424 records):
+    ASV_924 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Cryptosporangiales*f__Cryptosporangiaceae*g__Cryptosporangium)
+    ASV_605 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Geodermatophilales*f__Geodermatophilaceae*g__Blastococcus)
+    ASV_35 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Kineosporiales*f__Kineosporiaceae*g__Kineosporia)
+    ASV_185 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Kineosporiales*f__Kineosporiaceae*g__Kineosporia)
+    ASV_1007 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Kineosporiales*f__Kineosporiaceae*g__Kineosporia)
+    ASV_586 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Cellulomonadaceae*g__Cellulomonas)
+    ASV_815 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Cellulomonadaceae*g__Cellulomonas)
+    ASV_50 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_110 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_187 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_206 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_476 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_467 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_1063 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_1100 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_1090 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_1314 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_720 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Cryobacterium)
+    ASV_426 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Microbacterium)
+    ASV_690 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Microbacterium)
+    ASV_1143 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Microbacterium)
+    ASV_1026 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Promicromonosporaceae*g__Cellulosimicrobium)
+    ASV_9 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_29 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_52 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_855 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_167 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_474 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_302 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_583 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_352 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_629 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_962 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_603 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_649 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_734 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_1528 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_1104 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_1030 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_1088 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_1167 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_415 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Catellatospora)
+    ASV_534 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Catellatospora)
+    ASV_1083 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Catellatospora)
+    ASV_86 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Couchioplanes)
+    ASV_440 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Couchioplanes)
+    ASV_661 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Couchioplanes)
+    ASV_770 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Couchioplanes)
+    ASV_964 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Couchioplanes)
+    ASV_282 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_1396 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_344 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_333 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_949 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_1291 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_1102 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Hamadaea)
+    ASV_225 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_298 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_714 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_527 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_695 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_1465 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_260 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Virgisporangium)
+    ASV_300 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Virgisporangium)
+    ASV_751 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Virgisporangium)
+    ASV_1408 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Virgisporangium)
+    ASV_1113 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Virgisporangium)
+    ASV_1490 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Gordoniaceae*g__Gordonia)
+    ASV_280 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_433 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_797 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_829 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_602 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_745 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_756 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_1285 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_872 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_827 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_202 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Nocardiaceae*g__Nocardia)
+    ASV_116 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_279 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_930 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_311 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_397 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_1004 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_778 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_932 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_625 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Marmoricola)
+    ASV_1013 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Marmoricola)
+    ASV_62 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_75 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_288 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_119 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_124 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_236 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_406 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1027 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_307 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_330 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_340 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_732 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_509 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_743 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_634 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1149 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_956 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1246 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_588 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_936 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_706 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1244 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1351 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_794 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_863 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1458 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_889 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1065 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_774 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1479 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1034 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1313 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1120 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1250 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1392 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1373 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1038 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Propionibacteriaceae*g__Microlunatus)
+    ASV_91 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Actinophytocola)
+    ASV_400 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Actinophytocola)
+    ASV_675 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Actinophytocola)
+    ASV_1269 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Actinophytocola)
+    ASV_1212 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Actinophytocola)
+    ASV_113 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Kibdelosporangium)
+    ASV_186 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_383 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_480 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_594 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_639 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_1049 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_856 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_832 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_1114 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_456 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Sporichthyales*f__Sporichthyaceae*g__Sporichthya)
+    ASV_843 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Sporichthyales*f__Sporichthyaceae*g__Sporichthya)
+    ASV_8 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_16 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_144 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_154 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_214 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_270 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_319 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_378 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_341 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_386 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_430 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_553 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_558 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_525 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_643 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1056 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1012 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1031 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1077 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1172 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1216 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1227 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1268 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_394 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptosporangiales*f__Streptosporangiaceae*g__Nonomuraea)
+    ASV_655 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptosporangiales*f__Streptosporangiaceae*g__Nonomuraea)
+    ASV_1139 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptosporangiales*f__Streptosporangiaceae*g__Sphaerisporangium)
+    ASV_28 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptosporangiales*f__Thermomonosporaceae*g__Actinocorallia)
+    ASV_530 (k__Bacteria*p__Actinobacteria*c__Rubrobacteria*o__Rubrobacterales*f__Rubrobacteraceae*g__Rubrobacter)
+    ASV_880 (k__Bacteria*p__Actinobacteria*c__Rubrobacteria*o__Rubrobacterales*f__Rubrobacteraceae*g__Rubrobacter)
+    ASV_1333 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Patulibacteraceae*g__Patulibacter)
+    ASV_266 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_246 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_711 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_420 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_997 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_617 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_958 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1168 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1235 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1158 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1179 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1448 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1312 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1413 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1166 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1229 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1377 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1463 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_389 (k__Bacteria*p__Bacteroidetes*c__Cytophagia*o__Cytophagales*f__Cyclobacteriaceae*g__Algoriphagus)
+    ASV_442 (k__Bacteria*p__Bacteroidetes*c__Cytophagia*o__Cytophagales*f__Cyclobacteriaceae*g__Algoriphagus)
+    ASV_645 (k__Bacteria*p__Bacteroidetes*c__Cytophagia*o__Cytophagales*f__Cyclobacteriaceae*g__Algoriphagus)
+    ASV_1336 (k__Bacteria*p__Bacteroidetes*c__Cytophagia*o__Cytophagales*f__Cyclobacteriaceae*g__Algoriphagus)
+    ASV_217 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Cryomorphaceae*g__Crocinitomix)
+    ASV_1424 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Cryomorphaceae*g__Crocinitomix)
+    ASV_7 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_13 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_49 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_171 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_218 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_193 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_431 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_910 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1024 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1482 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_896 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1412 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1324 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_865 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_870 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1508 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_546 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Weeksellaceae*g__Chryseobacterium)
+    ASV_1085 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Weeksellaceae*g__Chryseobacterium)
+    ASV_1171 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Weeksellaceae*g__Chryseobacterium)
+    ASV_168 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_359 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_733 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_607 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_568 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_784 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_786 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_1021 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_906 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_1406 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_697 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_727 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_799 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_785 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_1527 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_1237 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_1220 (k__Bacteria*p__Ignavibacteriae*c__Ignavibacteria*o__Ignavibacteriales*f__Ignavibacteriaceae*g__Ignavibacterium)
+    ASV_1397 (k__Bacteria*p__Planctomycetes*c__Planctomycetacia*o__Pirellulales*f__Pirellulaceae*g__Blastopirellula)
+    ASV_678 (k__Bacteria*p__Planctomycetes*c__Planctomycetacia*o__Pirellulales*f__Pirellulaceae*g__Rhodopirellula)
+    ASV_309 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Asticcacaulis)
+    ASV_668 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_175 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_269 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_754 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_1006 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_1431 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_578 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Hyphomonadaceae*g__Hyphomonas)
+    ASV_899 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Hyphomonadaceae*g__Hyphomonas)
+    ASV_179 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_141 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_192 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_209 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_563 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_660 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_828 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_15 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_27 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_69 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_1153 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_181 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_667 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_881 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Rhodopseudomonas)
+    ASV_58 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_95 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_103 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_347 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_283 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_310 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_254 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_274 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_350 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_403 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_544 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_972 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_576 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_864 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_1097 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_1236 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_909 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_161 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_208 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_305 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_427 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_382 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_741 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_938 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_719 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_844 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1233 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_990 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1195 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1379 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1296 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1204 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1277 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_384 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_377 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_361 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_454 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_443 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_628 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_666 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_658 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_833 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_1131 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_1363 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_903 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_142 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_718 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_1456 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_739 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_1108 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_1177 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_736 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_369 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_893 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_417 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_428 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_414 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_1520 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_620 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_626 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_915 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_1455 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_1399 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_107 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Phyllobacterium)
+    ASV_316 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Phyllobacterium)
+    ASV_304 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Agrobacterium)
+    ASV_590 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Agrobacterium)
+    ASV_46 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_67 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_101 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_556 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_551 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_1411 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_1231 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Azospirillaceae*g__Azospirillum)
+    ASV_1173 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Azospirillaceae*g__Azospirillum)
+    ASV_172 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Reyranellaceae*g__Reyranella)
+    ASV_1429 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Reyranellaceae*g__Reyranella)
+    ASV_820 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Reyranellaceae*g__Reyranella)
+    ASV_1037 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Reyranellaceae*g__Reyranella)
+    ASV_1202 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Reyranellaceae*g__Reyranella)
+    ASV_1152 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Rhodospirillaceae*g__Magnetospirillum)
+    ASV_1228 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Rhodospirillaceae*g__Roseospira)
+    ASV_689 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales)
+    ASV_1469 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales)
+    ASV_140 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_859 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_713 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_1111 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_1198 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_1386 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_1243 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_1274 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_584 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Novosphingobium)
+    ASV_374 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae)
+    ASV_875 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae)
+    ASV_1125 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Allosphingosinicella)
+    ASV_557 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Allosphingosinicella)
+    ASV_817 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Allosphingosinicella)
+    ASV_1230 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Allosphingosinicella)
+    ASV_768 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Blastomonas)
+    ASV_1137 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Parablastomonas)
+    ASV_404 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingobium)
+    ASV_22 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_183 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_213 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_285 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_419 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_641 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_429 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_497 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_547 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_490 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1020 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_619 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1358 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1064 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1325 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1045 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1164 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_70 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingopyxis)
+    ASV_1074 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingorhabdus)
+    ASV_1504 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingorhabdus)
+    ASV_599 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Alcaligenaceae*g__Achromobacter)
+    ASV_813 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Alcaligenaceae*g__Achromobacter)
+    ASV_244 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Burkholderia)
+    ASV_1019 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_759 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_976 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_1426 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_14 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Acidovorax)
+    ASV_262 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Acidovorax)
+    ASV_465 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Acidovorax)
+    ASV_630 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Acidovorax)
+    ASV_98 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_331 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_1311 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_469 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_356 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_922 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Cystobacteraceae*g__Cystobacter)
+    ASV_334 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_580 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_846 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_1008 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_1337 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_1144 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_1029 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_1061 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Legionellales*f__Legionellaceae*g__Legionella)
+    ASV_63 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_93 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_204 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_323 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_532 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_446 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_758 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_1529 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_1454 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Rhodanobacteraceae*g__Rhodanobacter)
+    ASV_370 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_395 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_1046 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_919 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_487 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_1258 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_840 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_802 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_1048 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_971 (k__Bacteria*p__Verrucomicrobia*c__Verrucomicrobiae*o__Verrucomicrobiales*f__Verrucomicrobiaceae*g__Luteolibacter)
+
+
+# invertebrate_parasites (0 records):
+
+
+# human_pathogens_septicemia (0 records):
+
+
+# human_pathogens_pneumonia (0 records):
+
+
+# human_pathogens_nosocomia (0 records):
+
+
+# human_pathogens_meningitis (0 records):
+
+
+# human_pathogens_gastroenteritis (0 records):
+
+
+# human_pathogens_diarrhea (0 records):
+
+
+# human_pathogens_all (0 records):
+
+
+# fish_parasites (0 records):
+
+
+# human_gut (0 records):
+
+
+# human_associated (0 records):
+
+
+# mammal_gut (0 records):
+
+
+# animal_parasites_or_symbionts (1 records):
+    ASV_1257 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Brucellaceae*g__Brucella)
+
+
+# plant_pathogen (0 records):
+
+
+# oil_bioremediation (0 records):
+
+
+# aromatic_hydrocarbon_degradation (0 records):
+
+
+# aromatic_compound_degradation (37 records):
+    ASV_1490 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Gordoniaceae*g__Gordonia)
+    ASV_1065 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1027 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_774 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_634 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1244 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1373 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1149 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_863 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1351 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1120 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_956 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1313 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1246 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_236 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1458 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_62 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1479 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_307 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_75 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1034 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_509 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_889 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_330 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_588 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_936 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1250 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_288 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_340 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_743 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_119 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_406 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_794 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1392 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_124 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_732 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_706 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+
+
+# aliphatic_non_methane_hydrocarbon_degradation (0 records):
+
+
+# hydrocarbon_degradation (2 records):
+    ASV_808 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylocystaceae*g__Methylocystis)
+    ASV_1427 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylocystaceae*g__Methylosinus)
+
+
+# dark_iron_oxidation (0 records):
+
+
+# iron_respiration (9 records):
+    ASV_365 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Desulfuromonadaceae*g__Desulfuromonas)
+    ASV_106 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Desulfuromonadaceae*g__Desulfuromonas)
+    ASV_647 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Geobacteraceae*g__Geobacter)
+    ASV_648 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Geobacteraceae*g__Geobacter)
+    ASV_1375 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Geobacteraceae*g__Geobacter)
+    ASV_83 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Geobacteraceae*g__Geobacter)
+    ASV_871 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Geobacteraceae*g__Geobacter)
+    ASV_1518 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Geobacteraceae*g__Geobacter)
+    ASV_1124 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Geobacteraceae*g__Geobacter)
+
+
+# nitrate_respiration (13 records):
+    ASV_1257 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Brucellaceae*g__Brucella)
+    ASV_1152 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Rhodospirillaceae*g__Magnetospirillum)
+    ASV_813 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Alcaligenaceae*g__Achromobacter)
+    ASV_599 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Alcaligenaceae*g__Achromobacter)
+    ASV_788 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_132 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_99 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_143 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_738 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_571 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_1142 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_650 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_332 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+
+
+# nitrate_reduction (31 records):
+    ASV_1102 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Hamadaea)
+    ASV_530 (k__Bacteria*p__Actinobacteria*c__Rubrobacteria*o__Rubrobacterales*f__Rubrobacteraceae*g__Rubrobacter)
+    ASV_880 (k__Bacteria*p__Actinobacteria*c__Rubrobacteria*o__Rubrobacterales*f__Rubrobacteraceae*g__Rubrobacter)
+    ASV_1257 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Brucellaceae*g__Brucella)
+    ASV_46 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_1411 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_67 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_551 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_101 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_556 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_1152 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Rhodospirillaceae*g__Magnetospirillum)
+    ASV_813 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Alcaligenaceae*g__Achromobacter)
+    ASV_599 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Alcaligenaceae*g__Achromobacter)
+    ASV_976 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_1426 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_1019 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_759 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_132 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_143 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_571 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_650 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_332 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_788 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_738 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_1142 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_99 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_1254 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Ideonella)
+    ASV_33 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Ideonella)
+    ASV_539 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Ideonella)
+    ASV_366 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Ideonella)
+    ASV_1345 (k__Bacteria*p__Verrucomicrobia*c__Opitutae*o__Opitutales*f__Opitutaceae*g__Opitutus)
+
+
+# nitrogen_respiration (13 records):
+    ASV_1257 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Brucellaceae*g__Brucella)
+    ASV_1152 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Rhodospirillaceae*g__Magnetospirillum)
+    ASV_813 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Alcaligenaceae*g__Achromobacter)
+    ASV_599 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Alcaligenaceae*g__Achromobacter)
+    ASV_788 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_132 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_99 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_143 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_738 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_571 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_1142 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_650 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+    ASV_332 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Aquabacterium)
+
+
+# fumarate_respiration (0 records):
+
+
+# intracellular_parasites (3 records):
+    ASV_512 (k__Bacteria*p__Chlamydiae*c__Chlamydiia*o__Chlamydiales*f__Chlamydiaceae*g__Chlamydia)
+    ASV_1257 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Brucellaceae*g__Brucella)
+    ASV_1061 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Legionellales*f__Legionellaceae*g__Legionella)
+
+
+# chlorate_reducers (0 records):
+
+
+# predatory_or_exoparasitic (24 records):
+    ASV_976 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_1426 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_1019 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_759 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_1430 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Bdellovibrionales*f__Bdellovibrionaceae*g__Bdellovibrio)
+    ASV_1287 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Bdellovibrionales*f__Bdellovibrionaceae*g__Bdellovibrio)
+    ASV_502 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Bdellovibrionales*f__Bdellovibrionaceae*g__Bdellovibrio)
+    ASV_951 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Bdellovibrionales*f__Bdellovibrionaceae*g__Bdellovibrio)
+    ASV_1060 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Bdellovibrionales*f__Bdellovibrionaceae*g__Bdellovibrio)
+    ASV_1349 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Bdellovibrionales*f__Bdellovibrionaceae*g__Bdellovibrio)
+    ASV_1436 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Bdellovibrionales*f__Bdellovibrionaceae*g__Bdellovibrio)
+    ASV_721 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Bdellovibrionales*f__Bdellovibrionaceae*g__Bdellovibrio)
+    ASV_989 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Bdellovibrionales*f__Bdellovibrionaceae*g__Bdellovibrio)
+    ASV_483 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Bdellovibrionales*f__Bdellovibrionaceae*g__Bdellovibrio)
+    ASV_789 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Haliangiaceae*g__Haliangium)
+    ASV_1318 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Haliangiaceae*g__Haliangium)
+    ASV_541 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Haliangiaceae*g__Haliangium)
+    ASV_681 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Haliangiaceae*g__Haliangium)
+    ASV_100 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Haliangiaceae*g__Haliangium)
+    ASV_787 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Haliangiaceae*g__Haliangium)
+    ASV_937 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Haliangiaceae*g__Haliangium)
+    ASV_1309 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Haliangiaceae*g__Haliangium)
+    ASV_1130 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Haliangiaceae*g__Haliangium)
+    ASV_1253 (k__Bacteria*p__Proteobacteria*c__Oligoflexia*o__Bacteriovoracales*f__Bacteriovoracaceae*g__Bacteriovorax)
+
+
+# chloroplasts (0 records):
+
+
+# nonphotosynthetic_cyanobacteria (0 records):
+
+
+# photosynthetic_cyanobacteria (0 records):
+
+
+# anoxygenic_photoautotrophy_H2_oxidizing (0 records):
+
+
+# anoxygenic_photoautotrophy_S_oxidizing (4 records):
+    ASV_1099 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_764 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_1300 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_495 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+
+
+# anoxygenic_photoautotrophy_Fe_oxidizing (0 records):
+
+
+# anoxygenic_photoautotrophy (4 records):
+    ASV_1099 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_764 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_1300 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_495 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+
+
+# oxygenic_photoautotrophy (0 records):
+
+
+# photoautotrophy (4 records):
+    ASV_1099 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_764 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_1300 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_495 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+
+
+# aerobic_anoxygenic_phototrophy (0 records):
+
+
+# photoheterotrophy (2 records):
+    ASV_881 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Rhodopseudomonas)
+    ASV_1228 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Rhodospirillaceae*g__Roseospira)
+
+
+# phototrophy (6 records):
+    ASV_881 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Rhodopseudomonas)
+    ASV_1228 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Rhodospirillaceae*g__Roseospira)
+    ASV_495 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_1099 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_764 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+    ASV_1300 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Chromatiales*f__Ectothiorhodospiraceae)
+
+
+# plastic_degradation (0 records):
+
+
+# ureolysis (22 records):
+    ASV_417 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_428 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_893 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_414 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_620 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_1399 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_1455 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_915 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_1520 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_736 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_369 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_626 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_1417 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Xanthobacteraceae*g__Starkeya)
+    ASV_1231 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Azospirillaceae*g__Azospirillum)
+    ASV_1173 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Azospirillaceae*g__Azospirillum)
+    ASV_477 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Oxalobacteraceae*g__Duganella)
+    ASV_973 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Oxalobacteraceae*g__Duganella)
+    ASV_188 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Oxalobacteraceae*g__Duganella)
+    ASV_466 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Oxalobacteraceae*g__Duganella)
+    ASV_567 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Oxalobacteraceae*g__Herbaspirillum)
+    ASV_1289 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylophilus)
+    ASV_1033 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylovorus)
+
+
+# reductive_acetogenesis (0 records):
+
+
+# chemoheterotrophy (468 records):
+    ASV_924 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Cryptosporangiales*f__Cryptosporangiaceae*g__Cryptosporangium)
+    ASV_605 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Geodermatophilales*f__Geodermatophilaceae*g__Blastococcus)
+    ASV_35 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Kineosporiales*f__Kineosporiaceae*g__Kineosporia)
+    ASV_1007 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Kineosporiales*f__Kineosporiaceae*g__Kineosporia)
+    ASV_185 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Kineosporiales*f__Kineosporiaceae*g__Kineosporia)
+    ASV_586 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Cellulomonadaceae*g__Cellulomonas)
+    ASV_815 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Cellulomonadaceae*g__Cellulomonas)
+    ASV_50 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_1100 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_110 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_1090 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_187 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_206 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_1314 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_476 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_467 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_1063 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Agromyces)
+    ASV_720 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Cryobacterium)
+    ASV_1143 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Microbacterium)
+    ASV_426 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Microbacterium)
+    ASV_690 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Microbacteriaceae*g__Microbacterium)
+    ASV_1026 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micrococcales*f__Promicromonosporaceae*g__Cellulosimicrobium)
+    ASV_9 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_29 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_52 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_855 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_1088 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_1167 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_167 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_474 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_302 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_583 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_352 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_629 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_962 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_603 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_649 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_734 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_1528 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_1104 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_1030 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Actinoplanes)
+    ASV_415 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Catellatospora)
+    ASV_534 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Catellatospora)
+    ASV_1083 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Catellatospora)
+    ASV_86 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Couchioplanes)
+    ASV_964 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Couchioplanes)
+    ASV_440 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Couchioplanes)
+    ASV_661 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Couchioplanes)
+    ASV_770 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Couchioplanes)
+    ASV_282 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_1396 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_344 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_1291 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_333 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_949 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Dactylosporangium)
+    ASV_1102 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Hamadaea)
+    ASV_225 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_298 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_714 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_527 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_695 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_1465 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Micromonospora)
+    ASV_260 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Virgisporangium)
+    ASV_300 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Virgisporangium)
+    ASV_751 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Virgisporangium)
+    ASV_1408 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Virgisporangium)
+    ASV_1113 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Micromonosporales*f__Micromonosporaceae*g__Virgisporangium)
+    ASV_1490 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Gordoniaceae*g__Gordonia)
+    ASV_280 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_433 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_797 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_829 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_602 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_745 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_756 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_1285 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_872 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_827 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Mycobacteriaceae*g__Mycobacterium)
+    ASV_202 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Mycobacteriales*f__Nocardiaceae*g__Nocardia)
+    ASV_116 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_279 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_930 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_311 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_397 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_1004 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_778 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_932 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Aeromicrobium)
+    ASV_625 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Marmoricola)
+    ASV_1013 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Marmoricola)
+    ASV_1313 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_62 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_75 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_288 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_119 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_124 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1120 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_236 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1250 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1392 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_406 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1027 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1373 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_307 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_330 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_340 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_732 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_509 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_743 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_634 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1149 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_956 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1246 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_588 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_936 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_706 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1244 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1351 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_794 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_863 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1458 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_889 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1065 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_774 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1479 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1034 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Nocardioidaceae*g__Nocardioides)
+    ASV_1038 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Propionibacteriales*f__Propionibacteriaceae*g__Microlunatus)
+    ASV_1269 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Actinophytocola)
+    ASV_91 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Actinophytocola)
+    ASV_1212 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Actinophytocola)
+    ASV_400 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Actinophytocola)
+    ASV_675 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Actinophytocola)
+    ASV_113 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Kibdelosporangium)
+    ASV_832 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_1114 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_186 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_383 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_480 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_594 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_639 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_1049 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_856 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Pseudonocardiales*f__Pseudonocardiaceae*g__Pseudonocardia)
+    ASV_456 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Sporichthyales*f__Sporichthyaceae*g__Sporichthya)
+    ASV_843 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Sporichthyales*f__Sporichthyaceae*g__Sporichthya)
+    ASV_8 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_16 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1012 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1031 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1077 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1172 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_144 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1216 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1227 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_154 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_214 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1268 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_270 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_319 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_378 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_341 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_386 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_430 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_553 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_558 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_525 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_643 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_1056 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptomycetales*f__Streptomycetaceae*g__Streptomyces)
+    ASV_394 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptosporangiales*f__Streptosporangiaceae*g__Nonomuraea)
+    ASV_655 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptosporangiales*f__Streptosporangiaceae*g__Nonomuraea)
+    ASV_1139 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptosporangiales*f__Streptosporangiaceae*g__Sphaerisporangium)
+    ASV_28 (k__Bacteria*p__Actinobacteria*c__Actinobacteria*o__Streptosporangiales*f__Thermomonosporaceae*g__Actinocorallia)
+    ASV_530 (k__Bacteria*p__Actinobacteria*c__Rubrobacteria*o__Rubrobacterales*f__Rubrobacteraceae*g__Rubrobacter)
+    ASV_880 (k__Bacteria*p__Actinobacteria*c__Rubrobacteria*o__Rubrobacterales*f__Rubrobacteraceae*g__Rubrobacter)
+    ASV_1333 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Patulibacteraceae*g__Patulibacter)
+    ASV_1179 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1448 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_266 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1312 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1413 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_246 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1166 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1229 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1377 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1463 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_711 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_420 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_997 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_617 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_958 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1168 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1235 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1158 (k__Bacteria*p__Actinobacteria*c__Thermoleophilia*o__Solirubrobacterales*f__Solirubrobacteraceae*g__Solirubrobacter)
+    ASV_1336 (k__Bacteria*p__Bacteroidetes*c__Cytophagia*o__Cytophagales*f__Cyclobacteriaceae*g__Algoriphagus)
+    ASV_389 (k__Bacteria*p__Bacteroidetes*c__Cytophagia*o__Cytophagales*f__Cyclobacteriaceae*g__Algoriphagus)
+    ASV_442 (k__Bacteria*p__Bacteroidetes*c__Cytophagia*o__Cytophagales*f__Cyclobacteriaceae*g__Algoriphagus)
+    ASV_645 (k__Bacteria*p__Bacteroidetes*c__Cytophagia*o__Cytophagales*f__Cyclobacteriaceae*g__Algoriphagus)
+    ASV_217 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Cryomorphaceae*g__Crocinitomix)
+    ASV_1424 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Cryomorphaceae*g__Crocinitomix)
+    ASV_7 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_13 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1412 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_49 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1324 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_865 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_870 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_171 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_218 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_193 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1508 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_431 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_910 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1024 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1482 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_896 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Flavobacteriaceae*g__Flavobacterium)
+    ASV_1171 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Weeksellaceae*g__Chryseobacterium)
+    ASV_546 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Weeksellaceae*g__Chryseobacterium)
+    ASV_1085 (k__Bacteria*p__Bacteroidetes*c__Flavobacteriia*o__Flavobacteriales*f__Weeksellaceae*g__Chryseobacterium)
+    ASV_168 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_359 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_1237 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_733 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_607 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_568 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_784 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_786 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_1021 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_906 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_1406 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_697 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_727 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_799 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_785 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_1527 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Bacillales*f__Paenibacillaceae_1*g__Paenibacillus)
+    ASV_127 (k__Bacteria*p__Firmicutes*c__Bacilli*o__Lactobacillales*f__Streptococcaceae*g__Streptococcus)
+    ASV_1398 (k__Bacteria*p__Firmicutes*c__Clostridia*o__Clostridiales*f__Peptostreptococcaceae*g__Intestinibacter)
+    ASV_1460 (k__Bacteria*p__Firmicutes*c__Erysipelotrichia*o__Erysipelotrichales*f__Erysipelotrichaceae*g__Turicibacter)
+    ASV_1220 (k__Bacteria*p__Ignavibacteriae*c__Ignavibacteria*o__Ignavibacteriales*f__Ignavibacteriaceae*g__Ignavibacterium)
+    ASV_1397 (k__Bacteria*p__Planctomycetes*c__Planctomycetacia*o__Pirellulales*f__Pirellulaceae*g__Blastopirellula)
+    ASV_678 (k__Bacteria*p__Planctomycetes*c__Planctomycetacia*o__Pirellulales*f__Pirellulaceae*g__Rhodopirellula)
+    ASV_309 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Asticcacaulis)
+    ASV_1006 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_668 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_175 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_269 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_1431 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_754 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Caulobacteraceae*g__Caulobacter)
+    ASV_578 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Hyphomonadaceae*g__Hyphomonas)
+    ASV_899 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Caulobacterales*f__Hyphomonadaceae*g__Hyphomonas)
+    ASV_179 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_141 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_192 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_209 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_563 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_660 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_828 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Boseaceae*g__Bosea)
+    ASV_15 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_27 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_69 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_1153 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_181 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_667 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Bradyrhizobium)
+    ASV_881 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Bradyrhizobiaceae*g__Rhodopseudomonas)
+    ASV_1097 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_58 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_1236 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_95 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_103 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_347 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_283 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_909 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_310 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_254 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_274 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_350 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_403 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_544 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_972 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_576 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_864 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Devosiaceae*g__Devosia)
+    ASV_990 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1195 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_161 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1379 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_208 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1296 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1204 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1277 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_305 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_427 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_382 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_741 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_938 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_719 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_844 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1233 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Hyphomicrobium)
+    ASV_1363 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_903 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_384 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_377 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_361 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_454 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_443 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_628 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_666 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_658 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_833 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_1131 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Hyphomicrobiaceae*g__Pedomicrobium)
+    ASV_142 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_718 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_1456 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_739 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_1108 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_1177 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylobacteriaceae*g__Microvirga)
+    ASV_808 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylocystaceae*g__Methylocystis)
+    ASV_1427 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Methylocystaceae*g__Methylosinus)
+    ASV_1455 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_736 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_369 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_893 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_1399 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_417 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_428 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_414 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_1520 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_620 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_626 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_915 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Mesorhizobium)
+    ASV_107 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Phyllobacterium)
+    ASV_316 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Phyllobacteriaceae*g__Phyllobacterium)
+    ASV_304 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Agrobacterium)
+    ASV_590 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Agrobacterium)
+    ASV_46 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_67 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_101 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_556 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_551 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_1411 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhizobiales*f__Rhizobiaceae*g__Ensifer)
+    ASV_1173 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Azospirillaceae*g__Azospirillum)
+    ASV_1231 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Azospirillaceae*g__Azospirillum)
+    ASV_172 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Reyranellaceae*g__Reyranella)
+    ASV_1037 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Reyranellaceae*g__Reyranella)
+    ASV_1202 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Reyranellaceae*g__Reyranella)
+    ASV_1429 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Reyranellaceae*g__Reyranella)
+    ASV_820 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Reyranellaceae*g__Reyranella)
+    ASV_1152 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Rhodospirillaceae*g__Magnetospirillum)
+    ASV_1228 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Rhodospirillales*f__Rhodospirillaceae*g__Roseospira)
+    ASV_689 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales)
+    ASV_1469 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales)
+    ASV_1111 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_1198 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_140 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_1386 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_1243 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_1274 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_859 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_713 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Altererythrobacter)
+    ASV_584 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Erythrobacteraceae*g__Novosphingobium)
+    ASV_374 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae)
+    ASV_875 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae)
+    ASV_1230 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Allosphingosinicella)
+    ASV_1125 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Allosphingosinicella)
+    ASV_557 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Allosphingosinicella)
+    ASV_817 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Allosphingosinicella)
+    ASV_768 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Blastomonas)
+    ASV_1137 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Parablastomonas)
+    ASV_404 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingobium)
+    ASV_22 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1045 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_183 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1164 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_213 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_285 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_419 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_641 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_429 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_497 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_547 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_490 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1020 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_619 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1358 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1064 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_1325 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingomonas)
+    ASV_70 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingopyxis)
+    ASV_1074 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingorhabdus)
+    ASV_1504 (k__Bacteria*p__Proteobacteria*c__Alphaproteobacteria*o__Sphingomonadales*f__Sphingomonadaceae*g__Sphingorhabdus)
+    ASV_813 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Alcaligenaceae*g__Achromobacter)
+    ASV_599 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Alcaligenaceae*g__Achromobacter)
+    ASV_244 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Burkholderia)
+    ASV_976 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_1426 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_1019 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_759 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Burkholderiaceae*g__Cupriavidus)
+    ASV_14 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Acidovorax)
+    ASV_262 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Acidovorax)
+    ASV_465 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Acidovorax)
+    ASV_630 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Acidovorax)
+    ASV_98 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_331 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_1311 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_469 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_356 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Burkholderiales*f__Comamonadaceae*g__Hydrogenophaga)
+    ASV_149 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylobacillus)
+    ASV_1289 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylophilus)
+    ASV_879 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylotenera)
+    ASV_1507 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylotenera)
+    ASV_1033 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Methylovorus)
+    ASV_199 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Novimethylophilus)
+    ASV_614 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Novimethylophilus)
+    ASV_227 (k__Bacteria*p__Proteobacteria*c__Betaproteobacteria*o__Nitrosomonadales*f__Methylophilaceae*g__Pseudomethylobacillus)
+    ASV_106 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Desulfuromonadaceae*g__Desulfuromonas)
+    ASV_365 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Desulfuromonadales*f__Desulfuromonadaceae*g__Desulfuromonas)
+    ASV_922 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Cystobacteraceae*g__Cystobacter)
+    ASV_1029 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_334 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_580 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_846 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_1008 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_1337 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_1144 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Chondromyces)
+    ASV_345 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_296 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_463 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_504 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_1402 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_1299 (k__Bacteria*p__Proteobacteria*c__Deltaproteobacteria*o__Myxococcales*f__Polyangiaceae*g__Sorangium)
+    ASV_1061 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Legionellales*f__Legionellaceae*g__Legionella)
+    ASV_63 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_93 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_204 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_1529 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_323 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_532 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_446 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_758 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Pseudomonadales*f__Pseudomonadaceae*g__Pseudomonas)
+    ASV_1454 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Rhodanobacteraceae*g__Rhodanobacter)
+    ASV_1048 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_370 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_395 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_1046 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_919 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_487 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_1258 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_840 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_802 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Arenimonas)
+    ASV_1434 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_77 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_94 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1140 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_128 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1055 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_176 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1331 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_219 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1401 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_257 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_360 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_405 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_913 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_422 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_425 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_519 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_457 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_791 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1369 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1028 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_886 (k__Bacteria*p__Proteobacteria*c__Gammaproteobacteria*o__Xanthomonadales*f__Xanthomonadaceae*g__Lysobacter)
+    ASV_1345 (k__Bacteria*p__Verrucomicrobia*c__Opitutae*o__Opitutales*f__Opitutaceae*g__Opitutus)
+    ASV_971 (k__Bacteria*p__Verrucomicrobia*c__Verrucomicrobiae*o__Verrucomicrobiales*f__Verrucomicrobiaceae*g__Luteolibacter)
+
+

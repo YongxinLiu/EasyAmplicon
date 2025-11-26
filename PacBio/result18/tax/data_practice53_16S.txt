@@ -1,0 +1,41 @@
+Genus	Group	feces1	feces2	feces3	feces4	feces5	feces6
+Bacteroides	Second-generation	0.2	0.22	0	0.23	0	0
+Faecalibacterium	Second-generation	0	0	0	0.07	0	0
+Ruminococcus	Second-generation	0	0.11	0	0	0	0
+Incertae Sedis	Second-generation	0	0.01	0	0	0.25	0
+UCG-002	Second-generation	0	0.12	0.1	0.16	0	0
+Akkermansia	Second-generation	0	0.05	0.08	0	0	0.03
+Paraprevotella	Second-generation	0	0	0.48	0	0	0.01
+Lachnospira	Second-generation	0	0	0.13	0	0	0
+Phascolarctobacterium	Second-generation	0.43	0	0.05	0	0	0
+UCG-005	Second-generation	0	0	0	0.21	0.2	0
+[Eubacterium] eligens group	Second-generation	0	0	0	0.05	0	0
+Coprococcus	Second-generation	0	0	0	0	0.06	0
+Mediterraneibacter	Second-generation	0	0	0	0	0.28	0
+Agathobacter	Second-generation	0	0	0	0	0.04	0
+Dorea	Second-generation	0	0	0	0	0	0.61
+Tyzzerella	Second-generation	0	0	0	0	0	0
+Collinsella	Second-generation	0	0	0	0	0	0
+Parabacteroides	Second-generation	0	0	0	0	0	0
+Bifidobacterium	Second-generation	0	0	0	0	0	0
+Other	Second-generation	0.37	0.49	0.16	0.28	0.17	0.35
+Bacteroides	Third-generation	0.18	0.05	0	0.04	0.21	0
+Faecalibacterium	Third-generation	0	0	0	0	0	0
+Ruminococcus	Third-generation	0	0	0	0	0	0
+Incertae Sedis	Third-generation	0	0.12	0.125	0	0	0
+UCG-002	Third-generation	0	0	0	0.27	0	0
+Akkermansia	Third-generation	0	0	0	0	0.12	0
+Paraprevotella	Third-generation	0	0	0	0	0	0
+Lachnospira	Third-generation	0	0	0	0	0	0
+Phascolarctobacterium	Third-generation	0	0	0.07	0	0	0
+UCG-005	Third-generation	0	0	0	0	0.3	0
+[Eubacterium] eligens group	Third-generation	0	0.47	0	0	0	0
+Coprococcus	Third-generation	0	0	0.15	0	0	0
+Mediterraneibacter	Third-generation	0	0	0.2	0	0.35	0
+Agathobacter	Third-generation	0	0	0	0	0	0
+Dorea	Third-generation	0	0.05	0	0	0	0.35
+Tyzzerella	Third-generation	0	0	0	0	0	0
+Collinsella	Third-generation	0	0	0	0	0	0
+Parabacteroides	Third-generation	0	0	0	0	0	0
+Bifidobacterium	Third-generation	0	0.03	0.025	0.16	0	0
+Other	Third-generation	0.82	0.28	0.43	0.53	0.02	0.65

@@ -1,0 +1,2 @@
+file              format  type  num_seqs      sum_len  min_len  avg_len  max_len
+temp/filtered.fa  FASTA   DNA     86,454  126,504,618    1,382  1,463.3    1,681

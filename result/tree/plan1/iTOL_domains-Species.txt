@@ -1,0 +1,102 @@
+DATASET_DOMAINS
+SEPARATOR TAB
+BACKBONE_COLOR	#FFFFFF
+BACKBONE_HEIGHT	0
+BORDER_WIDTH	0.5
+COLOR	#bebada
+DATASET_LABEL	Species
+HEIGHT_FACTOR	1
+LEGEND_COLORS	#1b9e77	#d95f02	#7570b3	#e7298a	#66a61e	#e6ab02	#a6761d	#666666	#1b9e77	#d95f02	#7570b3	#e7298a	#66a61e	#e6ab02	#a6761d	#666666	#1b9e77	#d95f02	#7570b3	#e7298a	#66a61e	#e6ab02	#a6761d	#666666	#1b9e77	#d95f02	#7570b3	#e7298a	#66a61e	#e6ab02	#a6761d	#666666	#1b9e77	#d95f02	#7570b3	#e7298a	#66a61e	#e6ab02	#a6761d	#666666	#1b9e77	#d95f02	#7570b3	#e7298a	#66a61e	#e6ab02	#a6761d	#666666	#1b9e77	#d95f02	#7570b3	#e7298a	#66a61e	#e6ab02
+LEGEND_LABELS	alkalitolerans	allogilvus	amnicola	amniphilum	arseniciresistens	banguiense	binzhouensis	caeni	caldifontis	capsensis	cerasi	chajnantorensis	currus	curvata	dehalogenans	denitrificans	eburnea	erythrophlei	eurypsychrophila	ferriligni	ferrireducens	firmicutimachus	floridensis	giganteus	gossypii	gummiphilus	hankyongi	hengshuiensis	humi	hydrophilum	isolaginshaensis	lacus	lichenis	luteus	naphthalenivorans	nepalensis	olei	paludis	polonicum	polymachus	populi	qitaiheensis	robiniae	shofinae	soli	subtropicus	svalbardensis	terminaliae	terrae	turukhanskensis	Unassigned	wychmicini	xuchangensis	zucineum
+LEGEND_SHAPES	EL	EL	EL	EL	EL	EL	EL	EL	RE	RE	RE	RE	RE	RE	RE	RE	TL	TL	TL	TL	TL	TL	TL	TL	TR	TR	TR	TR	TR	TR	TR	TR	DI	DI	DI	DI	DI	DI	DI	DI	HH	HH	HH	HH	HH	HH	HH	HH	HV	HV	HV	HV	HV	HV
+LEGEND_TITLE	Species
+MARGIN	5
+SHOW_DOMAIN_LABELS	0
+WIDTH	25
+DATA
+ASV_2	10	EL|0|10|#7570b3|amnicola
+ASV_3	10	TR|0|10|#d95f02|gummiphilus
+ASV_4	10	TR|0|10|#d95f02|gummiphilus
+ASV_8	10	DI|0|10|#666666|polymachus
+ASV_6	10	EL|0|10|#7570b3|amnicola
+ASV_7	10	EL|0|10|#e7298a|amniphilum
+ASV_18	10	TR|0|10|#a6761d|isolaginshaensis
+ASV_9	10	DI|0|10|#1b9e77|lichenis
+ASV_10	10	DI|0|10|#a6761d|polonicum
+ASV_11	10	RE|0|10|#666666|denitrificans
+ASV_14	10	TR|0|10|#1b9e77|gossypii
+ASV_12	10	EL|0|10|#666666|caeni
+ASV_15	10	TL|0|10|#e7298a|ferriligni
+ASV_13	10	TR|0|10|#7570b3|hankyongi
+ASV_16	10	RE|0|10|#1b9e77|caldifontis
+ASV_17	10	EL|0|10|#7570b3|amnicola
+ASV_28	10	HH|0|10|#1b9e77|populi
+ASV_20	10	HV|0|10|#66a61e|xuchangensis
+ASV_30	10	HV|0|10|#7570b3|Unassigned
+ASV_23	10	HV|0|10|#e7298a|wychmicini
+ASV_21	10	HH|0|10|#d95f02|qitaiheensis
+ASV_1276	10	HV|0|10|#7570b3|Unassigned
+ASV_29	10	DI|0|10|#d95f02|luteus
+ASV_22	10	TR|0|10|#e7298a|hengshuiensis
+ASV_113	10	EL|0|10|#e6ab02|banguiense
+ASV_26	10	HV|0|10|#7570b3|Unassigned
+ASV_24	10	HV|0|10|#66a61e|xuchangensis
+ASV_31	10	RE|0|10|#e6ab02|curvata
+ASV_27	10	TL|0|10|#e7298a|ferriligni
+ASV_34	10	DI|0|10|#e6ab02|paludis
+ASV_33	10	DI|0|10|#e6ab02|paludis
+ASV_35	10	HH|0|10|#66a61e|soli
+ASV_36	10	TL|0|10|#1b9e77|eburnea
+ASV_41	10	HV|0|10|#7570b3|Unassigned
+ASV_37	10	HV|0|10|#7570b3|Unassigned
+ASV_173	10	EL|0|10|#666666|caeni
+ASV_38	10	HH|0|10|#a6761d|svalbardensis
+ASV_40	10	HV|0|10|#7570b3|Unassigned
+ASV_42	10	TL|0|10|#1b9e77|eburnea
+ASV_39	10	HV|0|10|#1b9e77|terrae
+ASV_70	10	DI|0|10|#e7298a|nepalensis
+ASV_47	10	TR|0|10|#1b9e77|gossypii
+ASV_68	10	HV|0|10|#e6ab02|zucineum
+ASV_45	10	EL|0|10|#7570b3|amnicola
+ASV_44	10	RE|0|10|#e7298a|chajnantorensis
+ASV_54	10	TL|0|10|#1b9e77|eburnea
+ASV_52	10	HH|0|10|#e6ab02|subtropicus
+ASV_46	10	HV|0|10|#7570b3|Unassigned
+ASV_43	10	TL|0|10|#666666|giganteus
+ASV_48	10	HV|0|10|#7570b3|Unassigned
+ASV_51	10	TR|0|10|#a6761d|isolaginshaensis
+ASV_50	10	EL|0|10|#a6761d|binzhouensis
+ASV_53	10	RE|0|10|#666666|denitrificans
+ASV_49	10	TR|0|10|#e6ab02|hydrophilum
+ASV_55	10	HV|0|10|#7570b3|Unassigned
+ASV_58	10	DI|0|10|#7570b3|naphthalenivorans
+ASV_62	10	EL|0|10|#d95f02|allogilvus
+ASV_67	10	HH|0|10|#e7298a|shofinae
+ASV_56	10	DI|0|10|#66a61e|olei
+ASV_63	10	RE|0|10|#7570b3|cerasi
+ASV_61	10	HH|0|10|#66a61e|soli
+ASV_59	10	EL|0|10|#666666|caeni
+ASV_60	10	TR|0|10|#66a61e|humi
+ASV_76	10	TL|0|10|#66a61e|ferrireducens
+ASV_66	10	HV|0|10|#7570b3|Unassigned
+ASV_73	10	TR|0|10|#1b9e77|gossypii
+ASV_456	10	RE|0|10|#d95f02|capsensis
+ASV_69	10	TL|0|10|#d95f02|erythrophlei
+ASV_82	10	EL|0|10|#1b9e77|alkalitolerans
+ASV_72	10	TL|0|10|#7570b3|eurypsychrophila
+ASV_93	10	HV|0|10|#d95f02|turukhanskensis
+ASV_71	10	TL|0|10|#a6761d|floridensis
+ASV_74	10	HV|0|10|#7570b3|Unassigned
+ASV_77	10	TL|0|10|#e6ab02|firmicutimachus
+ASV_75	10	RE|0|10|#66a61e|currus
+ASV_83	10	HV|0|10|#7570b3|Unassigned
+ASV_84	10	RE|0|10|#a6761d|dehalogenans
+ASV_81	10	EL|0|10|#66a61e|arseniciresistens
+ASV_79	10	TL|0|10|#1b9e77|eburnea
+ASV_78	10	HH|0|10|#7570b3|robiniae
+ASV_80	10	TL|0|10|#666666|giganteus
+ASV_88	10	HV|0|10|#7570b3|Unassigned
+ASV_86	10	DI|0|10|#d95f02|luteus
+ASV_89	10	TR|0|10|#666666|lacus
+ASV_92	10	HV|0|10|#7570b3|Unassigned
+ASV_855	10	HH|0|10|#666666|terminaliae

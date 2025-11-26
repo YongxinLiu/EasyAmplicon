@@ -1,0 +1,9 @@
+# 代码说明（Code Description):
+
+1. spike拆分(spike split)：01_separate_rawdata.pl
+
+2. qiime2 得到ASV(Using qiime2 to get ASV)：02_qiime2_qc.pl
+
+3. 绝对定量(Absolute quantification)：03_quantitation.pl
+
+4. 绝对定量拷贝数计算(Absolute quantitative copy number calculation)：04_quantitation_calculate_absolute_copies.r

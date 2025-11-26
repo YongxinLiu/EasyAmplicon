@@ -1,0 +1,289 @@
+---
+title: "基于Pearson相关性的网络图绘制"
+author: "王金锋 易生信"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output:
+  html_document:
+    df_print: paged
+    theme: cerulean
+    highlight: haddock
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+    code_fold: show
+---
+
+## 检测并安装依赖的包
+
+```{r check-packages}
+local({r <- getOption("repos")  
+r["CRAN"] <- "http://mirrors.tuna.tsinghua.edu.cn/CRAN/"   
+r["BioC_mirror"] <- "https://mirrors.tuna.tsinghua.edu.cn/bioconductor"
+options(repos=r)}) 
+
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+a = rownames(installed.packages())
+
+install_package <- c("psych", "reshape2", "igraph", "VennDiagram", "pheatmap")
+
+
+for (i in install_package) {
+  if (!i %in% a)
+    BiocManager::install(i, update = F)
+}
+```
+
+## 导入包
+
+```{r}
+suppressPackageStartupMessages(library("psych"))
+suppressPackageStartupMessages(library("reshape2"))
+suppressPackageStartupMessages(library("igraph"))
+suppressPackageStartupMessages(library("VennDiagram"))
+suppressPackageStartupMessages(library("pheatmap"))
+```
+
+
+## 设置输入文件和过滤参数
+
+此处需要修改为自己的文件名，这三个文件按自己的需求修改 otu_abundance_file，vip_species，output_prefix。
+
+输入文件：
+- otu_abundance_file：自己筛选后的输入OTU表
+- vip_species：指定高亮的菌，如差异菌，或特征菌
+
+本文分析两次，第一次为abundance_cd2+，第二次为abundance_cd2-，分别对应两个实验组。
+
+```{r input}
+otu_abundance_file = "abundance_cd2-.txt"
+# 单列文件，里面列出的是样品中上调的菌或其它方式筛选出的关注的菌
+# 如果没有可为 NULL
+
+# vip_species = NULL
+vip_species = "abundance_cd2-.vip.txt"
+
+output_prefix = "abundance_cd2-"
+
+# 二者取交集
+
+# 设置为0，表示不按此筛选
+correlation_threshold = 0
+# correlation_threshold = 0.8 # 只保留相关性绝对值大于0.8的物种对
+
+# 设置为1，表示不按此筛选
+pvalue_threshold = 0.001 # 只保留相关性显著p值小于0.001的物种对
+
+```
+
+定义中间文件的名字 （可以不修改）
+
+```{r}
+cor_file = paste0(output_prefix, "_correlation.txt")
+pvalue_file = paste0(output_prefix, "_pvalue.txt")
+edge_file_txt = paste0(output_prefix, "_edge.txt")
+node_file_txt = paste0(output_prefix, "_node.txt")
+
+edge_file_csv = paste0(output_prefix, "_edge.csv")
+node_file_csv = paste0(output_prefix, "_node.csv")
+
+degree_file = paste0(output_prefix, "_network_degree.txt")
+
+# 定义点颜色，第一个颜色对应普通点，第二个对应vip点
+# 颜色可自己修改，当前只支持2种颜色
+VColor <- c("#636363","#78c679")
+
+# 边颜色，第一个颜色是正相关连线颜色，第二个颜色是负相关连线颜色
+# 颜色可自己修改，当前只支持2种颜色
+EColor <- c("#d7301f", "#0570b0")
+```
+
+## 计算并输出Pearson相关系数
+
+```{r pearson correlation coefficent calculation}
+
+##读入丰度数据
+myData <- read.table(otu_abundance_file, header = T, row.names=1)
+
+#计算皮尔森相关系数
+cor <- cor(t(myData), method = "pearson")
+
+p <- corr.test(t(myData))  #计算p值
+pValue <- p$p   #提取p值
+
+#输出数据
+write.table(cor, cor_file, quote = F, row.names = T, col.names = T, sep = '\t')
+write.table(pValue, pvalue_file, quote = F, row.names = T, col.names = T, sep = '\t')
+```
+
+## 根据相关性筛选边和节点，设置VIP菌，并转换为绘图所需格式
+
+```{r format transformation}
+
+##读取边相关系数文件
+cor <- read.table(cor_file, header = T, row.names=1)
+
+##读取边p值文件
+pv <- read.table(pvalue_file, header = T, row.names=1)
+
+
+cor$genus <- rownames(cor)
+pv$genus <- rownames(pv)
+
+
+##提取上三角矩阵并转换为边文件格式
+cor[lower.tri(cor)] <- 0
+pv[lower.tri(pv)] <- 0
+
+
+pear.cor <- melt(cor, id.vars = "genus")
+pear.pv <- melt(pv, id.vars = "genus")
+
+pear <- data.frame(source = pear.cor[,1], target = pear.cor[,2], 
+                   pearsonCor = pear.cor[,3], pearsonPV = pear.pv[,3])
+
+pear.trim <- pear[-which(pear[,3] == "0"),]
+
+# pear.trim <- pear.trim[-which(pear.trim[,3] == "1"),]     
+pear.trim <- pear.trim[-which(pear.trim$source == pear.trim$target),]  
+
+pear.trim$weight <- abs(as.vector(pear.trim[,3]))   #设置边的权重
+
+pear.trim$class <- 0  #设置边的类别
+
+pear.trim[which(pear.trim[,3] < 0),"class"] <- 2     #2 -> 负相关
+pear.trim[which(pear.trim[,3] > 0),"class"] <- 1     #1 -> 正相关
+
+pear.result <- pear.trim[which(pear.trim$weight > correlation_threshold),]     #剔除权重小于0.8的边
+pear.result <- pear.result[which(pear.trim$pearsonPV < pvalue_threshold),]   ##剔除p值大于0.01的边
+pear.result <- pear.result[,c(1,2,5,6)]
+
+##输出边文件
+##txt格式
+write.table(pear.result, edge_file_txt, col.names = T, row.names = F, sep = "\t", quote = F) 
+##csv格式
+write.csv(pear.result, edge_file_csv, row.names = F, quote = F)                              
+
+##读取节点文件
+node <- read.table(otu_abundance_file, header = T, sep = '\t', row.names = 1)
+
+##计算节点的权重
+node.result <- data.frame(id = as.character(rownames(node)), weight = rowMeans(node), 
+                          class = rep(1,length(node[,1])))
+
+##指定VIP菌属
+# node.result[1:7,3] <- 2   ##指定前7个菌为VIP菌
+
+#也可根据菌属名指定VIP菌
+# node.result[which(node.result[,1] == "Streptococcus"),3] <- 2   #指定Streptococcus为VIP菌
+
+#根据节点的权重设定VIP菌
+#node.order = node.result[rev(order(node.result[,2])),]
+#node.result[rownames(node.order)[1:7],3] <- 2     #指定权重最大的前7个菌为VIP菌
+
+if(! is.null(vip_species)){
+  vip_species_list <- read.table(vip_species, row.names=NULL, header=F)$V1
+  node.result[which(node.result[,1] %in% vip_species_list), 3] <- 2
+}
+
+#node.result <- node.result[-which(node.result[,2] == "0"),]   ##剔除丰度为0的菌属
+
+##输出节点文件
+##txt格式
+write.table(node.result, node_file_txt, col.names = T, row.names = F, sep = "\t", quote = F) 
+
+##csv格式
+write.csv(node.result, node_file_csv, row.names = F, quote = F)                             
+```
+
+## 利用igraph绘制网络图
+
+```{r igraph}
+
+##读取边文件与节点文件
+arcf <- read.table(edge_file_txt, header = T, row.names=NULL)
+
+allnodes <- read.table(node_file_txt, sep = "\t", header = T, row.names = NULL)
+
+arc <- arcf[,1:2]
+unodes <- unique(c(as.character(arc$source), as.character(arc$target)))    ##提取出唯一的节点
+node <- allnodes[allnodes$id %in% unodes,]
+
+##将节点与边存入igraph中构建网络
+g <- graph.empty()
+g <- graph_from_data_frame(arc,vertices = node)
+
+##设置节点与边的属性
+nodeSize <- 0    
+nodeDize <- 1.2
+edgeSize <- 0
+edgeDize <- 0.8
+
+textSize <- 0.7
+arrowSize <- 0
+
+##为节点与边的属性赋值
+V(g)$size <- nodeSize+nodeDize*log10(100*as.numeric(as.vector(node$weight)))
+V(g)$color <- VColor[node$class]
+V(g)$label.cex <- textSize
+V(g)$frame.color <- "#252525"
+E(g)$width <- edgeSize+2*(edgeDize*abs(as.numeric(as.vector(arcf$weight))))
+E(g)$color <- EColor[arcf$class]
+E(g)$arrow.size <- arrowSize
+
+```
+
+### 默认参数绘图
+
+```{r plot network}
+plot(g)
+```
+### 环形布局
+
+```{r plot network circle}
+plot(g, layout = layout.circle)
+```
+### fruchterman布局
+
+```{r plot network fruchterman.reingold}
+plot(g, layout = layout.fruchterman.reingold)
+```
+### 保存图片
+
+```{r}
+#导出pdf图片
+pdf(paste0(output_prefix, "_igraph.pdf"), height = 5, width = 5)
+plot(g)
+dev.off()
+
+pdf(paste0(output_prefix, "_igraph_circle.pdf"), height = 5, width = 5)
+plot(g, layout = layout.circle)
+dev.off()
+
+pdf(paste0(output_prefix, "_igraph_fruchterman.reingold.pdf"), height = 5, width = 5)
+plot(g, layout = layout.fruchterman.reingold)
+dev.off()
+```
+
+## 计算网络属性
+
+```{r topological coefficient}
+gsize(g)  #边数目
+vcount(g)  #节点数目
+mean_distance(g)  #平均路径长度
+degree(g)   #连接度
+table(degree(g)) #连接度统计
+closeness(g)   #紧密性
+betweenness(g)  #中介中心性
+transitivity(g, type="local")  #聚集系数
+evcent(g)$vector   #特征向量中心性
+
+#输出节点连接度文件
+degree.cdtn = data.frame(genus = names(degree(g)), degree = degree(g))
+write.table(degree.cdtn, degree_file, col.names = T, row.names = F, quote = F, sep = '\t')
+```
+
