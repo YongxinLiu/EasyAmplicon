@@ -2,9 +2,9 @@
 
 # 易扩增子EasyAmplicon 2
 
-    # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen)等
+    # 作者 Authors: 刘永鑫(Yong-Xin Liu), 陈同(Tong Chen), 罗豪(Hao Luo)等
     # 版本 Version: v2.00
-    # 更新 Update: 2025-10-16
+    # 更新 Update: 2026-04-11
     # 系统要求 System requirement: Windows 10+ / Mac OS 10.12+ / Ubuntu 20.04+
     # 引文 Reference: Liu, et al. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. iMeta 2: e83. https://doi.org/10.1002/imt2.83
     # Yousuf, et al. 2024. Unveiling microbial communities with EasyAmplicon: A user-centric guide to perform amplicon sequencing data analysis. iMetaOmics 1: e42. https://doi.org/10.1002/imo2.42
