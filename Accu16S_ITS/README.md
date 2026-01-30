@@ -149,5 +149,12 @@ result/6.final/
 
 ## Citation
 
-If you use **EasyAmplicon**, please cite or acknowledge the pipeline
-appropriately.
+使用此脚本，请引用下文：
+
+If used this script, please cited:
+
+Hao Luo, et al. 2025. EasyAmplicon 2: Expanding PacBio and Nanopore Long Amplicon Sequencing Analysis Pipeline for Microbiome. Advanced Science 12: https://doi.org/https://doi.org/10.1002/advs.202512447
+
+Salsabeel Yousuf, et al. 2024. Unveiling microbial communities with EasyAmplicon: A user-centric guide to perform amplicon sequencing data analysis. iMetaOmics 1: e42. https://doi.org/10.1002/imo2.42
+
+Yong-Xin Liu, et al. 2023. EasyAmplicon: An easy-to-use, open-source, reproducible, and community-based pipeline for amplicon data analysis in microbiome research. iMeta 2: e83. https://doi.org/10.1002/imt2.83
