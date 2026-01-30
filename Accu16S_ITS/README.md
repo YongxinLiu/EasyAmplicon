@@ -1,4 +1,4 @@
-# EasyAmplicon
+# Accu16S/AccuITS
 
 **Absolute Quantification Pipeline for Amplicon Sequencing Using Accu16S
 / AccuITS**
