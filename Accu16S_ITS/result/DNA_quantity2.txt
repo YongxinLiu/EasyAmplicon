@@ -1,0 +1,4 @@
+sample name	template_DNA_ng	sample_DNA_ng	sample_quantity_g
+control_1_2	21.52	322.77	0.0018
+control_1_3	18.96	284.36	0.0022
+P_Ri_6	11.89	178.3	0.0038
