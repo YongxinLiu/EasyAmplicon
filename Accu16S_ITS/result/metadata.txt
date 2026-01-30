@@ -1,0 +1,4 @@
+SampleID	Group
+control_1_2	Control
+control_1_3	Control
+P_Ri_6	P
